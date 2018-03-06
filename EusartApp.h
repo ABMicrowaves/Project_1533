@@ -15,7 +15,7 @@ Author: RoeeZ (Comm-IT).                                                    ****
 
 
 #define MSG_MAGIC_A                 (0x24)    // 0x24 == '$'
-#define MSG_CARRIAGE_RETURN         (0x14)
+#define CHAR_CARRIAGE_RETURN        (0xd)
 #define DELAY_BETWEEN_MESSAGE_READ  (500)
 #define MIN_RX_MSG_SIZE             (4)
 #define MSG_RX_MAX_DATA_SIZE        (0x14)
@@ -40,6 +40,9 @@ typedef enum
 {
     START_RX_MESSAGE_READ = 0,
 	FIND_MAGIC,
+    READ_STREAM,
+    READ_GROUP,
+    READ_REQUEST,
 	READ_DATA,
     CHECK_CRC,
     JUMP_FUNCTION

@@ -11,52 +11,29 @@ Author: RoeeZ (Comm-IT).                                                    ****
 
 typedef enum
 {
-    CONTROL_MSG                 = 0x01,
-    MCU_STATUS_VERSION_MSG      = 0x02,
-    ADC_MSG                     = 0x03,
-    SYNTH_MSG                   = 0x04,
-    FLASH_MSG                   = 0x05,
-    DAC_MSG                     = 0x06,
+    RX_GROUP                    = 0x0,
+    TX_GROUP                    = 0x1,
+    COMMON_GROUP                = 0x2,
 }MSG_GROUPS;
 
 typedef enum
 {
-    // Control MCU:
-    CONTROL_SYSTEM_START        = 0x10,
-    CONTROL_RESET_MCU           = 0x11,
-    CONTROL_RESET_CPLD          = 0x12,
-    CONTROL_PA1_SET             = 0x13,
-    CONTROL_PA2_SET             = 0x14,
-    CONTROL_TEST_LEDS           = 0x15,
-    CONTROL_KEEP_ALIVE          = 0x16,
-
-    // MCU status and version:
-    STATUS_MCU_RUN_TIME         = 0x21,
-    STATUS_GET_MCU_FW_VERSION   = 0x22,
-    STATUS_GET_CPLD_FW_VERSION  = 0x23,
-    STATUS_SET_MCU_FW_VERSION   = 0x24,
-    STATUS_SET_CPLD_FW_VERSION  = 0x25,
-
-    // ADC
-    ADC_OPERATION               = 0x31,
-    ADC_CHANNEL_MODE            = 0x32,
-    ADC_CONVERSION_MODE         = 0x33,
+    // RX + TX system requests
     
-    // Synthesizer (Up / Down):
-    SYNTH_TX_INIT_SET           = 0x40,
-    SYNTH_RX_INIT_SET           = 0x41,
-    SYNTH_DOWN_SET              = 0x42,
-    SYNTH_UP_SET                = 0x43,
-
-    // Flash memory
-    FLASH_EREASE_MEMORY         = 0x51,
-    FLASH_READ_CONDITION        = 0x52,
-    FLASH_REQUEST_RAW_DATA      = 0x53,
-    FLASH_SEND_RAW_DATA         = 0x54,
-    FLASH_NO_SAMPLE_YET         = 0x55,
-
-    //DAC
-    DAC_SET_VALUE               = 0x61,
+    TX_RX_SET_BIT_MODE          = 0x12,
+    TX_RX_SET_UNIT_FREQUENCY    = 0x16,
+    TX_RX_UNIT_UNIT             = 0x19,
+    TX_RX_READ_UNIT_STATUS      = 0x21,
+    TX_RX_SET_OPERATION_MODE    = 0x28,
+    
+    // Only RX requests
+    RX_SET_COMRESSION_MODE      = 0x63,
+    RX_SET_COMRESSION_RANGE     = 0x65,
+    
+    
+    // Common system common requests
+    SYSTEM_PRINT_HELP_LIST      = 0x18,
+    SYSTEM_TEST_LED             = 0x1C,
 }MSG_REQUEST;
 
 #endif	/* GROUPSCOMMON_H */

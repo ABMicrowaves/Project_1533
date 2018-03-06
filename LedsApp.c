@@ -56,7 +56,7 @@ void testLeds(void)
         __delay_ms(LEDS_TEST_DELAY_MSEC);
     }
     
-    SendAckMessage((MSG_GROUPS)CONTROL_MSG, (MSG_REQUEST)CONTROL_TEST_LEDS);
+    //SendAckMessage((MSG_GROUPS)CONTROL_MSG, (MSG_REQUEST)CONTROL_TEST_LEDS);
     return;
 }
 // </editor-fold>

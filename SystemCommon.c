@@ -85,7 +85,7 @@ uint8_t make8(uint32_t data, uint8_t dataLocation)
 void ResetMcu()
 {
     // Before MCU system reset send ACK:
-    SendAckMessage((MSG_GROUPS)CONTROL_MSG, (MSG_REQUEST)CONTROL_RESET_MCU);
+    //SendAckMessage((MSG_GROUPS)CONTROL_MSG, (MSG_REQUEST)CONTROL_RESET_MCU);
     
     // Now reset MCU:
     Reset();
@@ -94,7 +94,7 @@ void ResetMcu()
 void ResetCpld()
 {
     // Before MCU system reset send ACK:
-    SendAckMessage((MSG_GROUPS)CONTROL_MSG, (MSG_REQUEST)CONTROL_RESET_CPLD);
+    //SendAckMessage((MSG_GROUPS)CONTROL_MSG, (MSG_REQUEST)CONTROL_RESET_CPLD);
    
     // Now reset CPLD unit:
     
@@ -102,6 +102,6 @@ void ResetCpld()
 
 void SendSystemStartAck()
 {
-    SendAckMessage((MSG_GROUPS)CONTROL_MSG, (MSG_REQUEST)CONTROL_SYSTEM_START);
+    //SendAckMessage((MSG_GROUPS)CONTROL_MSG, (MSG_REQUEST)CONTROL_SYSTEM_START);
 }
 

@@ -1,96 +1,39 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "35 AdcApp.h
-[c E7188 4 5 6 7 10 13 25 29 30 31 .. ]
-[n E7188 . ADC_RA5 ADC_RE0 ADC_RE1 ADC_RE2 ADC_RB1 ADC_RB5 ADC_RD5 channel_CTMU channel_DAC channel_FVRBuf2  ]
-[v F7652 `(v ~T0 @X0 0 tf ]
-"30 MessageFunctions.h
-[c E9 16 17 18 19 20 21 22 33 34 35 36 37 49 50 51 64 65 66 67 81 82 83 84 85 97 .. ]
-[n E9 . CONTROL_SYSTEM_START CONTROL_RESET_MCU CONTROL_RESET_CPLD CONTROL_PA1_SET CONTROL_PA2_SET CONTROL_TEST_LEDS CONTROL_KEEP_ALIVE STATUS_MCU_RUN_TIME STATUS_GET_MCU_FW_VERSION STATUS_GET_CPLD_FW_VERSION STATUS_SET_MCU_FW_VERSION STATUS_SET_CPLD_FW_VERSION ADC_OPERATION ADC_CHANNEL_MODE ADC_CONVERSION_MODE SYNTH_TX_INIT_SET SYNTH_RX_INIT_SET SYNTH_DOWN_SET SYNTH_UP_SET FLASH_EREASE_MEMORY FLASH_READ_CONDITION FLASH_REQUEST_RAW_DATA FLASH_SEND_RAW_DATA FLASH_NO_SAMPLE_YET DAC_SET_VALUE  ]
+[c E7169 4 5 6 7 10 13 25 29 30 31 .. ]
+[n E7169 . ADC_RA5 ADC_RE0 ADC_RE1 ADC_RE2 ADC_RB1 ADC_RB5 ADC_RD5 channel_CTMU channel_DAC channel_FVRBuf2  ]
+[v F7627 `(v ~T0 @X0 0 tf ]
+"27 MessageFunctions.h
+[c E6 18 22 25 33 40 99 101 24 28 .. ]
+[n E6 . TX_RX_SET_BIT_MODE TX_RX_SET_UNIT_FREQUENCY TX_RX_UNIT_UNIT TX_RX_READ_UNIT_STATUS TX_RX_SET_OPERATION_MODE RX_SET_COMRESSION_MODE RX_SET_COMRESSION_RANGE SYSTEM_PRINT_HELP_LIST SYSTEM_TEST_LED  ]
 "20
-[v _GroupControlMcu `(v ~T0 @X0 0 ef2`E9`*uc ]
+[v _GroupRx `(v ~T0 @X0 0 ef2`E6`*uc ]
 "21
-[v _GroupStatusAndVersion `(v ~T0 @X0 0 ef2`E9`*uc ]
+[v _GroupTx `(v ~T0 @X0 0 ef2`E6`*uc ]
 "22
-[v _GroupAdc `(v ~T0 @X0 0 ef2`E9`*uc ]
-"23
-[v _GroupSynthesizers `(v ~T0 @X0 0 ef2`E9`*uc ]
-"24
-[v _GroupFlashMemory `(v ~T0 @X0 0 ef2`E9`*uc ]
-"25
-[v _GroupDAC `(v ~T0 @X0 0 ef2`E9`*uc ]
+[v _GroupCommon `(v ~T0 @X0 0 ef2`E6`*uc ]
+"42 SystemStatus.h
+[v _PrintHelpScreen `(v ~T0 @X0 0 ef ]
 "36 LedsApp.h
 [v _testLeds `(v ~T0 @X0 0 ef ]
-"53 SystemCommon.h
-[v _ResetMcu `(v ~T0 @X0 0 ef ]
-"54
-[v _ResetCpld `(v ~T0 @X0 0 ef ]
-"30 SystemStatus.h
-[v _GetMcuFwVersion `(v ~T0 @X0 0 ef ]
-"27
-[v _SetMcuFwVersion `(v ~T0 @X0 0 ef1`*uc ]
-"31
-[v _GetCpldFwVersion `(v ~T0 @X0 0 ef ]
-"28
-[v _SetCpldFwVersion `(v ~T0 @X0 0 ef1`*uc ]
-"34
-[v _GetMcuRunTime `(v ~T0 @X0 0 ef ]
-"46 AdcApp.h
-[v _SetAdcOperationMode `(v ~T0 @X0 0 ef1`*uc ]
-"48
-[v _SetChannelMode `(v ~T0 @X0 0 ef1`*uc ]
-"47
-[v _SetConversionResultFormat `(v ~T0 @X0 0 ef1`*uc ]
-"57 SyntApp.h
-[v _PLLUartInitialize `(v ~T0 @X0 0 ef1`*uc ]
-"60
-[v _UpdateTxFreq `(v ~T0 @X0 0 ef1`*uc ]
-"61
-[v _UpdateRxFreq `(v ~T0 @X0 0 ef1`*uc ]
-"33 FlashApp.h
-[v _FlashEreaseMem `(v ~T0 @X0 0 ef ]
-"34
-[v _FlashReadCondition `(v ~T0 @X0 0 ef ]
-"32
-[v _FlashReadUart `(v ~T0 @X0 0 ef1`i ]
-"24 DacApp.h
-[v _DacSetValue `(v ~T0 @X0 0 ef1`*uc ]
 [; ;GroupsCommon.h: 12: typedef enum
 [; ;GroupsCommon.h: 13: {
-[; ;GroupsCommon.h: 14: CONTROL_MSG = 0x01,
-[; ;GroupsCommon.h: 15: MCU_STATUS_VERSION_MSG = 0x02,
-[; ;GroupsCommon.h: 16: ADC_MSG = 0x03,
-[; ;GroupsCommon.h: 17: SYNTH_MSG = 0x04,
-[; ;GroupsCommon.h: 18: FLASH_MSG = 0x05,
-[; ;GroupsCommon.h: 19: DAC_MSG = 0x06,
-[; ;GroupsCommon.h: 20: }MSG_GROUPS;
-[; ;GroupsCommon.h: 22: typedef enum
-[; ;GroupsCommon.h: 23: {
-[; ;GroupsCommon.h: 25: CONTROL_SYSTEM_START = 0x10,
-[; ;GroupsCommon.h: 26: CONTROL_RESET_MCU = 0x11,
-[; ;GroupsCommon.h: 27: CONTROL_RESET_CPLD = 0x12,
-[; ;GroupsCommon.h: 28: CONTROL_PA1_SET = 0x13,
-[; ;GroupsCommon.h: 29: CONTROL_PA2_SET = 0x14,
-[; ;GroupsCommon.h: 30: CONTROL_TEST_LEDS = 0x15,
-[; ;GroupsCommon.h: 31: CONTROL_KEEP_ALIVE = 0x16,
-[; ;GroupsCommon.h: 34: STATUS_MCU_RUN_TIME = 0x21,
-[; ;GroupsCommon.h: 35: STATUS_GET_MCU_FW_VERSION = 0x22,
-[; ;GroupsCommon.h: 36: STATUS_GET_CPLD_FW_VERSION = 0x23,
-[; ;GroupsCommon.h: 37: STATUS_SET_MCU_FW_VERSION = 0x24,
-[; ;GroupsCommon.h: 38: STATUS_SET_CPLD_FW_VERSION = 0x25,
-[; ;GroupsCommon.h: 41: ADC_OPERATION = 0x31,
-[; ;GroupsCommon.h: 42: ADC_CHANNEL_MODE = 0x32,
-[; ;GroupsCommon.h: 43: ADC_CONVERSION_MODE = 0x33,
-[; ;GroupsCommon.h: 46: SYNTH_TX_INIT_SET = 0x40,
-[; ;GroupsCommon.h: 47: SYNTH_RX_INIT_SET = 0x41,
-[; ;GroupsCommon.h: 48: SYNTH_DOWN_SET = 0x42,
-[; ;GroupsCommon.h: 49: SYNTH_UP_SET = 0x43,
-[; ;GroupsCommon.h: 52: FLASH_EREASE_MEMORY = 0x51,
-[; ;GroupsCommon.h: 53: FLASH_READ_CONDITION = 0x52,
-[; ;GroupsCommon.h: 54: FLASH_REQUEST_RAW_DATA = 0x53,
-[; ;GroupsCommon.h: 55: FLASH_SEND_RAW_DATA = 0x54,
-[; ;GroupsCommon.h: 56: FLASH_NO_SAMPLE_YET = 0x55,
-[; ;GroupsCommon.h: 59: DAC_SET_VALUE = 0x61,
-[; ;GroupsCommon.h: 60: }MSG_REQUEST;
+[; ;GroupsCommon.h: 14: RX_GROUP = 0x0,
+[; ;GroupsCommon.h: 15: TX_GROUP = 0x1,
+[; ;GroupsCommon.h: 16: COMMON_GROUP = 0x2,
+[; ;GroupsCommon.h: 17: }MSG_GROUPS;
+[; ;GroupsCommon.h: 19: typedef enum
+[; ;GroupsCommon.h: 20: {
+[; ;GroupsCommon.h: 23: TX_RX_SET_BIT_MODE = 0x12,
+[; ;GroupsCommon.h: 24: TX_RX_SET_UNIT_FREQUENCY = 0x16,
+[; ;GroupsCommon.h: 25: TX_RX_UNIT_UNIT = 0x19,
+[; ;GroupsCommon.h: 26: TX_RX_READ_UNIT_STATUS = 0x21,
+[; ;GroupsCommon.h: 27: TX_RX_SET_OPERATION_MODE = 0x28,
+[; ;GroupsCommon.h: 30: RX_SET_COMRESSION_MODE = 0x63,
+[; ;GroupsCommon.h: 31: RX_SET_COMRESSION_RANGE = 0x65,
+[; ;GroupsCommon.h: 35: SYSTEM_PRINT_HELP_LIST = 0x18,
+[; ;GroupsCommon.h: 36: SYSTEM_TEST_LED = 0x1C,
+[; ;GroupsCommon.h: 37: }MSG_REQUEST;
 [; ;math.h: 30: extern double fabs(double);
 [; ;math.h: 31: extern double floor(double);
 [; ;math.h: 32: extern double ceil(double);
@@ -6834,23 +6777,23 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;AdcApp.h: 31: SINGLE_CHANNEL = 0x1,
 [; ;AdcApp.h: 32: }ADC_SAMPLE_MODE;
 "35 AdcApp.h
-[v _channelArr `CE7188 ~T0 @X0 -> 7 `i e ]
+[v _channelArr `CE7169 ~T0 @X0 -> 7 `i e ]
 [i _channelArr
 :U ..
 "37
--> -> 7 `i `CE7188
+-> -> 7 `i `CE7169
 "38
--> -> 6 `i `CE7188
+-> -> 6 `i `CE7169
 "39
--> -> 5 `i `CE7188
+-> -> 5 `i `CE7169
 "40
--> -> 4 `i `CE7188
+-> -> 4 `i `CE7169
 "41
--> -> 25 `i `CE7188
+-> -> 25 `i `CE7169
 "42
--> -> 10 `i `CE7188
+-> -> 10 `i `CE7169
 "43
--> -> 13 `i `CE7188
+-> -> 13 `i `CE7169
 ..
 ]
 [; ;AdcApp.h: 35: const adc_channel_t channelArr[(7)] =
@@ -6955,15 +6898,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;EusartApp.h: 40: {
 [; ;EusartApp.h: 41: START_RX_MESSAGE_READ = 0,
 [; ;EusartApp.h: 42: FIND_MAGIC,
-[; ;EusartApp.h: 43: READ_DATA,
-[; ;EusartApp.h: 44: CHECK_CRC,
-[; ;EusartApp.h: 45: JUMP_FUNCTION
-[; ;EusartApp.h: 46: }UART_READ_STATE;
-[; ;EusartApp.h: 50: void readUartByte(void);
-[; ;EusartApp.h: 51: void InitRxMessageParams(void);
-[; ;EusartApp.h: 54: void WriteUartMessage(char* dataBuf, int dataSize);
-[; ;EusartApp.h: 55: void SendAckMessage(MSG_GROUPS inGroup, MSG_REQUEST inRequest);
-[; ;EusartApp.h: 56: void UART_Write_Text(char* text);
+[; ;EusartApp.h: 43: READ_STREAM,
+[; ;EusartApp.h: 44: READ_GROUP,
+[; ;EusartApp.h: 45: READ_REQUEST,
+[; ;EusartApp.h: 46: READ_DATA,
+[; ;EusartApp.h: 47: CHECK_CRC,
+[; ;EusartApp.h: 48: JUMP_FUNCTION
+[; ;EusartApp.h: 49: }UART_READ_STATE;
+[; ;EusartApp.h: 53: void readUartByte(void);
+[; ;EusartApp.h: 54: void InitRxMessageParams(void);
+[; ;EusartApp.h: 57: void WriteUartMessage(char* dataBuf, int dataSize);
+[; ;EusartApp.h: 58: void SendAckMessage(MSG_GROUPS inGroup, MSG_REQUEST inRequest);
+[; ;EusartApp.h: 59: void UART_Write_Text(char* text);
 [; ;SevenSegmentApp.h: 19: void segmentCounter(void);
 [; ;SevenSegmentApp.h: 20: unsigned short mask(unsigned short num);
 [; ;SevenSegmentApp.h: 21: void InitSevenSegment(void);
@@ -7113,58 +7059,46 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SystemCommon.h: 53: void ResetMcu(void);
 [; ;SystemCommon.h: 54: void ResetCpld(void);
 [; ;SystemCommon.h: 55: void SendSystemStartAck(void);
-[; ;SystemStatus.h: 27: void SetMcuFwVersion(char* data);
-[; ;SystemStatus.h: 28: void SetCpldFwVersion(char* data);
-[; ;SystemStatus.h: 30: void GetMcuFwVersion();
-[; ;SystemStatus.h: 31: void GetCpldFwVersion();
-[; ;SystemStatus.h: 33: void SetMcuRunTime();
-[; ;SystemStatus.h: 34: void GetMcuRunTime();
-[; ;SystemStatus.h: 35: void ClearMcuRunTime();
-[; ;SystemStatus.h: 36: void keepAliveSignalUart(void);
-[; ;SystemStatus.h: 37: void SendUartSystemInitMessage(void);
-[; ;SystemStatus.h: 38: void PrintHelpScreen(void);
-[; ;MessageFunctions.h: 20: void GroupControlMcu(MSG_REQUEST request, char* data);
-[; ;MessageFunctions.h: 21: void GroupStatusAndVersion(MSG_REQUEST request, char* data);
-[; ;MessageFunctions.h: 22: void GroupAdc(MSG_REQUEST request, char* data);
-[; ;MessageFunctions.h: 23: void GroupSynthesizers(MSG_REQUEST request, char* data);
-[; ;MessageFunctions.h: 24: void GroupFlashMemory(MSG_REQUEST request, char* data);
-[; ;MessageFunctions.h: 25: void GroupDAC(MSG_REQUEST request, char* data);
-"28 MessageFunctions.h
-[v _groupsArray `*F7652 ~T0 @X0 -> 6 `i e ]
+[; ;SystemStatus.h: 31: void SetMcuFwVersion(char* data);
+[; ;SystemStatus.h: 32: void SetCpldFwVersion(char* data);
+[; ;SystemStatus.h: 34: void GetMcuFwVersion();
+[; ;SystemStatus.h: 35: void GetCpldFwVersion();
+[; ;SystemStatus.h: 37: void SetMcuRunTime();
+[; ;SystemStatus.h: 38: void GetMcuRunTime();
+[; ;SystemStatus.h: 39: void ClearMcuRunTime();
+[; ;SystemStatus.h: 40: void keepAliveSignalUart(void);
+[; ;SystemStatus.h: 41: void SendUartSystemInitMessage(void);
+[; ;SystemStatus.h: 42: void PrintHelpScreen(void);
+[; ;MessageFunctions.h: 20: void GroupRx(MSG_REQUEST request, char* data);
+[; ;MessageFunctions.h: 21: void GroupTx(MSG_REQUEST request, char* data);
+[; ;MessageFunctions.h: 22: void GroupCommon(MSG_REQUEST request, char* data);
+"25 MessageFunctions.h
+[v _groupsArray `*F7627 ~T0 @X0 -> 6 `i e ]
 [i _groupsArray
 :U ..
-"30
--> &U _GroupControlMcu `*F7652
-"31
--> &U _GroupStatusAndVersion `*F7652
-"32
--> &U _GroupAdc `*F7652
-"33
--> &U _GroupSynthesizers `*F7652
-"34
--> &U _GroupFlashMemory `*F7652
-"35
--> &U _GroupDAC `*F7652
+"27
+-> &U _GroupRx `*F7627
+"28
+-> &U _GroupTx `*F7627
+"29
+-> &U _GroupCommon `*F7627
 ..
 ]
-[; ;MessageFunctions.h: 28: void (*groupsArray[(6)])() =
-[; ;MessageFunctions.h: 29: {
-[; ;MessageFunctions.h: 30: GroupControlMcu,
-[; ;MessageFunctions.h: 31: GroupStatusAndVersion,
-[; ;MessageFunctions.h: 32: GroupAdc,
-[; ;MessageFunctions.h: 33: GroupSynthesizers,
-[; ;MessageFunctions.h: 34: GroupFlashMemory,
-[; ;MessageFunctions.h: 35: GroupDAC,
-[; ;MessageFunctions.h: 36: };
+[; ;MessageFunctions.h: 25: void (*groupsArray[(6)])() =
+[; ;MessageFunctions.h: 26: {
+[; ;MessageFunctions.h: 27: GroupRx,
+[; ;MessageFunctions.h: 28: GroupTx,
+[; ;MessageFunctions.h: 29: GroupCommon,
+[; ;MessageFunctions.h: 30: };
 "11 MessageFunctions.c
-[v _GroupControlMcu `(v ~T0 @X0 1 ef2`E9`*uc ]
+[v _GroupRx `(v ~T0 @X0 1 ef2`E6`*uc ]
 "12
 {
-[; ;MessageFunctions.c: 11: void GroupControlMcu(MSG_REQUEST request, char* data)
+[; ;MessageFunctions.c: 11: void GroupRx(MSG_REQUEST request, char* data)
 [; ;MessageFunctions.c: 12: {
-[e :U _GroupControlMcu ]
+[e :U _GroupRx ]
 "11
-[v _request `E9 ~T0 @X0 1 r1 ]
+[v _request `E6 ~T0 @X0 1 r1 ]
 [v _data `*uc ~T0 @X0 1 r2 ]
 "12
 [f ]
@@ -7174,40 +7108,31 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MessageFunctions.c: 14: {
 "14
 {
-[; ;MessageFunctions.c: 15: case CONTROL_TEST_LEDS:
+[; ;MessageFunctions.c: 15: case TX_RX_UNIT_UNIT:
 "15
 [e :U 855 ]
-[; ;MessageFunctions.c: 16: testLeds();
-"16
-[e ( _testLeds ..  ]
 [; ;MessageFunctions.c: 17: break;
 "17
 [e $U 853  ]
-[; ;MessageFunctions.c: 19: case CONTROL_RESET_MCU:
+[; ;MessageFunctions.c: 19: case TX_RX_SET_UNIT_FREQUENCY:
 "19
 [e :U 856 ]
-[; ;MessageFunctions.c: 20: ResetMcu();
-"20
-[e ( _ResetMcu ..  ]
 [; ;MessageFunctions.c: 21: break;
 "21
 [e $U 853  ]
-[; ;MessageFunctions.c: 23: case CONTROL_RESET_CPLD:
+[; ;MessageFunctions.c: 23: case TX_RX_READ_UNIT_STATUS:
 "23
 [e :U 857 ]
-[; ;MessageFunctions.c: 24: ResetCpld();
-"24
-[e ( _ResetCpld ..  ]
 [; ;MessageFunctions.c: 25: break;
 "25
 [e $U 853  ]
-[; ;MessageFunctions.c: 27: case CONTROL_PA1_SET:
+[; ;MessageFunctions.c: 27: case TX_RX_SET_BIT_MODE:
 "27
 [e :U 858 ]
 [; ;MessageFunctions.c: 28: break;
 "28
 [e $U 853  ]
-[; ;MessageFunctions.c: 30: case CONTROL_PA2_SET:
+[; ;MessageFunctions.c: 30: case TX_RX_SET_OPERATION_MODE:
 "30
 [e :U 859 ]
 [; ;MessageFunctions.c: 31: break;
@@ -7225,11 +7150,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 853  ]
 "13
 [e :U 854 ]
-[e [\ _request , $ . `E9 5 855
- , $ . `E9 1 856
- , $ . `E9 2 857
- , $ . `E9 3 858
- , $ . `E9 4 859
+[e [\ _request , $ . `E6 2 855
+ , $ . `E6 1 856
+ , $ . `E6 3 857
+ , $ . `E6 0 858
+ , $ . `E6 4 859
  860 ]
 "35
 [e :U 853 ]
@@ -7238,14 +7163,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 852 ]
 }
 "38
-[v _GroupStatusAndVersion `(v ~T0 @X0 1 ef2`E9`*uc ]
+[v _GroupTx `(v ~T0 @X0 1 ef2`E6`*uc ]
 "39
 {
-[; ;MessageFunctions.c: 38: void GroupStatusAndVersion(MSG_REQUEST request, char* data)
+[; ;MessageFunctions.c: 38: void GroupTx(MSG_REQUEST request, char* data)
 [; ;MessageFunctions.c: 39: {
-[e :U _GroupStatusAndVersion ]
+[e :U _GroupTx ]
 "38
-[v _request `E9 ~T0 @X0 1 r1 ]
+[v _request `E6 ~T0 @X0 1 r1 ]
 [v _data `*uc ~T0 @X0 1 r2 ]
 "39
 [f ]
@@ -7255,330 +7180,128 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MessageFunctions.c: 41: {
 "41
 {
-[; ;MessageFunctions.c: 42: case STATUS_GET_MCU_FW_VERSION:
+[; ;MessageFunctions.c: 42: case TX_RX_UNIT_UNIT:
 "42
 [e :U 864 ]
-[; ;MessageFunctions.c: 43: GetMcuFwVersion();
-"43
-[e ( _GetMcuFwVersion ..  ]
 [; ;MessageFunctions.c: 44: break;
 "44
 [e $U 862  ]
-[; ;MessageFunctions.c: 46: case STATUS_SET_MCU_FW_VERSION:
+[; ;MessageFunctions.c: 46: case TX_RX_SET_UNIT_FREQUENCY:
 "46
 [e :U 865 ]
-[; ;MessageFunctions.c: 47: SetMcuFwVersion(data);
-"47
-[e ( _SetMcuFwVersion (1 _data ]
 [; ;MessageFunctions.c: 48: break;
 "48
 [e $U 862  ]
-[; ;MessageFunctions.c: 50: case STATUS_GET_CPLD_FW_VERSION:
+[; ;MessageFunctions.c: 50: case TX_RX_READ_UNIT_STATUS:
 "50
 [e :U 866 ]
-[; ;MessageFunctions.c: 51: GetCpldFwVersion();
-"51
-[e ( _GetCpldFwVersion ..  ]
 [; ;MessageFunctions.c: 52: break;
 "52
 [e $U 862  ]
-[; ;MessageFunctions.c: 54: case STATUS_SET_CPLD_FW_VERSION:
+[; ;MessageFunctions.c: 54: case TX_RX_SET_BIT_MODE:
 "54
 [e :U 867 ]
-[; ;MessageFunctions.c: 55: SetCpldFwVersion(data);
+[; ;MessageFunctions.c: 55: break;
 "55
-[e ( _SetCpldFwVersion (1 _data ]
-[; ;MessageFunctions.c: 56: break;
-"56
 [e $U 862  ]
-[; ;MessageFunctions.c: 58: case STATUS_MCU_RUN_TIME:
-"58
+[; ;MessageFunctions.c: 57: case TX_RX_SET_OPERATION_MODE:
+"57
 [e :U 868 ]
-[; ;MessageFunctions.c: 59: GetMcuRunTime();
-"59
-[e ( _GetMcuRunTime ..  ]
-[; ;MessageFunctions.c: 60: break;
+[; ;MessageFunctions.c: 58: break;
+"58
+[e $U 862  ]
+[; ;MessageFunctions.c: 60: case RX_SET_COMRESSION_MODE:
 "60
-[e $U 862  ]
-[; ;MessageFunctions.c: 62: default:
-"62
 [e :U 869 ]
-[; ;MessageFunctions.c: 63: break;
-"63
+[; ;MessageFunctions.c: 61: break;
+"61
 [e $U 862  ]
+[; ;MessageFunctions.c: 63: case RX_SET_COMRESSION_RANGE:
+"63
+[e :U 870 ]
+[; ;MessageFunctions.c: 64: break;
 "64
+[e $U 862  ]
+[; ;MessageFunctions.c: 66: default:
+"66
+[e :U 871 ]
+[; ;MessageFunctions.c: 67: break;
+"67
+[e $U 862  ]
+"68
 }
-[; ;MessageFunctions.c: 64: }
+[; ;MessageFunctions.c: 68: }
 [e $U 862  ]
 "40
 [e :U 863 ]
-[e [\ _request , $ . `E9 8 864
- , $ . `E9 10 865
- , $ . `E9 9 866
- , $ . `E9 11 867
- , $ . `E9 7 868
- 869 ]
-"64
+[e [\ _request , $ . `E6 2 864
+ , $ . `E6 1 865
+ , $ . `E6 3 866
+ , $ . `E6 0 867
+ , $ . `E6 4 868
+ , $ . `E6 5 869
+ , $ . `E6 6 870
+ 871 ]
+"68
 [e :U 862 ]
-[; ;MessageFunctions.c: 65: }
-"65
+[; ;MessageFunctions.c: 69: }
+"69
 [e :UE 861 ]
 }
-"67
-[v _GroupAdc `(v ~T0 @X0 1 ef2`E9`*uc ]
-"68
-{
-[; ;MessageFunctions.c: 67: void GroupAdc(MSG_REQUEST request, char* data)
-[; ;MessageFunctions.c: 68: {
-[e :U _GroupAdc ]
-"67
-[v _request `E9 ~T0 @X0 1 r1 ]
-[v _data `*uc ~T0 @X0 1 r2 ]
-"68
-[f ]
-[; ;MessageFunctions.c: 69: switch (request)
-"69
-[e $U 872  ]
-[; ;MessageFunctions.c: 70: {
-"70
-{
-[; ;MessageFunctions.c: 71: case ADC_OPERATION:
 "71
-[e :U 873 ]
-[; ;MessageFunctions.c: 72: SetAdcOperationMode(data);
+[v _GroupCommon `(v ~T0 @X0 1 ef2`E6`*uc ]
 "72
-[e ( _SetAdcOperationMode (1 _data ]
-[; ;MessageFunctions.c: 73: break;
+{
+[; ;MessageFunctions.c: 71: void GroupCommon(MSG_REQUEST request, char* data)
+[; ;MessageFunctions.c: 72: {
+[e :U _GroupCommon ]
+"71
+[v _request `E6 ~T0 @X0 1 r1 ]
+[v _data `*uc ~T0 @X0 1 r2 ]
+"72
+[f ]
+[; ;MessageFunctions.c: 73: switch (request)
 "73
-[e $U 871  ]
-[; ;MessageFunctions.c: 75: case ADC_CHANNEL_MODE:
+[e $U 874  ]
+[; ;MessageFunctions.c: 74: {
+"74
+{
+[; ;MessageFunctions.c: 75: case SYSTEM_PRINT_HELP_LIST:
 "75
-[e :U 874 ]
-[; ;MessageFunctions.c: 76: SetChannelMode(data);
+[e :U 875 ]
+[; ;MessageFunctions.c: 76: PrintHelpScreen();
 "76
-[e ( _SetChannelMode (1 _data ]
+[e ( _PrintHelpScreen ..  ]
 [; ;MessageFunctions.c: 77: break;
 "77
-[e $U 871  ]
-[; ;MessageFunctions.c: 79: case ADC_CONVERSION_MODE:
+[e $U 873  ]
+[; ;MessageFunctions.c: 79: case SYSTEM_TEST_LED:
 "79
-[e :U 875 ]
-[; ;MessageFunctions.c: 80: SetConversionResultFormat(data);
+[e :U 876 ]
+[; ;MessageFunctions.c: 80: testLeds();
 "80
-[e ( _SetConversionResultFormat (1 _data ]
+[e ( _testLeds ..  ]
 [; ;MessageFunctions.c: 81: break;
 "81
-[e $U 871  ]
+[e $U 873  ]
 [; ;MessageFunctions.c: 83: default:
 "83
-[e :U 876 ]
+[e :U 877 ]
 [; ;MessageFunctions.c: 84: break;
 "84
-[e $U 871  ]
+[e $U 873  ]
 "85
 }
 [; ;MessageFunctions.c: 85: }
-[e $U 871  ]
-"69
-[e :U 872 ]
-[e [\ _request , $ . `E9 12 873
- , $ . `E9 13 874
- , $ . `E9 14 875
- 876 ]
+[e $U 873  ]
+"73
+[e :U 874 ]
+[e [\ _request , $ . `E6 7 875
+ , $ . `E6 8 876
+ 877 ]
 "85
-[e :U 871 ]
+[e :U 873 ]
 [; ;MessageFunctions.c: 86: }
 "86
-[e :UE 870 ]
-}
-"87
-[v _GroupSynthesizers `(v ~T0 @X0 1 ef2`E9`*uc ]
-"88
-{
-[; ;MessageFunctions.c: 87: void GroupSynthesizers(MSG_REQUEST request, char* data)
-[; ;MessageFunctions.c: 88: {
-[e :U _GroupSynthesizers ]
-"87
-[v _request `E9 ~T0 @X0 1 r1 ]
-[v _data `*uc ~T0 @X0 1 r2 ]
-"88
-[f ]
-[; ;MessageFunctions.c: 89: switch (request)
-"89
-[e $U 879  ]
-[; ;MessageFunctions.c: 90: {
-"90
-{
-[; ;MessageFunctions.c: 91: case SYNTH_TX_INIT_SET:
-"91
-[e :U 880 ]
-[; ;MessageFunctions.c: 92: PLLUartInitialize(data);
-"92
-[e ( _PLLUartInitialize (1 _data ]
-[; ;MessageFunctions.c: 93: break;
-"93
-[e $U 878  ]
-[; ;MessageFunctions.c: 95: case SYNTH_RX_INIT_SET:
-"95
-[e :U 881 ]
-[; ;MessageFunctions.c: 96: PLLUartInitialize(data);
-"96
-[e ( _PLLUartInitialize (1 _data ]
-[; ;MessageFunctions.c: 97: break;
-"97
-[e $U 878  ]
-[; ;MessageFunctions.c: 99: case SYNTH_DOWN_SET:
-"99
-[e :U 882 ]
-[; ;MessageFunctions.c: 100: UpdateTxFreq(data);
-"100
-[e ( _UpdateTxFreq (1 _data ]
-[; ;MessageFunctions.c: 101: break;
-"101
-[e $U 878  ]
-[; ;MessageFunctions.c: 103: case SYNTH_UP_SET:
-"103
-[e :U 883 ]
-[; ;MessageFunctions.c: 104: UpdateRxFreq(data);
-"104
-[e ( _UpdateRxFreq (1 _data ]
-[; ;MessageFunctions.c: 105: break;
-"105
-[e $U 878  ]
-[; ;MessageFunctions.c: 107: default:
-"107
-[e :U 884 ]
-[; ;MessageFunctions.c: 108: break;
-"108
-[e $U 878  ]
-"109
-}
-[; ;MessageFunctions.c: 109: }
-[e $U 878  ]
-"89
-[e :U 879 ]
-[e [\ _request , $ . `E9 15 880
- , $ . `E9 16 881
- , $ . `E9 17 882
- , $ . `E9 18 883
- 884 ]
-"109
-[e :U 878 ]
-[; ;MessageFunctions.c: 110: }
-"110
-[e :UE 877 ]
-}
-"112
-[v _GroupFlashMemory `(v ~T0 @X0 1 ef2`E9`*uc ]
-"113
-{
-[; ;MessageFunctions.c: 112: void GroupFlashMemory(MSG_REQUEST request, char* data)
-[; ;MessageFunctions.c: 113: {
-[e :U _GroupFlashMemory ]
-"112
-[v _request `E9 ~T0 @X0 1 r1 ]
-[v _data `*uc ~T0 @X0 1 r2 ]
-"113
-[f ]
-[; ;MessageFunctions.c: 114: switch (request)
-"114
-[e $U 887  ]
-[; ;MessageFunctions.c: 115: {
-"115
-{
-[; ;MessageFunctions.c: 116: case FLASH_EREASE_MEMORY:
-"116
-[e :U 888 ]
-[; ;MessageFunctions.c: 117: FlashEreaseMem();
-"117
-[e ( _FlashEreaseMem ..  ]
-[; ;MessageFunctions.c: 118: break;
-"118
-[e $U 886  ]
-[; ;MessageFunctions.c: 120: case FLASH_READ_CONDITION:
-"120
-[e :U 889 ]
-[; ;MessageFunctions.c: 121: FlashReadCondition();
-"121
-[e ( _FlashReadCondition ..  ]
-[; ;MessageFunctions.c: 122: break;
-"122
-[e $U 886  ]
-[; ;MessageFunctions.c: 124: case FLASH_REQUEST_RAW_DATA:
-"124
-[e :U 890 ]
-[; ;MessageFunctions.c: 125: FlashReadUart((int)data[0]);
-"125
-[e ( _FlashReadUart (1 -> *U + _data * -> -> 0 `i `x -> -> # *U _data `i `x `i ]
-[; ;MessageFunctions.c: 126: break;
-"126
-[e $U 886  ]
-[; ;MessageFunctions.c: 128: default:
-"128
-[e :U 891 ]
-[; ;MessageFunctions.c: 129: break;
-"129
-[e $U 886  ]
-"130
-}
-[; ;MessageFunctions.c: 130: }
-[e $U 886  ]
-"114
-[e :U 887 ]
-[e [\ _request , $ . `E9 19 888
- , $ . `E9 20 889
- , $ . `E9 21 890
- 891 ]
-"130
-[e :U 886 ]
-[; ;MessageFunctions.c: 131: }
-"131
-[e :UE 885 ]
-}
-"133
-[v _GroupDAC `(v ~T0 @X0 1 ef2`E9`*uc ]
-"134
-{
-[; ;MessageFunctions.c: 133: void GroupDAC(MSG_REQUEST request, char* data)
-[; ;MessageFunctions.c: 134: {
-[e :U _GroupDAC ]
-"133
-[v _request `E9 ~T0 @X0 1 r1 ]
-[v _data `*uc ~T0 @X0 1 r2 ]
-"134
-[f ]
-[; ;MessageFunctions.c: 135: switch (request)
-"135
-[e $U 894  ]
-[; ;MessageFunctions.c: 136: {
-"136
-{
-[; ;MessageFunctions.c: 137: case DAC_SET_VALUE:
-"137
-[e :U 895 ]
-[; ;MessageFunctions.c: 138: DacSetValue(data);
-"138
-[e ( _DacSetValue (1 _data ]
-[; ;MessageFunctions.c: 139: break;
-"139
-[e $U 893  ]
-[; ;MessageFunctions.c: 141: default:
-"141
-[e :U 896 ]
-[; ;MessageFunctions.c: 142: break;
-"142
-[e $U 893  ]
-"143
-}
-[; ;MessageFunctions.c: 143: }
-[e $U 893  ]
-"135
-[e :U 894 ]
-[e [\ _request , $ . `E9 24 895
- 896 ]
-"143
-[e :U 893 ]
-[; ;MessageFunctions.c: 144: }
-"144
-[e :UE 892 ]
+[e :UE 872 ]
 }

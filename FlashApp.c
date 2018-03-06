@@ -116,7 +116,7 @@ void FlashReadUart(int numOfSampleToRead)
         {
             if(numOfValidateSamples == 0)
             {
-                SendAckMessage((MSG_GROUPS)FLASH_MSG, (MSG_REQUEST)FLASH_NO_SAMPLE_YET);
+                //SendAckMessage((MSG_GROUPS)FLASH_MSG, (MSG_REQUEST)FLASH_NO_SAMPLE_YET);
                 return;
             }
                 
@@ -125,8 +125,8 @@ void FlashReadUart(int numOfSampleToRead)
 
     // Now fill it:
     TxMsg[MSG_MAGIC_LOCATION] =  MSG_MAGIC_A;
-    TxMsg[MSG_GROUP_LOCATION] =  FLASH_MSG;
-    TxMsg[MSG_REQUEST_LOCATION] =  FLASH_SEND_RAW_DATA;
+    //TxMsg[MSG_GROUP_LOCATION] =  FLASH_MSG;
+    //TxMsg[MSG_REQUEST_LOCATION] =  FLASH_SEND_RAW_DATA;
     TxMsg[MSG_DATA_SIZE_LOCATION] = WRITE_FLASH_BLOCKSIZE;
     
     for (j=0; j<numOfSampleToRead; j++)
@@ -171,7 +171,7 @@ void FlashEreaseMem(void)
     readAddress = SAMPLE_START_ADDRESS;
     numOfValidateSamples = 0;
     ZeroArray(sampleArray, WRITE_FLASH_BLOCKSIZE/sizeof(adc_result_t));
-    SendAckMessage((MSG_GROUPS)FLASH_MSG, (MSG_REQUEST)FLASH_EREASE_MEMORY);
+    //SendAckMessage((MSG_GROUPS)FLASH_MSG, (MSG_REQUEST)FLASH_EREASE_MEMORY);
 }
 
 
@@ -183,8 +183,8 @@ void FlashReadCondition(void)
     
     // Now fill it:
     TxMsg[MSG_MAGIC_LOCATION] =  MSG_MAGIC_A;
-    TxMsg[MSG_GROUP_LOCATION] =  FLASH_MSG;
-    TxMsg[MSG_REQUEST_LOCATION] =  FLASH_READ_CONDITION;
+    //TxMsg[MSG_GROUP_LOCATION] =  FLASH_MSG;
+    //TxMsg[MSG_REQUEST_LOCATION] =  FLASH_READ_CONDITION;
     TxMsg[MSG_DATA_SIZE_LOCATION] = FLASH_READ_CONDITION_MAX_DATA_SIZE;
 
     // Fill TX array with data:

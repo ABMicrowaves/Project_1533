@@ -10,7 +10,6 @@
         <itemPath>FlashApp.h</itemPath>
         <itemPath>DacApp.h</itemPath>
         <itemPath>EusartApp.h</itemPath>
-        <itemPath>SevenSegmentApp.h</itemPath>
         <itemPath>SyntApp.h</itemPath>
         <itemPath>SwSpiApp.h</itemPath>
       </logicalFolder>
@@ -46,7 +45,6 @@
         <itemPath>EusartApp.c</itemPath>
         <itemPath>FlashApp.c</itemPath>
         <itemPath>DacApp.c</itemPath>
-        <itemPath>SevenSegmentApp.c</itemPath>
         <itemPath>SyntApp.c</itemPath>
         <itemPath>SwSpiApp.c</itemPath>
       </logicalFolder>
@@ -230,6 +228,7 @@
         <property key="ToolFirmwareFilePath"
                   value="Press to browse for a specific firmware version"/>
         <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
+        <property key="firmware.download.all" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="true"/>

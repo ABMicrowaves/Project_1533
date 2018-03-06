@@ -73,14 +73,14 @@ void UpdateTxFreq(char* data)
     SWSPI_send_word(SYNTH_TX, 0x32008B84, 3);
     SWSPI_send_word(SYNTH_TX, 0x00200410, 3);
     
-    SendAckMessage((MSG_GROUPS)SYNTH_MSG, (MSG_REQUEST)SYNTH_DOWN_SET);
+    //SendAckMessage((MSG_GROUPS)SYNTH_MSG, (MSG_REQUEST)SYNTH_DOWN_SET);
 }
 
 void UpdateRxFreq(char* data)
 {
     uint32_t regData = GetIntFromUartData(data);
     SWSPI_send_word(SYNTH_RX, regData, 3);
-    SendAckMessage((MSG_GROUPS)SYNTH_MSG, (MSG_REQUEST)SYNTH_UP_SET); 
+    //SendAckMessage((MSG_GROUPS)SYNTH_MSG, (MSG_REQUEST)SYNTH_UP_SET); 
 }
 // </editor-fold>
 

@@ -14,6 +14,8 @@ Author: RoeeZ (Comm-IT).                                                    ****
 
 static UART_READ_STATE cState = START_RX_MESSAGE_READ;
 
+MSG_GROUPS group = 0;
+MSG_REQUEST request = 0;
 char rxMsgQueue[MSG_RX_MAX_DATA_SIZE];
 char rxMsgData[MSG_RX_MAX_DATA_SIZE];
 static uint8_t msgCount = 0;
@@ -24,7 +26,9 @@ static uint8_t msgCount = 0;
 void readUartByte(void)
 // Since we read byte by byte from MCC UART driver we need to implement FSM
 {    
-    UCHAR chRec = NULL, c1 = NULL, c2 = NULL;
+    UCHAR chRec = NULL;
+    char dest[50];
+                    
     switch(cState)
     {
         case START_RX_MESSAGE_READ:
@@ -39,33 +43,151 @@ void readUartByte(void)
             
             if(chRec == MSG_MAGIC_A)
             {
-                cState = READ_DATA;
+                cState = READ_STREAM;
             }
+            break;
+            
+        case READ_STREAM:
+            
+            if(eusart1RxCount > 0)
+            {
+                chRec = EUSART1_Read();
+                if(chRec == NULL)
+                {
+                    return;
+                }
+                else if(chRec == CHAR_CARRIAGE_RETURN)
+                {
+                    cState = READ_GROUP;
+                }
+                else
+                {
+                    if(chRec != ' ')    // Skip spaces.
+                    {
+                        rxMsgQueue[msgCount++] = chRec;
+                    }
+                }
+            }
+            else
+            {
+                return;
+            }
+            break;
+            
+        case READ_GROUP:
+            
+            chRec = toupper(rxMsgQueue[0]);
+            
+            switch(chRec)
+            {
+                case 'R':
+                    
+                    group = RX_GROUP;
+                    cState = READ_REQUEST;
+                    break;
+                    
+                case 'T':
+                    
+                    group = TX_GROUP;
+                    cState = READ_REQUEST;
+                    break;
+                
+                case 'S':
+
+                    group = COMMON_GROUP;
+                    cState = READ_REQUEST;
+                    break;
+                    
+                default:
+                    sprintf(dest, "NOT O.K \n\r");
+                    UART_Write_Text(dest);
+                    cState = START_RX_MESSAGE_READ;
+                    break;
+            }
+            break;
+        
+        case READ_REQUEST:
+            
+            chRec = toupper(rxMsgQueue[1]);
+            
+            switch(group)
+            {
+                case RX_GROUP:
+                    
+                    if(chRec == 'I' || chRec == 'F' || chRec == 'Q' || chRec == 'X' || chRec == 'C')
+                    {
+                        if(chRec == 'C')
+                        {
+                            if(toupper(rxMsgQueue[2]) == 'P' || toupper(rxMsgQueue[2]) == 'R')
+                            {
+                                request = chRec + toupper(rxMsgQueue[2]) - '0';
+                            }
+                            else
+                            {
+                                sprintf(dest, "NOT O.K \n\r");
+                                UART_Write_Text(dest);
+                                cState = START_RX_MESSAGE_READ;
+                                return;
+                            }   
+                        }
+                        else
+                        {
+                            request = chRec - '0';
+                        }
+                        
+                        cState = READ_DATA;
+                        return;
+                    }       
+                    break;
+            
+                case TX_GROUP:
+                    
+                    if(chRec == 'I' || chRec == 'F' || chRec == 'Q' || chRec == 'X' || chRec == 'B')
+                    {
+                        request = (chRec - '0');
+                        cState = READ_DATA;
+                        return;
+                    }
+                    break;
+            
+                case COMMON_GROUP:
+                    
+                    if(chRec == 'H')
+                    {
+                        request = (chRec - '0');
+                        cState = READ_DATA;
+                        return;
+                    }
+                    else if(chRec == 'L')
+                    {
+                        request = (chRec - '0');
+                        cState = READ_DATA;
+                        return;
+                    }
+                    else
+                    {
+                        sprintf(dest, "NOT O.K \n\r");
+                        UART_Write_Text(dest);
+                        cState = START_RX_MESSAGE_READ;
+                        return;
+                    } 
+                    break;
+            }
+            
+            sprintf(dest, "NOT O.K \n\r");
+            UART_Write_Text(dest);
+            cState = START_RX_MESSAGE_READ;
+            
             break;
             
         case READ_DATA:
             
-            rxMsgQueue[msgCount++] = chRec;
-            if(chRec == MSG_CARRIAGE_RETURN)
-            {
-                cState = JUMP_FUNCTION;
-            }
+            cState = JUMP_FUNCTION;
             break;
             
         case JUMP_FUNCTION:
-            c1 = toupper(rxMsgQueue[0]);
             
-            switch(c1)
-            {
-                case 'Q':
-                    
-                    break;
-                    
-                case 'T':
-                    break;
-            }
-            
-            //groupsArray[group - 1](request, rxMsgData);
+            groupsArray[group](request, rxMsgData);
             cState = START_RX_MESSAGE_READ;
             break; 
     }
@@ -73,6 +195,8 @@ void readUartByte(void)
 
 void InitRxMessageParams(void)
 {
+    group = 0;
+    request = 0;
     msgCount = 0;
     ZeroArray(rxMsgQueue, MSG_RX_MAX_DATA_SIZE);
 }
@@ -92,11 +216,10 @@ void WriteUartMessage(char* dataBuf, int dataSize)
 
 void UART_Write_Text(char* text)
 {
-  for(int i =0;text[i]!='\0';i++)
-  {
-    EUSART1_Write(text[i]);  
-  }
-    
+    for(int i =0;text[i]!='\0';i++)
+    {
+      EUSART1_Write(text[i]);  
+    }
 }
 
 // </editor-fold>

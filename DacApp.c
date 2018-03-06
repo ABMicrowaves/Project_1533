@@ -36,7 +36,7 @@ void DacSetValue(char* data)
     SWSPI_send_word(EXT_DAC, regData, 1);
     
     // Transmit ACK signal to serial:
-    SendAckMessage((MSG_GROUPS)DAC_MSG, (MSG_REQUEST)DAC_SET_VALUE);
+    //SendAckMessage((MSG_GROUPS)DAC_MSG, (MSG_REQUEST)DAC_SET_VALUE);
 }
 // </editor-fold>
 

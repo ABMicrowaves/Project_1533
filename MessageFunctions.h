@@ -17,22 +17,16 @@ Author: RoeeZ (Comm-IT).                                                    ****
 
 #define NUMBER_OF_MESSAGE_GROUPS    (6)
 
-void GroupControlMcu(MSG_REQUEST request, char* data);
-void GroupStatusAndVersion(MSG_REQUEST request, char* data);
-void GroupAdc(MSG_REQUEST request, char* data);
-void GroupSynthesizers(MSG_REQUEST request, char* data);
-void GroupFlashMemory(MSG_REQUEST request, char* data);
-void GroupDAC(MSG_REQUEST request, char* data);
+void GroupRx(MSG_REQUEST request, char* data);
+void GroupTx(MSG_REQUEST request, char* data);
+void GroupCommon(MSG_REQUEST request, char* data);
 
 // Message groups array;
 void (*groupsArray[NUMBER_OF_MESSAGE_GROUPS])() = 
 {
-    GroupControlMcu,
-    GroupStatusAndVersion,
-    GroupAdc,
-    GroupSynthesizers,
-    GroupFlashMemory,
-    GroupDAC,
+    GroupRx,
+    GroupTx,
+    GroupCommon,
 };
 
 #endif	/* MESSAGEFUNCTIONS_H */

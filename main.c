@@ -24,7 +24,7 @@ void main(void)
     // Indicate by Green led that system start OK:
     BlinkOkLeds(OK_START_SYSTEM);
             
-    PrintHelpScreen();
+    //PrintHelpScreen();
     while (1)
     {    
         readUartByte();

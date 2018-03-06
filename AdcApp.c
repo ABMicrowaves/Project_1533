@@ -32,12 +32,12 @@ void InitAdcApplicationMgr()
 
 void SetAdcOperationMode(char* data)
 {
-    SendAckMessage((MSG_GROUPS)ADC_MSG, (MSG_REQUEST)ADC_OPERATION);
+    //SendAckMessage((MSG_GROUPS)ADC_MSG, (MSG_REQUEST)ADC_OPERATION);
 }
 
 void SetConversionResultFormat(char* data)
 {
-    SendAckMessage((MSG_GROUPS)ADC_MSG, (MSG_REQUEST)ADC_CONVERSION_MODE);
+    //SendAckMessage((MSG_GROUPS)ADC_MSG, (MSG_REQUEST)ADC_CONVERSION_MODE);
 }
 
 void SetChannelMode(char* data)
@@ -47,7 +47,7 @@ void SetChannelMode(char* data)
     {
         channel = data[1];
     }
-    SendAckMessage((MSG_GROUPS)ADC_MSG, (MSG_REQUEST)ADC_CHANNEL_MODE);
+    //SendAckMessage((MSG_GROUPS)ADC_MSG, (MSG_REQUEST)ADC_CHANNEL_MODE);
 }
 // </editor-fold>
 

@@ -6792,16 +6792,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;GroupsCommon.h: 56: FLASH_NO_SAMPLE_YET = 0x55,
 [; ;GroupsCommon.h: 59: DAC_SET_VALUE = 0x61,
 [; ;GroupsCommon.h: 60: }MSG_REQUEST;
-[; ;SystemStatus.h: 27: void SetMcuFwVersion(char* data);
-[; ;SystemStatus.h: 28: void SetCpldFwVersion(char* data);
-[; ;SystemStatus.h: 30: void GetMcuFwVersion();
-[; ;SystemStatus.h: 31: void GetCpldFwVersion();
-[; ;SystemStatus.h: 33: void SetMcuRunTime();
-[; ;SystemStatus.h: 34: void GetMcuRunTime();
-[; ;SystemStatus.h: 35: void ClearMcuRunTime();
-[; ;SystemStatus.h: 36: void keepAliveSignalUart(void);
-[; ;SystemStatus.h: 37: void SendUartSystemInitMessage(void);
-[; ;SystemStatus.h: 38: void PrintHelpScreen(void);
+[; ;SystemStatus.h: 31: void SetMcuFwVersion(char* data);
+[; ;SystemStatus.h: 32: void SetCpldFwVersion(char* data);
+[; ;SystemStatus.h: 34: void GetMcuFwVersion();
+[; ;SystemStatus.h: 35: void GetCpldFwVersion();
+[; ;SystemStatus.h: 37: void SetMcuRunTime();
+[; ;SystemStatus.h: 38: void GetMcuRunTime();
+[; ;SystemStatus.h: 39: void ClearMcuRunTime();
+[; ;SystemStatus.h: 40: void keepAliveSignalUart(void);
+[; ;SystemStatus.h: 41: void SendUartSystemInitMessage(void);
+[; ;SystemStatus.h: 42: void PrintHelpScreen(void);
 [; ;LedsApp.h: 22: typedef enum
 [; ;LedsApp.h: 24: {
 [; ;LedsApp.h: 25: OK_START_SYSTEM = 0x3,

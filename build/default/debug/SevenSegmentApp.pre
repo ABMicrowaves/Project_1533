@@ -8851,7 +8851,7 @@ FLASH_NO_SAMPLE_YET = 0x55,
 DAC_SET_VALUE = 0x61,
 }MSG_REQUEST;
 
-# 27 "SystemStatus.h"
+# 31 "SystemStatus.h"
 void SetMcuFwVersion(char* data);
 void SetCpldFwVersion(char* data);
 

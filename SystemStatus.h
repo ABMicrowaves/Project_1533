@@ -24,6 +24,10 @@ Author: RoeeZ (Comm-IT).                                                    ****
 #define STATUS_FW_PACKET_SIZE FW_VERSION_MAX_SIZE_BYTE + MSG_DATA_LOCATION
 #define STATUS_RUN_TIME_PACKET_SIZE RUN_TIME_MAX_SIZE_BYTE + MSG_DATA_LOCATION
 
+
+// System version:
+#define SYS_VERSION "1_002"
+
 void SetMcuFwVersion(char* data);
 void SetCpldFwVersion(char* data);
 

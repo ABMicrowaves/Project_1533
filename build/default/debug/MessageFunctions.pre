@@ -4,52 +4,29 @@
 # 12 "GroupsCommon.h"
 typedef enum
 {
-CONTROL_MSG = 0x01,
-MCU_STATUS_VERSION_MSG = 0x02,
-ADC_MSG = 0x03,
-SYNTH_MSG = 0x04,
-FLASH_MSG = 0x05,
-DAC_MSG = 0x06,
+RX_GROUP = 0x0,
+TX_GROUP = 0x1,
+COMMON_GROUP = 0x2,
 }MSG_GROUPS;
 
 typedef enum
 {
 
-CONTROL_SYSTEM_START = 0x10,
-CONTROL_RESET_MCU = 0x11,
-CONTROL_RESET_CPLD = 0x12,
-CONTROL_PA1_SET = 0x13,
-CONTROL_PA2_SET = 0x14,
-CONTROL_TEST_LEDS = 0x15,
-CONTROL_KEEP_ALIVE = 0x16,
+
+TX_RX_SET_BIT_MODE = 0x12,
+TX_RX_SET_UNIT_FREQUENCY = 0x16,
+TX_RX_UNIT_UNIT = 0x19,
+TX_RX_READ_UNIT_STATUS = 0x21,
+TX_RX_SET_OPERATION_MODE = 0x28,
 
 
-STATUS_MCU_RUN_TIME = 0x21,
-STATUS_GET_MCU_FW_VERSION = 0x22,
-STATUS_GET_CPLD_FW_VERSION = 0x23,
-STATUS_SET_MCU_FW_VERSION = 0x24,
-STATUS_SET_CPLD_FW_VERSION = 0x25,
+RX_SET_COMRESSION_MODE = 0x63,
+RX_SET_COMRESSION_RANGE = 0x65,
 
 
-ADC_OPERATION = 0x31,
-ADC_CHANNEL_MODE = 0x32,
-ADC_CONVERSION_MODE = 0x33,
 
-
-SYNTH_TX_INIT_SET = 0x40,
-SYNTH_RX_INIT_SET = 0x41,
-SYNTH_DOWN_SET = 0x42,
-SYNTH_UP_SET = 0x43,
-
-
-FLASH_EREASE_MEMORY = 0x51,
-FLASH_READ_CONDITION = 0x52,
-FLASH_REQUEST_RAW_DATA = 0x53,
-FLASH_SEND_RAW_DATA = 0x54,
-FLASH_NO_SAMPLE_YET = 0x55,
-
-
-DAC_SET_VALUE = 0x61,
+SYSTEM_PRINT_HELP_LIST = 0x18,
+SYSTEM_TEST_LED = 0x1C,
 }MSG_REQUEST;
 
 # 30 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\math.h"
@@ -9015,6 +8992,9 @@ typedef enum
 {
 START_RX_MESSAGE_READ = 0,
 FIND_MAGIC,
+READ_STREAM,
+READ_GROUP,
+READ_REQUEST,
 READ_DATA,
 CHECK_CRC,
 JUMP_FUNCTION
@@ -9147,7 +9127,7 @@ void ResetMcu(void);
 void ResetCpld(void);
 void SendSystemStartAck(void);
 
-# 27 "SystemStatus.h"
+# 31 "SystemStatus.h"
 void SetMcuFwVersion(char* data);
 void SetCpldFwVersion(char* data);
 
@@ -9162,157 +9142,92 @@ void SendUartSystemInitMessage(void);
 void PrintHelpScreen(void);
 
 # 20 "MessageFunctions.h"
-void GroupControlMcu(MSG_REQUEST request, char* data);
-void GroupStatusAndVersion(MSG_REQUEST request, char* data);
-void GroupAdc(MSG_REQUEST request, char* data);
-void GroupSynthesizers(MSG_REQUEST request, char* data);
-void GroupFlashMemory(MSG_REQUEST request, char* data);
-void GroupDAC(MSG_REQUEST request, char* data);
+void GroupRx(MSG_REQUEST request, char* data);
+void GroupTx(MSG_REQUEST request, char* data);
+void GroupCommon(MSG_REQUEST request, char* data);
 
 
 void (*groupsArray[(6)])() =
 {
-GroupControlMcu,
-GroupStatusAndVersion,
-GroupAdc,
-GroupSynthesizers,
-GroupFlashMemory,
-GroupDAC,
+GroupRx,
+GroupTx,
+GroupCommon,
 };
 
 # 11 "MessageFunctions.c"
-void GroupControlMcu(MSG_REQUEST request, char* data)
+void GroupRx(MSG_REQUEST request, char* data)
 {
 switch (request)
 {
-case CONTROL_TEST_LEDS:
+case TX_RX_UNIT_UNIT:
+
+break;
+
+case TX_RX_SET_UNIT_FREQUENCY:
+
+break;
+
+case TX_RX_READ_UNIT_STATUS:
+
+break;
+
+case TX_RX_SET_BIT_MODE:
+break;
+
+case TX_RX_SET_OPERATION_MODE:
+break;
+
+default:
+break;
+}
+}
+
+void GroupTx(MSG_REQUEST request, char* data)
+{
+switch (request)
+{
+case TX_RX_UNIT_UNIT:
+
+break;
+
+case TX_RX_SET_UNIT_FREQUENCY:
+
+break;
+
+case TX_RX_READ_UNIT_STATUS:
+
+break;
+
+case TX_RX_SET_BIT_MODE:
+break;
+
+case TX_RX_SET_OPERATION_MODE:
+break;
+
+case RX_SET_COMRESSION_MODE:
+break;
+
+case RX_SET_COMRESSION_RANGE:
+break;
+
+default:
+break;
+}
+}
+
+void GroupCommon(MSG_REQUEST request, char* data)
+{
+switch (request)
+{
+case SYSTEM_PRINT_HELP_LIST:
+PrintHelpScreen();
+break;
+
+case SYSTEM_TEST_LED:
 testLeds();
 break;
 
-case CONTROL_RESET_MCU:
-ResetMcu();
-break;
-
-case CONTROL_RESET_CPLD:
-ResetCpld();
-break;
-
-case CONTROL_PA1_SET:
-break;
-
-case CONTROL_PA2_SET:
-break;
-
 default:
 break;
 }
 }
-
-void GroupStatusAndVersion(MSG_REQUEST request, char* data)
-{
-switch (request)
-{
-case STATUS_GET_MCU_FW_VERSION:
-GetMcuFwVersion();
-break;
-
-case STATUS_SET_MCU_FW_VERSION:
-SetMcuFwVersion(data);
-break;
-
-case STATUS_GET_CPLD_FW_VERSION:
-GetCpldFwVersion();
-break;
-
-case STATUS_SET_CPLD_FW_VERSION:
-SetCpldFwVersion(data);
-break;
-
-case STATUS_MCU_RUN_TIME:
-GetMcuRunTime();
-break;
-
-default:
-break;
-}
-}
-
-void GroupAdc(MSG_REQUEST request, char* data)
-{
-switch (request)
-{
-case ADC_OPERATION:
-SetAdcOperationMode(data);
-break;
-
-case ADC_CHANNEL_MODE:
-SetChannelMode(data);
-break;
-
-case ADC_CONVERSION_MODE:
-SetConversionResultFormat(data);
-break;
-
-default:
-break;
-}
-}
-void GroupSynthesizers(MSG_REQUEST request, char* data)
-{
-switch (request)
-{
-case SYNTH_TX_INIT_SET:
-PLLUartInitialize(data);
-break;
-
-case SYNTH_RX_INIT_SET:
-PLLUartInitialize(data);
-break;
-
-case SYNTH_DOWN_SET:
-UpdateTxFreq(data);
-break;
-
-case SYNTH_UP_SET:
-UpdateRxFreq(data);
-break;
-
-default:
-break;
-}
-}
-
-void GroupFlashMemory(MSG_REQUEST request, char* data)
-{
-switch (request)
-{
-case FLASH_EREASE_MEMORY:
-FlashEreaseMem();
-break;
-
-case FLASH_READ_CONDITION:
-FlashReadCondition();
-break;
-
-case FLASH_REQUEST_RAW_DATA:
-FlashReadUart((int)data[0]);
-break;
-
-default:
-break;
-}
-}
-
-void GroupDAC(MSG_REQUEST request, char* data)
-{
-switch (request)
-{
-case DAC_SET_VALUE:
-DacSetValue(data);
-break;
-
-default:
-break;
-}
-}
-

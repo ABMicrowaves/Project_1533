@@ -2,25 +2,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 "35 AdcApp.h
 [c E7153 4 5 6 7 10 13 25 29 30 31 .. ]
 [n E7153 . ADC_RA5 ADC_RE0 ADC_RE1 ADC_RE2 ADC_RB1 ADC_RB5 ADC_RD5 channel_CTMU channel_DAC channel_FVRBuf2  ]
-[v F7346 `(v ~T0 @X0 0 tf ]
-"30 MessageFunctions.h
-[c E7231 16 17 18 19 20 21 22 33 34 35 36 37 49 50 51 64 65 66 67 81 82 83 84 85 97 .. ]
-[n E7231 . CONTROL_SYSTEM_START CONTROL_RESET_MCU CONTROL_RESET_CPLD CONTROL_PA1_SET CONTROL_PA2_SET CONTROL_TEST_LEDS CONTROL_KEEP_ALIVE STATUS_MCU_RUN_TIME STATUS_GET_MCU_FW_VERSION STATUS_GET_CPLD_FW_VERSION STATUS_SET_MCU_FW_VERSION STATUS_SET_CPLD_FW_VERSION ADC_OPERATION ADC_CHANNEL_MODE ADC_CONVERSION_MODE SYNTH_TX_INIT_SET SYNTH_RX_INIT_SET SYNTH_DOWN_SET SYNTH_UP_SET FLASH_EREASE_MEMORY FLASH_READ_CONDITION FLASH_REQUEST_RAW_DATA FLASH_SEND_RAW_DATA FLASH_NO_SAMPLE_YET DAC_SET_VALUE  ]
+[v F7318 `(v ~T0 @X0 0 tf ]
+"27 MessageFunctions.h
+[c E7228 18 22 25 33 40 99 101 24 28 .. ]
+[n E7228 . TX_RX_SET_BIT_MODE TX_RX_SET_UNIT_FREQUENCY TX_RX_UNIT_UNIT TX_RX_READ_UNIT_STATUS TX_RX_SET_OPERATION_MODE RX_SET_COMRESSION_MODE RX_SET_COMRESSION_RANGE SYSTEM_PRINT_HELP_LIST SYSTEM_TEST_LED  ]
 "20
-[v _GroupControlMcu `(v ~T0 @X0 0 ef2`E7231`*uc ]
+[v _GroupRx `(v ~T0 @X0 0 ef2`E7228`*uc ]
 "21
-[v _GroupStatusAndVersion `(v ~T0 @X0 0 ef2`E7231`*uc ]
+[v _GroupTx `(v ~T0 @X0 0 ef2`E7228`*uc ]
 "22
-[v _GroupAdc `(v ~T0 @X0 0 ef2`E7231`*uc ]
-"23
-[v _GroupSynthesizers `(v ~T0 @X0 0 ef2`E7231`*uc ]
-"24
-[v _GroupFlashMemory `(v ~T0 @X0 0 ef2`E7231`*uc ]
-"25
-[v _GroupDAC `(v ~T0 @X0 0 ef2`E7231`*uc ]
+[v _GroupCommon `(v ~T0 @X0 0 ef2`E7228`*uc ]
 "18 SwSpiApp.c
-[c E7628 0 1 2 .. ]
-[n E7628 . SYNTH_TX SYNTH_RX EXT_DAC  ]
+[c E7600 0 1 2 .. ]
+[n E7600 . SYNTH_TX SYNTH_RX EXT_DAC  ]
 "16896 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic18f45k22.h
 [s S819 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S819 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
@@ -36,19 +30,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 "16922
 [v _INTCONbits `VS818 ~T0 @X0 0 e@4082 ]
 "32 SwSpiApp.h
-[v _SwSpi_Set_Synth_Le_Pin `(v ~T0 @X0 0 ef2`E7628`uc ]
+[v _SwSpi_Set_Synth_Le_Pin `(v ~T0 @X0 0 ef2`E7600`uc ]
 "36
 [v _SwSpi_Set_Dac_Sync_Pin `(v ~T0 @X0 0 ef1`uc ]
 "47 SystemCommon.h
 [v _make8 `(uc ~T0 @X0 0 ef2`ul`uc ]
 "30 SwSpiApp.h
-[v _SWSPI_Synth_send_bits `(v ~T0 @X0 0 ef2`E7628`uc ]
+[v _SWSPI_Synth_send_bits `(v ~T0 @X0 0 ef2`E7600`uc ]
 "35
-[v _SWSPI_DAC_send_bits `(v ~T0 @X0 0 ef2`E7628`uc ]
+[v _SWSPI_DAC_send_bits `(v ~T0 @X0 0 ef2`E7600`uc ]
 "25
-[v _SwSpi_Clk_Pin `(v ~T0 @X0 0 ef2`E7628`uc ]
+[v _SwSpi_Clk_Pin `(v ~T0 @X0 0 ef2`E7600`uc ]
 "24
-[v _SwSpi_Data_Pin `(v ~T0 @X0 0 ef2`E7628`uc ]
+[v _SwSpi_Data_Pin `(v ~T0 @X0 0 ef2`E7600`uc ]
 "7900 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic18f45k22.h
 [s S385 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S385 . LATD0 LATD1 LATD2 LATD3 LATD4 LATD5 LATD6 LATD7 ]
@@ -6811,51 +6805,32 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;mcc.h: 85: void OSCILLATOR_Initialize(void);
 [; ;GroupsCommon.h: 12: typedef enum
 [; ;GroupsCommon.h: 13: {
-[; ;GroupsCommon.h: 14: CONTROL_MSG = 0x01,
-[; ;GroupsCommon.h: 15: MCU_STATUS_VERSION_MSG = 0x02,
-[; ;GroupsCommon.h: 16: ADC_MSG = 0x03,
-[; ;GroupsCommon.h: 17: SYNTH_MSG = 0x04,
-[; ;GroupsCommon.h: 18: FLASH_MSG = 0x05,
-[; ;GroupsCommon.h: 19: DAC_MSG = 0x06,
-[; ;GroupsCommon.h: 20: }MSG_GROUPS;
-[; ;GroupsCommon.h: 22: typedef enum
-[; ;GroupsCommon.h: 23: {
-[; ;GroupsCommon.h: 25: CONTROL_SYSTEM_START = 0x10,
-[; ;GroupsCommon.h: 26: CONTROL_RESET_MCU = 0x11,
-[; ;GroupsCommon.h: 27: CONTROL_RESET_CPLD = 0x12,
-[; ;GroupsCommon.h: 28: CONTROL_PA1_SET = 0x13,
-[; ;GroupsCommon.h: 29: CONTROL_PA2_SET = 0x14,
-[; ;GroupsCommon.h: 30: CONTROL_TEST_LEDS = 0x15,
-[; ;GroupsCommon.h: 31: CONTROL_KEEP_ALIVE = 0x16,
-[; ;GroupsCommon.h: 34: STATUS_MCU_RUN_TIME = 0x21,
-[; ;GroupsCommon.h: 35: STATUS_GET_MCU_FW_VERSION = 0x22,
-[; ;GroupsCommon.h: 36: STATUS_GET_CPLD_FW_VERSION = 0x23,
-[; ;GroupsCommon.h: 37: STATUS_SET_MCU_FW_VERSION = 0x24,
-[; ;GroupsCommon.h: 38: STATUS_SET_CPLD_FW_VERSION = 0x25,
-[; ;GroupsCommon.h: 41: ADC_OPERATION = 0x31,
-[; ;GroupsCommon.h: 42: ADC_CHANNEL_MODE = 0x32,
-[; ;GroupsCommon.h: 43: ADC_CONVERSION_MODE = 0x33,
-[; ;GroupsCommon.h: 46: SYNTH_TX_INIT_SET = 0x40,
-[; ;GroupsCommon.h: 47: SYNTH_RX_INIT_SET = 0x41,
-[; ;GroupsCommon.h: 48: SYNTH_DOWN_SET = 0x42,
-[; ;GroupsCommon.h: 49: SYNTH_UP_SET = 0x43,
-[; ;GroupsCommon.h: 52: FLASH_EREASE_MEMORY = 0x51,
-[; ;GroupsCommon.h: 53: FLASH_READ_CONDITION = 0x52,
-[; ;GroupsCommon.h: 54: FLASH_REQUEST_RAW_DATA = 0x53,
-[; ;GroupsCommon.h: 55: FLASH_SEND_RAW_DATA = 0x54,
-[; ;GroupsCommon.h: 56: FLASH_NO_SAMPLE_YET = 0x55,
-[; ;GroupsCommon.h: 59: DAC_SET_VALUE = 0x61,
-[; ;GroupsCommon.h: 60: }MSG_REQUEST;
-[; ;SystemStatus.h: 27: void SetMcuFwVersion(char* data);
-[; ;SystemStatus.h: 28: void SetCpldFwVersion(char* data);
-[; ;SystemStatus.h: 30: void GetMcuFwVersion();
-[; ;SystemStatus.h: 31: void GetCpldFwVersion();
-[; ;SystemStatus.h: 33: void SetMcuRunTime();
-[; ;SystemStatus.h: 34: void GetMcuRunTime();
-[; ;SystemStatus.h: 35: void ClearMcuRunTime();
-[; ;SystemStatus.h: 36: void keepAliveSignalUart(void);
-[; ;SystemStatus.h: 37: void SendUartSystemInitMessage(void);
-[; ;SystemStatus.h: 38: void PrintHelpScreen(void);
+[; ;GroupsCommon.h: 14: RX_GROUP = 0x0,
+[; ;GroupsCommon.h: 15: TX_GROUP = 0x1,
+[; ;GroupsCommon.h: 16: COMMON_GROUP = 0x2,
+[; ;GroupsCommon.h: 17: }MSG_GROUPS;
+[; ;GroupsCommon.h: 19: typedef enum
+[; ;GroupsCommon.h: 20: {
+[; ;GroupsCommon.h: 23: TX_RX_SET_BIT_MODE = 0x12,
+[; ;GroupsCommon.h: 24: TX_RX_SET_UNIT_FREQUENCY = 0x16,
+[; ;GroupsCommon.h: 25: TX_RX_UNIT_UNIT = 0x19,
+[; ;GroupsCommon.h: 26: TX_RX_READ_UNIT_STATUS = 0x21,
+[; ;GroupsCommon.h: 27: TX_RX_SET_OPERATION_MODE = 0x28,
+[; ;GroupsCommon.h: 30: RX_SET_COMRESSION_MODE = 0x63,
+[; ;GroupsCommon.h: 31: RX_SET_COMRESSION_RANGE = 0x65,
+[; ;GroupsCommon.h: 35: SYSTEM_PRINT_HELP_LIST = 0x18,
+[; ;GroupsCommon.h: 36: SYSTEM_TEST_LED = 0x1C,
+[; ;GroupsCommon.h: 37: }MSG_REQUEST;
+[; ;SystemStatus.h: 31: void SetMcuFwVersion(char* data);
+[; ;SystemStatus.h: 32: void SetCpldFwVersion(char* data);
+[; ;SystemStatus.h: 34: void GetMcuFwVersion();
+[; ;SystemStatus.h: 35: void GetCpldFwVersion();
+[; ;SystemStatus.h: 37: void SetMcuRunTime();
+[; ;SystemStatus.h: 38: void GetMcuRunTime();
+[; ;SystemStatus.h: 39: void ClearMcuRunTime();
+[; ;SystemStatus.h: 40: void keepAliveSignalUart(void);
+[; ;SystemStatus.h: 41: void SendUartSystemInitMessage(void);
+[; ;SystemStatus.h: 42: void PrintHelpScreen(void);
 [; ;LedsApp.h: 22: typedef enum
 [; ;LedsApp.h: 24: {
 [; ;LedsApp.h: 25: OK_START_SYSTEM = 0x3,
@@ -6924,39 +6899,27 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;FlashApp.h: 39: void EepromWrite(uint8_t address, uint8_t data);
 [; ;FlashApp.h: 42: bool FlashTest(int startAddress, int numOfSamples);
 [; ;FlashApp.h: 43: bool EepromTest(int startAddress, int numOfSamples);
-[; ;MessageFunctions.h: 20: void GroupControlMcu(MSG_REQUEST request, char* data);
-[; ;MessageFunctions.h: 21: void GroupStatusAndVersion(MSG_REQUEST request, char* data);
-[; ;MessageFunctions.h: 22: void GroupAdc(MSG_REQUEST request, char* data);
-[; ;MessageFunctions.h: 23: void GroupSynthesizers(MSG_REQUEST request, char* data);
-[; ;MessageFunctions.h: 24: void GroupFlashMemory(MSG_REQUEST request, char* data);
-[; ;MessageFunctions.h: 25: void GroupDAC(MSG_REQUEST request, char* data);
-"28 MessageFunctions.h
-[v _groupsArray `*F7346 ~T0 @X0 -> 6 `i e ]
+[; ;MessageFunctions.h: 20: void GroupRx(MSG_REQUEST request, char* data);
+[; ;MessageFunctions.h: 21: void GroupTx(MSG_REQUEST request, char* data);
+[; ;MessageFunctions.h: 22: void GroupCommon(MSG_REQUEST request, char* data);
+"25 MessageFunctions.h
+[v _groupsArray `*F7318 ~T0 @X0 -> 6 `i e ]
 [i _groupsArray
 :U ..
-"30
--> &U _GroupControlMcu `*F7346
-"31
--> &U _GroupStatusAndVersion `*F7346
-"32
--> &U _GroupAdc `*F7346
-"33
--> &U _GroupSynthesizers `*F7346
-"34
--> &U _GroupFlashMemory `*F7346
-"35
--> &U _GroupDAC `*F7346
+"27
+-> &U _GroupRx `*F7318
+"28
+-> &U _GroupTx `*F7318
+"29
+-> &U _GroupCommon `*F7318
 ..
 ]
-[; ;MessageFunctions.h: 28: void (*groupsArray[(6)])() =
-[; ;MessageFunctions.h: 29: {
-[; ;MessageFunctions.h: 30: GroupControlMcu,
-[; ;MessageFunctions.h: 31: GroupStatusAndVersion,
-[; ;MessageFunctions.h: 32: GroupAdc,
-[; ;MessageFunctions.h: 33: GroupSynthesizers,
-[; ;MessageFunctions.h: 34: GroupFlashMemory,
-[; ;MessageFunctions.h: 35: GroupDAC,
-[; ;MessageFunctions.h: 36: };
+[; ;MessageFunctions.h: 25: void (*groupsArray[(6)])() =
+[; ;MessageFunctions.h: 26: {
+[; ;MessageFunctions.h: 27: GroupRx,
+[; ;MessageFunctions.h: 28: GroupTx,
+[; ;MessageFunctions.h: 29: GroupCommon,
+[; ;MessageFunctions.h: 30: };
 [; ;DacApp.h: 23: void DacInit(void);
 [; ;DacApp.h: 24: void DacSetValue(char* data);
 [; ;DacApp.h: 27: void DacTest(void);
@@ -7044,15 +7007,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;EusartApp.h: 40: {
 [; ;EusartApp.h: 41: START_RX_MESSAGE_READ = 0,
 [; ;EusartApp.h: 42: FIND_MAGIC,
-[; ;EusartApp.h: 43: READ_DATA,
-[; ;EusartApp.h: 44: CHECK_CRC,
-[; ;EusartApp.h: 45: JUMP_FUNCTION
-[; ;EusartApp.h: 46: }UART_READ_STATE;
-[; ;EusartApp.h: 50: void readUartByte(void);
-[; ;EusartApp.h: 51: void InitRxMessageParams(void);
-[; ;EusartApp.h: 54: void WriteUartMessage(char* dataBuf, int dataSize);
-[; ;EusartApp.h: 55: void SendAckMessage(MSG_GROUPS inGroup, MSG_REQUEST inRequest);
-[; ;EusartApp.h: 56: void UART_Write_Text(char* text);
+[; ;EusartApp.h: 43: READ_STREAM,
+[; ;EusartApp.h: 44: READ_GROUP,
+[; ;EusartApp.h: 45: READ_REQUEST,
+[; ;EusartApp.h: 46: READ_DATA,
+[; ;EusartApp.h: 47: CHECK_CRC,
+[; ;EusartApp.h: 48: JUMP_FUNCTION
+[; ;EusartApp.h: 49: }UART_READ_STATE;
+[; ;EusartApp.h: 53: void readUartByte(void);
+[; ;EusartApp.h: 54: void InitRxMessageParams(void);
+[; ;EusartApp.h: 57: void WriteUartMessage(char* dataBuf, int dataSize);
+[; ;EusartApp.h: 58: void SendAckMessage(MSG_GROUPS inGroup, MSG_REQUEST inRequest);
+[; ;EusartApp.h: 59: void UART_Write_Text(char* text);
 [; ;SevenSegmentApp.h: 19: void segmentCounter(void);
 [; ;SevenSegmentApp.h: 20: unsigned short mask(unsigned short num);
 [; ;SevenSegmentApp.h: 21: void InitSevenSegment(void);
@@ -7189,14 +7155,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SwSpiApp.h: 35: void SWSPI_DAC_send_bits(SPI_PERIPHERAL phrType, uint8_t data);
 [; ;SwSpiApp.h: 36: void SwSpi_Set_Dac_Sync_Pin(bool cPinMode);
 "17 SwSpiApp.c
-[v _SWSPI_send_word `(v ~T0 @X0 1 ef3`E7628`ul`uc ]
+[v _SWSPI_send_word `(v ~T0 @X0 1 ef3`E7600`ul`uc ]
 "18
 {
 [; ;SwSpiApp.c: 17: void SWSPI_send_word (SPI_PERIPHERAL phrType, uint32_t data, uint8_t dataSize)
 [; ;SwSpiApp.c: 18: {
 [e :U _SWSPI_send_word ]
 "17
-[v _phrType `E7628 ~T0 @X0 1 r1 ]
+[v _phrType `E7600 ~T0 @X0 1 r1 ]
 [v _data `ul ~T0 @X0 1 r2 ]
 [v _dataSize `uc ~T0 @X0 1 r3 ]
 "18
@@ -7206,7 +7172,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
 [; ;SwSpiApp.c: 23: if(phrType == SYNTH_TX || phrType == SYNTH_RX)
 "23
-[e $ ! || == -> _phrType `i -> . `E7628 0 `i == -> _phrType `i -> . `E7628 1 `i 853  ]
+[e $ ! || == -> _phrType `i -> . `E7600 0 `i == -> _phrType `i -> . `E7600 1 `i 853  ]
 [; ;SwSpiApp.c: 24: {
 "24
 {
@@ -7219,7 +7185,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SwSpiApp.c: 26: }
 [; ;SwSpiApp.c: 27: if(phrType == EXT_DAC)
 "27
-[e $ ! == -> _phrType `i -> . `E7628 2 `i 854  ]
+[e $ ! == -> _phrType `i -> . `E7600 2 `i 854  ]
 [; ;SwSpiApp.c: 28: {
 "28
 {
@@ -7247,7 +7213,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _datac ( _make8 (2 , _data -> - _idx -> 1 `i `uc ]
 [; ;SwSpiApp.c: 39: if(phrType == SYNTH_TX || phrType == SYNTH_RX)
 "39
-[e $ ! || == -> _phrType `i -> . `E7628 0 `i == -> _phrType `i -> . `E7628 1 `i 858  ]
+[e $ ! || == -> _phrType `i -> . `E7600 0 `i == -> _phrType `i -> . `E7600 1 `i 858  ]
 [; ;SwSpiApp.c: 40: {
 "40
 {
@@ -7261,7 +7227,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "43
 [e :U 858 ]
 [; ;SwSpiApp.c: 43: else if (phrType == EXT_DAC)
-[e $ ! == -> _phrType `i -> . `E7628 2 `i 860  ]
+[e $ ! == -> _phrType `i -> . `E7600 2 `i 860  ]
 [; ;SwSpiApp.c: 44: {
 "44
 {
@@ -7284,7 +7250,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SwSpiApp.c: 47: }
 [; ;SwSpiApp.c: 52: if(phrType == EXT_DAC)
 "52
-[e $ ! == -> _phrType `i -> . `E7628 2 `i 861  ]
+[e $ ! == -> _phrType `i -> . `E7600 2 `i 861  ]
 [; ;SwSpiApp.c: 53: {
 "53
 {
@@ -7298,7 +7264,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "56
 [e :U 861 ]
 [; ;SwSpiApp.c: 56: else if(phrType == SYNTH_TX || phrType == SYNTH_RX)
-[e $ ! || == -> _phrType `i -> . `E7628 0 `i == -> _phrType `i -> . `E7628 1 `i 863  ]
+[e $ ! || == -> _phrType `i -> . `E7600 0 `i == -> _phrType `i -> . `E7600 1 `i 863  ]
 [; ;SwSpiApp.c: 57: {
 "57
 {
@@ -7318,14 +7284,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 852 ]
 }
 "65
-[v _SWSPI_DAC_send_bits `(v ~T0 @X0 1 ef2`E7628`uc ]
+[v _SWSPI_DAC_send_bits `(v ~T0 @X0 1 ef2`E7600`uc ]
 "66
 {
 [; ;SwSpiApp.c: 65: void SWSPI_DAC_send_bits(SPI_PERIPHERAL phrType, uint8_t data)
 [; ;SwSpiApp.c: 66: {
 [e :U _SWSPI_DAC_send_bits ]
 "65
-[v _phrType `E7628 ~T0 @X0 1 r1 ]
+[v _phrType `E7600 ~T0 @X0 1 r1 ]
 [v _data `uc ~T0 @X0 1 r2 ]
 "66
 [f ]
@@ -7394,14 +7360,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 864 ]
 }
 "89
-[v _SWSPI_Synth_send_bits `(v ~T0 @X0 1 ef2`E7628`uc ]
+[v _SWSPI_Synth_send_bits `(v ~T0 @X0 1 ef2`E7600`uc ]
 "90
 {
 [; ;SwSpiApp.c: 89: void SWSPI_Synth_send_bits(SPI_PERIPHERAL phrType, uint8_t data)
 [; ;SwSpiApp.c: 90: {
 [e :U _SWSPI_Synth_send_bits ]
 "89
-[v _phrType `E7628 ~T0 @X0 1 r1 ]
+[v _phrType `E7600 ~T0 @X0 1 r1 ]
 [v _data `uc ~T0 @X0 1 r2 ]
 "90
 [f ]
@@ -7470,14 +7436,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 871 ]
 }
 "123
-[v _SwSpi_Data_Pin `(v ~T0 @X0 1 ef2`E7628`uc ]
+[v _SwSpi_Data_Pin `(v ~T0 @X0 1 ef2`E7600`uc ]
 "124
 {
 [; ;SwSpiApp.c: 123: void SwSpi_Data_Pin (SPI_PERIPHERAL phrType, bool cPinMode)
 [; ;SwSpiApp.c: 124: {
 [e :U _SwSpi_Data_Pin ]
 "123
-[v _phrType `E7628 ~T0 @X0 1 r1 ]
+[v _phrType `E7600 ~T0 @X0 1 r1 ]
 [v _cPinMode `uc ~T0 @X0 1 r2 ]
 "124
 [f ]
@@ -7619,9 +7585,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 879  ]
 "125
 [e :U 880 ]
-[e [\ _phrType , $ . `E7628 0 881
- , $ . `E7628 1 891
- , $ . `E7628 2 901
+[e [\ _phrType , $ . `E7600 0 881
+ , $ . `E7600 1 891
+ , $ . `E7600 2 901
  879 ]
 "159
 [e :U 879 ]
@@ -7630,14 +7596,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 878 ]
 }
 "162
-[v _SwSpi_Clk_Pin `(v ~T0 @X0 1 ef2`E7628`uc ]
+[v _SwSpi_Clk_Pin `(v ~T0 @X0 1 ef2`E7600`uc ]
 "163
 {
 [; ;SwSpiApp.c: 162: void SwSpi_Clk_Pin (SPI_PERIPHERAL phrType, bool cPinMode)
 [; ;SwSpiApp.c: 163: {
 [e :U _SwSpi_Clk_Pin ]
 "162
-[v _phrType `E7628 ~T0 @X0 1 r1 ]
+[v _phrType `E7600 ~T0 @X0 1 r1 ]
 [v _cPinMode `uc ~T0 @X0 1 r2 ]
 "163
 [f ]
@@ -7779,9 +7745,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 912  ]
 "164
 [e :U 913 ]
-[e [\ _phrType , $ . `E7628 0 914
- , $ . `E7628 1 924
- , $ . `E7628 2 934
+[e [\ _phrType , $ . `E7600 0 914
+ , $ . `E7600 1 924
+ , $ . `E7600 2 934
  912 ]
 "199
 [e :U 912 ]
@@ -7790,14 +7756,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 911 ]
 }
 "202
-[v _SwSpi_Synth_Toggle_Clock `(v ~T0 @X0 1 ef1`E7628 ]
+[v _SwSpi_Synth_Toggle_Clock `(v ~T0 @X0 1 ef1`E7600 ]
 "203
 {
 [; ;SwSpiApp.c: 202: void SwSpi_Synth_Toggle_Clock(SPI_PERIPHERAL phrType)
 [; ;SwSpiApp.c: 203: {
 [e :U _SwSpi_Synth_Toggle_Clock ]
 "202
-[v _phrType `E7628 ~T0 @X0 1 r1 ]
+[v _phrType `E7600 ~T0 @X0 1 r1 ]
 "203
 [f ]
 [; ;SwSpiApp.c: 204: SwSpi_Clk_Pin(phrType, 1);
@@ -7839,8 +7805,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 945  ]
 "206
 [e :U 946 ]
-[e [\ _phrType , $ . `E7628 0 947
- , $ . `E7628 1 948
+[e [\ _phrType , $ . `E7600 0 947
+ , $ . `E7600 1 948
  949 ]
 "216
 [e :U 945 ]
@@ -7852,14 +7818,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 944 ]
 }
 "221
-[v _SwSpi_Set_CE_Pin `(v ~T0 @X0 1 ef2`E7628`uc ]
+[v _SwSpi_Set_CE_Pin `(v ~T0 @X0 1 ef2`E7600`uc ]
 "222
 {
 [; ;SwSpiApp.c: 221: void SwSpi_Set_CE_Pin (SPI_PERIPHERAL phrType, bool cPinMode)
 [; ;SwSpiApp.c: 222: {
 [e :U _SwSpi_Set_CE_Pin ]
 "221
-[v _phrType `E7628 ~T0 @X0 1 r1 ]
+[v _phrType `E7600 ~T0 @X0 1 r1 ]
 [v _cPinMode `uc ~T0 @X0 1 r2 ]
 "222
 [f ]
@@ -7959,8 +7925,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 951  ]
 "223
 [e :U 952 ]
-[e [\ _phrType , $ . `E7628 0 953
- , $ . `E7628 1 963
+[e [\ _phrType , $ . `E7600 0 953
+ , $ . `E7600 1 963
  951 ]
 "246
 [e :U 951 ]
@@ -7969,14 +7935,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 950 ]
 }
 "252
-[v _SwSpi_Set_Synth_Le_Pin `(v ~T0 @X0 1 ef2`E7628`uc ]
+[v _SwSpi_Set_Synth_Le_Pin `(v ~T0 @X0 1 ef2`E7600`uc ]
 "253
 {
 [; ;SwSpiApp.c: 252: void SwSpi_Set_Synth_Le_Pin(SPI_PERIPHERAL phrType, bool cPinMode)
 [; ;SwSpiApp.c: 253: {
 [e :U _SwSpi_Set_Synth_Le_Pin ]
 "252
-[v _phrType `E7628 ~T0 @X0 1 r1 ]
+[v _phrType `E7600 ~T0 @X0 1 r1 ]
 [v _cPinMode `uc ~T0 @X0 1 r2 ]
 "253
 [f ]
@@ -8076,8 +8042,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 974  ]
 "254
 [e :U 975 ]
-[e [\ _phrType , $ . `E7628 0 976
- , $ . `E7628 1 986
+[e [\ _phrType , $ . `E7600 0 976
+ , $ . `E7600 1 986
  974 ]
 "277
 [e :U 974 ]
