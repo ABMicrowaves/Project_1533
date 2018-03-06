@@ -118,3 +118,66 @@ void keepAliveSignalUart(void)
 {
     SendAckMessage((MSG_GROUPS)CONTROL_MSG, (MSG_REQUEST)CONTROL_KEEP_ALIVE);
 }
+
+void SendUartSystemInitMessage(void)
+{    
+    char dest[50];
+    
+    sprintf(dest, "*************************** \n\r");
+    UART_Write_Text(dest);
+    
+    sprintf(dest, "FAST LINK SYSTEM \n\r");
+    UART_Write_Text(dest);
+    
+    sprintf(dest, "SW VESRION: 1.001 \n\r");
+    UART_Write_Text(dest);
+    
+    sprintf(dest, "Compile date: %s \n\r", __DATE__);
+    UART_Write_Text(dest);
+    
+    sprintf(dest, "Compile time: %s \n\r", __TIME__);
+    UART_Write_Text(dest);
+    
+    sprintf(dest, "*************************** \n\r");
+    UART_Write_Text(dest);
+}
+
+void PrintHelpScreen(void)
+{    
+    char dest[50];
+    
+    sprintf(dest, "DS <data soure><cr>  \tSet data source (0-1)\r\n");
+    UART_Write_Text(dest);
+    sprintf(dest, "DP <data polarity><cr>  \tSet data polarity (0-1)\r\n");
+    UART_Write_Text(dest);
+    sprintf(dest, "DE <setup SOQPSK><cr>  \tSet setup SOQPSK (0-1)\r\n");
+    UART_Write_Text(dest);
+    sprintf(dest, "RP <power height><cr>  \tSet power height (0-1)\r\n");
+    UART_Write_Text(dest);
+    sprintf(dest, "RF <power comand><cr>  \tSet power comand (0-1)\r\n");
+    UART_Write_Text(dest);
+    sprintf(dest, "RA <randomizer><cr>  \tSet with/without randomizer (0-1)\r\n");
+    UART_Write_Text(dest);
+    sprintf(dest, "FR <frequency><cr>  \tSet frequency (2200.0-2400.0)\r\n");
+    UART_Write_Text(dest);
+    sprintf(dest, "MO <mode><cr>  \tSet mode (0-3)\r\n");
+    UART_Write_Text(dest);
+    sprintf(dest, "IC <bitrate><cr>  \tSet birtate (1.00-30.00DBps)\r\n");
+    UART_Write_Text(dest);
+    sprintf(dest, "ID <internal pattern><cr>  \tSet internal pattern (0-3)\r\n");
+    UART_Write_Text(dest);
+    sprintf(dest, "VE <cr>  \tdisplay version info\r\n");
+    UART_Write_Text(dest);
+    sprintf(dest, "VS <major>.<minor> <cr>  \tset the setup file version\r\n");
+    UART_Write_Text(dest);
+    sprintf(dest, "VP <power level><cr>  \tSet power level (20-40)\r\n");
+    UART_Write_Text(dest);
+    sprintf(dest, "VL <power high><cr>  \tSet high power level (20-40)\r\n");
+    UART_Write_Text(dest);
+    sprintf(dest, "VM <negative power level><cr>  \tSet negative power level\r\n");
+    UART_Write_Text(dest);
+    sprintf(dest, "IC <bitrate><cr>  \tSet birtate (1.00-30.00DBps)\r\n");
+    UART_Write_Text(dest);
+    sprintf(dest, "ID <internal pattern><cr>  \tSet internal pattern (0-3)\r\n");
+    UART_Write_Text(dest);
+}

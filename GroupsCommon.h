@@ -9,27 +9,6 @@ Author: RoeeZ (Comm-IT).                                                    ****
 #ifndef GROUPSCOMMON_H
 #define	GROUPSCOMMON_H
 
-#define MSG_MAGIC_A                 (0x24)    // 0x24 == '$'
-#define DELAY_BETWEEN_MESSAGE_READ  (500)
-#define MIN_RX_MSG_SIZE             (4)
-#define MSG_RX_MAX_DATA_SIZE        (0x14)
-
-// Locations
-#define MSG_MAGIC_LOCATION          (0)
-#define MSG_GROUP_LOCATION          (1)
-#define MSG_REQUEST_LOCATION        (2)
-#define MSG_DATA_SIZE_LOCATION      (3)
-#define MSG_DATA_LOCATION           (0x4)
-#define NUMBER_OF_MESSAGE_GROUPS    (6)
-
-// Ack message
-#define ACK_MESSAGE_PACKET_SIZE     (0x5)
-
-typedef enum
-{
-    FLASH_RAW_DATA = 64,
-}TX_MESSAGE_TYPE;
-
 typedef enum
 {
     CONTROL_MSG                 = 0x01,

@@ -19,14 +19,15 @@ void main(void)
     InitSystemApplicationManagers();
 
     // Then send keep alive signal to PC host application:
-    SendSystemStartAck();
+    SendUartSystemInitMessage();
     
     // Indicate by Green led that system start OK:
     BlinkOkLeds(OK_START_SYSTEM);
             
+    PrintHelpScreen();
     while (1)
     {    
-        readUartMessage();
+        readUartByte();
         
         if (TimerOneSecFlag == true)
         {
@@ -50,7 +51,7 @@ void main(void)
         }
         else if (TimerKeepAliveFlag == true)
         {
-            keepAliveSignalUart();
+            //keepAliveSignalUart();
             TimerKeepAliveFlag = false; 
         }
     }

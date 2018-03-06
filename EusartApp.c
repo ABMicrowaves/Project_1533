@@ -13,11 +13,7 @@ Author: RoeeZ (Comm-IT).                                                    ****
 // Define global message parameters:
 
 static UART_READ_STATE cState = START_RX_MESSAGE_READ;
-MSG_GROUPS group = 0;
-MSG_REQUEST request = 0;
-uint8_t dataSize = 0;
-char data = 0;
-char crcCalc = 0, crcGiven = 0;
+
 char rxMsgQueue[MSG_RX_MAX_DATA_SIZE];
 char rxMsgData[MSG_RX_MAX_DATA_SIZE];
 static uint8_t msgCount = 0;
@@ -25,115 +21,51 @@ static uint8_t msgCount = 0;
 
 // <editor-fold defaultstate="collapsed" desc="EUSART read packet">
 
-void readUartMessage(void)
+void readUartByte(void)
 // Since we read byte by byte from MCC UART driver we need to implement FSM
 {    
-    uint8_t chRec = NULL;
+    UCHAR chRec = NULL, c1 = NULL, c2 = NULL;
     switch(cState)
     {
         case START_RX_MESSAGE_READ:
             
-            // Check to see if there is more or equal bytes of message size:
-            if(eusart1RxCount > MIN_RX_MSG_SIZE)
-            {
-                cState = FIND_MAGIC;
-            }
-            return;
-        
-        case FIND_MAGIC:
-            
             InitRxMessageParams();
-            msgCount = 0;
-            if(eusart1RxCount > 1)
-            {
-                chRec = EUSART1_Read();
-                rxMsgQueue[MSG_MAGIC_LOCATION] = chRec; 
-                if(chRec == MSG_MAGIC_A)
-                {
-                   cState = READ_GROUP;
-                }
-            }
-            else
-            {
-                cState = START_RX_MESSAGE_READ;
-            }
+            cState = FIND_MAGIC;
+            break;
             
-            break;
-        
-        case READ_GROUP:
             
-            if(eusart1RxCount > 1)
-            {
-                group = EUSART1_Read();
-                rxMsgQueue[MSG_GROUP_LOCATION] = group;
-                cState = READ_REQUEST;
-            }
-            break;
-        
-        case READ_REQUEST:
+        case FIND_MAGIC:
+            chRec = EUSART1_Read();
             
-            if(eusart1RxCount > 1)
+            if(chRec == MSG_MAGIC_A)
             {
-                request = EUSART1_Read();
-                rxMsgQueue[MSG_REQUEST_LOCATION] = request;
-                cState = READ_DATA_SIZE; 
+                cState = READ_DATA;
             }
             break;
-        
-        case READ_DATA_SIZE:
-            if(eusart1RxCount > 1)
-            {
-                dataSize = EUSART1_Read();
-                rxMsgQueue[MSG_DATA_SIZE_LOCATION] = dataSize;
-                if(dataSize == 0)
-                {
-                    cState = CHECK_CRC;
-                }
-                else
-                {
-                    cState = READ_DATA;
-                }
-                
-            }
-
-            break;
-        
+            
         case READ_DATA:
-
-            if(eusart1RxCount >= dataSize)
+            
+            rxMsgQueue[msgCount++] = chRec;
+            if(chRec == MSG_CARRIAGE_RETURN)
             {
-                ZeroArray(rxMsgData, MSG_RX_MAX_DATA_SIZE);
-                
-                for(int idx = 0; idx < dataSize; idx++)
-                {
-                    chRec = EUSART1_Read();
-                    rxMsgQueue[MSG_DATA_LOCATION + msgCount++] = chRec;
-                    rxMsgData[idx] = chRec;
-                }
-                
-                cState = CHECK_CRC;
+                cState = JUMP_FUNCTION;
             }
             break;
             
-        case CHECK_CRC:
-            if(eusart1RxCount >= 1)
-            {
-                crcGiven = EUSART1_Read();
-                crcCalc = crc8(rxMsgQueue, MSG_DATA_LOCATION + msgCount);
-
-                if(crcGiven == crcCalc)
-                {
-                    cState = JUMP_FUNCTION;
-                }
-                else
-                {
-                    cState = START_RX_MESSAGE_READ;
-                }
-            }
-            break;
-        
         case JUMP_FUNCTION:
-            groupsArray[group - 1](request, rxMsgData);
+            c1 = toupper(rxMsgQueue[0]);
+            
+            switch(c1)
+            {
+                case 'Q':
+                    
+                    break;
+                    
+                case 'T':
+                    break;
+            }
+            
+            //groupsArray[group - 1](request, rxMsgData);
             cState = START_RX_MESSAGE_READ;
             break; 
     }
@@ -141,11 +73,6 @@ void readUartMessage(void)
 
 void InitRxMessageParams(void)
 {
-    //group = 0;
-    //request = 0;
-    dataSize = 0;
-    crcCalc = 0; 
-    crcGiven = 0;
     msgCount = 0;
     ZeroArray(rxMsgQueue, MSG_RX_MAX_DATA_SIZE);
 }
@@ -161,6 +88,15 @@ void WriteUartMessage(char* dataBuf, int dataSize)
     {
         EUSART1_Write(dataBuf[idx]);
     }
+}
+
+void UART_Write_Text(char* text)
+{
+  for(int i =0;text[i]!='\0';i++)
+  {
+    EUSART1_Write(text[i]);  
+  }
+    
 }
 
 // </editor-fold>

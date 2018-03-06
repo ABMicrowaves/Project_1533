@@ -34,6 +34,7 @@ void SetMcuRunTime();
 void GetMcuRunTime();
 void ClearMcuRunTime();
 void keepAliveSignalUart(void);
-
+void SendUartSystemInitMessage(void);
+void PrintHelpScreen(void);
 #endif	/* SYSTEMSTATUS_H */
 

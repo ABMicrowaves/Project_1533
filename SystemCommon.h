@@ -10,6 +10,11 @@ Author: RoeeZ (Comm-IT).                                                    ****
 #ifndef SYSTEMCOMMON_H
 #define	SYSTEMCOMMON_H
 
+#include <math.h>
+#include <stdint.h>
+#include <ctype.h>
+#include <stdio.h>
+
 #include "mcc_generated_files/mcc.h"
 #include "MessageFunctions.h"
 #include "FlashApp.h"

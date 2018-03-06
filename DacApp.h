@@ -10,7 +10,7 @@ Author: RoeeZ (Comm-IT).                                                    ****
 #define	DACAPP_H
 
 #include "SystemCommon.h"
-#include <math.h>
+
 
 // At system start: set all DACs to 1 VDC.
 #define DAC_A_INIT_VAL      (0x2344)

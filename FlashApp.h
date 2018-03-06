@@ -9,7 +9,7 @@ Author: RoeeZ (Comm-IT).                                                    ****
 #ifndef FLASHAPP_H
 #define	FLASHAPP_H
 
-#include <stdint.h>
+
 #include "SystemCommon.h"
 
 // Manage flash

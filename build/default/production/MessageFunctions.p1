@@ -1,28 +1,28 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "35 AdcApp.h
-[c E7043 4 5 6 7 10 13 25 29 30 31 .. ]
-[n E7043 . ADC_RA5 ADC_RE0 ADC_RE1 ADC_RE2 ADC_RB1 ADC_RB5 ADC_RD5 channel_CTMU channel_DAC channel_FVRBuf2  ]
-[v F7559 `(v ~T0 @X0 0 tf ]
-"28 MessageFunctions.h
-[c E12 16 17 18 19 20 21 22 33 34 35 36 37 49 50 51 64 65 66 67 81 82 83 84 85 97 .. ]
-[n E12 . CONTROL_SYSTEM_START CONTROL_RESET_MCU CONTROL_RESET_CPLD CONTROL_PA1_SET CONTROL_PA2_SET CONTROL_TEST_LEDS CONTROL_KEEP_ALIVE STATUS_MCU_RUN_TIME STATUS_GET_MCU_FW_VERSION STATUS_GET_CPLD_FW_VERSION STATUS_SET_MCU_FW_VERSION STATUS_SET_CPLD_FW_VERSION ADC_OPERATION ADC_CHANNEL_MODE ADC_CONVERSION_MODE SYNTH_TX_INIT_SET SYNTH_RX_INIT_SET SYNTH_DOWN_SET SYNTH_UP_SET FLASH_EREASE_MEMORY FLASH_READ_CONDITION FLASH_REQUEST_RAW_DATA FLASH_SEND_RAW_DATA FLASH_NO_SAMPLE_YET DAC_SET_VALUE  ]
-"18
-[v _GroupControlMcu `(v ~T0 @X0 0 ef2`E12`*uc ]
-"19
-[v _GroupStatusAndVersion `(v ~T0 @X0 0 ef2`E12`*uc ]
+[c E7126 4 5 6 7 10 13 25 29 30 31 .. ]
+[n E7126 . ADC_RA5 ADC_RE0 ADC_RE1 ADC_RE2 ADC_RB1 ADC_RB5 ADC_RD5 channel_CTMU channel_DAC channel_FVRBuf2  ]
+[v F7587 `(v ~T0 @X0 0 tf ]
+"30 MessageFunctions.h
+[c E9 16 17 18 19 20 21 22 33 34 35 36 37 49 50 51 64 65 66 67 81 82 83 84 85 97 .. ]
+[n E9 . CONTROL_SYSTEM_START CONTROL_RESET_MCU CONTROL_RESET_CPLD CONTROL_PA1_SET CONTROL_PA2_SET CONTROL_TEST_LEDS CONTROL_KEEP_ALIVE STATUS_MCU_RUN_TIME STATUS_GET_MCU_FW_VERSION STATUS_GET_CPLD_FW_VERSION STATUS_SET_MCU_FW_VERSION STATUS_SET_CPLD_FW_VERSION ADC_OPERATION ADC_CHANNEL_MODE ADC_CONVERSION_MODE SYNTH_TX_INIT_SET SYNTH_RX_INIT_SET SYNTH_DOWN_SET SYNTH_UP_SET FLASH_EREASE_MEMORY FLASH_READ_CONDITION FLASH_REQUEST_RAW_DATA FLASH_SEND_RAW_DATA FLASH_NO_SAMPLE_YET DAC_SET_VALUE  ]
 "20
-[v _GroupAdc `(v ~T0 @X0 0 ef2`E12`*uc ]
+[v _GroupControlMcu `(v ~T0 @X0 0 ef2`E9`*uc ]
 "21
-[v _GroupSynthesizers `(v ~T0 @X0 0 ef2`E12`*uc ]
+[v _GroupStatusAndVersion `(v ~T0 @X0 0 ef2`E9`*uc ]
 "22
-[v _GroupFlashMemory `(v ~T0 @X0 0 ef2`E12`*uc ]
+[v _GroupAdc `(v ~T0 @X0 0 ef2`E9`*uc ]
 "23
-[v _GroupDAC `(v ~T0 @X0 0 ef2`E12`*uc ]
+[v _GroupSynthesizers `(v ~T0 @X0 0 ef2`E9`*uc ]
+"24
+[v _GroupFlashMemory `(v ~T0 @X0 0 ef2`E9`*uc ]
+"25
+[v _GroupDAC `(v ~T0 @X0 0 ef2`E9`*uc ]
 "36 LedsApp.h
 [v _testLeds `(v ~T0 @X0 0 ef ]
-"48 SystemCommon.h
+"52 SystemCommon.h
 [v _ResetMcu `(v ~T0 @X0 0 ef ]
-"49
+"53
 [v _ResetCpld `(v ~T0 @X0 0 ef ]
 "30 SystemStatus.h
 [v _GetMcuFwVersion `(v ~T0 @X0 0 ef ]
@@ -40,11 +40,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _SetChannelMode `(v ~T0 @X0 0 ef1`*uc ]
 "47
 [v _SetConversionResultFormat `(v ~T0 @X0 0 ef1`*uc ]
-"54 SyntApp.h
+"57 SyntApp.h
 [v _PLLUartInitialize `(v ~T0 @X0 0 ef1`*uc ]
-"57
+"60
 [v _UpdateTxFreq `(v ~T0 @X0 0 ef1`*uc ]
-"58
+"61
 [v _UpdateRxFreq `(v ~T0 @X0 0 ef1`*uc ]
 "33 FlashApp.h
 [v _FlashEreaseMem `(v ~T0 @X0 0 ef ]
@@ -54,47 +54,110 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _FlashReadUart `(v ~T0 @X0 0 ef1`i ]
 "24 DacApp.h
 [v _DacSetValue `(v ~T0 @X0 0 ef1`*uc ]
-[; ;GroupsCommon.h: 28: typedef enum
-[; ;GroupsCommon.h: 29: {
-[; ;GroupsCommon.h: 30: FLASH_RAW_DATA = 64,
-[; ;GroupsCommon.h: 31: }TX_MESSAGE_TYPE;
-[; ;GroupsCommon.h: 33: typedef enum
-[; ;GroupsCommon.h: 34: {
-[; ;GroupsCommon.h: 35: CONTROL_MSG = 0x01,
-[; ;GroupsCommon.h: 36: MCU_STATUS_VERSION_MSG = 0x02,
-[; ;GroupsCommon.h: 37: ADC_MSG = 0x03,
-[; ;GroupsCommon.h: 38: SYNTH_MSG = 0x04,
-[; ;GroupsCommon.h: 39: FLASH_MSG = 0x05,
-[; ;GroupsCommon.h: 40: DAC_MSG = 0x06,
-[; ;GroupsCommon.h: 41: }MSG_GROUPS;
-[; ;GroupsCommon.h: 43: typedef enum
-[; ;GroupsCommon.h: 44: {
-[; ;GroupsCommon.h: 46: CONTROL_SYSTEM_START = 0x10,
-[; ;GroupsCommon.h: 47: CONTROL_RESET_MCU = 0x11,
-[; ;GroupsCommon.h: 48: CONTROL_RESET_CPLD = 0x12,
-[; ;GroupsCommon.h: 49: CONTROL_PA1_SET = 0x13,
-[; ;GroupsCommon.h: 50: CONTROL_PA2_SET = 0x14,
-[; ;GroupsCommon.h: 51: CONTROL_TEST_LEDS = 0x15,
-[; ;GroupsCommon.h: 52: CONTROL_KEEP_ALIVE = 0x16,
-[; ;GroupsCommon.h: 55: STATUS_MCU_RUN_TIME = 0x21,
-[; ;GroupsCommon.h: 56: STATUS_GET_MCU_FW_VERSION = 0x22,
-[; ;GroupsCommon.h: 57: STATUS_GET_CPLD_FW_VERSION = 0x23,
-[; ;GroupsCommon.h: 58: STATUS_SET_MCU_FW_VERSION = 0x24,
-[; ;GroupsCommon.h: 59: STATUS_SET_CPLD_FW_VERSION = 0x25,
-[; ;GroupsCommon.h: 62: ADC_OPERATION = 0x31,
-[; ;GroupsCommon.h: 63: ADC_CHANNEL_MODE = 0x32,
-[; ;GroupsCommon.h: 64: ADC_CONVERSION_MODE = 0x33,
-[; ;GroupsCommon.h: 67: SYNTH_TX_INIT_SET = 0x40,
-[; ;GroupsCommon.h: 68: SYNTH_RX_INIT_SET = 0x41,
-[; ;GroupsCommon.h: 69: SYNTH_DOWN_SET = 0x42,
-[; ;GroupsCommon.h: 70: SYNTH_UP_SET = 0x43,
-[; ;GroupsCommon.h: 73: FLASH_EREASE_MEMORY = 0x51,
-[; ;GroupsCommon.h: 74: FLASH_READ_CONDITION = 0x52,
-[; ;GroupsCommon.h: 75: FLASH_REQUEST_RAW_DATA = 0x53,
-[; ;GroupsCommon.h: 76: FLASH_SEND_RAW_DATA = 0x54,
-[; ;GroupsCommon.h: 77: FLASH_NO_SAMPLE_YET = 0x55,
-[; ;GroupsCommon.h: 80: DAC_SET_VALUE = 0x61,
-[; ;GroupsCommon.h: 81: }MSG_REQUEST;
+[; ;GroupsCommon.h: 12: typedef enum
+[; ;GroupsCommon.h: 13: {
+[; ;GroupsCommon.h: 14: CONTROL_MSG = 0x01,
+[; ;GroupsCommon.h: 15: MCU_STATUS_VERSION_MSG = 0x02,
+[; ;GroupsCommon.h: 16: ADC_MSG = 0x03,
+[; ;GroupsCommon.h: 17: SYNTH_MSG = 0x04,
+[; ;GroupsCommon.h: 18: FLASH_MSG = 0x05,
+[; ;GroupsCommon.h: 19: DAC_MSG = 0x06,
+[; ;GroupsCommon.h: 20: }MSG_GROUPS;
+[; ;GroupsCommon.h: 22: typedef enum
+[; ;GroupsCommon.h: 23: {
+[; ;GroupsCommon.h: 25: CONTROL_SYSTEM_START = 0x10,
+[; ;GroupsCommon.h: 26: CONTROL_RESET_MCU = 0x11,
+[; ;GroupsCommon.h: 27: CONTROL_RESET_CPLD = 0x12,
+[; ;GroupsCommon.h: 28: CONTROL_PA1_SET = 0x13,
+[; ;GroupsCommon.h: 29: CONTROL_PA2_SET = 0x14,
+[; ;GroupsCommon.h: 30: CONTROL_TEST_LEDS = 0x15,
+[; ;GroupsCommon.h: 31: CONTROL_KEEP_ALIVE = 0x16,
+[; ;GroupsCommon.h: 34: STATUS_MCU_RUN_TIME = 0x21,
+[; ;GroupsCommon.h: 35: STATUS_GET_MCU_FW_VERSION = 0x22,
+[; ;GroupsCommon.h: 36: STATUS_GET_CPLD_FW_VERSION = 0x23,
+[; ;GroupsCommon.h: 37: STATUS_SET_MCU_FW_VERSION = 0x24,
+[; ;GroupsCommon.h: 38: STATUS_SET_CPLD_FW_VERSION = 0x25,
+[; ;GroupsCommon.h: 41: ADC_OPERATION = 0x31,
+[; ;GroupsCommon.h: 42: ADC_CHANNEL_MODE = 0x32,
+[; ;GroupsCommon.h: 43: ADC_CONVERSION_MODE = 0x33,
+[; ;GroupsCommon.h: 46: SYNTH_TX_INIT_SET = 0x40,
+[; ;GroupsCommon.h: 47: SYNTH_RX_INIT_SET = 0x41,
+[; ;GroupsCommon.h: 48: SYNTH_DOWN_SET = 0x42,
+[; ;GroupsCommon.h: 49: SYNTH_UP_SET = 0x43,
+[; ;GroupsCommon.h: 52: FLASH_EREASE_MEMORY = 0x51,
+[; ;GroupsCommon.h: 53: FLASH_READ_CONDITION = 0x52,
+[; ;GroupsCommon.h: 54: FLASH_REQUEST_RAW_DATA = 0x53,
+[; ;GroupsCommon.h: 55: FLASH_SEND_RAW_DATA = 0x54,
+[; ;GroupsCommon.h: 56: FLASH_NO_SAMPLE_YET = 0x55,
+[; ;GroupsCommon.h: 59: DAC_SET_VALUE = 0x61,
+[; ;GroupsCommon.h: 60: }MSG_REQUEST;
+[; ;math.h: 30: extern double fabs(double);
+[; ;math.h: 31: extern double floor(double);
+[; ;math.h: 32: extern double ceil(double);
+[; ;math.h: 33: extern double modf(double, double *);
+[; ;math.h: 34: extern double sqrt(double);
+[; ;math.h: 35: extern double atof(const char *);
+[; ;math.h: 36: extern double sin(double) ;
+[; ;math.h: 37: extern double cos(double) ;
+[; ;math.h: 38: extern double tan(double) ;
+[; ;math.h: 39: extern double asin(double) ;
+[; ;math.h: 40: extern double acos(double) ;
+[; ;math.h: 41: extern double atan(double);
+[; ;math.h: 42: extern double atan2(double, double) ;
+[; ;math.h: 43: extern double log(double);
+[; ;math.h: 44: extern double log10(double);
+[; ;math.h: 45: extern double pow(double, double) ;
+[; ;math.h: 46: extern double exp(double) ;
+[; ;math.h: 47: extern double sinh(double) ;
+[; ;math.h: 48: extern double cosh(double) ;
+[; ;math.h: 49: extern double tanh(double);
+[; ;math.h: 50: extern double eval_poly(double, const double *, int);
+[; ;math.h: 51: extern double frexp(double, int *);
+[; ;math.h: 52: extern double ldexp(double, int);
+[; ;math.h: 53: extern double fmod(double, double);
+[; ;math.h: 54: extern double trunc(double);
+[; ;math.h: 55: extern double round(double);
+[; ;stdint.h: 13: typedef signed char int8_t;
+[; ;stdint.h: 20: typedef signed int int16_t;
+[; ;stdint.h: 28: typedef signed short long int int24_t;
+[; ;stdint.h: 36: typedef signed long int int32_t;
+[; ;stdint.h: 43: typedef unsigned char uint8_t;
+[; ;stdint.h: 49: typedef unsigned int uint16_t;
+[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
+[; ;stdint.h: 63: typedef unsigned long int uint32_t;
+[; ;stdint.h: 71: typedef signed char int_least8_t;
+[; ;stdint.h: 78: typedef signed int int_least16_t;
+[; ;stdint.h: 90: typedef signed short long int int_least24_t;
+[; ;stdint.h: 98: typedef signed long int int_least32_t;
+[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
+[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
+[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
+[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
+[; ;stdint.h: 137: typedef signed char int_fast8_t;
+[; ;stdint.h: 144: typedef signed int int_fast16_t;
+[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
+[; ;stdint.h: 164: typedef signed long int int_fast32_t;
+[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
+[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
+[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
+[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
+[; ;stdint.h: 200: typedef int32_t intmax_t;
+[; ;stdint.h: 205: typedef uint32_t uintmax_t;
+[; ;stdint.h: 210: typedef int16_t intptr_t;
+[; ;stdint.h: 215: typedef uint16_t uintptr_t;
+[; ;ctype.h: 4: extern __bit isalpha(char);
+[; ;ctype.h: 5: extern __bit isupper(char);
+[; ;ctype.h: 6: extern __bit islower(char);
+[; ;ctype.h: 7: extern __bit isdigit(char);
+[; ;ctype.h: 8: extern __bit isxdigit(char);
+[; ;ctype.h: 9: extern __bit isspace(char);
+[; ;ctype.h: 10: extern __bit ispunct(char);
+[; ;ctype.h: 11: extern __bit isalnum(char);
+[; ;ctype.h: 12: extern __bit isprint(char);
+[; ;ctype.h: 13: extern __bit isgraph(char);
+[; ;ctype.h: 14: extern __bit iscntrl(char);
+[; ;ctype.h: 17: extern char toupper(char);
+[; ;ctype.h: 18: extern char tolower(char);
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -6644,34 +6707,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 168: extern __nonreentrant void _delay3(unsigned char);
 [; ;pin_manager.h: 448: void PIN_MANAGER_Initialize (void);
 [; ;pin_manager.h: 460: void PIN_MANAGER_IOC(void);
-[; ;stdint.h: 13: typedef signed char int8_t;
-[; ;stdint.h: 20: typedef signed int int16_t;
-[; ;stdint.h: 28: typedef signed short long int int24_t;
-[; ;stdint.h: 36: typedef signed long int int32_t;
-[; ;stdint.h: 43: typedef unsigned char uint8_t;
-[; ;stdint.h: 49: typedef unsigned int uint16_t;
-[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
-[; ;stdint.h: 63: typedef unsigned long int uint32_t;
-[; ;stdint.h: 71: typedef signed char int_least8_t;
-[; ;stdint.h: 78: typedef signed int int_least16_t;
-[; ;stdint.h: 90: typedef signed short long int int_least24_t;
-[; ;stdint.h: 98: typedef signed long int int_least32_t;
-[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
-[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
-[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
-[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
-[; ;stdint.h: 137: typedef signed char int_fast8_t;
-[; ;stdint.h: 144: typedef signed int int_fast16_t;
-[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
-[; ;stdint.h: 164: typedef signed long int int_fast32_t;
-[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
-[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
-[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
-[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
-[; ;stdint.h: 200: typedef int32_t intmax_t;
-[; ;stdint.h: 205: typedef uint32_t uintmax_t;
-[; ;stdint.h: 210: typedef int16_t intptr_t;
-[; ;stdint.h: 215: typedef uint16_t uintptr_t;
 [; ;stdbool.h: 12: typedef unsigned char bool;
 [; ;interrupt_manager.h: 108: void interrupt INTERRUPT_InterruptManager(void);
 [; ;interrupt_manager.h: 120: void INTERRUPT_Initialize (void);
@@ -6769,23 +6804,23 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;AdcApp.h: 31: SINGLE_CHANNEL = 0x1,
 [; ;AdcApp.h: 32: }ADC_SAMPLE_MODE;
 "35 AdcApp.h
-[v _channelArr `CE7043 ~T0 @X0 -> 7 `i e ]
+[v _channelArr `CE7126 ~T0 @X0 -> 7 `i e ]
 [i _channelArr
 :U ..
 "37
--> -> 7 `i `CE7043
+-> -> 7 `i `CE7126
 "38
--> -> 6 `i `CE7043
+-> -> 6 `i `CE7126
 "39
--> -> 5 `i `CE7043
+-> -> 5 `i `CE7126
 "40
--> -> 4 `i `CE7043
+-> -> 4 `i `CE7126
 "41
--> -> 25 `i `CE7043
+-> -> 25 `i `CE7126
 "42
--> -> 10 `i `CE7043
+-> -> 10 `i `CE7126
 "43
--> -> 13 `i `CE7043
+-> -> 13 `i `CE7126
 ..
 ]
 [; ;AdcApp.h: 35: const adc_channel_t channelArr[(7)] =
@@ -6803,32 +6838,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;AdcApp.h: 48: void SetChannelMode(char* data);
 [; ;AdcApp.h: 49: void InitAdcApplicationMgr();
 [; ;AdcApp.h: 50: void AdcConvert();
-[; ;math.h: 30: extern double fabs(double);
-[; ;math.h: 31: extern double floor(double);
-[; ;math.h: 32: extern double ceil(double);
-[; ;math.h: 33: extern double modf(double, double *);
-[; ;math.h: 34: extern double sqrt(double);
-[; ;math.h: 35: extern double atof(const char *);
-[; ;math.h: 36: extern double sin(double) ;
-[; ;math.h: 37: extern double cos(double) ;
-[; ;math.h: 38: extern double tan(double) ;
-[; ;math.h: 39: extern double asin(double) ;
-[; ;math.h: 40: extern double acos(double) ;
-[; ;math.h: 41: extern double atan(double);
-[; ;math.h: 42: extern double atan2(double, double) ;
-[; ;math.h: 43: extern double log(double);
-[; ;math.h: 44: extern double log10(double);
-[; ;math.h: 45: extern double pow(double, double) ;
-[; ;math.h: 46: extern double exp(double) ;
-[; ;math.h: 47: extern double sinh(double) ;
-[; ;math.h: 48: extern double cosh(double) ;
-[; ;math.h: 49: extern double tanh(double);
-[; ;math.h: 50: extern double eval_poly(double, const double *, int);
-[; ;math.h: 51: extern double frexp(double, int *);
-[; ;math.h: 52: extern double ldexp(double, int);
-[; ;math.h: 53: extern double fmod(double, double);
-[; ;math.h: 54: extern double trunc(double);
-[; ;math.h: 55: extern double round(double);
 [; ;DacApp.h: 23: void DacInit(void);
 [; ;DacApp.h: 24: void DacSetValue(char* data);
 [; ;DacApp.h: 27: void DacTest(void);
@@ -6909,21 +6918,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdlib.h: 101: extern char * ltoa(char * buf, long val, int base);
 [; ;stdlib.h: 102: extern char * ultoa(char * buf, unsigned long val, int base);
 [; ;stdlib.h: 104: extern char * ftoa(float f, int * status);
-[; ;EusartApp.h: 16: typedef enum
-[; ;EusartApp.h: 17: {
-[; ;EusartApp.h: 18: START_RX_MESSAGE_READ = 0,
-[; ;EusartApp.h: 19: FIND_MAGIC,
-[; ;EusartApp.h: 20: READ_GROUP,
-[; ;EusartApp.h: 21: READ_REQUEST,
-[; ;EusartApp.h: 22: READ_DATA_SIZE,
-[; ;EusartApp.h: 23: READ_DATA,
-[; ;EusartApp.h: 24: CHECK_CRC,
-[; ;EusartApp.h: 25: JUMP_FUNCTION
-[; ;EusartApp.h: 26: }UART_READ_STATE;
-[; ;EusartApp.h: 29: void readUartMessage(void);
-[; ;EusartApp.h: 30: void InitRxMessageParams(void);
-[; ;EusartApp.h: 33: void WriteUartMessage(char* dataBuf, int dataSize);
-[; ;EusartApp.h: 34: void SendAckMessage(MSG_GROUPS inGroup, MSG_REQUEST inRequest);
+[; ;EusartApp.h: 34: typedef enum
+[; ;EusartApp.h: 35: {
+[; ;EusartApp.h: 36: FLASH_RAW_DATA = 64,
+[; ;EusartApp.h: 37: }TX_MESSAGE_TYPE;
+[; ;EusartApp.h: 39: typedef enum
+[; ;EusartApp.h: 40: {
+[; ;EusartApp.h: 41: START_RX_MESSAGE_READ = 0,
+[; ;EusartApp.h: 42: FIND_MAGIC,
+[; ;EusartApp.h: 43: READ_DATA,
+[; ;EusartApp.h: 44: CHECK_CRC,
+[; ;EusartApp.h: 45: JUMP_FUNCTION
+[; ;EusartApp.h: 46: }UART_READ_STATE;
+[; ;EusartApp.h: 50: void readUartByte(void);
+[; ;EusartApp.h: 51: void InitRxMessageParams(void);
+[; ;EusartApp.h: 54: void WriteUartMessage(char* dataBuf, int dataSize);
+[; ;EusartApp.h: 55: void SendAckMessage(MSG_GROUPS inGroup, MSG_REQUEST inRequest);
 [; ;SevenSegmentApp.h: 19: void segmentCounter(void);
 [; ;SevenSegmentApp.h: 20: unsigned short mask(unsigned short num);
 [; ;SevenSegmentApp.h: 21: void InitSevenSegment(void);
@@ -6944,7 +6954,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "27
 -> -> 301990119 `l `ul
 "28
--> -> 889233526 `l `ul
+-> -> 889266294 `l `ul
 "29
 -> -> 8388645 `l `ul
 "30
@@ -6967,7 +6977,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SyntApp.h: 25: 0x2221BCC9,
 [; ;SyntApp.h: 26: 0x102D0428,
 [; ;SyntApp.h: 27: 0x120000E7,
-[; ;SyntApp.h: 28: 0x3500A076,
+[; ;SyntApp.h: 28: 0x35012076,
 [; ;SyntApp.h: 29: 0x00800025,
 [; ;SyntApp.h: 30: 0x34009B84,
 [; ;SyntApp.h: 31: 0x00000003,
@@ -6984,9 +6994,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "40
 -> -> 6369291 `l `ul
 "41
--> -> 12595770 `l `ul
+-> -> 12592826 `l `ul
 "42
--> -> 572636361 `l `ul
+-> -> 437910729 `l `ul
 "43
 -> -> 271385640 `l `ul
 "44
@@ -7000,31 +7010,34 @@ Version 3.2 HI-TECH Software Intermediate Code
 "48
 -> -> -> 3 `i `l `ul
 "49
--> -> -> 18 `i `l `ul
+-> -> 524338 `l `ul
 "50
--> -> 100663297 `l `ul
+-> -> 27962017 `l `ul
+"52
+-> -> 200410 `l `ul
 ..
 ]
 [; ;SyntApp.h: 37: const uint32_t TEST_PLL_REGISTERS[13] =
 [; ;SyntApp.h: 38: {
-[; ;SyntApp.h: 39: 0x0001041C,
-[; ;SyntApp.h: 40: 0x0061300B,
-[; ;SyntApp.h: 41: 0x00C0323A,
-[; ;SyntApp.h: 42: 0x2221BCC9,
+[; ;SyntApp.h: 39: 0x1041C,
+[; ;SyntApp.h: 40: 0x61300B,
+[; ;SyntApp.h: 41: 0xC026BA,
+[; ;SyntApp.h: 42: 0x1A19FCC9,
 [; ;SyntApp.h: 43: 0x102D0428,
 [; ;SyntApp.h: 44: 0x120000E7,
 [; ;SyntApp.h: 45: 0x35056076,
-[; ;SyntApp.h: 46: 0x00800025,
+[; ;SyntApp.h: 46: 0x800025,
 [; ;SyntApp.h: 47: 0x32008B84,
-[; ;SyntApp.h: 48: 0x00000003,
-[; ;SyntApp.h: 49: 0x00000012,
-[; ;SyntApp.h: 50: 0x06000001,
+[; ;SyntApp.h: 48: 0x3,
+[; ;SyntApp.h: 49: 0x80032,
+[; ;SyntApp.h: 50: 0x1AAAAA1,
+[; ;SyntApp.h: 51: 200410
 [; ;SyntApp.h: 52: };
-[; ;SyntApp.h: 54: void PLLUartInitialize(char* data);
-[; ;SyntApp.h: 55: void PLLInitialize(void);
-[; ;SyntApp.h: 57: void UpdateTxFreq(char* data);
-[; ;SyntApp.h: 58: void UpdateRxFreq(char* data);
-[; ;SyntApp.h: 60: void SYNTH_ISR(void);
+[; ;SyntApp.h: 57: void PLLUartInitialize(char* data);
+[; ;SyntApp.h: 58: void PLLInitialize(void);
+[; ;SyntApp.h: 60: void UpdateTxFreq(char* data);
+[; ;SyntApp.h: 61: void UpdateRxFreq(char* data);
+[; ;SyntApp.h: 63: void SYNTH_ISR(void);
 [; ;LedsApp.h: 22: typedef enum
 [; ;LedsApp.h: 24: {
 [; ;LedsApp.h: 25: OK_START_SYSTEM = 0x3,
@@ -7046,29 +7059,30 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SwSpiApp.h: 18: EXT_DAC
 [; ;SwSpiApp.h: 19: } SPI_PERIPHERAL;
 [; ;SwSpiApp.h: 22: void SWSPI_send_word (SPI_PERIPHERAL phrType, uint32_t data, uint8_t dataSize);
-[; ;SwSpiApp.h: 23: void SWSPI_send_bits(SPI_PERIPHERAL phrType, uint8_t data);
-[; ;SwSpiApp.h: 25: void SwSpi_Data_Pin (SPI_PERIPHERAL phrType, bool cPinMode);
-[; ;SwSpiApp.h: 26: void SwSpi_Clk_Pin (SPI_PERIPHERAL phrType, bool cPinMode);
-[; ;SwSpiApp.h: 28: void SwSpi_Set_CE_Pin (SPI_PERIPHERAL phrType, bool cPinMode);
+[; ;SwSpiApp.h: 24: void SwSpi_Data_Pin (SPI_PERIPHERAL phrType, bool cPinMode);
+[; ;SwSpiApp.h: 25: void SwSpi_Clk_Pin (SPI_PERIPHERAL phrType, bool cPinMode);
+[; ;SwSpiApp.h: 27: void SwSpi_Set_CE_Pin (SPI_PERIPHERAL phrType, bool cPinMode);
+[; ;SwSpiApp.h: 30: void SWSPI_Synth_send_bits(SPI_PERIPHERAL phrType, uint8_t data);
 [; ;SwSpiApp.h: 31: void SwSpi_Synth_Toggle_Clock(SPI_PERIPHERAL phrType);
 [; ;SwSpiApp.h: 32: void SwSpi_Set_Synth_Le_Pin(SPI_PERIPHERAL phrType, bool cPinMode);
-[; ;SwSpiApp.h: 35: void SwSpi_Set_Dac_Sync_Pin(bool cPinMode);
-[; ;SystemCommon.h: 32: typedef enum
-[; ;SystemCommon.h: 33: {
-[; ;SystemCommon.h: 34: START_SYSTEM = 0,
-[; ;SystemCommon.h: 35: ADC_DAC,
-[; ;SystemCommon.h: 36: FLASH,
-[; ;SystemCommon.h: 37: EUSART,
-[; ;SystemCommon.h: 38: FINISH_ROUND
-[; ;SystemCommon.h: 39: }SYSTEM_STATE;
-[; ;SystemCommon.h: 41: unsigned char crc8(char* dataArray, int dataSize);
-[; ;SystemCommon.h: 42: uint8_t make8(uint32_t data, uint8_t dataLocation);
-[; ;SystemCommon.h: 43: void ZeroArray(char* array, int size);
-[; ;SystemCommon.h: 44: int GCD(int num1, int num2);
-[; ;SystemCommon.h: 45: uint32_t GetIntFromUartData(char* data);
-[; ;SystemCommon.h: 48: void ResetMcu(void);
-[; ;SystemCommon.h: 49: void ResetCpld(void);
-[; ;SystemCommon.h: 50: void SendSystemStartAck(void);
+[; ;SwSpiApp.h: 35: void SWSPI_DAC_send_bits(SPI_PERIPHERAL phrType, uint8_t data);
+[; ;SwSpiApp.h: 36: void SwSpi_Set_Dac_Sync_Pin(bool cPinMode);
+[; ;SystemCommon.h: 36: typedef enum
+[; ;SystemCommon.h: 37: {
+[; ;SystemCommon.h: 38: START_SYSTEM = 0,
+[; ;SystemCommon.h: 39: ADC_DAC,
+[; ;SystemCommon.h: 40: FLASH,
+[; ;SystemCommon.h: 41: EUSART,
+[; ;SystemCommon.h: 42: FINISH_ROUND
+[; ;SystemCommon.h: 43: }SYSTEM_STATE;
+[; ;SystemCommon.h: 45: unsigned char crc8(char* dataArray, int dataSize);
+[; ;SystemCommon.h: 46: uint8_t make8(uint32_t data, uint8_t dataLocation);
+[; ;SystemCommon.h: 47: void ZeroArray(char* array, int size);
+[; ;SystemCommon.h: 48: int GCD(int num1, int num2);
+[; ;SystemCommon.h: 49: uint32_t GetIntFromUartData(char* data);
+[; ;SystemCommon.h: 52: void ResetMcu(void);
+[; ;SystemCommon.h: 53: void ResetCpld(void);
+[; ;SystemCommon.h: 54: void SendSystemStartAck(void);
 [; ;SystemStatus.h: 27: void SetMcuFwVersion(char* data);
 [; ;SystemStatus.h: 28: void SetCpldFwVersion(char* data);
 [; ;SystemStatus.h: 30: void GetMcuFwVersion();
@@ -7077,48 +7091,49 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SystemStatus.h: 34: void GetMcuRunTime();
 [; ;SystemStatus.h: 35: void ClearMcuRunTime();
 [; ;SystemStatus.h: 36: void keepAliveSignalUart(void);
-[; ;MessageFunctions.h: 18: void GroupControlMcu(MSG_REQUEST request, char* data);
-[; ;MessageFunctions.h: 19: void GroupStatusAndVersion(MSG_REQUEST request, char* data);
-[; ;MessageFunctions.h: 20: void GroupAdc(MSG_REQUEST request, char* data);
-[; ;MessageFunctions.h: 21: void GroupSynthesizers(MSG_REQUEST request, char* data);
-[; ;MessageFunctions.h: 22: void GroupFlashMemory(MSG_REQUEST request, char* data);
-[; ;MessageFunctions.h: 23: void GroupDAC(MSG_REQUEST request, char* data);
-"26 MessageFunctions.h
-[v _groupsArray `*F7559 ~T0 @X0 -> 6 `i e ]
+[; ;SystemStatus.h: 37: void SendUartSystemInitMessage(void);
+[; ;MessageFunctions.h: 20: void GroupControlMcu(MSG_REQUEST request, char* data);
+[; ;MessageFunctions.h: 21: void GroupStatusAndVersion(MSG_REQUEST request, char* data);
+[; ;MessageFunctions.h: 22: void GroupAdc(MSG_REQUEST request, char* data);
+[; ;MessageFunctions.h: 23: void GroupSynthesizers(MSG_REQUEST request, char* data);
+[; ;MessageFunctions.h: 24: void GroupFlashMemory(MSG_REQUEST request, char* data);
+[; ;MessageFunctions.h: 25: void GroupDAC(MSG_REQUEST request, char* data);
+"28 MessageFunctions.h
+[v _groupsArray `*F7587 ~T0 @X0 -> 6 `i e ]
 [i _groupsArray
 :U ..
-"28
--> &U _GroupControlMcu `*F7559
-"29
--> &U _GroupStatusAndVersion `*F7559
 "30
--> &U _GroupAdc `*F7559
+-> &U _GroupControlMcu `*F7587
 "31
--> &U _GroupSynthesizers `*F7559
+-> &U _GroupStatusAndVersion `*F7587
 "32
--> &U _GroupFlashMemory `*F7559
+-> &U _GroupAdc `*F7587
 "33
--> &U _GroupDAC `*F7559
+-> &U _GroupSynthesizers `*F7587
+"34
+-> &U _GroupFlashMemory `*F7587
+"35
+-> &U _GroupDAC `*F7587
 ..
 ]
-[; ;MessageFunctions.h: 26: void (*groupsArray[(6)])() =
-[; ;MessageFunctions.h: 27: {
-[; ;MessageFunctions.h: 28: GroupControlMcu,
-[; ;MessageFunctions.h: 29: GroupStatusAndVersion,
-[; ;MessageFunctions.h: 30: GroupAdc,
-[; ;MessageFunctions.h: 31: GroupSynthesizers,
-[; ;MessageFunctions.h: 32: GroupFlashMemory,
-[; ;MessageFunctions.h: 33: GroupDAC,
-[; ;MessageFunctions.h: 34: };
+[; ;MessageFunctions.h: 28: void (*groupsArray[(6)])() =
+[; ;MessageFunctions.h: 29: {
+[; ;MessageFunctions.h: 30: GroupControlMcu,
+[; ;MessageFunctions.h: 31: GroupStatusAndVersion,
+[; ;MessageFunctions.h: 32: GroupAdc,
+[; ;MessageFunctions.h: 33: GroupSynthesizers,
+[; ;MessageFunctions.h: 34: GroupFlashMemory,
+[; ;MessageFunctions.h: 35: GroupDAC,
+[; ;MessageFunctions.h: 36: };
 "11 MessageFunctions.c
-[v _GroupControlMcu `(v ~T0 @X0 1 ef2`E12`*uc ]
+[v _GroupControlMcu `(v ~T0 @X0 1 ef2`E9`*uc ]
 "12
 {
 [; ;MessageFunctions.c: 11: void GroupControlMcu(MSG_REQUEST request, char* data)
 [; ;MessageFunctions.c: 12: {
 [e :U _GroupControlMcu ]
 "11
-[v _request `E12 ~T0 @X0 1 r1 ]
+[v _request `E9 ~T0 @X0 1 r1 ]
 [v _data `*uc ~T0 @X0 1 r2 ]
 "12
 [f ]
@@ -7179,11 +7194,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 852  ]
 "13
 [e :U 853 ]
-[e [\ _request , $ . `E12 5 854
- , $ . `E12 1 855
- , $ . `E12 2 856
- , $ . `E12 3 857
- , $ . `E12 4 858
+[e [\ _request , $ . `E9 5 854
+ , $ . `E9 1 855
+ , $ . `E9 2 856
+ , $ . `E9 3 857
+ , $ . `E9 4 858
  859 ]
 "35
 [e :U 852 ]
@@ -7192,14 +7207,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 851 ]
 }
 "38
-[v _GroupStatusAndVersion `(v ~T0 @X0 1 ef2`E12`*uc ]
+[v _GroupStatusAndVersion `(v ~T0 @X0 1 ef2`E9`*uc ]
 "39
 {
 [; ;MessageFunctions.c: 38: void GroupStatusAndVersion(MSG_REQUEST request, char* data)
 [; ;MessageFunctions.c: 39: {
 [e :U _GroupStatusAndVersion ]
 "38
-[v _request `E12 ~T0 @X0 1 r1 ]
+[v _request `E9 ~T0 @X0 1 r1 ]
 [v _data `*uc ~T0 @X0 1 r2 ]
 "39
 [f ]
@@ -7266,11 +7281,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 861  ]
 "40
 [e :U 862 ]
-[e [\ _request , $ . `E12 8 863
- , $ . `E12 10 864
- , $ . `E12 9 865
- , $ . `E12 11 866
- , $ . `E12 7 867
+[e [\ _request , $ . `E9 8 863
+ , $ . `E9 10 864
+ , $ . `E9 9 865
+ , $ . `E9 11 866
+ , $ . `E9 7 867
  868 ]
 "64
 [e :U 861 ]
@@ -7279,14 +7294,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 860 ]
 }
 "67
-[v _GroupAdc `(v ~T0 @X0 1 ef2`E12`*uc ]
+[v _GroupAdc `(v ~T0 @X0 1 ef2`E9`*uc ]
 "68
 {
 [; ;MessageFunctions.c: 67: void GroupAdc(MSG_REQUEST request, char* data)
 [; ;MessageFunctions.c: 68: {
 [e :U _GroupAdc ]
 "67
-[v _request `E12 ~T0 @X0 1 r1 ]
+[v _request `E9 ~T0 @X0 1 r1 ]
 [v _data `*uc ~T0 @X0 1 r2 ]
 "68
 [f ]
@@ -7335,9 +7350,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 870  ]
 "69
 [e :U 871 ]
-[e [\ _request , $ . `E12 12 872
- , $ . `E12 13 873
- , $ . `E12 14 874
+[e [\ _request , $ . `E9 12 872
+ , $ . `E9 13 873
+ , $ . `E9 14 874
  875 ]
 "85
 [e :U 870 ]
@@ -7346,14 +7361,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 869 ]
 }
 "87
-[v _GroupSynthesizers `(v ~T0 @X0 1 ef2`E12`*uc ]
+[v _GroupSynthesizers `(v ~T0 @X0 1 ef2`E9`*uc ]
 "88
 {
 [; ;MessageFunctions.c: 87: void GroupSynthesizers(MSG_REQUEST request, char* data)
 [; ;MessageFunctions.c: 88: {
 [e :U _GroupSynthesizers ]
 "87
-[v _request `E12 ~T0 @X0 1 r1 ]
+[v _request `E9 ~T0 @X0 1 r1 ]
 [v _data `*uc ~T0 @X0 1 r2 ]
 "88
 [f ]
@@ -7411,10 +7426,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 877  ]
 "89
 [e :U 878 ]
-[e [\ _request , $ . `E12 15 879
- , $ . `E12 16 880
- , $ . `E12 17 881
- , $ . `E12 18 882
+[e [\ _request , $ . `E9 15 879
+ , $ . `E9 16 880
+ , $ . `E9 17 881
+ , $ . `E9 18 882
  883 ]
 "109
 [e :U 877 ]
@@ -7423,14 +7438,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 876 ]
 }
 "112
-[v _GroupFlashMemory `(v ~T0 @X0 1 ef2`E12`*uc ]
+[v _GroupFlashMemory `(v ~T0 @X0 1 ef2`E9`*uc ]
 "113
 {
 [; ;MessageFunctions.c: 112: void GroupFlashMemory(MSG_REQUEST request, char* data)
 [; ;MessageFunctions.c: 113: {
 [e :U _GroupFlashMemory ]
 "112
-[v _request `E12 ~T0 @X0 1 r1 ]
+[v _request `E9 ~T0 @X0 1 r1 ]
 [v _data `*uc ~T0 @X0 1 r2 ]
 "113
 [f ]
@@ -7479,9 +7494,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 885  ]
 "114
 [e :U 886 ]
-[e [\ _request , $ . `E12 19 887
- , $ . `E12 20 888
- , $ . `E12 21 889
+[e [\ _request , $ . `E9 19 887
+ , $ . `E9 20 888
+ , $ . `E9 21 889
  890 ]
 "130
 [e :U 885 ]
@@ -7490,14 +7505,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 884 ]
 }
 "133
-[v _GroupDAC `(v ~T0 @X0 1 ef2`E12`*uc ]
+[v _GroupDAC `(v ~T0 @X0 1 ef2`E9`*uc ]
 "134
 {
 [; ;MessageFunctions.c: 133: void GroupDAC(MSG_REQUEST request, char* data)
 [; ;MessageFunctions.c: 134: {
 [e :U _GroupDAC ]
 "133
-[v _request `E12 ~T0 @X0 1 r1 ]
+[v _request `E9 ~T0 @X0 1 r1 ]
 [v _data `*uc ~T0 @X0 1 r2 ]
 "134
 [f ]
@@ -7528,7 +7543,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 892  ]
 "135
 [e :U 893 ]
-[e [\ _request , $ . `E12 24 894
+[e [\ _request , $ . `E9 24 894
  895 ]
 "143
 [e :U 892 ]

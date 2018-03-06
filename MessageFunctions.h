@@ -15,6 +15,8 @@ Author: RoeeZ (Comm-IT).                                                    ****
 #include "AdcApp.h"
 #include "FlashApp.h"
 
+#define NUMBER_OF_MESSAGE_GROUPS    (6)
+
 void GroupControlMcu(MSG_REQUEST request, char* data);
 void GroupStatusAndVersion(MSG_REQUEST request, char* data);
 void GroupAdc(MSG_REQUEST request, char* data);
