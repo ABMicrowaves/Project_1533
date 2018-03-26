@@ -31,7 +31,10 @@ void GroupRx(MSG_REQUEST request, char* data)
             break;
         
         case ADC_SAMPLE:
-            AdcSingleSample(RX_TYPE, data);
+            //AdcSingleSample(RX_TYPE, data);
+            
+            // For testing
+            DacSetValue(data);
             break;
             
         default:

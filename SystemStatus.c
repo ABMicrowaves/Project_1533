@@ -134,6 +134,16 @@ void PrintHelpScreen(void)
     UART_Write_Text(dest);
     sprintf(dest, "$SL <cr>         Test system LEDs.\r\n");
     UART_Write_Text(dest);
+    sprintf(dest, "$TD <DAC NUM><DAC VALUE><cr>         Set TX DAC <0-3> <0-Vref[4 dig]> \r\n");
+    UART_Write_Text(dest);
+//    sprintf(dest, "$                                    DAC0: bla \r\n");
+//    UART_Write_Text(dest);
+//    sprintf(dest, "$                                    DAC1: blabla \r\n");
+//    UART_Write_Text(dest);
+//    sprintf(dest, "$                                    DAC2: blablabla \r\n");
+//    UART_Write_Text(dest);
+//    sprintf(dest, "$                                    DAC2: blablablabla \r\n");
+//    UART_Write_Text(dest);
 }
 
 void PrintSystemStatus()

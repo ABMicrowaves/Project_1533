@@ -1,8 +1,8 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"25 AdcApp.h
-[c E7202 4 5 6 7 29 30 31 .. ]
-[n E7202 . ADC_RREV ADC_FFWR ADC_TMP ADC_VG_MON channel_CTMU channel_DAC channel_FVRBuf2  ]
-[v F7620 `(v ~T0 @X0 0 tf ]
+"26 AdcApp.h
+[c E7208 4 5 6 7 29 30 31 .. ]
+[n E7208 . ADC_RREV ADC_FFWR ADC_TMP ADC_VG_MON channel_CTMU channel_DAC channel_FVRBuf2  ]
+[v F7633 `(v ~T0 @X0 0 tf ]
 "27 MessageFunctions.h
 [c E6 18 22 25 33 40 99 101 35 24 28 .. ]
 [n E6 . TX_RX_SET_BIT_MODE TX_RX_SET_UNIT_FREQUENCY TX_RX_UNIT_UNIT TX_RX_READ_UNIT_STATUS TX_RX_SET_OPERATION_MODE RX_SET_COMRESSION_MODE RX_SET_COMRESSION_RANGE ADC_SAMPLE SYSTEM_PRINT_HELP_LIST SYSTEM_TEST_LED  ]
@@ -12,10 +12,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _GroupTx `(v ~T0 @X0 0 ef2`E6`*uc ]
 "22
 [v _GroupCommon `(v ~T0 @X0 0 ef2`E6`*uc ]
-"34 MessageFunctions.c
+"40 DacApp.h
+[v _DacSetValue `(v ~T0 @X0 0 ef1`*uc ]
+"74 MessageFunctions.c
 [c E194 0 1 .. ]
 [n E194 . TX_TYPE RX_TYPE  ]
-"35 AdcApp.h
+"36 AdcApp.h
 [v _AdcSingleSample `(v ~T0 @X0 0 ef2`E194`*uc ]
 "42 SystemStatus.h
 [v _PrintHelpScreen `(v ~T0 @X0 0 ef ]
@@ -142,6 +144,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SystemCommon.h: 20: TX_TYPE,
 [; ;SystemCommon.h: 21: RX_TYPE,
 [; ;SystemCommon.h: 22: }MODULE_TYPE;
+[; ;SystemCommon.h: 24: typedef enum
+[; ;SystemCommon.h: 25: {
+[; ;SystemCommon.h: 26: SYNTH_TX = 0,
+[; ;SystemCommon.h: 27: SYNTH_RX,
+[; ;SystemCommon.h: 28: EXT_DAC
+[; ;SystemCommon.h: 29: }SPI_PERIPHERAL;
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -6689,8 +6697,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 164: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 166: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 168: extern __nonreentrant void _delay3(unsigned char);
-[; ;pin_manager.h: 400: void PIN_MANAGER_Initialize (void);
-[; ;pin_manager.h: 412: void PIN_MANAGER_IOC(void);
+[; ;pin_manager.h: 417: void PIN_MANAGER_Initialize (void);
+[; ;pin_manager.h: 429: void PIN_MANAGER_IOC(void);
 [; ;stdbool.h: 12: typedef unsigned char bool;
 [; ;interrupt_manager.h: 108: void interrupt INTERRUPT_InterruptManager(void);
 [; ;interrupt_manager.h: 120: void INTERRUPT_Initialize (void);
@@ -6703,35 +6711,41 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;memory.h: 277: uint8_t DATAEE_ReadByte(uint8_t bAdd);
 [; ;memory.h: 293: void MEMORY_ISR(void);
 [; ;memory.h: 294: bool FLASH_IsWriteDone();
-"74 mcc_generated_files/tmr0.h
+"75 mcc_generated_files/tmr0.h
 [v _TimerOneSecFlag `Vuc ~T0 @X0 1 e ]
 [i _TimerOneSecFlag
 -> -> 0 `i `uc
 ]
-[; ;tmr0.h: 74: volatile bool TimerOneSecFlag = 0;
-"75
+[; ;tmr0.h: 75: volatile bool TimerOneSecFlag = 0;
+"76
 [v _TimerSamplingFlag `Vuc ~T0 @X0 1 e ]
 [i _TimerSamplingFlag
 -> -> 0 `i `uc
 ]
-[; ;tmr0.h: 75: volatile bool TimerSamplingFlag = 0;
-"76
+[; ;tmr0.h: 76: volatile bool TimerSamplingFlag = 0;
+"77
 [v _TimerKeepAliveFlag `Vuc ~T0 @X0 1 e ]
 [i _TimerKeepAliveFlag
 -> -> 0 `i `uc
 ]
-[; ;tmr0.h: 76: volatile bool TimerKeepAliveFlag = 0;
-[; ;tmr0.h: 113: void TMR0_Initialize(void);
-[; ;tmr0.h: 142: void TMR0_StartTimer(void);
-[; ;tmr0.h: 174: void TMR0_StopTimer(void);
-[; ;tmr0.h: 210: uint16_t TMR0_ReadTimer(void);
-[; ;tmr0.h: 249: void TMR0_WriteTimer(uint16_t timerVal);
-[; ;tmr0.h: 285: void TMR0_Reload(void);
-[; ;tmr0.h: 303: void TMR0_ISR(void);
-[; ;tmr0.h: 321: void TMR0_CallBack(void);
-[; ;tmr0.h: 339: void TMR0_SetInterruptHandler(void (* InterruptHandler)(void));
-[; ;tmr0.h: 357: extern void (*TMR0_InterruptHandler)(void);
-[; ;tmr0.h: 375: void TMR0_DefaultInterruptHandler(void);
+[; ;tmr0.h: 77: volatile bool TimerKeepAliveFlag = 0;
+"78
+[v _TimertenSecFlag `Vuc ~T0 @X0 1 e ]
+[i _TimertenSecFlag
+-> -> 0 `i `uc
+]
+[; ;tmr0.h: 78: volatile bool TimertenSecFlag = 0;
+[; ;tmr0.h: 115: void TMR0_Initialize(void);
+[; ;tmr0.h: 144: void TMR0_StartTimer(void);
+[; ;tmr0.h: 176: void TMR0_StopTimer(void);
+[; ;tmr0.h: 212: uint16_t TMR0_ReadTimer(void);
+[; ;tmr0.h: 251: void TMR0_WriteTimer(uint16_t timerVal);
+[; ;tmr0.h: 287: void TMR0_Reload(void);
+[; ;tmr0.h: 305: void TMR0_ISR(void);
+[; ;tmr0.h: 323: void TMR0_CallBack(void);
+[; ;tmr0.h: 341: void TMR0_SetInterruptHandler(void (* InterruptHandler)(void));
+[; ;tmr0.h: 359: extern void (*TMR0_InterruptHandler)(void);
+[; ;tmr0.h: 377: void TMR0_DefaultInterruptHandler(void);
 [; ;adc.h: 71: typedef uint16_t adc_result_t;
 [; ;adc.h: 76: typedef struct
 [; ;adc.h: 77: {
@@ -6765,54 +6779,98 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;eusart1.h: 189: uint8_t EUSART1_ReadByte(void);
 [; ;mcc.h: 72: void SYSTEM_Initialize(void);
 [; ;mcc.h: 85: void OSCILLATOR_Initialize(void);
-[; ;FlashApp.h: 31: void FlashSampleWrite(adc_result_t sampleData, uint8_t channelNum);
-[; ;FlashApp.h: 32: void FlashReadUart(int numOfSampleToRead);
-[; ;FlashApp.h: 33: void FlashEreaseMem(void);
-[; ;FlashApp.h: 34: void FlashReadCondition(void);
-[; ;FlashApp.h: 35: bool CheckFlashPrecentage(void);
-[; ;FlashApp.h: 38: uint8_t EepromRead(uint8_t address);
-[; ;FlashApp.h: 39: void EepromWrite(uint8_t address, uint8_t data);
-[; ;FlashApp.h: 42: bool FlashTest(int startAddress, int numOfSamples);
-[; ;FlashApp.h: 43: bool EepromTest(int startAddress, int numOfSamples);
-[; ;AdcApp.h: 19: typedef enum
-[; ;AdcApp.h: 20: {
-[; ;AdcApp.h: 21: CIRCULAR = 0x0,
-[; ;AdcApp.h: 22: SINGLE_CHANNEL = 0x1,
-[; ;AdcApp.h: 23: }ADC_SAMPLE_MODE;
-"25 AdcApp.h
-[v _channelArr `CE7202 ~T0 @X0 -> 4 `i e ]
+[; ;FlashApp.h: 36: void FlashSampleWrite(adc_result_t sampleData, uint8_t channelNum);
+[; ;FlashApp.h: 37: void FlashReadUart(int numOfSampleToRead);
+[; ;FlashApp.h: 38: void FlashEreaseMem(void);
+[; ;FlashApp.h: 39: void FlashReadCondition(void);
+[; ;FlashApp.h: 40: bool CheckFlashPrecentage(void);
+[; ;FlashApp.h: 43: uint8_t EepromRead(uint8_t address);
+[; ;FlashApp.h: 44: void EepromWrite(uint8_t address, uint8_t data);
+[; ;FlashApp.h: 47: bool FlashTest(int startAddress, int numOfSamples);
+[; ;FlashApp.h: 48: bool EepromTest(int startAddress, int numOfSamples);
+[; ;AdcApp.h: 20: typedef enum
+[; ;AdcApp.h: 21: {
+[; ;AdcApp.h: 22: CIRCULAR = 0x0,
+[; ;AdcApp.h: 23: SINGLE_CHANNEL = 0x1,
+[; ;AdcApp.h: 24: }ADC_SAMPLE_MODE;
+"26 AdcApp.h
+[v _channelArr `CE7208 ~T0 @X0 -> 4 `i e ]
 [i _channelArr
 :U ..
-"27
--> -> 4 `i `CE7202
 "28
--> -> 5 `i `CE7202
+-> -> 4 `i `CE7208
 "29
--> -> 6 `i `CE7202
+-> -> 6 `i `CE7208
 "30
--> -> 7 `i `CE7202
+-> -> 5 `i `CE7208
+"31
+-> -> 7 `i `CE7208
 ..
 ]
-[; ;AdcApp.h: 25: const adc_channel_t channelArr[(0x04)] =
-[; ;AdcApp.h: 26: {
-[; ;AdcApp.h: 27: 0x4,
-[; ;AdcApp.h: 28: 0x5,
+[; ;AdcApp.h: 26: const adc_channel_t channelArr[(0x04)] =
+[; ;AdcApp.h: 27: {
+[; ;AdcApp.h: 28: 0x4,
 [; ;AdcApp.h: 29: 0x6,
-[; ;AdcApp.h: 30: 0x7,
-[; ;AdcApp.h: 31: };
-"33
+[; ;AdcApp.h: 30: 0x5,
+[; ;AdcApp.h: 31: 0x7,
+[; ;AdcApp.h: 32: };
+"34
 [v _needToSample `Vuc ~T0 @X0 1 e ]
 [i _needToSample
 -> -> 0 `i `uc
 ]
-[; ;AdcApp.h: 33: volatile bool needToSample = 0;
-[; ;AdcApp.h: 35: void AdcSingleSample(MODULE_TYPE cType, char* data);
-[; ;AdcApp.h: 36: void SetChannelMode(char* data);
-[; ;AdcApp.h: 37: void InitAdcApplicationMgr();
-[; ;AdcApp.h: 38: bool SampleSingleChannel(void);
-[; ;DacApp.h: 23: void DacInit(void);
-[; ;DacApp.h: 24: void DacSetValue(char* data);
-[; ;DacApp.h: 27: void DacTest(void);
+[; ;AdcApp.h: 34: volatile bool needToSample = 0;
+[; ;AdcApp.h: 36: void AdcSingleSample(MODULE_TYPE cType, char* data);
+[; ;AdcApp.h: 37: void SetChannelMode(char* data);
+[; ;AdcApp.h: 38: void InitAdcApplicationMgr();
+[; ;AdcApp.h: 39: bool SampleSingleChannel(void);
+[; ;AdcApp.h: 40: void SampleVgMonChannel(void);
+"23 DacApp.h
+[v _DAC_ADDRES `Cuc ~T0 @X0 -> 4 `i e ]
+[i _DAC_ADDRES
+:U ..
+"25
+-> -> 2 `i `uc
+"26
+-> -> 4 `i `uc
+"27
+-> -> 6 `i `uc
+"28
+-> -> 8 `i `uc
+..
+]
+[; ;DacApp.h: 23: const uint8_t DAC_ADDRES[(4)] =
+[; ;DacApp.h: 24: {
+[; ;DacApp.h: 25: 0x2,
+[; ;DacApp.h: 26: 0x4,
+[; ;DacApp.h: 27: 0x6,
+[; ;DacApp.h: 28: 0x8,
+[; ;DacApp.h: 29: };
+"31
+[v _DAC_DEFAULT_INIT_VALUES `Cui ~T0 @X0 -> 4 `i e ]
+[i _DAC_DEFAULT_INIT_VALUES
+:U ..
+"33
+-> -> 9028 `i `ui
+"34
+-> -> 25412 `i `ui
+"35
+-> 41796 `ui
+"36
+-> 58180 `ui
+..
+]
+[; ;DacApp.h: 31: const uint16_t DAC_DEFAULT_INIT_VALUES[(4)] =
+[; ;DacApp.h: 32: {
+[; ;DacApp.h: 33: 0x2344,
+[; ;DacApp.h: 34: 0x6344,
+[; ;DacApp.h: 35: 0xA344,
+[; ;DacApp.h: 36: 0xE344,
+[; ;DacApp.h: 37: };
+[; ;DacApp.h: 39: void DacInit(void);
+[; ;DacApp.h: 40: void DacSetValue(char* data);
+[; ;DacApp.h: 41: uint16_t DacReadValue(char* data);
+[; ;DacApp.h: 44: uint16_t DacAnalogToDigitalSpi(uint16_t AnalogVal, uint8_t dacNum);
 [; ;string.h: 14: extern void * memcpy(void *, const void *, size_t);
 [; ;string.h: 15: extern void * memmove(void *, const void *, size_t);
 [; ;string.h: 16: extern void * memset(void *, int, size_t);
@@ -7028,29 +7086,24 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;LedsApp.h: 37: void BlinkErrorLeds(LED_OK_INTICATION state);
 [; ;LedsApp.h: 38: void BlinkOkLeds(LED_ERR_INTICATION state);
 [; ;LedsApp.h: 39: void keepAliveSignalLed(void);
-[; ;SwSpiApp.h: 14: typedef enum
-[; ;SwSpiApp.h: 15: {
-[; ;SwSpiApp.h: 16: SYNTH_TX = 0,
-[; ;SwSpiApp.h: 17: SYNTH_RX,
-[; ;SwSpiApp.h: 18: EXT_DAC
-[; ;SwSpiApp.h: 19: } SPI_PERIPHERAL;
-[; ;SwSpiApp.h: 22: void SWSPI_send_word (SPI_PERIPHERAL phrType, uint32_t data, uint8_t dataSize);
-[; ;SwSpiApp.h: 24: void SwSpi_Data_Pin (SPI_PERIPHERAL phrType, bool cPinMode);
-[; ;SwSpiApp.h: 25: void SwSpi_Clk_Pin (SPI_PERIPHERAL phrType, bool cPinMode);
-[; ;SwSpiApp.h: 27: void SwSpi_Set_CE_Pin (SPI_PERIPHERAL phrType, bool cPinMode);
-[; ;SwSpiApp.h: 30: void SWSPI_Synth_send_bits(SPI_PERIPHERAL phrType, uint8_t data);
-[; ;SwSpiApp.h: 31: void SwSpi_Synth_Toggle_Clock(SPI_PERIPHERAL phrType);
-[; ;SwSpiApp.h: 32: void SwSpi_Set_Synth_Le_Pin(SPI_PERIPHERAL phrType, bool cPinMode);
-[; ;SwSpiApp.h: 35: void SWSPI_DAC_send_bits(SPI_PERIPHERAL phrType, uint8_t data);
-[; ;SwSpiApp.h: 36: void SwSpi_Set_Dac_Sync_Pin(bool cPinMode);
-[; ;SystemCommon.h: 43: unsigned char crc8(char* dataArray, int dataSize);
-[; ;SystemCommon.h: 44: uint8_t make8(uint32_t data, uint8_t dataLocation);
-[; ;SystemCommon.h: 45: void ZeroArray(char* array, int size);
-[; ;SystemCommon.h: 46: int GCD(int num1, int num2);
-[; ;SystemCommon.h: 47: uint32_t GetIntFromUartData(char* data);
-[; ;SystemCommon.h: 50: void ResetMcu(void);
-[; ;SystemCommon.h: 51: void ResetCpld(void);
-[; ;SystemCommon.h: 52: void SendSystemStartAck(void);
+[; ;SwSpiApp.h: 14: void SWSPI_send_word (SPI_PERIPHERAL phrType, uint32_t data, uint8_t dataSize);
+[; ;SwSpiApp.h: 15: void SwSpi_Data_Pin (SPI_PERIPHERAL phrType, bool cPinMode);
+[; ;SwSpiApp.h: 16: void SwSpi_Clk_Pin (SPI_PERIPHERAL phrType, bool cPinMode);
+[; ;SwSpiApp.h: 17: void SwSpi_Set_CE_Pin (SPI_PERIPHERAL phrType, bool cPinMode);
+[; ;SwSpiApp.h: 20: void SWSPI_Synth_send_bits(SPI_PERIPHERAL phrType, uint32_t data);
+[; ;SwSpiApp.h: 21: void SwSpi_Synth_Toggle_Clock(SPI_PERIPHERAL phrType);
+[; ;SwSpiApp.h: 22: void SwSpi_Set_Synth_Le_Pin(SPI_PERIPHERAL phrType, bool cPinMode);
+[; ;SwSpiApp.h: 25: void SWSPI_DAC_send_bits(SPI_PERIPHERAL phrType, uint8_t data);
+[; ;SwSpiApp.h: 26: void SwSpi_Set_Dac_Sync_Pin(bool cPinMode);
+[; ;SystemCommon.h: 51: unsigned char crc8(char* dataArray, int dataSize);
+[; ;SystemCommon.h: 52: uint8_t make8(uint32_t data, uint8_t dataLocation);
+[; ;SystemCommon.h: 53: void ZeroArray(char* array, int size);
+[; ;SystemCommon.h: 54: uint32_t GetIntFromUartData(char* data);
+[; ;SystemCommon.h: 55: void Make32bitsArray(bool* array, uint32_t data);
+[; ;SystemCommon.h: 57: void StoreIntInEeprom(uint32_t data, uint8_t address, int numOfByes);
+[; ;SystemCommon.h: 58: uint32_t ReadIntFromEeprom(uint8_t address, int numOfByes);
+[; ;SystemCommon.h: 61: void ResetMcu(void);
+[; ;SystemCommon.h: 62: void SendSystemStartAck(void);
 [; ;SystemStatus.h: 31: void SetMcuFwVersion(char* data);
 [; ;SystemStatus.h: 32: void SetCpldFwVersion(char* data);
 [; ;SystemStatus.h: 34: void GetMcuFwVersion();
@@ -7065,15 +7118,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MessageFunctions.h: 21: void GroupTx(MSG_REQUEST request, char* data);
 [; ;MessageFunctions.h: 22: void GroupCommon(MSG_REQUEST request, char* data);
 "25 MessageFunctions.h
-[v _groupsArray `*F7620 ~T0 @X0 -> 6 `i e ]
+[v _groupsArray `*F7633 ~T0 @X0 -> 6 `i e ]
 [i _groupsArray
 :U ..
 "27
--> &U _GroupRx `*F7620
+-> &U _GroupRx `*F7633
 "28
--> &U _GroupTx `*F7620
+-> &U _GroupTx `*F7633
 "29
--> &U _GroupCommon `*F7620
+-> &U _GroupCommon `*F7633
 ..
 ]
 [; ;MessageFunctions.h: 25: void (*groupsArray[(6)])() =
@@ -7133,21 +7186,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MessageFunctions.c: 33: case ADC_SAMPLE:
 "33
 [e :U 860 ]
-[; ;MessageFunctions.c: 34: AdcSingleSample(RX_TYPE, data);
-"34
-[e ( _AdcSingleSample (2 , . `E194 1 _data ]
-[; ;MessageFunctions.c: 35: break;
-"35
-[e $U 853  ]
-[; ;MessageFunctions.c: 37: default:
+[; ;MessageFunctions.c: 37: DacSetValue(data);
 "37
-[e :U 861 ]
+[e ( _DacSetValue (1 _data ]
 [; ;MessageFunctions.c: 38: break;
 "38
 [e $U 853  ]
-"39
+[; ;MessageFunctions.c: 40: default:
+"40
+[e :U 861 ]
+[; ;MessageFunctions.c: 41: break;
+"41
+[e $U 853  ]
+"42
 }
-[; ;MessageFunctions.c: 39: }
+[; ;MessageFunctions.c: 42: }
 [e $U 853  ]
 "13
 [e :U 854 ]
@@ -7158,92 +7211,92 @@ Version 3.2 HI-TECH Software Intermediate Code
  , $ . `E6 4 859
  , $ . `E6 7 860
  861 ]
-"39
+"42
 [e :U 853 ]
-[; ;MessageFunctions.c: 40: }
-"40
+[; ;MessageFunctions.c: 43: }
+"43
 [e :UE 852 ]
 }
-"42
+"45
 [v _GroupTx `(v ~T0 @X0 1 ef2`E6`*uc ]
-"43
+"46
 {
-[; ;MessageFunctions.c: 42: void GroupTx(MSG_REQUEST request, char* data)
-[; ;MessageFunctions.c: 43: {
+[; ;MessageFunctions.c: 45: void GroupTx(MSG_REQUEST request, char* data)
+[; ;MessageFunctions.c: 46: {
 [e :U _GroupTx ]
-"42
+"45
 [v _request `E6 ~T0 @X0 1 r1 ]
 [v _data `*uc ~T0 @X0 1 r2 ]
-"43
-[f ]
-[; ;MessageFunctions.c: 44: switch (request)
-"44
-[e $U 864  ]
-[; ;MessageFunctions.c: 45: {
-"45
-{
-[; ;MessageFunctions.c: 46: case TX_RX_UNIT_UNIT:
 "46
-[e :U 865 ]
-[; ;MessageFunctions.c: 48: break;
+[f ]
+[; ;MessageFunctions.c: 47: switch (request)
+"47
+[e $U 864  ]
+[; ;MessageFunctions.c: 48: {
 "48
+{
+[; ;MessageFunctions.c: 49: case TX_RX_UNIT_UNIT:
+"49
+[e :U 865 ]
+[; ;MessageFunctions.c: 51: break;
+"51
 [e $U 863  ]
-[; ;MessageFunctions.c: 50: case TX_RX_SET_UNIT_FREQUENCY:
-"50
+[; ;MessageFunctions.c: 53: case TX_RX_SET_UNIT_FREQUENCY:
+"53
 [e :U 866 ]
-[; ;MessageFunctions.c: 52: break;
-"52
+[; ;MessageFunctions.c: 55: break;
+"55
 [e $U 863  ]
-[; ;MessageFunctions.c: 54: case TX_RX_READ_UNIT_STATUS:
-"54
+[; ;MessageFunctions.c: 57: case TX_RX_READ_UNIT_STATUS:
+"57
 [e :U 867 ]
-[; ;MessageFunctions.c: 56: break;
-"56
-[e $U 863  ]
-[; ;MessageFunctions.c: 58: case TX_RX_SET_BIT_MODE:
-"58
-[e :U 868 ]
 [; ;MessageFunctions.c: 59: break;
 "59
 [e $U 863  ]
-[; ;MessageFunctions.c: 61: case TX_RX_SET_OPERATION_MODE:
+[; ;MessageFunctions.c: 61: case TX_RX_SET_BIT_MODE:
 "61
-[e :U 869 ]
+[e :U 868 ]
 [; ;MessageFunctions.c: 62: break;
 "62
 [e $U 863  ]
-[; ;MessageFunctions.c: 64: case RX_SET_COMRESSION_MODE:
+[; ;MessageFunctions.c: 64: case TX_RX_SET_OPERATION_MODE:
 "64
-[e :U 870 ]
+[e :U 869 ]
 [; ;MessageFunctions.c: 65: break;
 "65
 [e $U 863  ]
-[; ;MessageFunctions.c: 67: case RX_SET_COMRESSION_RANGE:
+[; ;MessageFunctions.c: 67: case RX_SET_COMRESSION_MODE:
 "67
-[e :U 871 ]
+[e :U 870 ]
 [; ;MessageFunctions.c: 68: break;
 "68
 [e $U 863  ]
-[; ;MessageFunctions.c: 70: case ADC_SAMPLE:
+[; ;MessageFunctions.c: 70: case RX_SET_COMRESSION_RANGE:
 "70
-[e :U 872 ]
-[; ;MessageFunctions.c: 71: AdcSingleSample(TX_TYPE, data);
+[e :U 871 ]
+[; ;MessageFunctions.c: 71: break;
 "71
-[e ( _AdcSingleSample (2 , . `E194 0 _data ]
-[; ;MessageFunctions.c: 72: break;
-"72
 [e $U 863  ]
-[; ;MessageFunctions.c: 74: default:
+[; ;MessageFunctions.c: 73: case ADC_SAMPLE:
+"73
+[e :U 872 ]
+[; ;MessageFunctions.c: 74: AdcSingleSample(TX_TYPE, data);
 "74
-[e :U 873 ]
+[e ( _AdcSingleSample (2 , . `E194 0 _data ]
 [; ;MessageFunctions.c: 75: break;
 "75
 [e $U 863  ]
-"76
-}
-[; ;MessageFunctions.c: 76: }
+[; ;MessageFunctions.c: 77: default:
+"77
+[e :U 873 ]
+[; ;MessageFunctions.c: 78: break;
+"78
 [e $U 863  ]
-"44
+"79
+}
+[; ;MessageFunctions.c: 79: }
+[e $U 863  ]
+"47
 [e :U 864 ]
 [e [\ _request , $ . `E6 2 865
  , $ . `E6 1 866
@@ -7254,66 +7307,66 @@ Version 3.2 HI-TECH Software Intermediate Code
  , $ . `E6 6 871
  , $ . `E6 7 872
  873 ]
-"76
+"79
 [e :U 863 ]
-[; ;MessageFunctions.c: 77: }
-"77
+[; ;MessageFunctions.c: 80: }
+"80
 [e :UE 862 ]
 }
-"79
+"82
 [v _GroupCommon `(v ~T0 @X0 1 ef2`E6`*uc ]
-"80
+"83
 {
-[; ;MessageFunctions.c: 79: void GroupCommon(MSG_REQUEST request, char* data)
-[; ;MessageFunctions.c: 80: {
+[; ;MessageFunctions.c: 82: void GroupCommon(MSG_REQUEST request, char* data)
+[; ;MessageFunctions.c: 83: {
 [e :U _GroupCommon ]
-"79
+"82
 [v _request `E6 ~T0 @X0 1 r1 ]
 [v _data `*uc ~T0 @X0 1 r2 ]
-"80
-[f ]
-[; ;MessageFunctions.c: 81: switch (request)
-"81
-[e $U 876  ]
-[; ;MessageFunctions.c: 82: {
-"82
-{
-[; ;MessageFunctions.c: 83: case SYSTEM_PRINT_HELP_LIST:
 "83
-[e :U 877 ]
-[; ;MessageFunctions.c: 84: PrintHelpScreen();
+[f ]
+[; ;MessageFunctions.c: 84: switch (request)
 "84
-[e ( _PrintHelpScreen ..  ]
-[; ;MessageFunctions.c: 85: break;
+[e $U 876  ]
+[; ;MessageFunctions.c: 85: {
 "85
-[e $U 875  ]
-[; ;MessageFunctions.c: 87: case SYSTEM_TEST_LED:
+{
+[; ;MessageFunctions.c: 86: case SYSTEM_PRINT_HELP_LIST:
+"86
+[e :U 877 ]
+[; ;MessageFunctions.c: 87: PrintHelpScreen();
 "87
-[e :U 878 ]
-[; ;MessageFunctions.c: 88: testLeds();
+[e ( _PrintHelpScreen ..  ]
+[; ;MessageFunctions.c: 88: break;
 "88
-[e ( _testLeds ..  ]
-[; ;MessageFunctions.c: 89: break;
-"89
 [e $U 875  ]
-[; ;MessageFunctions.c: 91: default:
+[; ;MessageFunctions.c: 90: case SYSTEM_TEST_LED:
+"90
+[e :U 878 ]
+[; ;MessageFunctions.c: 91: testLeds();
 "91
-[e :U 879 ]
+[e ( _testLeds ..  ]
 [; ;MessageFunctions.c: 92: break;
 "92
 [e $U 875  ]
-"93
-}
-[; ;MessageFunctions.c: 93: }
+[; ;MessageFunctions.c: 94: default:
+"94
+[e :U 879 ]
+[; ;MessageFunctions.c: 95: break;
+"95
 [e $U 875  ]
-"81
+"96
+}
+[; ;MessageFunctions.c: 96: }
+[e $U 875  ]
+"84
 [e :U 876 ]
 [e [\ _request , $ . `E6 8 877
  , $ . `E6 9 878
  879 ]
-"93
+"96
 [e :U 875 ]
-[; ;MessageFunctions.c: 94: }
-"94
+[; ;MessageFunctions.c: 97: }
+"97
 [e :UE 874 ]
 }

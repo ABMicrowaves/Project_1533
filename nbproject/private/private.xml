@@ -3,22 +3,31 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/BA/Software_projects/PIC/1533/FlashApp.c</file>
+            <file>file:/C:/BA/Software_projects/PIC/1533/FlashApp.h</file>
+            <file>file:/C:/BA/Software_projects/PIC/1533/EusartApp.h</file>
+            <file>file:/C:/BA/Software_projects/PIC/1533/SytstemSettings.h</file>
+            <file>file:/C:/BA/Software_projects/PIC/1533/DacApp.h</file>
+            <file>file:/C:/BA/Software_projects/PIC/1533/MessageFunctions.c</file>
+            <file>file:/C:/BA/Software_projects/PIC/1533/DacApp.c</file>
+            <file>file:/C:/BA/Software_projects/PIC/1533/MessageFunctions.h</file>
+            <file>file:/C:/BA/Software_projects/PIC/1533/EusartApp.c</file>
+            <file>file:/C:/BA/Software_projects/PIC/1533/SystemStatus.c</file>
             <file>file:/C:/BA/Software_projects/PIC/1533/SystemCommon.h</file>
+            <file>file:/C:/BA/Software_projects/PIC/1533/mcc_generated_files/tmr0.c</file>
             <file>file:/C:/BA/Software_projects/PIC/1533/GroupsCommon.h</file>
             <file>file:/C:/BA/Software_projects/PIC/1533/mcc_generated_files/eusart1.c</file>
             <file>file:/C:/BA/Software_projects/PIC/1533/AdcApp.h</file>
-            <file>file:/C:/BA/Software_projects/PIC/1533/LedsApp.h</file>
             <file>file:/C:/BA/Software_projects/PIC/1533/AdcApp.c</file>
-            <file>file:/C:/BA/Software_projects/PIC/1533/FlashApp.h</file>
+            <file>file:/C:/BA/Software_projects/PIC/1533/SystemSettings.c</file>
+            <file>file:/C:/BA/Software_projects/PIC/1533/SwSpiApp.c</file>
+            <file>file:/C:/BA/Software_projects/PIC/1533/mcc_generated_files/tmr0.h</file>
             <file>file:/C:/BA/Software_projects/PIC/1533/main.c</file>
             <file>file:/C:/BA/Software_projects/PIC/1533/SystemStatus.h</file>
             <file>file:/C:/BA/Software_projects/PIC/1533/mcc_generated_files/adc.h</file>
-            <file>file:/C:/BA/Software_projects/PIC/1533/EusartApp.h</file>
-            <file>file:/C:/BA/Software_projects/PIC/1533/LedsApp.c</file>
-            <file>file:/C:/BA/Software_projects/PIC/1533/SytstemSettings.h</file>
-            <file>file:/C:/BA/Software_projects/PIC/1533/MessageFunctions.c</file>
-            <file>file:/C:/BA/Software_projects/PIC/1533/MessageFunctions.h</file>
-            <file>file:/C:/BA/Software_projects/PIC/1533/EusartApp.c</file>
+            <file>file:/C:/BA/Software_projects/PIC/1533/SwSpiApp.h</file>
+            <file>file:/C:/BA/Software_projects/PIC/1533/mcc_generated_files/pin_manager.h</file>
+            <file>file:/C:/BA/Software_projects/PIC/1533/SystemCommon.c</file>
         </group>
     </open-files>
 </project-private>

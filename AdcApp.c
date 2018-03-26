@@ -54,8 +54,9 @@ void AdcSingleSample(MODULE_TYPE cType, char* data)
     else
     {
         retNum = GetIntFromUartData(data);
-        channelNum  = (retNum / 0xA) % 0x64;
-        numSamples  = retNum % 0xA;
+        channelNum  = data[1] - '0';
+        numSamples  = retNum % (int)(pow(10,data[0] - 1));
+        
         
         if(channelNum > ADC_NUM_CHANNELS)
         {
@@ -65,7 +66,9 @@ void AdcSingleSample(MODULE_TYPE cType, char* data)
         {
             if(cType == TX_TYPE)
             {
-                if(channelNum == 0) UART_Write_Text("SAMPLE CHANNEL NAME");
+                
+                if(channelNum == 0) UART_Write_Text("TX SAMPLE CHANNEL: TX-ADC_RREV\n\r");
+                else if(channelNum == 1) UART_Write_Text("TX SAMPLE CHANNEL ADC_FFWR\n\r");
                 if(channelNum == 0x0 || channelNum == 0x1)
                 {
                     needToSample = true;
@@ -79,12 +82,18 @@ void AdcSingleSample(MODULE_TYPE cType, char* data)
             
             if(cType == RX_TYPE)
             {
-                needToSample = true;
+                if(channelNum == 0) UART_Write_Text("RX SAMPLE CHANNEL RX-ADC_FFWR\n\r");
+                else if(channelNum == 1) UART_Write_Text("RX SAMPLE CHANNEL RX-ADC_VG_MON\n\r");
+                if(channelNum == 0x0 || channelNum == 0x1)
+                {
+                    needToSample = true;
+                }
+                else
+                {
+                    UART_Write_Text("NOT OK \n\r");
+                }
             }
-            else
-            {
-                UART_Write_Text("NOT OK \n\r");
-            }
+            
         }
     }
 }
@@ -106,6 +115,25 @@ bool SampleSingleChannel(void)
     {
         needToSample = false;
         UART_Write_Text("\n\r OK \n\r");
+    }
+}
+
+void SampleVgMonChannel(void)
+{
+    
+    uint16_t adcRes = 0x0;
+    
+    adc_result_t _adcResult = ADC_GetConversion(channelArr[0x3]);
+    adcRes = (_adcResult/pow(2,ADC_BIT_SIZE))*VDD;
+
+    if(adcRes > VGMON_THRESHOLD)
+    {
+        PA_ON_SetHigh();
+        //PA_ON_SetLow();               /////update on the 1533 
+    }
+    else
+    {
+        PA_ON_SetLow();
     }
 }
 // </editor-fold>

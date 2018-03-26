@@ -21,6 +21,14 @@ typedef enum
 	RX_TYPE,
 }MODULE_TYPE;
 
+typedef enum
+{
+    SYNTH_TX = 0,
+    SYNTH_RX,
+    EXT_DAC
+}SPI_PERIPHERAL;
+
+
 #include "mcc_generated_files/mcc.h"
 #include "MessageFunctions.h"
 #include "FlashApp.h"
@@ -36,19 +44,21 @@ typedef enum
 // define special types
 #define ULONG uint32_t
 #define UCHAR uint8_t
-#define MAX_UART_BYTES_SIZE 8
-#define END_UART_STREAM_CHAR 0x40
-
+#define MAX_UART_BYTES_SIZE         8
+#define END_UART_STREAM_CHAR        0x40
+#define NUM_OF_BITS_SYNTH_REG       32
 
 unsigned char crc8(char* dataArray, int dataSize);
 uint8_t make8(uint32_t data, uint8_t dataLocation);
 void ZeroArray(char* array, int size);
-int GCD(int num1, int num2); 
 uint32_t GetIntFromUartData(char* data);
+void Make32bitsArray(bool* array, uint32_t data);
+
+void StoreIntInEeprom(uint32_t data, uint8_t address, int numOfByes);
+uint32_t ReadIntFromEeprom(uint8_t address, int numOfByes);
 
 // System common functions
 void ResetMcu(void);
-void ResetCpld(void);
 void SendSystemStartAck(void);
 
 #endif	/* SYSTEMCOMMON_H */

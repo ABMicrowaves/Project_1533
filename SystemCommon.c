@@ -21,20 +21,40 @@ unsigned char crc8(char* dataArray, int dataSize)
     return crc;
 }
 
+void Make32bitsArray(bool* array, uint32_t data)
+{
+    for(int idx = 0; idx <= NUM_OF_BITS_SYNTH_REG; idx++)
+    {
+        array[NUM_OF_BITS_SYNTH_REG - idx - 1] = data % 2;
+        data /= 2;
+    }
+}
+
 void ZeroArray(char* array, int size)
 {
     memset(array, 0x0, size);
 }
 
-int GCD(int num1, int num2) 
+void StoreIntInEeprom(uint32_t data, uint8_t address, int numOfByes)
 {
-  while (num2 != 0)  
-  {
-    int temp = num2;
-    num2 = num1 % num2;
-    num1 = temp;
-  }
-  return num1;
+    for(uint8_t idx = numOfByes; idx; idx--)
+    {
+        uint8_t val = make8(data, idx - 1);
+        EepromWrite(address - idx, val);
+    }
+}
+
+uint32_t ReadIntFromEeprom(uint8_t address, int numOfByes)
+{
+    uint32_t retVal = 0x00;
+    address -= numOfByes;
+    
+    for(uint8_t idx = 0; idx < numOfByes; idx++)
+    {
+        uint32_t base = pow(2,8*(numOfByes - 1 - idx));
+        retVal = retVal | EepromRead(address + idx) * base;
+    }
+    return retVal;
 }
 
 uint32_t GetIntFromUartData(char* data)
@@ -88,15 +108,6 @@ void ResetMcu()
     
     // Now reset MCU:
     Reset();
-}
-
-void ResetCpld()
-{
-    // Before MCU system reset send ACK:
-    //SendAckMessage((MSG_GROUPS)CONTROL_MSG, (MSG_REQUEST)CONTROL_RESET_CPLD);
-   
-    // Now reset CPLD unit:
-    
 }
 
 void SendSystemStartAck()

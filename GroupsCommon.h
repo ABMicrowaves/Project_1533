@@ -31,7 +31,7 @@ typedef enum
     RX_SET_COMRESSION_RANGE     = 0x65,
     
     // ADC
-    ADC_SAMPLE                  = 0x23,                           
+    ADC_SAMPLE                  = 0x23,        //adc sample command is $rs 1 4                         
     
     // Common system common requests
     SYSTEM_PRINT_HELP_LIST      = 0x18,

@@ -1,37 +1,48 @@
 Version 3.2 HI-TECH Software Intermediate Code
-[v F7303 `(v ~T0 @X0 0 tf ]
+[v F7309 `(v ~T0 @X0 0 tf ]
 "27 MessageFunctions.h
-[c E7229 18 22 25 33 40 99 101 35 24 28 .. ]
-[n E7229 . TX_RX_SET_BIT_MODE TX_RX_SET_UNIT_FREQUENCY TX_RX_UNIT_UNIT TX_RX_READ_UNIT_STATUS TX_RX_SET_OPERATION_MODE RX_SET_COMRESSION_MODE RX_SET_COMRESSION_RANGE ADC_SAMPLE SYSTEM_PRINT_HELP_LIST SYSTEM_TEST_LED  ]
+[c E7235 18 22 25 33 40 99 101 35 24 28 .. ]
+[n E7235 . TX_RX_SET_BIT_MODE TX_RX_SET_UNIT_FREQUENCY TX_RX_UNIT_UNIT TX_RX_READ_UNIT_STATUS TX_RX_SET_OPERATION_MODE RX_SET_COMRESSION_MODE RX_SET_COMRESSION_RANGE ADC_SAMPLE SYSTEM_PRINT_HELP_LIST SYSTEM_TEST_LED  ]
 "20
-[v _GroupRx `(v ~T0 @X0 0 ef2`E7229`*uc ]
+[v _GroupRx `(v ~T0 @X0 0 ef2`E7235`*uc ]
 "21
-[v _GroupTx `(v ~T0 @X0 0 ef2`E7229`*uc ]
+[v _GroupTx `(v ~T0 @X0 0 ef2`E7235`*uc ]
 "22
-[v _GroupCommon `(v ~T0 @X0 0 ef2`E7229`*uc ]
-"25 AdcApp.h
-[c E7185 4 5 6 7 29 30 31 .. ]
-[n E7185 . ADC_RREV ADC_FFWR ADC_TMP ADC_VG_MON channel_CTMU channel_DAC channel_FVRBuf2  ]
+[v _GroupCommon `(v ~T0 @X0 0 ef2`E7235`*uc ]
+"26 AdcApp.h
+[c E7191 4 5 6 7 29 30 31 .. ]
+[n E7191 . ADC_RREV ADC_FFWR ADC_TMP ADC_VG_MON channel_CTMU channel_DAC channel_FVRBuf2  ]
 "13 AdcApp.c
-[c E7610 0 1 .. ]
-[n E7610 . CIRCULAR SINGLE_CHANNEL  ]
+[c E7621 0 1 .. ]
+[n E7621 . CIRCULAR SINGLE_CHANNEL  ]
 "47
 [c E177 0 1 .. ]
 [n E177 . TX_TYPE RX_TYPE  ]
 "60 EusartApp.h
 [v _UART_Write_Text `(v ~T0 @X0 0 ef1`*uc ]
-"47 SystemCommon.h
+"54 SystemCommon.h
 [v _GetIntFromUartData `(ul ~T0 @X0 0 ef1`*uc ]
-"297 mcc_generated_files/adc.h
-[v _ADC_GetConversion `(ui ~T0 @X0 0 ef1`E7185 ]
 "45 C:\Program Files (x86)\Microchip\xc8\v1.45\include\math.h
 [v _pow `(d ~T0 @X0 0 ef2`d`d ]
+"297 mcc_generated_files/adc.h
+[v _ADC_GetConversion `(ui ~T0 @X0 0 ef1`E7191 ]
 "194 C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdio.h
 [v _sprintf `(i ~T0 @X0 0 e1v`*uc`*Cuc ]
-[v F7114 `(v ~T0 @X0 1 tf1`ul ]
+[v F7119 `(v ~T0 @X0 1 tf1`ul ]
 "164 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic18.h
-[v __delay `JF7114 ~T0 @X0 0 e ]
+[v __delay `JF7119 ~T0 @X0 0 e ]
 [p i __delay ]
+"7676 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic18f45k22.h
+[s S379 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S379 . LATB0 LATB1 LATB2 LATB3 LATB4 LATB5 LATB6 LATB7 ]
+"7686
+[s S380 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S380 . LB0 LB1 LB2 LB3 LB4 LB5 LB6 LB7 ]
+"7675
+[u S378 `S379 1 `S380 1 ]
+[n S378 . . . ]
+"7697
+[v _LATBbits `VS378 ~T0 @X0 0 e@3978 ]
 [; ;math.h: 30: extern double fabs(double);
 [; ;math.h: 31: extern double floor(double);
 [; ;math.h: 32: extern double ceil(double);
@@ -134,6 +145,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SystemCommon.h: 20: TX_TYPE,
 [; ;SystemCommon.h: 21: RX_TYPE,
 [; ;SystemCommon.h: 22: }MODULE_TYPE;
+[; ;SystemCommon.h: 24: typedef enum
+[; ;SystemCommon.h: 25: {
+[; ;SystemCommon.h: 26: SYNTH_TX = 0,
+[; ;SystemCommon.h: 27: SYNTH_RX,
+[; ;SystemCommon.h: 28: EXT_DAC
+[; ;SystemCommon.h: 29: }SPI_PERIPHERAL;
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -6681,8 +6698,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 164: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 166: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 168: extern __nonreentrant void _delay3(unsigned char);
-[; ;pin_manager.h: 400: void PIN_MANAGER_Initialize (void);
-[; ;pin_manager.h: 412: void PIN_MANAGER_IOC(void);
+[; ;pin_manager.h: 417: void PIN_MANAGER_Initialize (void);
+[; ;pin_manager.h: 429: void PIN_MANAGER_IOC(void);
 [; ;stdbool.h: 12: typedef unsigned char bool;
 [; ;interrupt_manager.h: 108: void interrupt INTERRUPT_InterruptManager(void);
 [; ;interrupt_manager.h: 120: void INTERRUPT_Initialize (void);
@@ -6695,35 +6712,41 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;memory.h: 277: uint8_t DATAEE_ReadByte(uint8_t bAdd);
 [; ;memory.h: 293: void MEMORY_ISR(void);
 [; ;memory.h: 294: bool FLASH_IsWriteDone();
-"74 mcc_generated_files/tmr0.h
+"75 mcc_generated_files/tmr0.h
 [v _TimerOneSecFlag `Vuc ~T0 @X0 1 e ]
 [i _TimerOneSecFlag
 -> -> 0 `i `uc
 ]
-[; ;tmr0.h: 74: volatile bool TimerOneSecFlag = 0;
-"75
+[; ;tmr0.h: 75: volatile bool TimerOneSecFlag = 0;
+"76
 [v _TimerSamplingFlag `Vuc ~T0 @X0 1 e ]
 [i _TimerSamplingFlag
 -> -> 0 `i `uc
 ]
-[; ;tmr0.h: 75: volatile bool TimerSamplingFlag = 0;
-"76
+[; ;tmr0.h: 76: volatile bool TimerSamplingFlag = 0;
+"77
 [v _TimerKeepAliveFlag `Vuc ~T0 @X0 1 e ]
 [i _TimerKeepAliveFlag
 -> -> 0 `i `uc
 ]
-[; ;tmr0.h: 76: volatile bool TimerKeepAliveFlag = 0;
-[; ;tmr0.h: 113: void TMR0_Initialize(void);
-[; ;tmr0.h: 142: void TMR0_StartTimer(void);
-[; ;tmr0.h: 174: void TMR0_StopTimer(void);
-[; ;tmr0.h: 210: uint16_t TMR0_ReadTimer(void);
-[; ;tmr0.h: 249: void TMR0_WriteTimer(uint16_t timerVal);
-[; ;tmr0.h: 285: void TMR0_Reload(void);
-[; ;tmr0.h: 303: void TMR0_ISR(void);
-[; ;tmr0.h: 321: void TMR0_CallBack(void);
-[; ;tmr0.h: 339: void TMR0_SetInterruptHandler(void (* InterruptHandler)(void));
-[; ;tmr0.h: 357: extern void (*TMR0_InterruptHandler)(void);
-[; ;tmr0.h: 375: void TMR0_DefaultInterruptHandler(void);
+[; ;tmr0.h: 77: volatile bool TimerKeepAliveFlag = 0;
+"78
+[v _TimertenSecFlag `Vuc ~T0 @X0 1 e ]
+[i _TimertenSecFlag
+-> -> 0 `i `uc
+]
+[; ;tmr0.h: 78: volatile bool TimertenSecFlag = 0;
+[; ;tmr0.h: 115: void TMR0_Initialize(void);
+[; ;tmr0.h: 144: void TMR0_StartTimer(void);
+[; ;tmr0.h: 176: void TMR0_StopTimer(void);
+[; ;tmr0.h: 212: uint16_t TMR0_ReadTimer(void);
+[; ;tmr0.h: 251: void TMR0_WriteTimer(uint16_t timerVal);
+[; ;tmr0.h: 287: void TMR0_Reload(void);
+[; ;tmr0.h: 305: void TMR0_ISR(void);
+[; ;tmr0.h: 323: void TMR0_CallBack(void);
+[; ;tmr0.h: 341: void TMR0_SetInterruptHandler(void (* InterruptHandler)(void));
+[; ;tmr0.h: 359: extern void (*TMR0_InterruptHandler)(void);
+[; ;tmr0.h: 377: void TMR0_DefaultInterruptHandler(void);
 [; ;adc.h: 71: typedef uint16_t adc_result_t;
 [; ;adc.h: 76: typedef struct
 [; ;adc.h: 77: {
@@ -6800,28 +6823,28 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;LedsApp.h: 37: void BlinkErrorLeds(LED_OK_INTICATION state);
 [; ;LedsApp.h: 38: void BlinkOkLeds(LED_ERR_INTICATION state);
 [; ;LedsApp.h: 39: void keepAliveSignalLed(void);
-[; ;FlashApp.h: 31: void FlashSampleWrite(adc_result_t sampleData, uint8_t channelNum);
-[; ;FlashApp.h: 32: void FlashReadUart(int numOfSampleToRead);
-[; ;FlashApp.h: 33: void FlashEreaseMem(void);
-[; ;FlashApp.h: 34: void FlashReadCondition(void);
-[; ;FlashApp.h: 35: bool CheckFlashPrecentage(void);
-[; ;FlashApp.h: 38: uint8_t EepromRead(uint8_t address);
-[; ;FlashApp.h: 39: void EepromWrite(uint8_t address, uint8_t data);
-[; ;FlashApp.h: 42: bool FlashTest(int startAddress, int numOfSamples);
-[; ;FlashApp.h: 43: bool EepromTest(int startAddress, int numOfSamples);
+[; ;FlashApp.h: 36: void FlashSampleWrite(adc_result_t sampleData, uint8_t channelNum);
+[; ;FlashApp.h: 37: void FlashReadUart(int numOfSampleToRead);
+[; ;FlashApp.h: 38: void FlashEreaseMem(void);
+[; ;FlashApp.h: 39: void FlashReadCondition(void);
+[; ;FlashApp.h: 40: bool CheckFlashPrecentage(void);
+[; ;FlashApp.h: 43: uint8_t EepromRead(uint8_t address);
+[; ;FlashApp.h: 44: void EepromWrite(uint8_t address, uint8_t data);
+[; ;FlashApp.h: 47: bool FlashTest(int startAddress, int numOfSamples);
+[; ;FlashApp.h: 48: bool EepromTest(int startAddress, int numOfSamples);
 [; ;MessageFunctions.h: 20: void GroupRx(MSG_REQUEST request, char* data);
 [; ;MessageFunctions.h: 21: void GroupTx(MSG_REQUEST request, char* data);
 [; ;MessageFunctions.h: 22: void GroupCommon(MSG_REQUEST request, char* data);
 "25 MessageFunctions.h
-[v _groupsArray `*F7303 ~T0 @X0 -> 6 `i e ]
+[v _groupsArray `*F7309 ~T0 @X0 -> 6 `i e ]
 [i _groupsArray
 :U ..
 "27
--> &U _GroupRx `*F7303
+-> &U _GroupRx `*F7309
 "28
--> &U _GroupTx `*F7303
+-> &U _GroupTx `*F7309
 "29
--> &U _GroupCommon `*F7303
+-> &U _GroupCommon `*F7309
 ..
 ]
 [; ;MessageFunctions.h: 25: void (*groupsArray[(6)])() =
@@ -6830,9 +6853,52 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MessageFunctions.h: 28: GroupTx,
 [; ;MessageFunctions.h: 29: GroupCommon,
 [; ;MessageFunctions.h: 30: };
-[; ;DacApp.h: 23: void DacInit(void);
-[; ;DacApp.h: 24: void DacSetValue(char* data);
-[; ;DacApp.h: 27: void DacTest(void);
+"23 DacApp.h
+[v _DAC_ADDRES `Cuc ~T0 @X0 -> 4 `i e ]
+[i _DAC_ADDRES
+:U ..
+"25
+-> -> 2 `i `uc
+"26
+-> -> 4 `i `uc
+"27
+-> -> 6 `i `uc
+"28
+-> -> 8 `i `uc
+..
+]
+[; ;DacApp.h: 23: const uint8_t DAC_ADDRES[(4)] =
+[; ;DacApp.h: 24: {
+[; ;DacApp.h: 25: 0x2,
+[; ;DacApp.h: 26: 0x4,
+[; ;DacApp.h: 27: 0x6,
+[; ;DacApp.h: 28: 0x8,
+[; ;DacApp.h: 29: };
+"31
+[v _DAC_DEFAULT_INIT_VALUES `Cui ~T0 @X0 -> 4 `i e ]
+[i _DAC_DEFAULT_INIT_VALUES
+:U ..
+"33
+-> -> 9028 `i `ui
+"34
+-> -> 25412 `i `ui
+"35
+-> 41796 `ui
+"36
+-> 58180 `ui
+..
+]
+[; ;DacApp.h: 31: const uint16_t DAC_DEFAULT_INIT_VALUES[(4)] =
+[; ;DacApp.h: 32: {
+[; ;DacApp.h: 33: 0x2344,
+[; ;DacApp.h: 34: 0x6344,
+[; ;DacApp.h: 35: 0xA344,
+[; ;DacApp.h: 36: 0xE344,
+[; ;DacApp.h: 37: };
+[; ;DacApp.h: 39: void DacInit(void);
+[; ;DacApp.h: 40: void DacSetValue(char* data);
+[; ;DacApp.h: 41: uint16_t DacReadValue(char* data);
+[; ;DacApp.h: 44: uint16_t DacAnalogToDigitalSpi(uint16_t AnalogVal, uint8_t dacNum);
 [; ;string.h: 14: extern void * memcpy(void *, const void *, size_t);
 [; ;string.h: 15: extern void * memmove(void *, const void *, size_t);
 [; ;string.h: 16: extern void * memset(void *, int, size_t);
@@ -7034,69 +7100,65 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SyntApp.h: 60: void UpdateTxFreq(char* data);
 [; ;SyntApp.h: 61: void UpdateRxFreq(char* data);
 [; ;SyntApp.h: 63: void SYNTH_ISR(void);
-[; ;SwSpiApp.h: 14: typedef enum
-[; ;SwSpiApp.h: 15: {
-[; ;SwSpiApp.h: 16: SYNTH_TX = 0,
-[; ;SwSpiApp.h: 17: SYNTH_RX,
-[; ;SwSpiApp.h: 18: EXT_DAC
-[; ;SwSpiApp.h: 19: } SPI_PERIPHERAL;
-[; ;SwSpiApp.h: 22: void SWSPI_send_word (SPI_PERIPHERAL phrType, uint32_t data, uint8_t dataSize);
-[; ;SwSpiApp.h: 24: void SwSpi_Data_Pin (SPI_PERIPHERAL phrType, bool cPinMode);
-[; ;SwSpiApp.h: 25: void SwSpi_Clk_Pin (SPI_PERIPHERAL phrType, bool cPinMode);
-[; ;SwSpiApp.h: 27: void SwSpi_Set_CE_Pin (SPI_PERIPHERAL phrType, bool cPinMode);
-[; ;SwSpiApp.h: 30: void SWSPI_Synth_send_bits(SPI_PERIPHERAL phrType, uint8_t data);
-[; ;SwSpiApp.h: 31: void SwSpi_Synth_Toggle_Clock(SPI_PERIPHERAL phrType);
-[; ;SwSpiApp.h: 32: void SwSpi_Set_Synth_Le_Pin(SPI_PERIPHERAL phrType, bool cPinMode);
-[; ;SwSpiApp.h: 35: void SWSPI_DAC_send_bits(SPI_PERIPHERAL phrType, uint8_t data);
-[; ;SwSpiApp.h: 36: void SwSpi_Set_Dac_Sync_Pin(bool cPinMode);
-[; ;SystemCommon.h: 43: unsigned char crc8(char* dataArray, int dataSize);
-[; ;SystemCommon.h: 44: uint8_t make8(uint32_t data, uint8_t dataLocation);
-[; ;SystemCommon.h: 45: void ZeroArray(char* array, int size);
-[; ;SystemCommon.h: 46: int GCD(int num1, int num2);
-[; ;SystemCommon.h: 47: uint32_t GetIntFromUartData(char* data);
-[; ;SystemCommon.h: 50: void ResetMcu(void);
-[; ;SystemCommon.h: 51: void ResetCpld(void);
-[; ;SystemCommon.h: 52: void SendSystemStartAck(void);
-[; ;AdcApp.h: 19: typedef enum
-[; ;AdcApp.h: 20: {
-[; ;AdcApp.h: 21: CIRCULAR = 0x0,
-[; ;AdcApp.h: 22: SINGLE_CHANNEL = 0x1,
-[; ;AdcApp.h: 23: }ADC_SAMPLE_MODE;
-"25 AdcApp.h
-[v _channelArr `CE7185 ~T0 @X0 -> 4 `i e ]
+[; ;SwSpiApp.h: 14: void SWSPI_send_word (SPI_PERIPHERAL phrType, uint32_t data, uint8_t dataSize);
+[; ;SwSpiApp.h: 15: void SwSpi_Data_Pin (SPI_PERIPHERAL phrType, bool cPinMode);
+[; ;SwSpiApp.h: 16: void SwSpi_Clk_Pin (SPI_PERIPHERAL phrType, bool cPinMode);
+[; ;SwSpiApp.h: 17: void SwSpi_Set_CE_Pin (SPI_PERIPHERAL phrType, bool cPinMode);
+[; ;SwSpiApp.h: 20: void SWSPI_Synth_send_bits(SPI_PERIPHERAL phrType, uint32_t data);
+[; ;SwSpiApp.h: 21: void SwSpi_Synth_Toggle_Clock(SPI_PERIPHERAL phrType);
+[; ;SwSpiApp.h: 22: void SwSpi_Set_Synth_Le_Pin(SPI_PERIPHERAL phrType, bool cPinMode);
+[; ;SwSpiApp.h: 25: void SWSPI_DAC_send_bits(SPI_PERIPHERAL phrType, uint8_t data);
+[; ;SwSpiApp.h: 26: void SwSpi_Set_Dac_Sync_Pin(bool cPinMode);
+[; ;SystemCommon.h: 51: unsigned char crc8(char* dataArray, int dataSize);
+[; ;SystemCommon.h: 52: uint8_t make8(uint32_t data, uint8_t dataLocation);
+[; ;SystemCommon.h: 53: void ZeroArray(char* array, int size);
+[; ;SystemCommon.h: 54: uint32_t GetIntFromUartData(char* data);
+[; ;SystemCommon.h: 55: void Make32bitsArray(bool* array, uint32_t data);
+[; ;SystemCommon.h: 57: void StoreIntInEeprom(uint32_t data, uint8_t address, int numOfByes);
+[; ;SystemCommon.h: 58: uint32_t ReadIntFromEeprom(uint8_t address, int numOfByes);
+[; ;SystemCommon.h: 61: void ResetMcu(void);
+[; ;SystemCommon.h: 62: void SendSystemStartAck(void);
+[; ;AdcApp.h: 20: typedef enum
+[; ;AdcApp.h: 21: {
+[; ;AdcApp.h: 22: CIRCULAR = 0x0,
+[; ;AdcApp.h: 23: SINGLE_CHANNEL = 0x1,
+[; ;AdcApp.h: 24: }ADC_SAMPLE_MODE;
+"26 AdcApp.h
+[v _channelArr `CE7191 ~T0 @X0 -> 4 `i e ]
 [i _channelArr
 :U ..
-"27
--> -> 4 `i `CE7185
 "28
--> -> 5 `i `CE7185
+-> -> 4 `i `CE7191
 "29
--> -> 6 `i `CE7185
+-> -> 6 `i `CE7191
 "30
--> -> 7 `i `CE7185
+-> -> 5 `i `CE7191
+"31
+-> -> 7 `i `CE7191
 ..
 ]
-[; ;AdcApp.h: 25: const adc_channel_t channelArr[(0x04)] =
-[; ;AdcApp.h: 26: {
-[; ;AdcApp.h: 27: 0x4,
-[; ;AdcApp.h: 28: 0x5,
+[; ;AdcApp.h: 26: const adc_channel_t channelArr[(0x04)] =
+[; ;AdcApp.h: 27: {
+[; ;AdcApp.h: 28: 0x4,
 [; ;AdcApp.h: 29: 0x6,
-[; ;AdcApp.h: 30: 0x7,
-[; ;AdcApp.h: 31: };
-"33
+[; ;AdcApp.h: 30: 0x5,
+[; ;AdcApp.h: 31: 0x7,
+[; ;AdcApp.h: 32: };
+"34
 [v _needToSample `Vuc ~T0 @X0 1 e ]
 [i _needToSample
 -> -> 0 `i `uc
 ]
-[; ;AdcApp.h: 33: volatile bool needToSample = 0;
-[; ;AdcApp.h: 35: void AdcSingleSample(MODULE_TYPE cType, char* data);
-[; ;AdcApp.h: 36: void SetChannelMode(char* data);
-[; ;AdcApp.h: 37: void InitAdcApplicationMgr();
-[; ;AdcApp.h: 38: bool SampleSingleChannel(void);
+[; ;AdcApp.h: 34: volatile bool needToSample = 0;
+[; ;AdcApp.h: 36: void AdcSingleSample(MODULE_TYPE cType, char* data);
+[; ;AdcApp.h: 37: void SetChannelMode(char* data);
+[; ;AdcApp.h: 38: void InitAdcApplicationMgr();
+[; ;AdcApp.h: 39: bool SampleSingleChannel(void);
+[; ;AdcApp.h: 40: void SampleVgMonChannel(void);
 "13 AdcApp.c
-[v _adcSampleMode `E7610 ~T0 @X0 1 e ]
+[v _adcSampleMode `E7621 ~T0 @X0 1 e ]
 [i _adcSampleMode
-. `E7610 0
+. `E7621 0
 ]
 [; ;AdcApp.c: 13: ADC_SAMPLE_MODE adcSampleMode = CIRCULAR;
 "14
@@ -7133,7 +7195,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;AdcApp.c: 25: adcSampleMode = CIRCULAR;
 "25
-[e = _adcSampleMode . `E7610 0 ]
+[e = _adcSampleMode . `E7621 0 ]
 [; ;AdcApp.c: 26: }
 "26
 [e :UE 852 ]
@@ -7151,10 +7213,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;AdcApp.c: 35: adcSampleMode = data[0];
 "35
-[e = _adcSampleMode -> *U + _data * -> -> 0 `i `x -> -> # *U _data `i `x `E7610 ]
+[e = _adcSampleMode -> *U + _data * -> -> 0 `i `x -> -> # *U _data `i `x `E7621 ]
 [; ;AdcApp.c: 36: if (adcSampleMode == SINGLE_CHANNEL)
 "36
-[e $ ! == -> _adcSampleMode `i -> . `E7610 1 `i 854  ]
+[e $ ! == -> _adcSampleMode `i -> . `E7621 1 `i 854  ]
 [; ;AdcApp.c: 37: {
 "37
 {
@@ -7207,176 +7269,265 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;AdcApp.c: 56: retNum = GetIntFromUartData(data);
 "56
 [e = _retNum ( _GetIntFromUartData (1 _data ]
-[; ;AdcApp.c: 57: channelNum = (retNum / 0xA) % 0x64;
+[; ;AdcApp.c: 57: channelNum = data[1] - '0';
 "57
-[e = _channelNum -> % / _retNum -> -> -> 10 `i `l `ul -> -> -> 100 `i `l `ul `ui ]
-[; ;AdcApp.c: 58: numSamples = retNum % 0xA;
+[e = _channelNum - -> *U + _data * -> -> 1 `i `x -> -> # *U _data `i `x `ui -> 48 `ui ]
+[; ;AdcApp.c: 58: numSamples = retNum % (int)(pow(10,data[0] - 1));
 "58
-[e = _numSamples -> % _retNum -> -> -> 10 `i `l `ul `ui ]
-[; ;AdcApp.c: 60: if(channelNum > (0x04))
-"60
-[e $ ! > _channelNum -> -> 4 `i `ui 858  ]
-[; ;AdcApp.c: 61: {
+[e = _numSamples -> % _retNum -> -> -> ( _pow (2 , -> -> 10 `i `d -> - -> *U + _data * -> -> 0 `i `x -> -> # *U _data `i `x `i -> 1 `i `d `i `l `ul `ui ]
+[; ;AdcApp.c: 61: if(channelNum > (0x04))
 "61
-{
-[; ;AdcApp.c: 62: UART_Write_Text("NOT OK \n\r");
+[e $ ! > _channelNum -> -> 4 `i `ui 858  ]
+[; ;AdcApp.c: 62: {
 "62
-[e ( _UART_Write_Text (1 -> :s 2C `*uc ]
+{
+[; ;AdcApp.c: 63: UART_Write_Text("NOT OK \n\r");
 "63
-}
-[; ;AdcApp.c: 63: }
-[e $U 859  ]
+[e ( _UART_Write_Text (1 -> :s 2C `*uc ]
 "64
-[e :U 858 ]
-[; ;AdcApp.c: 64: else
-[; ;AdcApp.c: 65: {
+}
+[; ;AdcApp.c: 64: }
+[e $U 859  ]
 "65
-{
-[; ;AdcApp.c: 66: if(cType == TX_TYPE)
+[e :U 858 ]
+[; ;AdcApp.c: 65: else
+[; ;AdcApp.c: 66: {
 "66
-[e $ ! == -> _cType `i -> . `E177 0 `i 860  ]
-[; ;AdcApp.c: 67: {
-"67
 {
-[; ;AdcApp.c: 68: if(channelNum == 0) UART_Write_Text("SAMPLE CHANNEL NAME");
+[; ;AdcApp.c: 67: if(cType == TX_TYPE)
+"67
+[e $ ! == -> _cType `i -> . `E177 0 `i 860  ]
+[; ;AdcApp.c: 68: {
 "68
+{
+[; ;AdcApp.c: 70: if(channelNum == 0) UART_Write_Text("TX SAMPLE CHANNEL: TX-ADC_RREV\n\r");
+"70
 [e $ ! == _channelNum -> -> 0 `i `ui 861  ]
 [e ( _UART_Write_Text (1 -> :s 3C `*uc ]
-[e :U 861 ]
-[; ;AdcApp.c: 69: if(channelNum == 0x0 || channelNum == 0x1)
-"69
-[e $ ! || == _channelNum -> -> 0 `i `ui == _channelNum -> -> 1 `i `ui 862  ]
-[; ;AdcApp.c: 70: {
-"70
-{
-[; ;AdcApp.c: 71: needToSample = 1;
+[e $U 862  ]
 "71
-[e = _needToSample -> -> 1 `i `uc ]
-"72
-}
-[; ;AdcApp.c: 72: }
-[e $U 863  ]
-"73
-[e :U 862 ]
-[; ;AdcApp.c: 73: else
-[; ;AdcApp.c: 74: {
-"74
-{
-[; ;AdcApp.c: 75: UART_Write_Text("NOT OK \n\r");
-"75
+[e :U 861 ]
+[; ;AdcApp.c: 71: else if(channelNum == 1) UART_Write_Text("TX SAMPLE CHANNEL ADC_FFWR\n\r");
+[e $ ! == _channelNum -> -> 1 `i `ui 863  ]
 [e ( _UART_Write_Text (1 -> :s 4C `*uc ]
-"76
-}
 [e :U 863 ]
-"78
-}
-[e :U 860 ]
-[; ;AdcApp.c: 76: }
-[; ;AdcApp.c: 78: }
-[; ;AdcApp.c: 80: if(cType == RX_TYPE)
-"80
-[e $ ! == -> _cType `i -> . `E177 1 `i 864  ]
-[; ;AdcApp.c: 81: {
-"81
+"72
+[e :U 862 ]
+[; ;AdcApp.c: 72: if(channelNum == 0x0 || channelNum == 0x1)
+[e $ ! || == _channelNum -> -> 0 `i `ui == _channelNum -> -> 1 `i `ui 864  ]
+[; ;AdcApp.c: 73: {
+"73
 {
-[; ;AdcApp.c: 82: needToSample = 1;
-"82
+[; ;AdcApp.c: 74: needToSample = 1;
+"74
 [e = _needToSample -> -> 1 `i `uc ]
-"83
+"75
 }
-[; ;AdcApp.c: 83: }
+[; ;AdcApp.c: 75: }
 [e $U 865  ]
-"84
+"76
 [e :U 864 ]
-[; ;AdcApp.c: 84: else
-[; ;AdcApp.c: 85: {
-"85
+[; ;AdcApp.c: 76: else
+[; ;AdcApp.c: 77: {
+"77
 {
-[; ;AdcApp.c: 86: UART_Write_Text("NOT OK \n\r");
-"86
+[; ;AdcApp.c: 78: UART_Write_Text("NOT OK \n\r");
+"78
 [e ( _UART_Write_Text (1 -> :s 5C `*uc ]
-"87
+"79
 }
 [e :U 865 ]
+"81
+}
+[e :U 860 ]
+[; ;AdcApp.c: 79: }
+[; ;AdcApp.c: 81: }
+[; ;AdcApp.c: 83: if(cType == RX_TYPE)
+"83
+[e $ ! == -> _cType `i -> . `E177 1 `i 866  ]
+[; ;AdcApp.c: 84: {
+"84
+{
+[; ;AdcApp.c: 85: if(channelNum == 0) UART_Write_Text("RX SAMPLE CHANNEL RX-ADC_FFWR\n\r");
+"85
+[e $ ! == _channelNum -> -> 0 `i `ui 867  ]
+[e ( _UART_Write_Text (1 -> :s 6C `*uc ]
+[e $U 868  ]
+"86
+[e :U 867 ]
+[; ;AdcApp.c: 86: else if(channelNum == 1) UART_Write_Text("RX SAMPLE CHANNEL RX-ADC_VG_MON\n\r");
+[e $ ! == _channelNum -> -> 1 `i `ui 869  ]
+[e ( _UART_Write_Text (1 -> :s 7C `*uc ]
+[e :U 869 ]
+"87
+[e :U 868 ]
+[; ;AdcApp.c: 87: if(channelNum == 0x0 || channelNum == 0x1)
+[e $ ! || == _channelNum -> -> 0 `i `ui == _channelNum -> -> 1 `i `ui 870  ]
+[; ;AdcApp.c: 88: {
 "88
+{
+[; ;AdcApp.c: 89: needToSample = 1;
+"89
+[e = _needToSample -> -> 1 `i `uc ]
+"90
+}
+[; ;AdcApp.c: 90: }
+[e $U 871  ]
+"91
+[e :U 870 ]
+[; ;AdcApp.c: 91: else
+[; ;AdcApp.c: 92: {
+"92
+{
+[; ;AdcApp.c: 93: UART_Write_Text("NOT OK \n\r");
+"93
+[e ( _UART_Write_Text (1 -> :s 8C `*uc ]
+"94
+}
+[e :U 871 ]
+"95
+}
+[e :U 866 ]
+"97
 }
 [e :U 859 ]
-"89
+"98
 }
 [e :U 857 ]
-[; ;AdcApp.c: 87: }
-[; ;AdcApp.c: 88: }
-[; ;AdcApp.c: 89: }
-[; ;AdcApp.c: 90: }
-"90
+[; ;AdcApp.c: 94: }
+[; ;AdcApp.c: 95: }
+[; ;AdcApp.c: 97: }
+[; ;AdcApp.c: 98: }
+[; ;AdcApp.c: 99: }
+"99
 [e :UE 855 ]
 }
-"92
+"101
 [v _SampleSingleChannel `(uc ~T0 @X0 1 ef ]
-"93
+"102
 {
-[; ;AdcApp.c: 92: bool SampleSingleChannel(void)
-[; ;AdcApp.c: 93: {
+[; ;AdcApp.c: 101: bool SampleSingleChannel(void)
+[; ;AdcApp.c: 102: {
 [e :U _SampleSingleChannel ]
 [f ]
-"94
-[v _dest `uc ~T0 @X0 -> 50 `i a ]
-"95
-[v _adcRes `ui ~T0 @X0 1 a ]
-[; ;AdcApp.c: 94: char dest[50];
-[; ;AdcApp.c: 95: uint16_t adcRes = 0x0;
-[e = _adcRes -> -> 0 `i `ui ]
-[; ;AdcApp.c: 96: if(numSamples--)
-"96
-[e $ ! != -- _numSamples -> -> 1 `i `ui -> -> 0 `i `ui 867  ]
-[; ;AdcApp.c: 97: {
-"97
-{
-"98
-[v __adcResult `ui ~T0 @X0 1 a ]
-[; ;AdcApp.c: 98: adc_result_t _adcResult = ADC_GetConversion(channelArr[channelNum]);
-[e = __adcResult ( _ADC_GetConversion (1 *U + &U _channelArr * -> _channelNum `ux -> -> # *U &U _channelArr `ui `ux ]
-[; ;AdcApp.c: 99: adcRes = (_adcResult/pow(2,(10)))*(3340);
-"99
-[e = _adcRes -> * / -> __adcResult `d ( _pow (2 , -> -> 2 `i `d -> -> 10 `i `d -> -> 3340 `i `d `ui ]
-[; ;AdcApp.c: 101: sprintf(dest, "%d \t", adcRes);
-"101
-[e ( _sprintf (1 , (. , &U _dest :s 6C _adcRes ]
-[; ;AdcApp.c: 102: UART_Write_Text(dest);
-"102
-[e ( _UART_Write_Text (1 &U _dest ]
-[; ;AdcApp.c: 103: _delay((unsigned long)((1000)*(8000000/4000.0)));
 "103
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[v _dest `uc ~T0 @X0 -> 50 `i a ]
 "104
-}
-[; ;AdcApp.c: 104: }
-[e $U 868  ]
+[v _adcRes `ui ~T0 @X0 1 a ]
+[; ;AdcApp.c: 103: char dest[50];
+[; ;AdcApp.c: 104: uint16_t adcRes = 0x0;
+[e = _adcRes -> -> 0 `i `ui ]
+[; ;AdcApp.c: 105: if(numSamples--)
 "105
-[e :U 867 ]
-[; ;AdcApp.c: 105: else
+[e $ ! != -- _numSamples -> -> 1 `i `ui -> -> 0 `i `ui 873  ]
 [; ;AdcApp.c: 106: {
 "106
 {
-[; ;AdcApp.c: 107: needToSample = 0;
 "107
-[e = _needToSample -> -> 0 `i `uc ]
-[; ;AdcApp.c: 108: UART_Write_Text("\n\r OK \n\r");
+[v __adcResult `ui ~T0 @X0 1 a ]
+[; ;AdcApp.c: 107: adc_result_t _adcResult = ADC_GetConversion(channelArr[channelNum]);
+[e = __adcResult ( _ADC_GetConversion (1 *U + &U _channelArr * -> _channelNum `ux -> -> # *U &U _channelArr `ui `ux ]
+[; ;AdcApp.c: 108: adcRes = (_adcResult/pow(2,(10)))*(3340);
 "108
-[e ( _UART_Write_Text (1 -> :s 7C `*uc ]
-"109
-}
-[e :U 868 ]
-[; ;AdcApp.c: 109: }
-[; ;AdcApp.c: 110: }
+[e = _adcRes -> * / -> __adcResult `d ( _pow (2 , -> -> 2 `i `d -> -> 10 `i `d -> -> 3340 `i `d `ui ]
+[; ;AdcApp.c: 110: sprintf(dest, "%d \t", adcRes);
 "110
-[e :UE 866 ]
+[e ( _sprintf (1 , (. , &U _dest :s 9C _adcRes ]
+[; ;AdcApp.c: 111: UART_Write_Text(dest);
+"111
+[e ( _UART_Write_Text (1 &U _dest ]
+[; ;AdcApp.c: 112: _delay((unsigned long)((1000)*(8000000/4000.0)));
+"112
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"113
+}
+[; ;AdcApp.c: 113: }
+[e $U 874  ]
+"114
+[e :U 873 ]
+[; ;AdcApp.c: 114: else
+[; ;AdcApp.c: 115: {
+"115
+{
+[; ;AdcApp.c: 116: needToSample = 0;
+"116
+[e = _needToSample -> -> 0 `i `uc ]
+[; ;AdcApp.c: 117: UART_Write_Text("\n\r OK \n\r");
+"117
+[e ( _UART_Write_Text (1 -> :s 10C `*uc ]
+"118
+}
+[e :U 874 ]
+[; ;AdcApp.c: 118: }
+[; ;AdcApp.c: 119: }
+"119
+[e :UE 872 ]
+}
+"121
+[v _SampleVgMonChannel `(v ~T0 @X0 1 ef ]
+"122
+{
+[; ;AdcApp.c: 121: void SampleVgMonChannel(void)
+[; ;AdcApp.c: 122: {
+[e :U _SampleVgMonChannel ]
+[f ]
+"124
+[v _adcRes `ui ~T0 @X0 1 a ]
+[; ;AdcApp.c: 124: uint16_t adcRes = 0x0;
+[e = _adcRes -> -> 0 `i `ui ]
+"126
+[v __adcResult `ui ~T0 @X0 1 a ]
+[; ;AdcApp.c: 126: adc_result_t _adcResult = ADC_GetConversion(channelArr[0x3]);
+[e = __adcResult ( _ADC_GetConversion (1 *U + &U _channelArr * -> -> -> 3 `i `ui `ux -> -> # *U &U _channelArr `ui `ux ]
+[; ;AdcApp.c: 127: adcRes = (_adcResult/pow(2,(10)))*(3340);
+"127
+[e = _adcRes -> * / -> __adcResult `d ( _pow (2 , -> -> 2 `i `d -> -> 10 `i `d -> -> 3340 `i `d `ui ]
+[; ;AdcApp.c: 129: if(adcRes > (3400) / 2)
+"129
+[e $ ! > _adcRes -> / -> 3400 `i -> 2 `i `ui 876  ]
+[; ;AdcApp.c: 130: {
+"130
+{
+[; ;AdcApp.c: 131: do { LATBbits.LATB0 = 1; } while(0);
+"131
+[e :U 879 ]
+{
+[e = . . _LATBbits 0 0 -> -> 1 `i `uc ]
+}
+[e :U 878 ]
+"133
+}
+[; ;AdcApp.c: 133: }
+[e $U 880  ]
+"134
+[e :U 876 ]
+[; ;AdcApp.c: 134: else
+[; ;AdcApp.c: 135: {
+"135
+{
+[; ;AdcApp.c: 136: do { LATBbits.LATB0 = 0; } while(0);
+"136
+[e :U 883 ]
+{
+[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
+}
+[e :U 882 ]
+"137
+}
+[e :U 880 ]
+[; ;AdcApp.c: 137: }
+[; ;AdcApp.c: 138: }
+"138
+[e :UE 875 ]
 }
 [p f _sprintf 8388736 ]
-[a 3C 83 65 77 80 76 69 32 67 72 65 78 78 69 76 32 78 65 77 69 0 ]
+[a 3C 84 88 32 83 65 77 80 76 69 32 67 72 65 78 78 69 76 58 32 84 88 45 65 68 67 95 82 82 69 86 10 13 0 ]
+[a 6C 82 88 32 83 65 77 80 76 69 32 67 72 65 78 78 69 76 32 82 88 45 65 68 67 95 70 70 87 82 10 13 0 ]
+[a 4C 84 88 32 83 65 77 80 76 69 32 67 72 65 78 78 69 76 32 65 68 67 95 70 70 87 82 10 13 0 ]
+[a 7C 82 88 32 83 65 77 80 76 69 32 67 72 65 78 78 69 76 32 82 88 45 65 68 67 95 86 71 95 77 79 78 10 13 0 ]
 [a 1C 78 79 84 32 79 75 32 10 13 0 ]
 [a 2C 78 79 84 32 79 75 32 10 13 0 ]
-[a 4C 78 79 84 32 79 75 32 10 13 0 ]
 [a 5C 78 79 84 32 79 75 32 10 13 0 ]
-[a 7C 10 13 32 79 75 32 10 13 0 ]
-[a 6C 37 100 32 9 0 ]
+[a 8C 78 79 84 32 79 75 32 10 13 0 ]
+[a 10C 10 13 32 79 75 32 10 13 0 ]
+[a 9C 37 100 32 9 0 ]

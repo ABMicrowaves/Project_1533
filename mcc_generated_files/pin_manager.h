@@ -126,6 +126,23 @@
 #define ADC_RREV_SetAnalogMode()  do { ANSELAbits.ANSA5 = 1; } while(0)
 #define ADC_RREV_SetDigitalMode() do { ANSELAbits.ANSA5 = 0; } while(0)
 
+// get/set PA_ON aliases
+#define PA_ON_TRIS               TRISBbits.TRISB0
+#define PA_ON_LAT                LATBbits.LATB0
+#define PA_ON_PORT               PORTBbits.RB0
+#define PA_ON_WPU                WPUBbits.WPUB0
+#define PA_ON_ANS                ANSELBbits.ANSB0
+#define PA_ON_SetHigh()            do { LATBbits.LATB0 = 1; } while(0)
+#define PA_ON_SetLow()             do { LATBbits.LATB0 = 0; } while(0)
+#define PA_ON_Toggle()             do { LATBbits.LATB0 = ~LATBbits.LATB0; } while(0)
+#define PA_ON_GetValue()           PORTBbits.RB0
+#define PA_ON_SetDigitalInput()    do { TRISBbits.TRISB0 = 1; } while(0)
+#define PA_ON_SetDigitalOutput()   do { TRISBbits.TRISB0 = 0; } while(0)
+#define PA_ON_SetPullup()      do { WPUBbits.WPUB0 = 1; } while(0)
+#define PA_ON_ResetPullup()    do { WPUBbits.WPUB0 = 0; } while(0)
+#define PA_ON_SetAnalogMode()  do { ANSELBbits.ANSB0 = 1; } while(0)
+#define PA_ON_SetDigitalMode() do { ANSELBbits.ANSB0 = 0; } while(0)
+
 // get/set P7V_SENSE aliases
 #define P7V_SENSE_TRIS               TRISBbits.TRISB2
 #define P7V_SENSE_LAT                LATBbits.LATB2

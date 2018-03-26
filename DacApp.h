@@ -10,20 +10,36 @@ Author: RoeeZ (Comm-IT).                                                    ****
 #define	DACAPP_H
 
 #include "SystemCommon.h"
+#include <math.h>
 
+#define DAC_TEST_DELAY_MSEC             (20)
+#define NUM_OF_DACS                     (4)
+#define DAC_NUM_BYTES_PRESENT_VALUE     (2)
+#define DAC_BITS                        (10)
+#define DAC_POWER_MODE                  (0x1)           
+#define DAC_VSOURCEPLUS_MILI            (4880)
+#define DAC_READ_CONDITION_PACKET_SIZE DAC_NUM_BYTES_PRESENT_VALUE + MSG_DATA_LOCATION 
 
-// At system start: set all DACs to 1 VDC.
-#define DAC_A_INIT_VAL      (0x2344)
-#define DAC_B_INIT_VAL      (0x6344)
-#define DAC_C_INIT_VAL      (0xA344)
-#define DAC_D_INIT_VAL      (0xE344)
+const uint8_t DAC_ADDRES[NUM_OF_DACS] = 
+{
+    0x2,        // DAC-A address
+    0x4,        // DAC-B address
+    0x6,        // DAC-C address
+    0x8,        // DAC-D address
+};
 
-#define DAC_TEST_DELAY_MSEC 20
+const uint16_t DAC_DEFAULT_INIT_VALUES[NUM_OF_DACS] = 
+{
+    0x2344,        // DAC-A address
+    0x6344,        // DAC-B address
+    0xA344,        // DAC-C address
+    0xE344,        // DAC-D address
+};
 
 void DacInit(void);
 void DacSetValue(char* data);
+uint16_t DacReadValue(char* data);
 
-// Test functions
-void DacTest(void);
-
+// DAC Utilities
+uint16_t DacAnalogToDigitalSpi(uint16_t AnalogVal, uint8_t dacNum);
 #endif	/* DACAPP_H */

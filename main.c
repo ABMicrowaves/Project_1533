@@ -40,6 +40,11 @@ void main(void)
             keepAliveSignalLed();
             TimerKeepAliveFlag = false; 
         }
+        else if (TimertenSecFlag == true)
+        {
+            SampleVgMonChannel();
+            TimertenSecFlag = false;
+        }
         else if (TimerSamplingFlag == true)
         {
             if(true == needToSample)

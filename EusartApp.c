@@ -117,8 +117,7 @@ void readUartByte(void)
                 case RX_GROUP:
                     
                     if( chRec == 'I' || chRec == 'F' || chRec == 'Q' || 
-                        chRec == 'X' || chRec == 'C' || chRec == 'S' || 
-                        chRec == 'C')
+                        chRec == 'X' || chRec == 'S' || chRec == 'C')
                     {
                         
                         request = chRec - '0';

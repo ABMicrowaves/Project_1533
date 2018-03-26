@@ -1,19 +1,27 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"25 AdcApp.h
-[c E7185 4 5 6 7 29 30 31 .. ]
-[n E7185 . ADC_RREV ADC_FFWR ADC_TMP ADC_VG_MON channel_CTMU channel_DAC channel_FVRBuf2  ]
-[v F7317 `(v ~T0 @X0 0 tf ]
+"26 AdcApp.h
+[c E7191 4 5 6 7 29 30 31 .. ]
+[n E7191 . ADC_RREV ADC_FFWR ADC_TMP ADC_VG_MON channel_CTMU channel_DAC channel_FVRBuf2  ]
+[v F7325 `(v ~T0 @X0 0 tf ]
 "27 MessageFunctions.h
-[c E7229 18 22 25 33 40 99 101 35 24 28 .. ]
-[n E7229 . TX_RX_SET_BIT_MODE TX_RX_SET_UNIT_FREQUENCY TX_RX_UNIT_UNIT TX_RX_READ_UNIT_STATUS TX_RX_SET_OPERATION_MODE RX_SET_COMRESSION_MODE RX_SET_COMRESSION_RANGE ADC_SAMPLE SYSTEM_PRINT_HELP_LIST SYSTEM_TEST_LED  ]
+[c E7235 18 22 25 33 40 99 101 35 24 28 .. ]
+[n E7235 . TX_RX_SET_BIT_MODE TX_RX_SET_UNIT_FREQUENCY TX_RX_UNIT_UNIT TX_RX_READ_UNIT_STATUS TX_RX_SET_OPERATION_MODE RX_SET_COMRESSION_MODE RX_SET_COMRESSION_RANGE ADC_SAMPLE SYSTEM_PRINT_HELP_LIST SYSTEM_TEST_LED  ]
 "20
-[v _GroupRx `(v ~T0 @X0 0 ef2`E7229`*uc ]
+[v _GroupRx `(v ~T0 @X0 0 ef2`E7235`*uc ]
 "21
-[v _GroupTx `(v ~T0 @X0 0 ef2`E7229`*uc ]
+[v _GroupTx `(v ~T0 @X0 0 ef2`E7235`*uc ]
 "22
-[v _GroupCommon `(v ~T0 @X0 0 ef2`E7229`*uc ]
+[v _GroupCommon `(v ~T0 @X0 0 ef2`E7235`*uc ]
 "16 C:\Program Files (x86)\Microchip\xc8\v1.45\include\string.h
 [v _memset `(*v ~T0 @X0 0 ef3`*v`i`ui ]
+"52 SystemCommon.h
+[v _make8 `(uc ~T0 @X0 0 ef2`ul`uc ]
+"44 FlashApp.h
+[v _EepromWrite `(v ~T0 @X0 0 ef2`uc`uc ]
+"45 C:\Program Files (x86)\Microchip\xc8\v1.45\include\math.h
+[v _pow `(d ~T0 @X0 0 ef2`d`d ]
+"43 FlashApp.h
+[v _EepromRead `(uc ~T0 @X0 0 ef1`uc ]
 "58 C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdlib.h
 [v _strtol `(l ~T0 @X0 0 ef3`*Cuc`**uc`i ]
 [; ;math.h: 30: extern double fabs(double);
@@ -118,6 +126,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SystemCommon.h: 20: TX_TYPE,
 [; ;SystemCommon.h: 21: RX_TYPE,
 [; ;SystemCommon.h: 22: }MODULE_TYPE;
+[; ;SystemCommon.h: 24: typedef enum
+[; ;SystemCommon.h: 25: {
+[; ;SystemCommon.h: 26: SYNTH_TX = 0,
+[; ;SystemCommon.h: 27: SYNTH_RX,
+[; ;SystemCommon.h: 28: EXT_DAC
+[; ;SystemCommon.h: 29: }SPI_PERIPHERAL;
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -6665,8 +6679,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 164: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 166: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 168: extern __nonreentrant void _delay3(unsigned char);
-[; ;pin_manager.h: 400: void PIN_MANAGER_Initialize (void);
-[; ;pin_manager.h: 412: void PIN_MANAGER_IOC(void);
+[; ;pin_manager.h: 417: void PIN_MANAGER_Initialize (void);
+[; ;pin_manager.h: 429: void PIN_MANAGER_IOC(void);
 [; ;stdbool.h: 12: typedef unsigned char bool;
 [; ;interrupt_manager.h: 108: void interrupt INTERRUPT_InterruptManager(void);
 [; ;interrupt_manager.h: 120: void INTERRUPT_Initialize (void);
@@ -6679,35 +6693,41 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;memory.h: 277: uint8_t DATAEE_ReadByte(uint8_t bAdd);
 [; ;memory.h: 293: void MEMORY_ISR(void);
 [; ;memory.h: 294: bool FLASH_IsWriteDone();
-"74 mcc_generated_files/tmr0.h
+"75 mcc_generated_files/tmr0.h
 [v _TimerOneSecFlag `Vuc ~T0 @X0 1 e ]
 [i _TimerOneSecFlag
 -> -> 0 `i `uc
 ]
-[; ;tmr0.h: 74: volatile bool TimerOneSecFlag = 0;
-"75
+[; ;tmr0.h: 75: volatile bool TimerOneSecFlag = 0;
+"76
 [v _TimerSamplingFlag `Vuc ~T0 @X0 1 e ]
 [i _TimerSamplingFlag
 -> -> 0 `i `uc
 ]
-[; ;tmr0.h: 75: volatile bool TimerSamplingFlag = 0;
-"76
+[; ;tmr0.h: 76: volatile bool TimerSamplingFlag = 0;
+"77
 [v _TimerKeepAliveFlag `Vuc ~T0 @X0 1 e ]
 [i _TimerKeepAliveFlag
 -> -> 0 `i `uc
 ]
-[; ;tmr0.h: 76: volatile bool TimerKeepAliveFlag = 0;
-[; ;tmr0.h: 113: void TMR0_Initialize(void);
-[; ;tmr0.h: 142: void TMR0_StartTimer(void);
-[; ;tmr0.h: 174: void TMR0_StopTimer(void);
-[; ;tmr0.h: 210: uint16_t TMR0_ReadTimer(void);
-[; ;tmr0.h: 249: void TMR0_WriteTimer(uint16_t timerVal);
-[; ;tmr0.h: 285: void TMR0_Reload(void);
-[; ;tmr0.h: 303: void TMR0_ISR(void);
-[; ;tmr0.h: 321: void TMR0_CallBack(void);
-[; ;tmr0.h: 339: void TMR0_SetInterruptHandler(void (* InterruptHandler)(void));
-[; ;tmr0.h: 357: extern void (*TMR0_InterruptHandler)(void);
-[; ;tmr0.h: 375: void TMR0_DefaultInterruptHandler(void);
+[; ;tmr0.h: 77: volatile bool TimerKeepAliveFlag = 0;
+"78
+[v _TimertenSecFlag `Vuc ~T0 @X0 1 e ]
+[i _TimertenSecFlag
+-> -> 0 `i `uc
+]
+[; ;tmr0.h: 78: volatile bool TimertenSecFlag = 0;
+[; ;tmr0.h: 115: void TMR0_Initialize(void);
+[; ;tmr0.h: 144: void TMR0_StartTimer(void);
+[; ;tmr0.h: 176: void TMR0_StopTimer(void);
+[; ;tmr0.h: 212: uint16_t TMR0_ReadTimer(void);
+[; ;tmr0.h: 251: void TMR0_WriteTimer(uint16_t timerVal);
+[; ;tmr0.h: 287: void TMR0_Reload(void);
+[; ;tmr0.h: 305: void TMR0_ISR(void);
+[; ;tmr0.h: 323: void TMR0_CallBack(void);
+[; ;tmr0.h: 341: void TMR0_SetInterruptHandler(void (* InterruptHandler)(void));
+[; ;tmr0.h: 359: extern void (*TMR0_InterruptHandler)(void);
+[; ;tmr0.h: 377: void TMR0_DefaultInterruptHandler(void);
 [; ;adc.h: 71: typedef uint16_t adc_result_t;
 [; ;adc.h: 76: typedef struct
 [; ;adc.h: 77: {
@@ -6784,64 +6804,65 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;LedsApp.h: 37: void BlinkErrorLeds(LED_OK_INTICATION state);
 [; ;LedsApp.h: 38: void BlinkOkLeds(LED_ERR_INTICATION state);
 [; ;LedsApp.h: 39: void keepAliveSignalLed(void);
-[; ;AdcApp.h: 19: typedef enum
-[; ;AdcApp.h: 20: {
-[; ;AdcApp.h: 21: CIRCULAR = 0x0,
-[; ;AdcApp.h: 22: SINGLE_CHANNEL = 0x1,
-[; ;AdcApp.h: 23: }ADC_SAMPLE_MODE;
-"25 AdcApp.h
-[v _channelArr `CE7185 ~T0 @X0 -> 4 `i e ]
+[; ;AdcApp.h: 20: typedef enum
+[; ;AdcApp.h: 21: {
+[; ;AdcApp.h: 22: CIRCULAR = 0x0,
+[; ;AdcApp.h: 23: SINGLE_CHANNEL = 0x1,
+[; ;AdcApp.h: 24: }ADC_SAMPLE_MODE;
+"26 AdcApp.h
+[v _channelArr `CE7191 ~T0 @X0 -> 4 `i e ]
 [i _channelArr
 :U ..
-"27
--> -> 4 `i `CE7185
 "28
--> -> 5 `i `CE7185
+-> -> 4 `i `CE7191
 "29
--> -> 6 `i `CE7185
+-> -> 6 `i `CE7191
 "30
--> -> 7 `i `CE7185
+-> -> 5 `i `CE7191
+"31
+-> -> 7 `i `CE7191
 ..
 ]
-[; ;AdcApp.h: 25: const adc_channel_t channelArr[(0x04)] =
-[; ;AdcApp.h: 26: {
-[; ;AdcApp.h: 27: 0x4,
-[; ;AdcApp.h: 28: 0x5,
+[; ;AdcApp.h: 26: const adc_channel_t channelArr[(0x04)] =
+[; ;AdcApp.h: 27: {
+[; ;AdcApp.h: 28: 0x4,
 [; ;AdcApp.h: 29: 0x6,
-[; ;AdcApp.h: 30: 0x7,
-[; ;AdcApp.h: 31: };
-"33
+[; ;AdcApp.h: 30: 0x5,
+[; ;AdcApp.h: 31: 0x7,
+[; ;AdcApp.h: 32: };
+"34
 [v _needToSample `Vuc ~T0 @X0 1 e ]
 [i _needToSample
 -> -> 0 `i `uc
 ]
-[; ;AdcApp.h: 33: volatile bool needToSample = 0;
-[; ;AdcApp.h: 35: void AdcSingleSample(MODULE_TYPE cType, char* data);
-[; ;AdcApp.h: 36: void SetChannelMode(char* data);
-[; ;AdcApp.h: 37: void InitAdcApplicationMgr();
-[; ;AdcApp.h: 38: bool SampleSingleChannel(void);
-[; ;FlashApp.h: 31: void FlashSampleWrite(adc_result_t sampleData, uint8_t channelNum);
-[; ;FlashApp.h: 32: void FlashReadUart(int numOfSampleToRead);
-[; ;FlashApp.h: 33: void FlashEreaseMem(void);
-[; ;FlashApp.h: 34: void FlashReadCondition(void);
-[; ;FlashApp.h: 35: bool CheckFlashPrecentage(void);
-[; ;FlashApp.h: 38: uint8_t EepromRead(uint8_t address);
-[; ;FlashApp.h: 39: void EepromWrite(uint8_t address, uint8_t data);
-[; ;FlashApp.h: 42: bool FlashTest(int startAddress, int numOfSamples);
-[; ;FlashApp.h: 43: bool EepromTest(int startAddress, int numOfSamples);
+[; ;AdcApp.h: 34: volatile bool needToSample = 0;
+[; ;AdcApp.h: 36: void AdcSingleSample(MODULE_TYPE cType, char* data);
+[; ;AdcApp.h: 37: void SetChannelMode(char* data);
+[; ;AdcApp.h: 38: void InitAdcApplicationMgr();
+[; ;AdcApp.h: 39: bool SampleSingleChannel(void);
+[; ;AdcApp.h: 40: void SampleVgMonChannel(void);
+[; ;FlashApp.h: 36: void FlashSampleWrite(adc_result_t sampleData, uint8_t channelNum);
+[; ;FlashApp.h: 37: void FlashReadUart(int numOfSampleToRead);
+[; ;FlashApp.h: 38: void FlashEreaseMem(void);
+[; ;FlashApp.h: 39: void FlashReadCondition(void);
+[; ;FlashApp.h: 40: bool CheckFlashPrecentage(void);
+[; ;FlashApp.h: 43: uint8_t EepromRead(uint8_t address);
+[; ;FlashApp.h: 44: void EepromWrite(uint8_t address, uint8_t data);
+[; ;FlashApp.h: 47: bool FlashTest(int startAddress, int numOfSamples);
+[; ;FlashApp.h: 48: bool EepromTest(int startAddress, int numOfSamples);
 [; ;MessageFunctions.h: 20: void GroupRx(MSG_REQUEST request, char* data);
 [; ;MessageFunctions.h: 21: void GroupTx(MSG_REQUEST request, char* data);
 [; ;MessageFunctions.h: 22: void GroupCommon(MSG_REQUEST request, char* data);
 "25 MessageFunctions.h
-[v _groupsArray `*F7317 ~T0 @X0 -> 6 `i e ]
+[v _groupsArray `*F7325 ~T0 @X0 -> 6 `i e ]
 [i _groupsArray
 :U ..
 "27
--> &U _GroupRx `*F7317
+-> &U _GroupRx `*F7325
 "28
--> &U _GroupTx `*F7317
+-> &U _GroupTx `*F7325
 "29
--> &U _GroupCommon `*F7317
+-> &U _GroupCommon `*F7325
 ..
 ]
 [; ;MessageFunctions.h: 25: void (*groupsArray[(6)])() =
@@ -6850,9 +6871,52 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MessageFunctions.h: 28: GroupTx,
 [; ;MessageFunctions.h: 29: GroupCommon,
 [; ;MessageFunctions.h: 30: };
-[; ;DacApp.h: 23: void DacInit(void);
-[; ;DacApp.h: 24: void DacSetValue(char* data);
-[; ;DacApp.h: 27: void DacTest(void);
+"23 DacApp.h
+[v _DAC_ADDRES `Cuc ~T0 @X0 -> 4 `i e ]
+[i _DAC_ADDRES
+:U ..
+"25
+-> -> 2 `i `uc
+"26
+-> -> 4 `i `uc
+"27
+-> -> 6 `i `uc
+"28
+-> -> 8 `i `uc
+..
+]
+[; ;DacApp.h: 23: const uint8_t DAC_ADDRES[(4)] =
+[; ;DacApp.h: 24: {
+[; ;DacApp.h: 25: 0x2,
+[; ;DacApp.h: 26: 0x4,
+[; ;DacApp.h: 27: 0x6,
+[; ;DacApp.h: 28: 0x8,
+[; ;DacApp.h: 29: };
+"31
+[v _DAC_DEFAULT_INIT_VALUES `Cui ~T0 @X0 -> 4 `i e ]
+[i _DAC_DEFAULT_INIT_VALUES
+:U ..
+"33
+-> -> 9028 `i `ui
+"34
+-> -> 25412 `i `ui
+"35
+-> 41796 `ui
+"36
+-> 58180 `ui
+..
+]
+[; ;DacApp.h: 31: const uint16_t DAC_DEFAULT_INIT_VALUES[(4)] =
+[; ;DacApp.h: 32: {
+[; ;DacApp.h: 33: 0x2344,
+[; ;DacApp.h: 34: 0x6344,
+[; ;DacApp.h: 35: 0xA344,
+[; ;DacApp.h: 36: 0xE344,
+[; ;DacApp.h: 37: };
+[; ;DacApp.h: 39: void DacInit(void);
+[; ;DacApp.h: 40: void DacSetValue(char* data);
+[; ;DacApp.h: 41: uint16_t DacReadValue(char* data);
+[; ;DacApp.h: 44: uint16_t DacAnalogToDigitalSpi(uint16_t AnalogVal, uint8_t dacNum);
 [; ;string.h: 14: extern void * memcpy(void *, const void *, size_t);
 [; ;string.h: 15: extern void * memmove(void *, const void *, size_t);
 [; ;string.h: 16: extern void * memset(void *, int, size_t);
@@ -7054,29 +7118,24 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SyntApp.h: 60: void UpdateTxFreq(char* data);
 [; ;SyntApp.h: 61: void UpdateRxFreq(char* data);
 [; ;SyntApp.h: 63: void SYNTH_ISR(void);
-[; ;SwSpiApp.h: 14: typedef enum
-[; ;SwSpiApp.h: 15: {
-[; ;SwSpiApp.h: 16: SYNTH_TX = 0,
-[; ;SwSpiApp.h: 17: SYNTH_RX,
-[; ;SwSpiApp.h: 18: EXT_DAC
-[; ;SwSpiApp.h: 19: } SPI_PERIPHERAL;
-[; ;SwSpiApp.h: 22: void SWSPI_send_word (SPI_PERIPHERAL phrType, uint32_t data, uint8_t dataSize);
-[; ;SwSpiApp.h: 24: void SwSpi_Data_Pin (SPI_PERIPHERAL phrType, bool cPinMode);
-[; ;SwSpiApp.h: 25: void SwSpi_Clk_Pin (SPI_PERIPHERAL phrType, bool cPinMode);
-[; ;SwSpiApp.h: 27: void SwSpi_Set_CE_Pin (SPI_PERIPHERAL phrType, bool cPinMode);
-[; ;SwSpiApp.h: 30: void SWSPI_Synth_send_bits(SPI_PERIPHERAL phrType, uint8_t data);
-[; ;SwSpiApp.h: 31: void SwSpi_Synth_Toggle_Clock(SPI_PERIPHERAL phrType);
-[; ;SwSpiApp.h: 32: void SwSpi_Set_Synth_Le_Pin(SPI_PERIPHERAL phrType, bool cPinMode);
-[; ;SwSpiApp.h: 35: void SWSPI_DAC_send_bits(SPI_PERIPHERAL phrType, uint8_t data);
-[; ;SwSpiApp.h: 36: void SwSpi_Set_Dac_Sync_Pin(bool cPinMode);
-[; ;SystemCommon.h: 43: unsigned char crc8(char* dataArray, int dataSize);
-[; ;SystemCommon.h: 44: uint8_t make8(uint32_t data, uint8_t dataLocation);
-[; ;SystemCommon.h: 45: void ZeroArray(char* array, int size);
-[; ;SystemCommon.h: 46: int GCD(int num1, int num2);
-[; ;SystemCommon.h: 47: uint32_t GetIntFromUartData(char* data);
-[; ;SystemCommon.h: 50: void ResetMcu(void);
-[; ;SystemCommon.h: 51: void ResetCpld(void);
-[; ;SystemCommon.h: 52: void SendSystemStartAck(void);
+[; ;SwSpiApp.h: 14: void SWSPI_send_word (SPI_PERIPHERAL phrType, uint32_t data, uint8_t dataSize);
+[; ;SwSpiApp.h: 15: void SwSpi_Data_Pin (SPI_PERIPHERAL phrType, bool cPinMode);
+[; ;SwSpiApp.h: 16: void SwSpi_Clk_Pin (SPI_PERIPHERAL phrType, bool cPinMode);
+[; ;SwSpiApp.h: 17: void SwSpi_Set_CE_Pin (SPI_PERIPHERAL phrType, bool cPinMode);
+[; ;SwSpiApp.h: 20: void SWSPI_Synth_send_bits(SPI_PERIPHERAL phrType, uint32_t data);
+[; ;SwSpiApp.h: 21: void SwSpi_Synth_Toggle_Clock(SPI_PERIPHERAL phrType);
+[; ;SwSpiApp.h: 22: void SwSpi_Set_Synth_Le_Pin(SPI_PERIPHERAL phrType, bool cPinMode);
+[; ;SwSpiApp.h: 25: void SWSPI_DAC_send_bits(SPI_PERIPHERAL phrType, uint8_t data);
+[; ;SwSpiApp.h: 26: void SwSpi_Set_Dac_Sync_Pin(bool cPinMode);
+[; ;SystemCommon.h: 51: unsigned char crc8(char* dataArray, int dataSize);
+[; ;SystemCommon.h: 52: uint8_t make8(uint32_t data, uint8_t dataLocation);
+[; ;SystemCommon.h: 53: void ZeroArray(char* array, int size);
+[; ;SystemCommon.h: 54: uint32_t GetIntFromUartData(char* data);
+[; ;SystemCommon.h: 55: void Make32bitsArray(bool* array, uint32_t data);
+[; ;SystemCommon.h: 57: void StoreIntInEeprom(uint32_t data, uint8_t address, int numOfByes);
+[; ;SystemCommon.h: 58: uint32_t ReadIntFromEeprom(uint8_t address, int numOfByes);
+[; ;SystemCommon.h: 61: void ResetMcu(void);
+[; ;SystemCommon.h: 62: void SendSystemStartAck(void);
 "13 SystemCommon.c
 [v _crc8 `(uc ~T0 @X0 1 ef2`*uc`i ]
 "14
@@ -7128,249 +7187,333 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 852 ]
 }
 "24
-[v _ZeroArray `(v ~T0 @X0 1 ef2`*uc`i ]
+[v _Make32bitsArray `(v ~T0 @X0 1 ef2`*uc`ul ]
 "25
 {
-[; ;SystemCommon.c: 24: void ZeroArray(char* array, int size)
+[; ;SystemCommon.c: 24: void Make32bitsArray(bool* array, uint32_t data)
 [; ;SystemCommon.c: 25: {
-[e :U _ZeroArray ]
+[e :U _Make32bitsArray ]
 "24
 [v _array `*uc ~T0 @X0 1 r1 ]
-[v _size `i ~T0 @X0 1 r2 ]
+[v _data `ul ~T0 @X0 1 r2 ]
 "25
 [f ]
-[; ;SystemCommon.c: 26: memset(array, 0x0, size);
+[; ;SystemCommon.c: 26: for(int idx = 0; idx <= 32; idx++)
 "26
-[e ( _memset (3 , , -> _array `*v -> 0 `i -> _size `ui ]
-[; ;SystemCommon.c: 27: }
-"27
-[e :UE 857 ]
-}
-"29
-[v _GCD `(i ~T0 @X0 1 ef2`i`i ]
-"30
-{
-[; ;SystemCommon.c: 29: int GCD(int num1, int num2)
-[; ;SystemCommon.c: 30: {
-[e :U _GCD ]
-"29
-[v _num1 `i ~T0 @X0 1 r1 ]
-[v _num2 `i ~T0 @X0 1 r2 ]
-"30
-[f ]
-[; ;SystemCommon.c: 31: while (num2 != 0)
-"31
-[e $U 859  ]
-[e :U 860 ]
-[; ;SystemCommon.c: 32: {
-"32
-{
-"33
-[v _temp `i ~T0 @X0 1 a ]
-[; ;SystemCommon.c: 33: int temp = num2;
-[e = _temp _num2 ]
-[; ;SystemCommon.c: 34: num2 = num1 % num2;
-"34
-[e = _num2 % _num1 _num2 ]
-[; ;SystemCommon.c: 35: num1 = temp;
-"35
-[e = _num1 _temp ]
-"36
-}
-[e :U 859 ]
-"31
-[e $ != _num2 -> 0 `i 860  ]
-[e :U 861 ]
-[; ;SystemCommon.c: 36: }
-[; ;SystemCommon.c: 37: return num1;
-"37
-[e ) _num1 ]
-[e $UE 858  ]
-[; ;SystemCommon.c: 38: }
-"38
-[e :UE 858 ]
-}
-"40
-[v _GetIntFromUartData `(ul ~T0 @X0 1 ef1`*uc ]
-"41
-{
-[; ;SystemCommon.c: 40: uint32_t GetIntFromUartData(char* data)
-[; ;SystemCommon.c: 41: {
-[e :U _GetIntFromUartData ]
-"40
-[v _data `*uc ~T0 @X0 1 r1 ]
-"41
-[f ]
-"42
-[v _dataRegArr `uc ~T0 @X0 -> 8 `i a ]
-[; ;SystemCommon.c: 42: char dataRegArr[8];
-[; ;SystemCommon.c: 43: ZeroArray(dataRegArr, 8);
-"43
-[e ( _ZeroArray (2 , &U _dataRegArr -> 8 `i ]
-[; ;SystemCommon.c: 45: for(int idx = 0; idx < 8; idx++)
-"45
 {
 [v _idx `i ~T0 @X0 1 a ]
 [e = _idx -> 0 `i ]
-[e $ < _idx -> 8 `i 863  ]
-[e $U 864  ]
-"46
-[e :U 863 ]
-[; ;SystemCommon.c: 46: {
+[e $ <= _idx -> 32 `i 858  ]
+[e $U 859  ]
+"27
+[e :U 858 ]
+[; ;SystemCommon.c: 27: {
 {
-"47
-[v _c `uc ~T0 @X0 1 a ]
-[; ;SystemCommon.c: 47: char c = data[idx + 1];
-[e = _c *U + _data * -> + _idx -> 1 `i `x -> -> # *U _data `i `x ]
-[; ;SystemCommon.c: 48: if(c == (0))
-"48
-[e $ ! == -> _c `i -> 0 `i 866  ]
-[; ;SystemCommon.c: 49: {
-"49
-{
-[; ;SystemCommon.c: 50: break;
-"50
-[e $U 864  ]
-"51
+[; ;SystemCommon.c: 28: array[32 - idx - 1] = data % 2;
+"28
+[e = *U + _array * -> - - -> 32 `i _idx -> 1 `i `x -> -> # *U _array `i `x -> % _data -> -> -> 2 `i `l `ul `uc ]
+[; ;SystemCommon.c: 29: data /= 2;
+"29
+[e =/ _data -> -> 2 `uc `ul ]
+"30
 }
-[; ;SystemCommon.c: 51: }
-[e $U 867  ]
-"52
-[e :U 866 ]
-[; ;SystemCommon.c: 52: else
-[; ;SystemCommon.c: 53: {
-"53
-{
-[; ;SystemCommon.c: 54: dataRegArr[idx] = c;
-"54
-[e = *U + &U _dataRegArr * -> -> _idx `ui `ux -> -> # *U &U _dataRegArr `ui `ux _c ]
-"55
-}
-[e :U 867 ]
-"56
-}
-"45
+"26
 [e ++ _idx -> 1 `i ]
-[e $ < _idx -> 8 `i 863  ]
-[e :U 864 ]
-"56
+[e $ <= _idx -> 32 `i 858  ]
+[e :U 859 ]
+"30
 }
-[; ;SystemCommon.c: 55: }
-[; ;SystemCommon.c: 56: }
-[; ;SystemCommon.c: 58: return strtol(dataRegArr, (0), 10);
-"58
-[e ) -> ( _strtol (3 , , -> &U _dataRegArr `*Cuc -> -> 0 `i `**uc -> 10 `i `ul ]
-[e $UE 862  ]
-[; ;SystemCommon.c: 59: }
-"59
+[; ;SystemCommon.c: 30: }
+[; ;SystemCommon.c: 31: }
+"31
+[e :UE 857 ]
+}
+"33
+[v _ZeroArray `(v ~T0 @X0 1 ef2`*uc`i ]
+"34
+{
+[; ;SystemCommon.c: 33: void ZeroArray(char* array, int size)
+[; ;SystemCommon.c: 34: {
+[e :U _ZeroArray ]
+"33
+[v _array `*uc ~T0 @X0 1 r1 ]
+[v _size `i ~T0 @X0 1 r2 ]
+"34
+[f ]
+[; ;SystemCommon.c: 35: memset(array, 0x0, size);
+"35
+[e ( _memset (3 , , -> _array `*v -> 0 `i -> _size `ui ]
+[; ;SystemCommon.c: 36: }
+"36
+[e :UE 861 ]
+}
+"38
+[v _StoreIntInEeprom `(v ~T0 @X0 1 ef3`ul`uc`i ]
+"39
+{
+[; ;SystemCommon.c: 38: void StoreIntInEeprom(uint32_t data, uint8_t address, int numOfByes)
+[; ;SystemCommon.c: 39: {
+[e :U _StoreIntInEeprom ]
+"38
+[v _data `ul ~T0 @X0 1 r1 ]
+[v _address `uc ~T0 @X0 1 r2 ]
+[v _numOfByes `i ~T0 @X0 1 r3 ]
+"39
+[f ]
+[; ;SystemCommon.c: 40: for(uint8_t idx = numOfByes; idx; idx--)
+"40
+{
+[v _idx `uc ~T0 @X0 1 a ]
+[e = _idx -> _numOfByes `uc ]
+[e $U 866  ]
+"41
+[e :U 863 ]
+[; ;SystemCommon.c: 41: {
+{
+"42
+[v _val `uc ~T0 @X0 1 a ]
+[; ;SystemCommon.c: 42: uint8_t val = make8(data, idx - 1);
+[e = _val ( _make8 (2 , _data -> - -> _idx `i -> 1 `i `uc ]
+[; ;SystemCommon.c: 43: EepromWrite(address - idx, val);
+"43
+[e ( _EepromWrite (2 , -> - -> _address `i -> _idx `i `uc _val ]
+"44
+}
+"40
+[e -- _idx -> -> 1 `i `uc ]
+[e :U 866 ]
+[e $ != -> _idx `i -> -> -> 0 `i `uc `i 863  ]
+[e :U 864 ]
+"44
+}
+[; ;SystemCommon.c: 44: }
+[; ;SystemCommon.c: 45: }
+"45
 [e :UE 862 ]
 }
-"61
-[v _make8 `(uc ~T0 @X0 1 ef2`ul`uc ]
-"62
+"47
+[v _ReadIntFromEeprom `(ul ~T0 @X0 1 ef2`uc`i ]
+"48
 {
-[; ;SystemCommon.c: 61: uint8_t make8(uint32_t data, uint8_t dataLocation)
-[; ;SystemCommon.c: 62: {
-[e :U _make8 ]
+[; ;SystemCommon.c: 47: uint32_t ReadIntFromEeprom(uint8_t address, int numOfByes)
+[; ;SystemCommon.c: 48: {
+[e :U _ReadIntFromEeprom ]
+"47
+[v _address `uc ~T0 @X0 1 r1 ]
+[v _numOfByes `i ~T0 @X0 1 r2 ]
+"48
+[f ]
+"49
+[v _retVal `ul ~T0 @X0 1 a ]
+[; ;SystemCommon.c: 49: uint32_t retVal = 0x00;
+[e = _retVal -> -> -> 0 `i `l `ul ]
+[; ;SystemCommon.c: 50: address -= numOfByes;
+"50
+[e =- _address -> _numOfByes `uc ]
+[; ;SystemCommon.c: 52: for(uint8_t idx = 0; idx < numOfByes; idx++)
+"52
+{
+[v _idx `uc ~T0 @X0 1 a ]
+[e = _idx -> -> 0 `i `uc ]
+[e $U 871  ]
+"53
+[e :U 868 ]
+[; ;SystemCommon.c: 53: {
+{
+"54
+[v _base `ul ~T0 @X0 1 a ]
+[; ;SystemCommon.c: 54: uint32_t base = pow(2,8*(numOfByes - 1 - idx));
+[e = _base -> ( _pow (2 , -> -> 2 `i `d -> * -> 8 `i - - _numOfByes -> 1 `i -> _idx `i `d `ul ]
+[; ;SystemCommon.c: 55: retVal = retVal | EepromRead(address + idx) * base;
+"55
+[e = _retVal | _retVal * -> ( _EepromRead (1 -> + -> _address `i -> _idx `i `uc `ul _base ]
+"56
+}
+"52
+[e ++ _idx -> -> 1 `i `uc ]
+[e :U 871 ]
+[e $ < -> _idx `i _numOfByes 868  ]
+[e :U 869 ]
+"56
+}
+[; ;SystemCommon.c: 56: }
+[; ;SystemCommon.c: 57: return retVal;
+"57
+[e ) _retVal ]
+[e $UE 867  ]
+[; ;SystemCommon.c: 58: }
+"58
+[e :UE 867 ]
+}
+"60
+[v _GetIntFromUartData `(ul ~T0 @X0 1 ef1`*uc ]
 "61
+{
+[; ;SystemCommon.c: 60: uint32_t GetIntFromUartData(char* data)
+[; ;SystemCommon.c: 61: {
+[e :U _GetIntFromUartData ]
+"60
+[v _data `*uc ~T0 @X0 1 r1 ]
+"61
+[f ]
+"62
+[v _dataRegArr `uc ~T0 @X0 -> 8 `i a ]
+[; ;SystemCommon.c: 62: char dataRegArr[8];
+[; ;SystemCommon.c: 63: ZeroArray(dataRegArr, 8);
+"63
+[e ( _ZeroArray (2 , &U _dataRegArr -> 8 `i ]
+[; ;SystemCommon.c: 65: for(int idx = 0; idx < 8; idx++)
+"65
+{
+[v _idx `i ~T0 @X0 1 a ]
+[e = _idx -> 0 `i ]
+[e $ < _idx -> 8 `i 873  ]
+[e $U 874  ]
+"66
+[e :U 873 ]
+[; ;SystemCommon.c: 66: {
+{
+"67
+[v _c `uc ~T0 @X0 1 a ]
+[; ;SystemCommon.c: 67: char c = data[idx + 1];
+[e = _c *U + _data * -> + _idx -> 1 `i `x -> -> # *U _data `i `x ]
+[; ;SystemCommon.c: 68: if(c == (0))
+"68
+[e $ ! == -> _c `i -> 0 `i 876  ]
+[; ;SystemCommon.c: 69: {
+"69
+{
+[; ;SystemCommon.c: 70: break;
+"70
+[e $U 874  ]
+"71
+}
+[; ;SystemCommon.c: 71: }
+[e $U 877  ]
+"72
+[e :U 876 ]
+[; ;SystemCommon.c: 72: else
+[; ;SystemCommon.c: 73: {
+"73
+{
+[; ;SystemCommon.c: 74: dataRegArr[idx] = c;
+"74
+[e = *U + &U _dataRegArr * -> -> _idx `ui `ux -> -> # *U &U _dataRegArr `ui `ux _c ]
+"75
+}
+[e :U 877 ]
+"76
+}
+"65
+[e ++ _idx -> 1 `i ]
+[e $ < _idx -> 8 `i 873  ]
+[e :U 874 ]
+"76
+}
+[; ;SystemCommon.c: 75: }
+[; ;SystemCommon.c: 76: }
+[; ;SystemCommon.c: 78: return strtol(dataRegArr, (0), 10);
+"78
+[e ) -> ( _strtol (3 , , -> &U _dataRegArr `*Cuc -> -> 0 `i `**uc -> 10 `i `ul ]
+[e $UE 872  ]
+[; ;SystemCommon.c: 79: }
+"79
+[e :UE 872 ]
+}
+"81
+[v _make8 `(uc ~T0 @X0 1 ef2`ul`uc ]
+"82
+{
+[; ;SystemCommon.c: 81: uint8_t make8(uint32_t data, uint8_t dataLocation)
+[; ;SystemCommon.c: 82: {
+[e :U _make8 ]
+"81
 [v _data `ul ~T0 @X0 1 r1 ]
 [v _dataLocation `uc ~T0 @X0 1 r2 ]
-"62
+"82
 [f ]
-[; ;SystemCommon.c: 63: switch(dataLocation)
-"63
-[e $U 870  ]
-[; ;SystemCommon.c: 64: {
-"64
-{
-[; ;SystemCommon.c: 65: case 0:
-"65
-[e :U 871 ]
-[; ;SystemCommon.c: 66: return (data & 0x000000ff);
-"66
-[e ) -> & _data -> -> -> 255 `i `l `ul `uc ]
-[e $UE 868  ]
-[; ;SystemCommon.c: 68: case 1:
-"68
-[e :U 872 ]
-[; ;SystemCommon.c: 69: return (data & 0x0000ff00) >> 8;
-"69
-[e ) -> >> & _data -> -> 65280 `ui `ul -> 8 `i `uc ]
-[e $UE 868  ]
-[; ;SystemCommon.c: 71: case 2:
-"71
-[e :U 873 ]
-[; ;SystemCommon.c: 72: return (data & 0x00ff0000) >> 16;
-"72
-[e ) -> >> & _data -> -> 16711680 `l `ul -> 16 `i `uc ]
-[e $UE 868  ]
-[; ;SystemCommon.c: 74: case 3:
-"74
-[e :U 874 ]
-[; ;SystemCommon.c: 75: return (data & 0xff000000) >> 24;
-"75
-[e ) -> >> & _data -> -16777216 `ul -> 24 `i `uc ]
-[e $UE 868  ]
-[; ;SystemCommon.c: 77: default:
-"77
-[e :U 875 ]
-[; ;SystemCommon.c: 78: return (0);
-"78
-[e ) -> -> 0 `i `uc ]
-[e $UE 868  ]
-"79
-}
-[; ;SystemCommon.c: 79: }
-[e $U 869  ]
-"63
-[e :U 870 ]
-[e [\ _dataLocation , $ -> -> 0 `i `uc 871
- , $ -> -> 1 `i `uc 872
- , $ -> -> 2 `i `uc 873
- , $ -> -> 3 `i `uc 874
- 875 ]
-"79
-[e :U 869 ]
-[; ;SystemCommon.c: 80: }
-"80
-[e :UE 868 ]
-}
+[; ;SystemCommon.c: 83: switch(dataLocation)
+"83
+[e $U 880  ]
+[; ;SystemCommon.c: 84: {
 "84
-[v _ResetMcu `(v ~T0 @X0 1 ef ]
+{
+[; ;SystemCommon.c: 85: case 0:
 "85
-{
-[; ;SystemCommon.c: 84: void ResetMcu()
-[; ;SystemCommon.c: 85: {
-[e :U _ResetMcu ]
-[f ]
-[; ;SystemCommon.c: 90: asm(" reset");
-"90
-[; <"  reset ;# ">
-[; ;SystemCommon.c: 91: }
+[e :U 881 ]
+[; ;SystemCommon.c: 86: return (data & 0x000000ff);
+"86
+[e ) -> & _data -> -> -> 255 `i `l `ul `uc ]
+[e $UE 878  ]
+[; ;SystemCommon.c: 88: case 1:
+"88
+[e :U 882 ]
+[; ;SystemCommon.c: 89: return (data & 0x0000ff00) >> 8;
+"89
+[e ) -> >> & _data -> -> 65280 `ui `ul -> 8 `i `uc ]
+[e $UE 878  ]
+[; ;SystemCommon.c: 91: case 2:
 "91
-[e :UE 876 ]
-}
-"93
-[v _ResetCpld `(v ~T0 @X0 1 ef ]
+[e :U 883 ]
+[; ;SystemCommon.c: 92: return (data & 0x00ff0000) >> 16;
+"92
+[e ) -> >> & _data -> -> 16711680 `l `ul -> 16 `i `uc ]
+[e $UE 878  ]
+[; ;SystemCommon.c: 94: case 3:
 "94
-{
-[; ;SystemCommon.c: 93: void ResetCpld()
-[; ;SystemCommon.c: 94: {
-[e :U _ResetCpld ]
-[f ]
+[e :U 884 ]
+[; ;SystemCommon.c: 95: return (data & 0xff000000) >> 24;
+"95
+[e ) -> >> & _data -> -16777216 `ul -> 24 `i `uc ]
+[e $UE 878  ]
+[; ;SystemCommon.c: 97: default:
+"97
+[e :U 885 ]
+[; ;SystemCommon.c: 98: return (0);
+"98
+[e ) -> -> 0 `i `uc ]
+[e $UE 878  ]
+"99
+}
+[; ;SystemCommon.c: 99: }
+[e $U 879  ]
+"83
+[e :U 880 ]
+[e [\ _dataLocation , $ -> -> 0 `i `uc 881
+ , $ -> -> 1 `i `uc 882
+ , $ -> -> 2 `i `uc 883
+ , $ -> -> 3 `i `uc 884
+ 885 ]
+"99
+[e :U 879 ]
 [; ;SystemCommon.c: 100: }
 "100
-[e :UE 877 ]
+[e :UE 878 ]
 }
-"102
-[v _SendSystemStartAck `(v ~T0 @X0 1 ef ]
-"103
+"104
+[v _ResetMcu `(v ~T0 @X0 1 ef ]
+"105
 {
-[; ;SystemCommon.c: 102: void SendSystemStartAck()
-[; ;SystemCommon.c: 103: {
+[; ;SystemCommon.c: 104: void ResetMcu()
+[; ;SystemCommon.c: 105: {
+[e :U _ResetMcu ]
+[f ]
+[; ;SystemCommon.c: 110: asm(" reset");
+"110
+[; <"  reset ;# ">
+[; ;SystemCommon.c: 111: }
+"111
+[e :UE 886 ]
+}
+"113
+[v _SendSystemStartAck `(v ~T0 @X0 1 ef ]
+"114
+{
+[; ;SystemCommon.c: 113: void SendSystemStartAck()
+[; ;SystemCommon.c: 114: {
 [e :U _SendSystemStartAck ]
 [f ]
-[; ;SystemCommon.c: 105: }
-"105
-[e :UE 878 ]
+[; ;SystemCommon.c: 116: }
+"116
+[e :UE 887 ]
 }

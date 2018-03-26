@@ -206,6 +206,13 @@ TX_TYPE,
 RX_TYPE,
 }MODULE_TYPE;
 
+typedef enum
+{
+SYNTH_TX = 0,
+SYNTH_RX,
+EXT_DAC
+}SPI_PERIPHERAL;
+
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
 
@@ -8657,10 +8664,10 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 400 "mcc_generated_files/pin_manager.h"
+# 417 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
 
-# 412
+# 429
 void PIN_MANAGER_IOC(void);
 
 # 12 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdbool.h"
@@ -8697,42 +8704,43 @@ uint8_t DATAEE_ReadByte(uint8_t bAdd);
 void MEMORY_ISR(void);
 bool FLASH_IsWriteDone();
 
-# 74 "mcc_generated_files/tmr0.h"
+# 75 "mcc_generated_files/tmr0.h"
 volatile bool TimerOneSecFlag = 0;
 volatile bool TimerSamplingFlag = 0;
 volatile bool TimerKeepAliveFlag = 0;
+volatile bool TimertenSecFlag = 0;
 
-# 113
+# 115
 void TMR0_Initialize(void);
 
-# 142
+# 144
 void TMR0_StartTimer(void);
 
-# 174
+# 176
 void TMR0_StopTimer(void);
 
-# 210
+# 212
 uint16_t TMR0_ReadTimer(void);
 
-# 249
+# 251
 void TMR0_WriteTimer(uint16_t timerVal);
 
-# 285
+# 287
 void TMR0_Reload(void);
 
-# 303
+# 305
 void TMR0_ISR(void);
 
-# 321
+# 323
 void TMR0_CallBack(void);
 
-# 339
+# 341
 void TMR0_SetInterruptHandler(void (* InterruptHandler)(void));
 
-# 357
+# 359
 extern void (*TMR0_InterruptHandler)(void);
 
-# 375
+# 377
 void TMR0_DefaultInterruptHandler(void);
 
 # 71 "mcc_generated_files/adc.h"
@@ -8868,7 +8876,7 @@ void BlinkErrorLeds(LED_OK_INTICATION state);
 void BlinkOkLeds(LED_ERR_INTICATION state);
 void keepAliveSignalLed(void);
 
-# 19 "AdcApp.h"
+# 20 "AdcApp.h"
 typedef enum
 {
 CIRCULAR = 0x0,
@@ -8878,8 +8886,8 @@ SINGLE_CHANNEL = 0x1,
 const adc_channel_t channelArr[(0x04)] =
 {
 0x4,
-0x5,
 0x6,
+0x5,
 0x7,
 };
 
@@ -8889,8 +8897,9 @@ void AdcSingleSample(MODULE_TYPE cType, char* data);
 void SetChannelMode(char* data);
 void InitAdcApplicationMgr();
 bool SampleSingleChannel(void);
+void SampleVgMonChannel(void);
 
-# 31 "FlashApp.h"
+# 36 "FlashApp.h"
 void FlashSampleWrite(adc_result_t sampleData, uint8_t channelNum);
 void FlashReadUart(int numOfSampleToRead);
 void FlashEreaseMem(void);
@@ -9100,23 +9109,13 @@ void UpdateRxFreq(char* data);
 void SYNTH_ISR(void);
 
 # 14 "SwSpiApp.h"
-typedef enum
-{
-SYNTH_TX = 0,
-SYNTH_RX,
-EXT_DAC
-} SPI_PERIPHERAL;
-
-
 void SWSPI_send_word (SPI_PERIPHERAL phrType, uint32_t data, uint8_t dataSize);
-
 void SwSpi_Data_Pin (SPI_PERIPHERAL phrType, bool cPinMode);
 void SwSpi_Clk_Pin (SPI_PERIPHERAL phrType, bool cPinMode);
-
 void SwSpi_Set_CE_Pin (SPI_PERIPHERAL phrType, bool cPinMode);
 
 
-void SWSPI_Synth_send_bits(SPI_PERIPHERAL phrType, uint8_t data);
+void SWSPI_Synth_send_bits(SPI_PERIPHERAL phrType, uint32_t data);
 void SwSpi_Synth_Toggle_Clock(SPI_PERIPHERAL phrType);
 void SwSpi_Set_Synth_Le_Pin(SPI_PERIPHERAL phrType, bool cPinMode);
 
@@ -9124,52 +9123,94 @@ void SwSpi_Set_Synth_Le_Pin(SPI_PERIPHERAL phrType, bool cPinMode);
 void SWSPI_DAC_send_bits(SPI_PERIPHERAL phrType, uint8_t data);
 void SwSpi_Set_Dac_Sync_Pin(bool cPinMode);
 
-# 43 "SystemCommon.h"
+# 51 "SystemCommon.h"
 unsigned char crc8(char* dataArray, int dataSize);
 uint8_t make8(uint32_t data, uint8_t dataLocation);
 void ZeroArray(char* array, int size);
-int GCD(int num1, int num2);
 uint32_t GetIntFromUartData(char* data);
+void Make32bitsArray(bool* array, uint32_t data);
+
+void StoreIntInEeprom(uint32_t data, uint8_t address, int numOfByes);
+uint32_t ReadIntFromEeprom(uint8_t address, int numOfByes);
 
 
 void ResetMcu(void);
-void ResetCpld(void);
 void SendSystemStartAck(void);
 
 # 23 "DacApp.h"
+const uint8_t DAC_ADDRES[(4)] =
+{
+0x2,
+0x4,
+0x6,
+0x8,
+};
+
+const uint16_t DAC_DEFAULT_INIT_VALUES[(4)] =
+{
+0x2344,
+0x6344,
+0xA344,
+0xE344,
+};
+
 void DacInit(void);
 void DacSetValue(char* data);
+uint16_t DacReadValue(char* data);
 
 
-void DacTest(void);
+uint16_t DacAnalogToDigitalSpi(uint16_t AnalogVal, uint8_t dacNum);
 
-# 13 "DacApp.c"
-void DacTest(void)
-{
-int count = 0;
-for(count=0; count<=25; count++)
-{
-
-_delay((unsigned long)((20)*(8000000/4000.0)));
-}
-}
-
-
+# 12 "DacApp.c"
 void DacInit(void)
 {
-SWSPI_send_word(EXT_DAC, (0x2344), 1);
-SWSPI_send_word(EXT_DAC, (0x6344), 1);
-SWSPI_send_word(EXT_DAC, (0xA344), 1);
-SWSPI_send_word(EXT_DAC, (0xE344), 1);
+for(int8_t idx = 0; idx < (4); idx++)
+{
+uint16_t dacInput = ReadIntFromEeprom((0x40) | DAC_ADDRES[idx], 2);
+if(dacInput == 0xFFFF)
+{
+SWSPI_send_word(EXT_DAC, DAC_DEFAULT_INIT_VALUES[idx], 1);
+StoreIntInEeprom(DAC_DEFAULT_INIT_VALUES[idx], (0x40) | DAC_ADDRES[idx], 2);
 }
+else
+{
+SWSPI_send_word(EXT_DAC, dacInput, 1);
+}
+}
+}
+
 
 
 void DacSetValue(char* data)
 {
-uint16_t regData = GetIntFromUartData(data);
-SWSPI_send_word(EXT_DAC, regData, 1);
+uint32_t retNum = GetIntFromUartData(data);
+uint8_t dacNum = data[1] - '0';
+uint16_t dacAnalog = retNum % (int)(pow(10,data[0] - 1));
+uint16_t dacDigital = DacAnalogToDigitalSpi(dacAnalog, dacNum);
 
 
+SWSPI_send_word(EXT_DAC, dacDigital, 1);
 
+
+StoreIntInEeprom(dacDigital, (0x40) | DAC_ADDRES[dacNum], 2);
+
+}
+
+uint16_t DacAnalogToDigitalSpi(uint16_t AnalogValMili, uint8_t dacNum)
+{
+uint16_t dacDigital = (int)((AnalogValMili * (pow(2, (10)) - 1)) / (4880));
+uint16_t dacSpiVal = (int)(dacNum * pow(2,14)) | (int)((0x1) * pow(2,13)) | (int)(dacDigital * pow(2,2));
+return dacSpiVal;
+}
+
+uint16_t DacReadValue(char* data)
+{
+uint16_t readVal;
+uint8_t regNum = 0, byteNum = 0;
+
+uint8_t dacIndex = data[0];
+uint16_t readVal = ReadIntFromEeprom((0x40) | DAC_ADDRES[dacIndex], 2);
+
+# 67
 }
 
