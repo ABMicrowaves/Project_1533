@@ -55,8 +55,6 @@ void testLeds(void)
         RED_LED = 0;
         __delay_ms(LEDS_TEST_DELAY_MSEC);
     }
-    
-    //SendAckMessage((MSG_GROUPS)CONTROL_MSG, (MSG_REQUEST)CONTROL_TEST_LEDS);
     return;
 }
 // </editor-fold>

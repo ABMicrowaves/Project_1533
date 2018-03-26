@@ -231,6 +231,13 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
+# 18 "SystemCommon.h"
+typedef enum
+{
+TX_TYPE,
+RX_TYPE,
+}MODULE_TYPE;
+
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
 
@@ -8682,10 +8689,10 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 448 "mcc_generated_files/pin_manager.h"
+# 400 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
 
-# 460
+# 412
 void PIN_MANAGER_IOC(void);
 
 # 12 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdbool.h"
@@ -8721,49 +8728,6 @@ uint8_t DATAEE_ReadByte(uint8_t bAdd);
 # 293
 void MEMORY_ISR(void);
 bool FLASH_IsWriteDone();
-
-# 71 "mcc_generated_files/adc.h"
-typedef uint16_t adc_result_t;
-
-# 76
-typedef struct
-{
-adc_result_t adcResult1;
-adc_result_t adcResult2;
-} adc_sync_double_result_t;
-
-# 94
-typedef enum
-{
-ADC_RA5 = 0x4,
-ADC_RE0 = 0x5,
-ADC_RE1 = 0x6,
-ADC_RE2 = 0x7,
-ADC_RB1 = 0xA,
-ADC_RB5 = 0xD,
-ADC_RD5 = 0x19,
-channel_CTMU = 0x1D,
-channel_DAC = 0x1E,
-channel_FVRBuf2 = 0x1F
-} adc_channel_t;
-
-# 141
-void ADC_Initialize(void);
-
-# 171
-void ADC_SelectChannel(adc_channel_t channel);
-
-# 198
-void ADC_StartConversion();
-
-# 230
-bool ADC_IsConversionDone();
-
-# 263
-adc_result_t ADC_GetConversionResult(void);
-
-# 293
-adc_result_t ADC_GetConversion(adc_channel_t channel);
 
 # 74 "mcc_generated_files/tmr0.h"
 volatile bool TimerOneSecFlag = 0;
@@ -8802,6 +8766,46 @@ extern void (*TMR0_InterruptHandler)(void);
 
 # 375
 void TMR0_DefaultInterruptHandler(void);
+
+# 71 "mcc_generated_files/adc.h"
+typedef uint16_t adc_result_t;
+
+# 76
+typedef struct
+{
+adc_result_t adcResult1;
+adc_result_t adcResult2;
+} adc_sync_double_result_t;
+
+# 101
+typedef enum
+{
+ADC_RREV = 0x4,
+ADC_FFWR = 0x5,
+ADC_TMP = 0x6,
+ADC_VG_MON = 0x7,
+channel_CTMU = 0x1D,
+channel_DAC = 0x1E,
+channel_FVRBuf2 = 0x1F
+} adc_channel_t;
+
+# 145
+void ADC_Initialize(void);
+
+# 175
+void ADC_SelectChannel(adc_channel_t channel);
+
+# 202
+void ADC_StartConversion();
+
+# 234
+bool ADC_IsConversionDone();
+
+# 267
+adc_result_t ADC_GetConversionResult(void);
+
+# 297
+adc_result_t ADC_GetConversion(adc_channel_t channel);
 
 # 75 "mcc_generated_files/eusart1.h"
 extern volatile uint8_t eusart1TxBufferRemaining;
@@ -8855,6 +8859,8 @@ RX_SET_COMRESSION_MODE = 0x63,
 RX_SET_COMRESSION_RANGE = 0x65,
 
 
+ADC_SAMPLE = 0x23,
+
 
 SYSTEM_PRINT_HELP_LIST = 0x18,
 SYSTEM_TEST_LED = 0x1C,
@@ -8894,36 +8900,27 @@ void BlinkErrorLeds(LED_OK_INTICATION state);
 void BlinkOkLeds(LED_ERR_INTICATION state);
 void keepAliveSignalLed(void);
 
-# 22 "AdcApp.h"
-typedef enum
-{
-CONVERSION_LEFT_FORAMT = 0,
-CONVERSION_RIGHT_FORAMT,
-}ADC_CONVERSION_FORMAT;
-
+# 19 "AdcApp.h"
 typedef enum
 {
 CIRCULAR = 0x0,
 SINGLE_CHANNEL = 0x1,
 }ADC_SAMPLE_MODE;
 
-
-const adc_channel_t channelArr[(7)] =
+const adc_channel_t channelArr[(0x04)] =
 {
-0x7,
-0x6,
-0x5,
 0x4,
-0x19,
-0xA,
-0xD,
+0x5,
+0x6,
+0x7,
 };
 
-void SetAdcOperationMode(char* data);
-void SetConversionResultFormat(char* data);
+volatile bool needToSample = 0;
+
+void AdcSingleSample(MODULE_TYPE cType, char* data);
 void SetChannelMode(char* data);
 void InitAdcApplicationMgr();
-void AdcConvert();
+bool SampleSingleChannel(void);
 
 # 31 "FlashApp.h"
 void FlashSampleWrite(adc_result_t sampleData, uint8_t channelNum);
@@ -9036,16 +9033,7 @@ void SwSpi_Set_Synth_Le_Pin(SPI_PERIPHERAL phrType, bool cPinMode);
 void SWSPI_DAC_send_bits(SPI_PERIPHERAL phrType, uint8_t data);
 void SwSpi_Set_Dac_Sync_Pin(bool cPinMode);
 
-# 37 "SystemCommon.h"
-typedef enum
-{
-START_SYSTEM = 0,
-ADC_DAC,
-FLASH,
-EUSART,
-FINISH_ROUND
-}SYSTEM_STATE;
-
+# 43 "SystemCommon.h"
 unsigned char crc8(char* dataArray, int dataSize);
 uint8_t make8(uint32_t data, uint8_t dataLocation);
 void ZeroArray(char* array, int size);
@@ -9139,6 +9127,7 @@ FIND_MAGIC,
 READ_STREAM,
 READ_GROUP,
 READ_REQUEST,
+READ_DATA_SIZE,
 READ_DATA,
 CHECK_CRC,
 JUMP_FUNCTION
@@ -9159,6 +9148,8 @@ static UART_READ_STATE cState = START_RX_MESSAGE_READ;
 
 MSG_GROUPS group = 0;
 MSG_REQUEST request = 0;
+uint8_t dataSize = 0;
+char crcCalc = 0, crcGiven = 0;
 char rxMsgQueue[(0x14)];
 char rxMsgData[(0x14)];
 static uint8_t msgCount = 0;
@@ -9257,73 +9248,73 @@ switch(group)
 {
 case RX_GROUP:
 
-if(chRec == 'I' || chRec == 'F' || chRec == 'Q' || chRec == 'X' || chRec == 'C')
+if( chRec == 'I' || chRec == 'F' || chRec == 'Q' ||
+chRec == 'X' || chRec == 'C' || chRec == 'S' ||
+chRec == 'C')
 {
-if(chRec == 'C')
-{
-if(toupper(rxMsgQueue[2]) == 'P' || toupper(rxMsgQueue[2]) == 'R')
-{
-request = chRec + toupper(rxMsgQueue[2]) - '0';
-}
-else
-{
-sprintf(dest, "NOT O.K \n\r");
-UART_Write_Text(dest);
-cState = START_RX_MESSAGE_READ;
-return;
-}
-}
-else
-{
-request = chRec - '0';
-}
 
-cState = READ_DATA;
-return;
+request = chRec - '0';
+cState = READ_DATA_SIZE;
+
 }
-break;
+else
+{
+UART_Write_Text("NOT OK \n\r");
+cState = START_RX_MESSAGE_READ;
+}
+return;
 
 case TX_GROUP:
 
-if(chRec == 'I' || chRec == 'F' || chRec == 'Q' || chRec == 'X' || chRec == 'B')
+if(chRec == 'I' || chRec == 'F' || chRec == 'Q' || chRec == 'X' || chRec == 'B' || chRec == 'S')
 {
 request = (chRec - '0');
-cState = READ_DATA;
+cState = READ_DATA_SIZE;
 return;
+}
+else
+{
+UART_Write_Text("NOT OK \n\r");
+cState = START_RX_MESSAGE_READ;
 }
 break;
 
 case COMMON_GROUP:
 
-if(chRec == 'H')
+if(chRec == 'H' || chRec == 'L')
 {
 request = (chRec - '0');
-cState = READ_DATA;
-return;
-}
-else if(chRec == 'L')
-{
-request = (chRec - '0');
-cState = READ_DATA;
-return;
+cState = READ_DATA_SIZE;
 }
 else
 {
-sprintf(dest, "NOT O.K \n\r");
-UART_Write_Text(dest);
+UART_Write_Text("NOT OK \n\r");
 cState = START_RX_MESSAGE_READ;
+}
+}
 return;
-}
-break;
-}
 
-sprintf(dest, "NOT O.K \n\r");
-UART_Write_Text(dest);
-cState = START_RX_MESSAGE_READ;
+case READ_DATA_SIZE:
+
+dataSize = msgCount - 2;
+rxMsgData[(0x0)] = dataSize;
+if(dataSize == 0)
+{
+cState = JUMP_FUNCTION;
+}
+else
+{
+cState = READ_DATA;
+}
 
 break;
 
 case READ_DATA:
+
+for(int idx = 1; idx < dataSize + 1; idx++)
+{
+rxMsgData[idx] = rxMsgQueue[(0x2) + idx - 1];
+}
 
 cState = JUMP_FUNCTION;
 break;
@@ -9341,10 +9332,15 @@ void InitRxMessageParams(void)
 group = 0;
 request = 0;
 msgCount = 0;
+dataSize = 0;
+crcCalc = 0;
+crcGiven = 0;
 ZeroArray(rxMsgQueue, (0x14));
+ZeroArray(rxMsgData, (0x14));
+
 }
 
-# 209
+# 216
 void WriteUartMessage(char* dataBuf, int dataSize)
 {
 for(int idx = 0; idx < dataSize; idx++)
@@ -9361,7 +9357,7 @@ EUSART1_Write(text[i]);
 }
 }
 
-# 230
+# 237
 void SendAckMessage(MSG_GROUPS inGroup, MSG_REQUEST inRequest)
 {
 
@@ -9369,10 +9365,10 @@ char TxMsg[(0x5) + 1];
 ZeroArray(TxMsg, (0x5) + 1);
 
 
-TxMsg[(0)] = (0x24);
-TxMsg[(1)] = inGroup;
-TxMsg[(2)] = inRequest;
-TxMsg[(3)] = 0;
+TxMsg[(0x0)] = (0x24);
+TxMsg[(0x1)] = inGroup;
+TxMsg[(0x2)] = inRequest;
+TxMsg[(0x0)] = 0;
 
 TxMsg[(0x5)] = crc8(TxMsg, (0x5));
 

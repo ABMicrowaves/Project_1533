@@ -7001,6 +7001,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 [e :U 865 ]
 [; ;eusart1.c: 210: }
+[; ;eusart1.c: 212: TXREG1 = RCREG1;
+"212
+[e = _TXREG1 _RCREG1 ]
 [; ;eusart1.c: 215: eusart1RxBuffer[eusart1RxHead++] = RCREG1;
 "215
 [e = *U + &U _eusart1RxBuffer * -> ++ _eusart1RxHead -> -> 1 `i `uc `ux -> -> # *U &U _eusart1RxBuffer `ui `ux _RCREG1 ]

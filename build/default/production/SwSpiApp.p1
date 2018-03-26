@@ -1,20 +1,20 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"35 AdcApp.h
-[c E7153 4 5 6 7 10 13 25 29 30 31 .. ]
-[n E7153 . ADC_RA5 ADC_RE0 ADC_RE1 ADC_RE2 ADC_RB1 ADC_RB5 ADC_RD5 channel_CTMU channel_DAC channel_FVRBuf2  ]
-[v F7318 `(v ~T0 @X0 0 tf ]
+"25 AdcApp.h
+[c E7185 4 5 6 7 29 30 31 .. ]
+[n E7185 . ADC_RREV ADC_FFWR ADC_TMP ADC_VG_MON channel_CTMU channel_DAC channel_FVRBuf2  ]
+[v F7317 `(v ~T0 @X0 0 tf ]
 "27 MessageFunctions.h
-[c E7228 18 22 25 33 40 99 101 24 28 .. ]
-[n E7228 . TX_RX_SET_BIT_MODE TX_RX_SET_UNIT_FREQUENCY TX_RX_UNIT_UNIT TX_RX_READ_UNIT_STATUS TX_RX_SET_OPERATION_MODE RX_SET_COMRESSION_MODE RX_SET_COMRESSION_RANGE SYSTEM_PRINT_HELP_LIST SYSTEM_TEST_LED  ]
+[c E7229 18 22 25 33 40 99 101 35 24 28 .. ]
+[n E7229 . TX_RX_SET_BIT_MODE TX_RX_SET_UNIT_FREQUENCY TX_RX_UNIT_UNIT TX_RX_READ_UNIT_STATUS TX_RX_SET_OPERATION_MODE RX_SET_COMRESSION_MODE RX_SET_COMRESSION_RANGE ADC_SAMPLE SYSTEM_PRINT_HELP_LIST SYSTEM_TEST_LED  ]
 "20
-[v _GroupRx `(v ~T0 @X0 0 ef2`E7228`*uc ]
+[v _GroupRx `(v ~T0 @X0 0 ef2`E7229`*uc ]
 "21
-[v _GroupTx `(v ~T0 @X0 0 ef2`E7228`*uc ]
+[v _GroupTx `(v ~T0 @X0 0 ef2`E7229`*uc ]
 "22
-[v _GroupCommon `(v ~T0 @X0 0 ef2`E7228`*uc ]
+[v _GroupCommon `(v ~T0 @X0 0 ef2`E7229`*uc ]
 "18 SwSpiApp.c
-[c E7600 0 1 2 .. ]
-[n E7600 . SYNTH_TX SYNTH_RX EXT_DAC  ]
+[c E7593 0 1 2 .. ]
+[n E7593 . SYNTH_TX SYNTH_RX EXT_DAC  ]
 "16896 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic18f45k22.h
 [s S819 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S819 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
@@ -30,19 +30,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 "16922
 [v _INTCONbits `VS818 ~T0 @X0 0 e@4082 ]
 "32 SwSpiApp.h
-[v _SwSpi_Set_Synth_Le_Pin `(v ~T0 @X0 0 ef2`E7600`uc ]
+[v _SwSpi_Set_Synth_Le_Pin `(v ~T0 @X0 0 ef2`E7593`uc ]
 "36
 [v _SwSpi_Set_Dac_Sync_Pin `(v ~T0 @X0 0 ef1`uc ]
-"47 SystemCommon.h
+"44 SystemCommon.h
 [v _make8 `(uc ~T0 @X0 0 ef2`ul`uc ]
 "30 SwSpiApp.h
-[v _SWSPI_Synth_send_bits `(v ~T0 @X0 0 ef2`E7600`uc ]
+[v _SWSPI_Synth_send_bits `(v ~T0 @X0 0 ef2`E7593`uc ]
 "35
-[v _SWSPI_DAC_send_bits `(v ~T0 @X0 0 ef2`E7600`uc ]
+[v _SWSPI_DAC_send_bits `(v ~T0 @X0 0 ef2`E7593`uc ]
 "25
-[v _SwSpi_Clk_Pin `(v ~T0 @X0 0 ef2`E7600`uc ]
+[v _SwSpi_Clk_Pin `(v ~T0 @X0 0 ef2`E7593`uc ]
 "24
-[v _SwSpi_Data_Pin `(v ~T0 @X0 0 ef2`E7600`uc ]
+[v _SwSpi_Data_Pin `(v ~T0 @X0 0 ef2`E7593`uc ]
 "7900 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic18f45k22.h
 [s S385 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S385 . LATD0 LATD1 LATD2 LATD3 LATD4 LATD5 LATD6 LATD7 ]
@@ -76,9 +76,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S375 . . . ]
 "7585
 [v _LATAbits `VS375 ~T0 @X0 0 e@3977 ]
-[v F7110 `(v ~T0 @X0 1 tf1`ul ]
+[v F7114 `(v ~T0 @X0 1 tf1`ul ]
 "164 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic18.h
-[v __delay `JF7110 ~T0 @X0 0 e ]
+[v __delay `JF7114 ~T0 @X0 0 e ]
 [p i __delay ]
 [; ;math.h: 30: extern double fabs(double);
 [; ;math.h: 31: extern double floor(double);
@@ -177,6 +177,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
 [; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
 [; ;stdio.h: 195: extern int printf(const char *, ...);
+[; ;SystemCommon.h: 18: typedef enum
+[; ;SystemCommon.h: 19: {
+[; ;SystemCommon.h: 20: TX_TYPE,
+[; ;SystemCommon.h: 21: RX_TYPE,
+[; ;SystemCommon.h: 22: }MODULE_TYPE;
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -6724,8 +6729,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 164: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 166: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 168: extern __nonreentrant void _delay3(unsigned char);
-[; ;pin_manager.h: 448: void PIN_MANAGER_Initialize (void);
-[; ;pin_manager.h: 460: void PIN_MANAGER_IOC(void);
+[; ;pin_manager.h: 400: void PIN_MANAGER_Initialize (void);
+[; ;pin_manager.h: 412: void PIN_MANAGER_IOC(void);
 [; ;stdbool.h: 12: typedef unsigned char bool;
 [; ;interrupt_manager.h: 108: void interrupt INTERRUPT_InterruptManager(void);
 [; ;interrupt_manager.h: 120: void INTERRUPT_Initialize (void);
@@ -6738,31 +6743,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;memory.h: 277: uint8_t DATAEE_ReadByte(uint8_t bAdd);
 [; ;memory.h: 293: void MEMORY_ISR(void);
 [; ;memory.h: 294: bool FLASH_IsWriteDone();
-[; ;adc.h: 71: typedef uint16_t adc_result_t;
-[; ;adc.h: 76: typedef struct
-[; ;adc.h: 77: {
-[; ;adc.h: 78: adc_result_t adcResult1;
-[; ;adc.h: 79: adc_result_t adcResult2;
-[; ;adc.h: 80: } adc_sync_double_result_t;
-[; ;adc.h: 94: typedef enum
-[; ;adc.h: 95: {
-[; ;adc.h: 96: ADC_RA5 = 0x4,
-[; ;adc.h: 97: ADC_RE0 = 0x5,
-[; ;adc.h: 98: ADC_RE1 = 0x6,
-[; ;adc.h: 99: ADC_RE2 = 0x7,
-[; ;adc.h: 100: ADC_RB1 = 0xA,
-[; ;adc.h: 101: ADC_RB5 = 0xD,
-[; ;adc.h: 102: ADC_RD5 = 0x19,
-[; ;adc.h: 103: channel_CTMU = 0x1D,
-[; ;adc.h: 104: channel_DAC = 0x1E,
-[; ;adc.h: 105: channel_FVRBuf2 = 0x1F
-[; ;adc.h: 106: } adc_channel_t;
-[; ;adc.h: 141: void ADC_Initialize(void);
-[; ;adc.h: 171: void ADC_SelectChannel(adc_channel_t channel);
-[; ;adc.h: 198: void ADC_StartConversion();
-[; ;adc.h: 230: bool ADC_IsConversionDone();
-[; ;adc.h: 263: adc_result_t ADC_GetConversionResult(void);
-[; ;adc.h: 293: adc_result_t ADC_GetConversion(adc_channel_t channel);
 "74 mcc_generated_files/tmr0.h
 [v _TimerOneSecFlag `Vuc ~T0 @X0 1 e ]
 [i _TimerOneSecFlag
@@ -6792,6 +6772,28 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tmr0.h: 339: void TMR0_SetInterruptHandler(void (* InterruptHandler)(void));
 [; ;tmr0.h: 357: extern void (*TMR0_InterruptHandler)(void);
 [; ;tmr0.h: 375: void TMR0_DefaultInterruptHandler(void);
+[; ;adc.h: 71: typedef uint16_t adc_result_t;
+[; ;adc.h: 76: typedef struct
+[; ;adc.h: 77: {
+[; ;adc.h: 78: adc_result_t adcResult1;
+[; ;adc.h: 79: adc_result_t adcResult2;
+[; ;adc.h: 80: } adc_sync_double_result_t;
+[; ;adc.h: 101: typedef enum
+[; ;adc.h: 102: {
+[; ;adc.h: 103: ADC_RREV = 0x4,
+[; ;adc.h: 104: ADC_FFWR = 0x5,
+[; ;adc.h: 105: ADC_TMP = 0x6,
+[; ;adc.h: 106: ADC_VG_MON = 0x7,
+[; ;adc.h: 107: channel_CTMU = 0x1D,
+[; ;adc.h: 108: channel_DAC = 0x1E,
+[; ;adc.h: 109: channel_FVRBuf2 = 0x1F
+[; ;adc.h: 110: } adc_channel_t;
+[; ;adc.h: 145: void ADC_Initialize(void);
+[; ;adc.h: 175: void ADC_SelectChannel(adc_channel_t channel);
+[; ;adc.h: 202: void ADC_StartConversion();
+[; ;adc.h: 234: bool ADC_IsConversionDone();
+[; ;adc.h: 267: adc_result_t ADC_GetConversionResult(void);
+[; ;adc.h: 297: adc_result_t ADC_GetConversion(adc_channel_t channel);
 [; ;eusart1.h: 75: extern volatile uint8_t eusart1TxBufferRemaining;
 [; ;eusart1.h: 76: extern volatile uint8_t eusart1RxCount;
 [; ;eusart1.h: 102: void EUSART1_Initialize(void);
@@ -6818,9 +6820,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;GroupsCommon.h: 27: TX_RX_SET_OPERATION_MODE = 0x28,
 [; ;GroupsCommon.h: 30: RX_SET_COMRESSION_MODE = 0x63,
 [; ;GroupsCommon.h: 31: RX_SET_COMRESSION_RANGE = 0x65,
-[; ;GroupsCommon.h: 35: SYSTEM_PRINT_HELP_LIST = 0x18,
-[; ;GroupsCommon.h: 36: SYSTEM_TEST_LED = 0x1C,
-[; ;GroupsCommon.h: 37: }MSG_REQUEST;
+[; ;GroupsCommon.h: 34: ADC_SAMPLE = 0x23,
+[; ;GroupsCommon.h: 37: SYSTEM_PRINT_HELP_LIST = 0x18,
+[; ;GroupsCommon.h: 38: SYSTEM_TEST_LED = 0x1C,
+[; ;GroupsCommon.h: 39: }MSG_REQUEST;
 [; ;SystemStatus.h: 31: void SetMcuFwVersion(char* data);
 [; ;SystemStatus.h: 32: void SetCpldFwVersion(char* data);
 [; ;SystemStatus.h: 34: void GetMcuFwVersion();
@@ -6845,51 +6848,42 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;LedsApp.h: 37: void BlinkErrorLeds(LED_OK_INTICATION state);
 [; ;LedsApp.h: 38: void BlinkOkLeds(LED_ERR_INTICATION state);
 [; ;LedsApp.h: 39: void keepAliveSignalLed(void);
-[; ;AdcApp.h: 22: typedef enum
-[; ;AdcApp.h: 23: {
-[; ;AdcApp.h: 24: CONVERSION_LEFT_FORAMT = 0,
-[; ;AdcApp.h: 25: CONVERSION_RIGHT_FORAMT,
-[; ;AdcApp.h: 26: }ADC_CONVERSION_FORMAT;
-[; ;AdcApp.h: 28: typedef enum
-[; ;AdcApp.h: 29: {
-[; ;AdcApp.h: 30: CIRCULAR = 0x0,
-[; ;AdcApp.h: 31: SINGLE_CHANNEL = 0x1,
-[; ;AdcApp.h: 32: }ADC_SAMPLE_MODE;
-"35 AdcApp.h
-[v _channelArr `CE7153 ~T0 @X0 -> 7 `i e ]
+[; ;AdcApp.h: 19: typedef enum
+[; ;AdcApp.h: 20: {
+[; ;AdcApp.h: 21: CIRCULAR = 0x0,
+[; ;AdcApp.h: 22: SINGLE_CHANNEL = 0x1,
+[; ;AdcApp.h: 23: }ADC_SAMPLE_MODE;
+"25 AdcApp.h
+[v _channelArr `CE7185 ~T0 @X0 -> 4 `i e ]
 [i _channelArr
 :U ..
-"37
--> -> 7 `i `CE7153
-"38
--> -> 6 `i `CE7153
-"39
--> -> 5 `i `CE7153
-"40
--> -> 4 `i `CE7153
-"41
--> -> 25 `i `CE7153
-"42
--> -> 10 `i `CE7153
-"43
--> -> 13 `i `CE7153
+"27
+-> -> 4 `i `CE7185
+"28
+-> -> 5 `i `CE7185
+"29
+-> -> 6 `i `CE7185
+"30
+-> -> 7 `i `CE7185
 ..
 ]
-[; ;AdcApp.h: 35: const adc_channel_t channelArr[(7)] =
-[; ;AdcApp.h: 36: {
-[; ;AdcApp.h: 37: 0x7,
-[; ;AdcApp.h: 38: 0x6,
-[; ;AdcApp.h: 39: 0x5,
-[; ;AdcApp.h: 40: 0x4,
-[; ;AdcApp.h: 41: 0x19,
-[; ;AdcApp.h: 42: 0xA,
-[; ;AdcApp.h: 43: 0xD,
-[; ;AdcApp.h: 44: };
-[; ;AdcApp.h: 46: void SetAdcOperationMode(char* data);
-[; ;AdcApp.h: 47: void SetConversionResultFormat(char* data);
-[; ;AdcApp.h: 48: void SetChannelMode(char* data);
-[; ;AdcApp.h: 49: void InitAdcApplicationMgr();
-[; ;AdcApp.h: 50: void AdcConvert();
+[; ;AdcApp.h: 25: const adc_channel_t channelArr[(0x04)] =
+[; ;AdcApp.h: 26: {
+[; ;AdcApp.h: 27: 0x4,
+[; ;AdcApp.h: 28: 0x5,
+[; ;AdcApp.h: 29: 0x6,
+[; ;AdcApp.h: 30: 0x7,
+[; ;AdcApp.h: 31: };
+"33
+[v _needToSample `Vuc ~T0 @X0 1 e ]
+[i _needToSample
+-> -> 0 `i `uc
+]
+[; ;AdcApp.h: 33: volatile bool needToSample = 0;
+[; ;AdcApp.h: 35: void AdcSingleSample(MODULE_TYPE cType, char* data);
+[; ;AdcApp.h: 36: void SetChannelMode(char* data);
+[; ;AdcApp.h: 37: void InitAdcApplicationMgr();
+[; ;AdcApp.h: 38: bool SampleSingleChannel(void);
 [; ;FlashApp.h: 31: void FlashSampleWrite(adc_result_t sampleData, uint8_t channelNum);
 [; ;FlashApp.h: 32: void FlashReadUart(int numOfSampleToRead);
 [; ;FlashApp.h: 33: void FlashEreaseMem(void);
@@ -6903,15 +6897,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MessageFunctions.h: 21: void GroupTx(MSG_REQUEST request, char* data);
 [; ;MessageFunctions.h: 22: void GroupCommon(MSG_REQUEST request, char* data);
 "25 MessageFunctions.h
-[v _groupsArray `*F7318 ~T0 @X0 -> 6 `i e ]
+[v _groupsArray `*F7317 ~T0 @X0 -> 6 `i e ]
 [i _groupsArray
 :U ..
 "27
--> &U _GroupRx `*F7318
+-> &U _GroupRx `*F7317
 "28
--> &U _GroupTx `*F7318
+-> &U _GroupTx `*F7317
 "29
--> &U _GroupCommon `*F7318
+-> &U _GroupCommon `*F7317
 ..
 ]
 [; ;MessageFunctions.h: 25: void (*groupsArray[(6)])() =
@@ -7010,15 +7004,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;EusartApp.h: 43: READ_STREAM,
 [; ;EusartApp.h: 44: READ_GROUP,
 [; ;EusartApp.h: 45: READ_REQUEST,
-[; ;EusartApp.h: 46: READ_DATA,
-[; ;EusartApp.h: 47: CHECK_CRC,
-[; ;EusartApp.h: 48: JUMP_FUNCTION
-[; ;EusartApp.h: 49: }UART_READ_STATE;
-[; ;EusartApp.h: 53: void readUartByte(void);
-[; ;EusartApp.h: 54: void InitRxMessageParams(void);
-[; ;EusartApp.h: 57: void WriteUartMessage(char* dataBuf, int dataSize);
-[; ;EusartApp.h: 58: void SendAckMessage(MSG_GROUPS inGroup, MSG_REQUEST inRequest);
-[; ;EusartApp.h: 59: void UART_Write_Text(char* text);
+[; ;EusartApp.h: 46: READ_DATA_SIZE,
+[; ;EusartApp.h: 47: READ_DATA,
+[; ;EusartApp.h: 48: CHECK_CRC,
+[; ;EusartApp.h: 49: JUMP_FUNCTION
+[; ;EusartApp.h: 50: }UART_READ_STATE;
+[; ;EusartApp.h: 54: void readUartByte(void);
+[; ;EusartApp.h: 55: void InitRxMessageParams(void);
+[; ;EusartApp.h: 58: void WriteUartMessage(char* dataBuf, int dataSize);
+[; ;EusartApp.h: 59: void SendAckMessage(MSG_GROUPS inGroup, MSG_REQUEST inRequest);
+[; ;EusartApp.h: 60: void UART_Write_Text(char* text);
 [; ;SevenSegmentApp.h: 19: void segmentCounter(void);
 [; ;SevenSegmentApp.h: 20: unsigned short mask(unsigned short num);
 [; ;SevenSegmentApp.h: 21: void InitSevenSegment(void);
@@ -7123,22 +7118,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SyntApp.h: 60: void UpdateTxFreq(char* data);
 [; ;SyntApp.h: 61: void UpdateRxFreq(char* data);
 [; ;SyntApp.h: 63: void SYNTH_ISR(void);
-[; ;SystemCommon.h: 37: typedef enum
-[; ;SystemCommon.h: 38: {
-[; ;SystemCommon.h: 39: START_SYSTEM = 0,
-[; ;SystemCommon.h: 40: ADC_DAC,
-[; ;SystemCommon.h: 41: FLASH,
-[; ;SystemCommon.h: 42: EUSART,
-[; ;SystemCommon.h: 43: FINISH_ROUND
-[; ;SystemCommon.h: 44: }SYSTEM_STATE;
-[; ;SystemCommon.h: 46: unsigned char crc8(char* dataArray, int dataSize);
-[; ;SystemCommon.h: 47: uint8_t make8(uint32_t data, uint8_t dataLocation);
-[; ;SystemCommon.h: 48: void ZeroArray(char* array, int size);
-[; ;SystemCommon.h: 49: int GCD(int num1, int num2);
-[; ;SystemCommon.h: 50: uint32_t GetIntFromUartData(char* data);
-[; ;SystemCommon.h: 53: void ResetMcu(void);
-[; ;SystemCommon.h: 54: void ResetCpld(void);
-[; ;SystemCommon.h: 55: void SendSystemStartAck(void);
+[; ;SystemCommon.h: 43: unsigned char crc8(char* dataArray, int dataSize);
+[; ;SystemCommon.h: 44: uint8_t make8(uint32_t data, uint8_t dataLocation);
+[; ;SystemCommon.h: 45: void ZeroArray(char* array, int size);
+[; ;SystemCommon.h: 46: int GCD(int num1, int num2);
+[; ;SystemCommon.h: 47: uint32_t GetIntFromUartData(char* data);
+[; ;SystemCommon.h: 50: void ResetMcu(void);
+[; ;SystemCommon.h: 51: void ResetCpld(void);
+[; ;SystemCommon.h: 52: void SendSystemStartAck(void);
 [; ;SwSpiApp.h: 14: typedef enum
 [; ;SwSpiApp.h: 15: {
 [; ;SwSpiApp.h: 16: SYNTH_TX = 0,
@@ -7155,14 +7142,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SwSpiApp.h: 35: void SWSPI_DAC_send_bits(SPI_PERIPHERAL phrType, uint8_t data);
 [; ;SwSpiApp.h: 36: void SwSpi_Set_Dac_Sync_Pin(bool cPinMode);
 "17 SwSpiApp.c
-[v _SWSPI_send_word `(v ~T0 @X0 1 ef3`E7600`ul`uc ]
+[v _SWSPI_send_word `(v ~T0 @X0 1 ef3`E7593`ul`uc ]
 "18
 {
 [; ;SwSpiApp.c: 17: void SWSPI_send_word (SPI_PERIPHERAL phrType, uint32_t data, uint8_t dataSize)
 [; ;SwSpiApp.c: 18: {
 [e :U _SWSPI_send_word ]
 "17
-[v _phrType `E7600 ~T0 @X0 1 r1 ]
+[v _phrType `E7593 ~T0 @X0 1 r1 ]
 [v _data `ul ~T0 @X0 1 r2 ]
 [v _dataSize `uc ~T0 @X0 1 r3 ]
 "18
@@ -7172,7 +7159,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
 [; ;SwSpiApp.c: 23: if(phrType == SYNTH_TX || phrType == SYNTH_RX)
 "23
-[e $ ! || == -> _phrType `i -> . `E7600 0 `i == -> _phrType `i -> . `E7600 1 `i 853  ]
+[e $ ! || == -> _phrType `i -> . `E7593 0 `i == -> _phrType `i -> . `E7593 1 `i 853  ]
 [; ;SwSpiApp.c: 24: {
 "24
 {
@@ -7185,7 +7172,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SwSpiApp.c: 26: }
 [; ;SwSpiApp.c: 27: if(phrType == EXT_DAC)
 "27
-[e $ ! == -> _phrType `i -> . `E7600 2 `i 854  ]
+[e $ ! == -> _phrType `i -> . `E7593 2 `i 854  ]
 [; ;SwSpiApp.c: 28: {
 "28
 {
@@ -7213,7 +7200,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _datac ( _make8 (2 , _data -> - _idx -> 1 `i `uc ]
 [; ;SwSpiApp.c: 39: if(phrType == SYNTH_TX || phrType == SYNTH_RX)
 "39
-[e $ ! || == -> _phrType `i -> . `E7600 0 `i == -> _phrType `i -> . `E7600 1 `i 858  ]
+[e $ ! || == -> _phrType `i -> . `E7593 0 `i == -> _phrType `i -> . `E7593 1 `i 858  ]
 [; ;SwSpiApp.c: 40: {
 "40
 {
@@ -7227,7 +7214,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "43
 [e :U 858 ]
 [; ;SwSpiApp.c: 43: else if (phrType == EXT_DAC)
-[e $ ! == -> _phrType `i -> . `E7600 2 `i 860  ]
+[e $ ! == -> _phrType `i -> . `E7593 2 `i 860  ]
 [; ;SwSpiApp.c: 44: {
 "44
 {
@@ -7250,7 +7237,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SwSpiApp.c: 47: }
 [; ;SwSpiApp.c: 52: if(phrType == EXT_DAC)
 "52
-[e $ ! == -> _phrType `i -> . `E7600 2 `i 861  ]
+[e $ ! == -> _phrType `i -> . `E7593 2 `i 861  ]
 [; ;SwSpiApp.c: 53: {
 "53
 {
@@ -7264,7 +7251,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "56
 [e :U 861 ]
 [; ;SwSpiApp.c: 56: else if(phrType == SYNTH_TX || phrType == SYNTH_RX)
-[e $ ! || == -> _phrType `i -> . `E7600 0 `i == -> _phrType `i -> . `E7600 1 `i 863  ]
+[e $ ! || == -> _phrType `i -> . `E7593 0 `i == -> _phrType `i -> . `E7593 1 `i 863  ]
 [; ;SwSpiApp.c: 57: {
 "57
 {
@@ -7284,14 +7271,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 852 ]
 }
 "65
-[v _SWSPI_DAC_send_bits `(v ~T0 @X0 1 ef2`E7600`uc ]
+[v _SWSPI_DAC_send_bits `(v ~T0 @X0 1 ef2`E7593`uc ]
 "66
 {
 [; ;SwSpiApp.c: 65: void SWSPI_DAC_send_bits(SPI_PERIPHERAL phrType, uint8_t data)
 [; ;SwSpiApp.c: 66: {
 [e :U _SWSPI_DAC_send_bits ]
 "65
-[v _phrType `E7600 ~T0 @X0 1 r1 ]
+[v _phrType `E7593 ~T0 @X0 1 r1 ]
 [v _data `uc ~T0 @X0 1 r2 ]
 "66
 [f ]
@@ -7360,14 +7347,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 864 ]
 }
 "89
-[v _SWSPI_Synth_send_bits `(v ~T0 @X0 1 ef2`E7600`uc ]
+[v _SWSPI_Synth_send_bits `(v ~T0 @X0 1 ef2`E7593`uc ]
 "90
 {
 [; ;SwSpiApp.c: 89: void SWSPI_Synth_send_bits(SPI_PERIPHERAL phrType, uint8_t data)
 [; ;SwSpiApp.c: 90: {
 [e :U _SWSPI_Synth_send_bits ]
 "89
-[v _phrType `E7600 ~T0 @X0 1 r1 ]
+[v _phrType `E7593 ~T0 @X0 1 r1 ]
 [v _data `uc ~T0 @X0 1 r2 ]
 "90
 [f ]
@@ -7436,14 +7423,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 871 ]
 }
 "123
-[v _SwSpi_Data_Pin `(v ~T0 @X0 1 ef2`E7600`uc ]
+[v _SwSpi_Data_Pin `(v ~T0 @X0 1 ef2`E7593`uc ]
 "124
 {
 [; ;SwSpiApp.c: 123: void SwSpi_Data_Pin (SPI_PERIPHERAL phrType, bool cPinMode)
 [; ;SwSpiApp.c: 124: {
 [e :U _SwSpi_Data_Pin ]
 "123
-[v _phrType `E7600 ~T0 @X0 1 r1 ]
+[v _phrType `E7593 ~T0 @X0 1 r1 ]
 [v _cPinMode `uc ~T0 @X0 1 r2 ]
 "124
 [f ]
@@ -7585,9 +7572,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 879  ]
 "125
 [e :U 880 ]
-[e [\ _phrType , $ . `E7600 0 881
- , $ . `E7600 1 891
- , $ . `E7600 2 901
+[e [\ _phrType , $ . `E7593 0 881
+ , $ . `E7593 1 891
+ , $ . `E7593 2 901
  879 ]
 "159
 [e :U 879 ]
@@ -7596,14 +7583,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 878 ]
 }
 "162
-[v _SwSpi_Clk_Pin `(v ~T0 @X0 1 ef2`E7600`uc ]
+[v _SwSpi_Clk_Pin `(v ~T0 @X0 1 ef2`E7593`uc ]
 "163
 {
 [; ;SwSpiApp.c: 162: void SwSpi_Clk_Pin (SPI_PERIPHERAL phrType, bool cPinMode)
 [; ;SwSpiApp.c: 163: {
 [e :U _SwSpi_Clk_Pin ]
 "162
-[v _phrType `E7600 ~T0 @X0 1 r1 ]
+[v _phrType `E7593 ~T0 @X0 1 r1 ]
 [v _cPinMode `uc ~T0 @X0 1 r2 ]
 "163
 [f ]
@@ -7745,9 +7732,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 912  ]
 "164
 [e :U 913 ]
-[e [\ _phrType , $ . `E7600 0 914
- , $ . `E7600 1 924
- , $ . `E7600 2 934
+[e [\ _phrType , $ . `E7593 0 914
+ , $ . `E7593 1 924
+ , $ . `E7593 2 934
  912 ]
 "199
 [e :U 912 ]
@@ -7756,14 +7743,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 911 ]
 }
 "202
-[v _SwSpi_Synth_Toggle_Clock `(v ~T0 @X0 1 ef1`E7600 ]
+[v _SwSpi_Synth_Toggle_Clock `(v ~T0 @X0 1 ef1`E7593 ]
 "203
 {
 [; ;SwSpiApp.c: 202: void SwSpi_Synth_Toggle_Clock(SPI_PERIPHERAL phrType)
 [; ;SwSpiApp.c: 203: {
 [e :U _SwSpi_Synth_Toggle_Clock ]
 "202
-[v _phrType `E7600 ~T0 @X0 1 r1 ]
+[v _phrType `E7593 ~T0 @X0 1 r1 ]
 "203
 [f ]
 [; ;SwSpiApp.c: 204: SwSpi_Clk_Pin(phrType, 1);
@@ -7805,8 +7792,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 945  ]
 "206
 [e :U 946 ]
-[e [\ _phrType , $ . `E7600 0 947
- , $ . `E7600 1 948
+[e [\ _phrType , $ . `E7593 0 947
+ , $ . `E7593 1 948
  949 ]
 "216
 [e :U 945 ]
@@ -7818,14 +7805,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 944 ]
 }
 "221
-[v _SwSpi_Set_CE_Pin `(v ~T0 @X0 1 ef2`E7600`uc ]
+[v _SwSpi_Set_CE_Pin `(v ~T0 @X0 1 ef2`E7593`uc ]
 "222
 {
 [; ;SwSpiApp.c: 221: void SwSpi_Set_CE_Pin (SPI_PERIPHERAL phrType, bool cPinMode)
 [; ;SwSpiApp.c: 222: {
 [e :U _SwSpi_Set_CE_Pin ]
 "221
-[v _phrType `E7600 ~T0 @X0 1 r1 ]
+[v _phrType `E7593 ~T0 @X0 1 r1 ]
 [v _cPinMode `uc ~T0 @X0 1 r2 ]
 "222
 [f ]
@@ -7925,8 +7912,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 951  ]
 "223
 [e :U 952 ]
-[e [\ _phrType , $ . `E7600 0 953
- , $ . `E7600 1 963
+[e [\ _phrType , $ . `E7593 0 953
+ , $ . `E7593 1 963
  951 ]
 "246
 [e :U 951 ]
@@ -7935,14 +7922,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 950 ]
 }
 "252
-[v _SwSpi_Set_Synth_Le_Pin `(v ~T0 @X0 1 ef2`E7600`uc ]
+[v _SwSpi_Set_Synth_Le_Pin `(v ~T0 @X0 1 ef2`E7593`uc ]
 "253
 {
 [; ;SwSpiApp.c: 252: void SwSpi_Set_Synth_Le_Pin(SPI_PERIPHERAL phrType, bool cPinMode)
 [; ;SwSpiApp.c: 253: {
 [e :U _SwSpi_Set_Synth_Le_Pin ]
 "252
-[v _phrType `E7600 ~T0 @X0 1 r1 ]
+[v _phrType `E7593 ~T0 @X0 1 r1 ]
 [v _cPinMode `uc ~T0 @X0 1 r2 ]
 "253
 [f ]
@@ -8042,8 +8029,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 974  ]
 "254
 [e :U 975 ]
-[e [\ _phrType , $ . `E7600 0 976
- , $ . `E7600 1 986
+[e [\ _phrType , $ . `E7593 0 976
+ , $ . `E7593 1 986
  974 ]
 "277
 [e :U 974 ]

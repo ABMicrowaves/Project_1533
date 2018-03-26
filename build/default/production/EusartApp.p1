@@ -1,24 +1,24 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"35 AdcApp.h
-[c E7237 4 5 6 7 10 13 25 29 30 31 .. ]
-[n E7237 . ADC_RA5 ADC_RE0 ADC_RE1 ADC_RE2 ADC_RB1 ADC_RB5 ADC_RD5 channel_CTMU channel_DAC channel_FVRBuf2  ]
-[v F7402 `(v ~T0 @X0 0 tf ]
+"25 AdcApp.h
+[c E7269 4 5 6 7 29 30 31 .. ]
+[n E7269 . ADC_RREV ADC_FFWR ADC_TMP ADC_VG_MON channel_CTMU channel_DAC channel_FVRBuf2  ]
+[v F7401 `(v ~T0 @X0 0 tf ]
 "27 MessageFunctions.h
-[c E7312 18 22 25 33 40 99 101 24 28 .. ]
-[n E7312 . TX_RX_SET_BIT_MODE TX_RX_SET_UNIT_FREQUENCY TX_RX_UNIT_UNIT TX_RX_READ_UNIT_STATUS TX_RX_SET_OPERATION_MODE RX_SET_COMRESSION_MODE RX_SET_COMRESSION_RANGE SYSTEM_PRINT_HELP_LIST SYSTEM_TEST_LED  ]
+[c E7313 18 22 25 33 40 99 101 35 24 28 .. ]
+[n E7313 . TX_RX_SET_BIT_MODE TX_RX_SET_UNIT_FREQUENCY TX_RX_UNIT_UNIT TX_RX_READ_UNIT_STATUS TX_RX_SET_OPERATION_MODE RX_SET_COMRESSION_MODE RX_SET_COMRESSION_RANGE ADC_SAMPLE SYSTEM_PRINT_HELP_LIST SYSTEM_TEST_LED  ]
 "20
-[v _GroupRx `(v ~T0 @X0 0 ef2`E7312`*uc ]
+[v _GroupRx `(v ~T0 @X0 0 ef2`E7313`*uc ]
 "21
-[v _GroupTx `(v ~T0 @X0 0 ef2`E7312`*uc ]
+[v _GroupTx `(v ~T0 @X0 0 ef2`E7313`*uc ]
 "22
-[v _GroupCommon `(v ~T0 @X0 0 ef2`E7312`*uc ]
+[v _GroupCommon `(v ~T0 @X0 0 ef2`E7313`*uc ]
 "15 EusartApp.c
-[c E7609 0 1 2 3 4 5 6 7 .. ]
-[n E7609 . START_RX_MESSAGE_READ FIND_MAGIC READ_STREAM READ_GROUP READ_REQUEST READ_DATA CHECK_CRC JUMP_FUNCTION  ]
+[c E7601 0 1 2 3 4 5 6 7 8 .. ]
+[n E7601 . START_RX_MESSAGE_READ FIND_MAGIC READ_STREAM READ_GROUP READ_REQUEST READ_DATA_SIZE READ_DATA CHECK_CRC JUMP_FUNCTION  ]
 "17
-[c E7307 0 1 2 .. ]
-[n E7307 . RX_GROUP TX_GROUP COMMON_GROUP  ]
-"54 EusartApp.h
+[c E7308 0 1 2 .. ]
+[n E7308 . RX_GROUP TX_GROUP COMMON_GROUP  ]
+"55 EusartApp.h
 [v _InitRxMessageParams `(v ~T0 @X0 0 ef ]
 "125 mcc_generated_files/eusart1.h
 [v _EUSART1_Read `(uc ~T0 @X0 0 ef ]
@@ -28,13 +28,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _toupper `(uc ~T0 @X0 0 ef1`uc ]
 "194 C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdio.h
 [v _sprintf `(i ~T0 @X0 0 e1v`*uc`*Cuc ]
-"59 EusartApp.h
+"60 EusartApp.h
 [v _UART_Write_Text `(v ~T0 @X0 0 ef1`*uc ]
-"48 SystemCommon.h
+"45 SystemCommon.h
 [v _ZeroArray `(v ~T0 @X0 0 ef2`*uc`i ]
 "145 mcc_generated_files/eusart1.h
 [v _EUSART1_Write `(v ~T0 @X0 0 ef1`uc ]
-"46 SystemCommon.h
+"43 SystemCommon.h
 [v _crc8 `(uc ~T0 @X0 0 ef2`*uc`i ]
 [; ;__size_t.h: 4: typedef unsigned size_t;
 [; ;string.h: 14: extern void * memcpy(void *, const void *, size_t);
@@ -159,6 +159,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
 [; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
 [; ;stdio.h: 195: extern int printf(const char *, ...);
+[; ;SystemCommon.h: 18: typedef enum
+[; ;SystemCommon.h: 19: {
+[; ;SystemCommon.h: 20: TX_TYPE,
+[; ;SystemCommon.h: 21: RX_TYPE,
+[; ;SystemCommon.h: 22: }MODULE_TYPE;
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -6706,8 +6711,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 164: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 166: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 168: extern __nonreentrant void _delay3(unsigned char);
-[; ;pin_manager.h: 448: void PIN_MANAGER_Initialize (void);
-[; ;pin_manager.h: 460: void PIN_MANAGER_IOC(void);
+[; ;pin_manager.h: 400: void PIN_MANAGER_Initialize (void);
+[; ;pin_manager.h: 412: void PIN_MANAGER_IOC(void);
 [; ;stdbool.h: 12: typedef unsigned char bool;
 [; ;interrupt_manager.h: 108: void interrupt INTERRUPT_InterruptManager(void);
 [; ;interrupt_manager.h: 120: void INTERRUPT_Initialize (void);
@@ -6720,31 +6725,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;memory.h: 277: uint8_t DATAEE_ReadByte(uint8_t bAdd);
 [; ;memory.h: 293: void MEMORY_ISR(void);
 [; ;memory.h: 294: bool FLASH_IsWriteDone();
-[; ;adc.h: 71: typedef uint16_t adc_result_t;
-[; ;adc.h: 76: typedef struct
-[; ;adc.h: 77: {
-[; ;adc.h: 78: adc_result_t adcResult1;
-[; ;adc.h: 79: adc_result_t adcResult2;
-[; ;adc.h: 80: } adc_sync_double_result_t;
-[; ;adc.h: 94: typedef enum
-[; ;adc.h: 95: {
-[; ;adc.h: 96: ADC_RA5 = 0x4,
-[; ;adc.h: 97: ADC_RE0 = 0x5,
-[; ;adc.h: 98: ADC_RE1 = 0x6,
-[; ;adc.h: 99: ADC_RE2 = 0x7,
-[; ;adc.h: 100: ADC_RB1 = 0xA,
-[; ;adc.h: 101: ADC_RB5 = 0xD,
-[; ;adc.h: 102: ADC_RD5 = 0x19,
-[; ;adc.h: 103: channel_CTMU = 0x1D,
-[; ;adc.h: 104: channel_DAC = 0x1E,
-[; ;adc.h: 105: channel_FVRBuf2 = 0x1F
-[; ;adc.h: 106: } adc_channel_t;
-[; ;adc.h: 141: void ADC_Initialize(void);
-[; ;adc.h: 171: void ADC_SelectChannel(adc_channel_t channel);
-[; ;adc.h: 198: void ADC_StartConversion();
-[; ;adc.h: 230: bool ADC_IsConversionDone();
-[; ;adc.h: 263: adc_result_t ADC_GetConversionResult(void);
-[; ;adc.h: 293: adc_result_t ADC_GetConversion(adc_channel_t channel);
 "74 mcc_generated_files/tmr0.h
 [v _TimerOneSecFlag `Vuc ~T0 @X0 1 e ]
 [i _TimerOneSecFlag
@@ -6774,6 +6754,28 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tmr0.h: 339: void TMR0_SetInterruptHandler(void (* InterruptHandler)(void));
 [; ;tmr0.h: 357: extern void (*TMR0_InterruptHandler)(void);
 [; ;tmr0.h: 375: void TMR0_DefaultInterruptHandler(void);
+[; ;adc.h: 71: typedef uint16_t adc_result_t;
+[; ;adc.h: 76: typedef struct
+[; ;adc.h: 77: {
+[; ;adc.h: 78: adc_result_t adcResult1;
+[; ;adc.h: 79: adc_result_t adcResult2;
+[; ;adc.h: 80: } adc_sync_double_result_t;
+[; ;adc.h: 101: typedef enum
+[; ;adc.h: 102: {
+[; ;adc.h: 103: ADC_RREV = 0x4,
+[; ;adc.h: 104: ADC_FFWR = 0x5,
+[; ;adc.h: 105: ADC_TMP = 0x6,
+[; ;adc.h: 106: ADC_VG_MON = 0x7,
+[; ;adc.h: 107: channel_CTMU = 0x1D,
+[; ;adc.h: 108: channel_DAC = 0x1E,
+[; ;adc.h: 109: channel_FVRBuf2 = 0x1F
+[; ;adc.h: 110: } adc_channel_t;
+[; ;adc.h: 145: void ADC_Initialize(void);
+[; ;adc.h: 175: void ADC_SelectChannel(adc_channel_t channel);
+[; ;adc.h: 202: void ADC_StartConversion();
+[; ;adc.h: 234: bool ADC_IsConversionDone();
+[; ;adc.h: 267: adc_result_t ADC_GetConversionResult(void);
+[; ;adc.h: 297: adc_result_t ADC_GetConversion(adc_channel_t channel);
 [; ;eusart1.h: 75: extern volatile uint8_t eusart1TxBufferRemaining;
 [; ;eusart1.h: 76: extern volatile uint8_t eusart1RxCount;
 [; ;eusart1.h: 102: void EUSART1_Initialize(void);
@@ -6800,9 +6802,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;GroupsCommon.h: 27: TX_RX_SET_OPERATION_MODE = 0x28,
 [; ;GroupsCommon.h: 30: RX_SET_COMRESSION_MODE = 0x63,
 [; ;GroupsCommon.h: 31: RX_SET_COMRESSION_RANGE = 0x65,
-[; ;GroupsCommon.h: 35: SYSTEM_PRINT_HELP_LIST = 0x18,
-[; ;GroupsCommon.h: 36: SYSTEM_TEST_LED = 0x1C,
-[; ;GroupsCommon.h: 37: }MSG_REQUEST;
+[; ;GroupsCommon.h: 34: ADC_SAMPLE = 0x23,
+[; ;GroupsCommon.h: 37: SYSTEM_PRINT_HELP_LIST = 0x18,
+[; ;GroupsCommon.h: 38: SYSTEM_TEST_LED = 0x1C,
+[; ;GroupsCommon.h: 39: }MSG_REQUEST;
 [; ;SystemStatus.h: 31: void SetMcuFwVersion(char* data);
 [; ;SystemStatus.h: 32: void SetCpldFwVersion(char* data);
 [; ;SystemStatus.h: 34: void GetMcuFwVersion();
@@ -6827,51 +6830,42 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;LedsApp.h: 37: void BlinkErrorLeds(LED_OK_INTICATION state);
 [; ;LedsApp.h: 38: void BlinkOkLeds(LED_ERR_INTICATION state);
 [; ;LedsApp.h: 39: void keepAliveSignalLed(void);
-[; ;AdcApp.h: 22: typedef enum
-[; ;AdcApp.h: 23: {
-[; ;AdcApp.h: 24: CONVERSION_LEFT_FORAMT = 0,
-[; ;AdcApp.h: 25: CONVERSION_RIGHT_FORAMT,
-[; ;AdcApp.h: 26: }ADC_CONVERSION_FORMAT;
-[; ;AdcApp.h: 28: typedef enum
-[; ;AdcApp.h: 29: {
-[; ;AdcApp.h: 30: CIRCULAR = 0x0,
-[; ;AdcApp.h: 31: SINGLE_CHANNEL = 0x1,
-[; ;AdcApp.h: 32: }ADC_SAMPLE_MODE;
-"35 AdcApp.h
-[v _channelArr `CE7237 ~T0 @X0 -> 7 `i e ]
+[; ;AdcApp.h: 19: typedef enum
+[; ;AdcApp.h: 20: {
+[; ;AdcApp.h: 21: CIRCULAR = 0x0,
+[; ;AdcApp.h: 22: SINGLE_CHANNEL = 0x1,
+[; ;AdcApp.h: 23: }ADC_SAMPLE_MODE;
+"25 AdcApp.h
+[v _channelArr `CE7269 ~T0 @X0 -> 4 `i e ]
 [i _channelArr
 :U ..
-"37
--> -> 7 `i `CE7237
-"38
--> -> 6 `i `CE7237
-"39
--> -> 5 `i `CE7237
-"40
--> -> 4 `i `CE7237
-"41
--> -> 25 `i `CE7237
-"42
--> -> 10 `i `CE7237
-"43
--> -> 13 `i `CE7237
+"27
+-> -> 4 `i `CE7269
+"28
+-> -> 5 `i `CE7269
+"29
+-> -> 6 `i `CE7269
+"30
+-> -> 7 `i `CE7269
 ..
 ]
-[; ;AdcApp.h: 35: const adc_channel_t channelArr[(7)] =
-[; ;AdcApp.h: 36: {
-[; ;AdcApp.h: 37: 0x7,
-[; ;AdcApp.h: 38: 0x6,
-[; ;AdcApp.h: 39: 0x5,
-[; ;AdcApp.h: 40: 0x4,
-[; ;AdcApp.h: 41: 0x19,
-[; ;AdcApp.h: 42: 0xA,
-[; ;AdcApp.h: 43: 0xD,
-[; ;AdcApp.h: 44: };
-[; ;AdcApp.h: 46: void SetAdcOperationMode(char* data);
-[; ;AdcApp.h: 47: void SetConversionResultFormat(char* data);
-[; ;AdcApp.h: 48: void SetChannelMode(char* data);
-[; ;AdcApp.h: 49: void InitAdcApplicationMgr();
-[; ;AdcApp.h: 50: void AdcConvert();
+[; ;AdcApp.h: 25: const adc_channel_t channelArr[(0x04)] =
+[; ;AdcApp.h: 26: {
+[; ;AdcApp.h: 27: 0x4,
+[; ;AdcApp.h: 28: 0x5,
+[; ;AdcApp.h: 29: 0x6,
+[; ;AdcApp.h: 30: 0x7,
+[; ;AdcApp.h: 31: };
+"33
+[v _needToSample `Vuc ~T0 @X0 1 e ]
+[i _needToSample
+-> -> 0 `i `uc
+]
+[; ;AdcApp.h: 33: volatile bool needToSample = 0;
+[; ;AdcApp.h: 35: void AdcSingleSample(MODULE_TYPE cType, char* data);
+[; ;AdcApp.h: 36: void SetChannelMode(char* data);
+[; ;AdcApp.h: 37: void InitAdcApplicationMgr();
+[; ;AdcApp.h: 38: bool SampleSingleChannel(void);
 [; ;FlashApp.h: 31: void FlashSampleWrite(adc_result_t sampleData, uint8_t channelNum);
 [; ;FlashApp.h: 32: void FlashReadUart(int numOfSampleToRead);
 [; ;FlashApp.h: 33: void FlashEreaseMem(void);
@@ -6885,15 +6879,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MessageFunctions.h: 21: void GroupTx(MSG_REQUEST request, char* data);
 [; ;MessageFunctions.h: 22: void GroupCommon(MSG_REQUEST request, char* data);
 "25 MessageFunctions.h
-[v _groupsArray `*F7402 ~T0 @X0 -> 6 `i e ]
+[v _groupsArray `*F7401 ~T0 @X0 -> 6 `i e ]
 [i _groupsArray
 :U ..
 "27
--> &U _GroupRx `*F7402
+-> &U _GroupRx `*F7401
 "28
--> &U _GroupTx `*F7402
+-> &U _GroupTx `*F7401
 "29
--> &U _GroupCommon `*F7402
+-> &U _GroupCommon `*F7401
 ..
 ]
 [; ;MessageFunctions.h: 25: void (*groupsArray[(6)])() =
@@ -7024,22 +7018,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SwSpiApp.h: 32: void SwSpi_Set_Synth_Le_Pin(SPI_PERIPHERAL phrType, bool cPinMode);
 [; ;SwSpiApp.h: 35: void SWSPI_DAC_send_bits(SPI_PERIPHERAL phrType, uint8_t data);
 [; ;SwSpiApp.h: 36: void SwSpi_Set_Dac_Sync_Pin(bool cPinMode);
-[; ;SystemCommon.h: 37: typedef enum
-[; ;SystemCommon.h: 38: {
-[; ;SystemCommon.h: 39: START_SYSTEM = 0,
-[; ;SystemCommon.h: 40: ADC_DAC,
-[; ;SystemCommon.h: 41: FLASH,
-[; ;SystemCommon.h: 42: EUSART,
-[; ;SystemCommon.h: 43: FINISH_ROUND
-[; ;SystemCommon.h: 44: }SYSTEM_STATE;
-[; ;SystemCommon.h: 46: unsigned char crc8(char* dataArray, int dataSize);
-[; ;SystemCommon.h: 47: uint8_t make8(uint32_t data, uint8_t dataLocation);
-[; ;SystemCommon.h: 48: void ZeroArray(char* array, int size);
-[; ;SystemCommon.h: 49: int GCD(int num1, int num2);
-[; ;SystemCommon.h: 50: uint32_t GetIntFromUartData(char* data);
-[; ;SystemCommon.h: 53: void ResetMcu(void);
-[; ;SystemCommon.h: 54: void ResetCpld(void);
-[; ;SystemCommon.h: 55: void SendSystemStartAck(void);
+[; ;SystemCommon.h: 43: unsigned char crc8(char* dataArray, int dataSize);
+[; ;SystemCommon.h: 44: uint8_t make8(uint32_t data, uint8_t dataLocation);
+[; ;SystemCommon.h: 45: void ZeroArray(char* array, int size);
+[; ;SystemCommon.h: 46: int GCD(int num1, int num2);
+[; ;SystemCommon.h: 47: uint32_t GetIntFromUartData(char* data);
+[; ;SystemCommon.h: 50: void ResetMcu(void);
+[; ;SystemCommon.h: 51: void ResetCpld(void);
+[; ;SystemCommon.h: 52: void SendSystemStartAck(void);
 [; ;stdlib.h: 7: typedef unsigned short wchar_t;
 [; ;stdlib.h: 15: typedef struct {
 [; ;stdlib.h: 16: int rem;
@@ -7101,654 +7087,679 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;EusartApp.h: 43: READ_STREAM,
 [; ;EusartApp.h: 44: READ_GROUP,
 [; ;EusartApp.h: 45: READ_REQUEST,
-[; ;EusartApp.h: 46: READ_DATA,
-[; ;EusartApp.h: 47: CHECK_CRC,
-[; ;EusartApp.h: 48: JUMP_FUNCTION
-[; ;EusartApp.h: 49: }UART_READ_STATE;
-[; ;EusartApp.h: 53: void readUartByte(void);
-[; ;EusartApp.h: 54: void InitRxMessageParams(void);
-[; ;EusartApp.h: 57: void WriteUartMessage(char* dataBuf, int dataSize);
-[; ;EusartApp.h: 58: void SendAckMessage(MSG_GROUPS inGroup, MSG_REQUEST inRequest);
-[; ;EusartApp.h: 59: void UART_Write_Text(char* text);
+[; ;EusartApp.h: 46: READ_DATA_SIZE,
+[; ;EusartApp.h: 47: READ_DATA,
+[; ;EusartApp.h: 48: CHECK_CRC,
+[; ;EusartApp.h: 49: JUMP_FUNCTION
+[; ;EusartApp.h: 50: }UART_READ_STATE;
+[; ;EusartApp.h: 54: void readUartByte(void);
+[; ;EusartApp.h: 55: void InitRxMessageParams(void);
+[; ;EusartApp.h: 58: void WriteUartMessage(char* dataBuf, int dataSize);
+[; ;EusartApp.h: 59: void SendAckMessage(MSG_GROUPS inGroup, MSG_REQUEST inRequest);
+[; ;EusartApp.h: 60: void UART_Write_Text(char* text);
 "15 EusartApp.c
-[v _cState `E7609 ~T0 @X0 1 s ]
+[v _cState `E7601 ~T0 @X0 1 s ]
 [i _cState
-. `E7609 0
+. `E7601 0
 ]
 [; ;EusartApp.c: 15: static UART_READ_STATE cState = START_RX_MESSAGE_READ;
 "17
-[v _group `E7307 ~T0 @X0 1 e ]
+[v _group `E7308 ~T0 @X0 1 e ]
 [i _group
--> -> 0 `i `E7307
+-> -> 0 `i `E7308
 ]
 [; ;EusartApp.c: 17: MSG_GROUPS group = 0;
 "18
-[v _request `E7312 ~T0 @X0 1 e ]
+[v _request `E7313 ~T0 @X0 1 e ]
 [i _request
--> -> 0 `i `E7312
+-> -> 0 `i `E7313
 ]
 [; ;EusartApp.c: 18: MSG_REQUEST request = 0;
 "19
-[v _rxMsgQueue `uc ~T0 @X0 -> 20 `i e ]
-[; ;EusartApp.c: 19: char rxMsgQueue[(0x14)];
+[v _dataSize `uc ~T0 @X0 1 e ]
+[i _dataSize
+-> -> 0 `i `uc
+]
+[; ;EusartApp.c: 19: uint8_t dataSize = 0;
 "20
-[v _rxMsgData `uc ~T0 @X0 -> 20 `i e ]
-[; ;EusartApp.c: 20: char rxMsgData[(0x14)];
+[v _crcCalc `uc ~T0 @X0 1 e ]
+[i _crcCalc
+-> -> 0 `i `uc
+]
+[v _crcGiven `uc ~T0 @X0 1 e ]
+[i _crcGiven
+-> -> 0 `i `uc
+]
+[; ;EusartApp.c: 20: char crcCalc = 0, crcGiven = 0;
 "21
+[v _rxMsgQueue `uc ~T0 @X0 -> 20 `i e ]
+[; ;EusartApp.c: 21: char rxMsgQueue[(0x14)];
+"22
+[v _rxMsgData `uc ~T0 @X0 -> 20 `i e ]
+[; ;EusartApp.c: 22: char rxMsgData[(0x14)];
+"23
 [v _msgCount `uc ~T0 @X0 1 s ]
 [i _msgCount
 -> -> 0 `i `uc
 ]
-[; ;EusartApp.c: 21: static uint8_t msgCount = 0;
-"26
-[v _readUartByte `(v ~T0 @X0 1 ef ]
+[; ;EusartApp.c: 23: static uint8_t msgCount = 0;
 "28
+[v _readUartByte `(v ~T0 @X0 1 ef ]
+"30
 {
-[; ;EusartApp.c: 26: void readUartByte(void)
-[; ;EusartApp.c: 28: {
+[; ;EusartApp.c: 28: void readUartByte(void)
+[; ;EusartApp.c: 30: {
 [e :U _readUartByte ]
 [f ]
-"29
+"31
 [v _chRec `uc ~T0 @X0 1 a ]
-[; ;EusartApp.c: 29: uint8_t chRec = (0);
+[; ;EusartApp.c: 31: uint8_t chRec = (0);
 [e = _chRec -> -> 0 `i `uc ]
-"30
-[v _dest `uc ~T0 @X0 -> 50 `i a ]
-[; ;EusartApp.c: 30: char dest[50];
-[; ;EusartApp.c: 32: switch(cState)
 "32
-[e $U 854  ]
-[; ;EusartApp.c: 33: {
-"33
-{
-[; ;EusartApp.c: 34: case START_RX_MESSAGE_READ:
+[v _dest `uc ~T0 @X0 -> 50 `i a ]
+[; ;EusartApp.c: 32: char dest[50];
+[; ;EusartApp.c: 34: switch(cState)
 "34
-[e :U 855 ]
-[; ;EusartApp.c: 36: InitRxMessageParams();
-"36
-[e ( _InitRxMessageParams ..  ]
-[; ;EusartApp.c: 37: cState = FIND_MAGIC;
-"37
-[e = _cState . `E7609 1 ]
-[; ;EusartApp.c: 38: break;
-"38
-[e $U 853  ]
-[; ;EusartApp.c: 41: case FIND_MAGIC:
-"41
-[e :U 856 ]
-[; ;EusartApp.c: 42: chRec = EUSART1_Read();
-"42
-[e = _chRec ( _EUSART1_Read ..  ]
-[; ;EusartApp.c: 44: if(chRec == (0x24))
-"44
-[e $ ! == -> _chRec `i -> 36 `i 857  ]
-[; ;EusartApp.c: 45: {
-"45
+[e $U 854  ]
+[; ;EusartApp.c: 35: {
+"35
 {
-[; ;EusartApp.c: 46: cState = READ_STREAM;
+[; ;EusartApp.c: 36: case START_RX_MESSAGE_READ:
+"36
+[e :U 855 ]
+[; ;EusartApp.c: 38: InitRxMessageParams();
+"38
+[e ( _InitRxMessageParams ..  ]
+[; ;EusartApp.c: 39: cState = FIND_MAGIC;
+"39
+[e = _cState . `E7601 1 ]
+[; ;EusartApp.c: 40: break;
+"40
+[e $U 853  ]
+[; ;EusartApp.c: 43: case FIND_MAGIC:
+"43
+[e :U 856 ]
+[; ;EusartApp.c: 44: chRec = EUSART1_Read();
+"44
+[e = _chRec ( _EUSART1_Read ..  ]
+[; ;EusartApp.c: 46: if(chRec == (0x24))
 "46
-[e = _cState . `E7609 2 ]
+[e $ ! == -> _chRec `i -> 36 `i 857  ]
+[; ;EusartApp.c: 47: {
 "47
+{
+[; ;EusartApp.c: 48: cState = READ_STREAM;
+"48
+[e = _cState . `E7601 2 ]
+"49
 }
 [e :U 857 ]
-[; ;EusartApp.c: 47: }
-[; ;EusartApp.c: 48: break;
-"48
-[e $U 853  ]
-[; ;EusartApp.c: 50: case READ_STREAM:
+[; ;EusartApp.c: 49: }
+[; ;EusartApp.c: 50: break;
 "50
-[e :U 858 ]
-[; ;EusartApp.c: 52: if(eusart1RxCount > 0)
+[e $U 853  ]
+[; ;EusartApp.c: 52: case READ_STREAM:
 "52
-[e $ ! > -> _eusart1RxCount `i -> 0 `i 859  ]
-[; ;EusartApp.c: 53: {
-"53
-{
-[; ;EusartApp.c: 54: chRec = EUSART1_Read();
+[e :U 858 ]
+[; ;EusartApp.c: 54: if(eusart1RxCount > 0)
 "54
-[e = _chRec ( _EUSART1_Read ..  ]
-[; ;EusartApp.c: 55: if(chRec == (0))
+[e $ ! > -> _eusart1RxCount `i -> 0 `i 859  ]
+[; ;EusartApp.c: 55: {
 "55
-[e $ ! == -> _chRec `i -> 0 `i 860  ]
-[; ;EusartApp.c: 56: {
+{
+[; ;EusartApp.c: 56: chRec = EUSART1_Read();
 "56
-{
-[; ;EusartApp.c: 57: return;
+[e = _chRec ( _EUSART1_Read ..  ]
+[; ;EusartApp.c: 57: if(chRec == (0))
 "57
-[e $UE 852  ]
+[e $ ! == -> _chRec `i -> 0 `i 860  ]
+[; ;EusartApp.c: 58: {
 "58
-}
-[; ;EusartApp.c: 58: }
-[e $U 861  ]
+{
+[; ;EusartApp.c: 59: return;
 "59
-[e :U 860 ]
-[; ;EusartApp.c: 59: else if(chRec == (0xd))
-[e $ ! == -> _chRec `i -> 13 `i 862  ]
-[; ;EusartApp.c: 60: {
+[e $UE 852  ]
 "60
-{
-[; ;EusartApp.c: 61: cState = READ_GROUP;
-"61
-[e = _cState . `E7609 3 ]
-"62
 }
-[; ;EusartApp.c: 62: }
-[e $U 863  ]
-"63
-[e :U 862 ]
-[; ;EusartApp.c: 63: else
-[; ;EusartApp.c: 64: {
-"64
+[; ;EusartApp.c: 60: }
+[e $U 861  ]
+"61
+[e :U 860 ]
+[; ;EusartApp.c: 61: else if(chRec == (0xd))
+[e $ ! == -> _chRec `i -> 13 `i 862  ]
+[; ;EusartApp.c: 62: {
+"62
 {
-[; ;EusartApp.c: 65: if(chRec != ' ')
+[; ;EusartApp.c: 63: cState = READ_GROUP;
+"63
+[e = _cState . `E7601 3 ]
+"64
+}
+[; ;EusartApp.c: 64: }
+[e $U 863  ]
 "65
-[e $ ! != -> _chRec `ui -> 32 `ui 864  ]
+[e :U 862 ]
+[; ;EusartApp.c: 65: else
 [; ;EusartApp.c: 66: {
 "66
 {
-[; ;EusartApp.c: 67: rxMsgQueue[msgCount++] = chRec;
+[; ;EusartApp.c: 67: if(chRec != ' ')
 "67
-[e = *U + &U _rxMsgQueue * -> ++ _msgCount -> -> 1 `i `uc `ux -> -> # *U &U _rxMsgQueue `ui `ux _chRec ]
+[e $ ! != -> _chRec `ui -> 32 `ui 864  ]
+[; ;EusartApp.c: 68: {
 "68
+{
+[; ;EusartApp.c: 69: rxMsgQueue[msgCount++] = chRec;
+"69
+[e = *U + &U _rxMsgQueue * -> ++ _msgCount -> -> 1 `i `uc `ux -> -> # *U &U _rxMsgQueue `ui `ux _chRec ]
+"70
 }
 [e :U 864 ]
-"69
+"71
 }
 [e :U 863 ]
 [e :U 861 ]
-"70
-}
-[; ;EusartApp.c: 68: }
-[; ;EusartApp.c: 69: }
-[; ;EusartApp.c: 70: }
-[e $U 865  ]
-"71
-[e :U 859 ]
-[; ;EusartApp.c: 71: else
-[; ;EusartApp.c: 72: {
 "72
-{
-[; ;EusartApp.c: 73: return;
+}
+[; ;EusartApp.c: 70: }
+[; ;EusartApp.c: 71: }
+[; ;EusartApp.c: 72: }
+[e $U 865  ]
 "73
-[e $UE 852  ]
+[e :U 859 ]
+[; ;EusartApp.c: 73: else
+[; ;EusartApp.c: 74: {
 "74
+{
+[; ;EusartApp.c: 75: return;
+"75
+[e $UE 852  ]
+"76
 }
 [e :U 865 ]
-[; ;EusartApp.c: 74: }
-[; ;EusartApp.c: 75: break;
-"75
-[e $U 853  ]
-[; ;EusartApp.c: 77: case READ_GROUP:
+[; ;EusartApp.c: 76: }
+[; ;EusartApp.c: 77: break;
 "77
-[e :U 866 ]
-[; ;EusartApp.c: 79: chRec = toupper(rxMsgQueue[0]);
+[e $U 853  ]
+[; ;EusartApp.c: 79: case READ_GROUP:
 "79
+[e :U 866 ]
+[; ;EusartApp.c: 81: chRec = toupper(rxMsgQueue[0]);
+"81
 [e = _chRec ( _toupper (1 *U + &U _rxMsgQueue * -> -> -> 0 `i `ui `ux -> -> # *U &U _rxMsgQueue `ui `ux ]
-[; ;EusartApp.c: 81: switch(chRec)
-"81
-[e $U 868  ]
-[; ;EusartApp.c: 82: {
-"82
-{
-[; ;EusartApp.c: 83: case 'R':
+[; ;EusartApp.c: 83: switch(chRec)
 "83
-[e :U 869 ]
-[; ;EusartApp.c: 85: group = RX_GROUP;
+[e $U 868  ]
+[; ;EusartApp.c: 84: {
+"84
+{
+[; ;EusartApp.c: 85: case 'R':
 "85
-[e = _group . `E7307 0 ]
-[; ;EusartApp.c: 86: cState = READ_REQUEST;
-"86
-[e = _cState . `E7609 4 ]
-[; ;EusartApp.c: 87: break;
+[e :U 869 ]
+[; ;EusartApp.c: 87: group = RX_GROUP;
 "87
-[e $U 867  ]
-[; ;EusartApp.c: 89: case 'T':
+[e = _group . `E7308 0 ]
+[; ;EusartApp.c: 88: cState = READ_REQUEST;
+"88
+[e = _cState . `E7601 4 ]
+[; ;EusartApp.c: 89: break;
 "89
-[e :U 870 ]
-[; ;EusartApp.c: 91: group = TX_GROUP;
+[e $U 867  ]
+[; ;EusartApp.c: 91: case 'T':
 "91
-[e = _group . `E7307 1 ]
-[; ;EusartApp.c: 92: cState = READ_REQUEST;
-"92
-[e = _cState . `E7609 4 ]
-[; ;EusartApp.c: 93: break;
+[e :U 870 ]
+[; ;EusartApp.c: 93: group = TX_GROUP;
 "93
-[e $U 867  ]
-[; ;EusartApp.c: 95: case 'S':
+[e = _group . `E7308 1 ]
+[; ;EusartApp.c: 94: cState = READ_REQUEST;
+"94
+[e = _cState . `E7601 4 ]
+[; ;EusartApp.c: 95: break;
 "95
-[e :U 871 ]
-[; ;EusartApp.c: 97: group = COMMON_GROUP;
+[e $U 867  ]
+[; ;EusartApp.c: 97: case 'S':
 "97
-[e = _group . `E7307 2 ]
-[; ;EusartApp.c: 98: cState = READ_REQUEST;
-"98
-[e = _cState . `E7609 4 ]
-[; ;EusartApp.c: 99: break;
+[e :U 871 ]
+[; ;EusartApp.c: 99: group = COMMON_GROUP;
 "99
-[e $U 867  ]
-[; ;EusartApp.c: 101: default:
+[e = _group . `E7308 2 ]
+[; ;EusartApp.c: 100: cState = READ_REQUEST;
+"100
+[e = _cState . `E7601 4 ]
+[; ;EusartApp.c: 101: break;
 "101
-[e :U 872 ]
-[; ;EusartApp.c: 102: sprintf(dest, "NOT O.K \n\r");
-"102
-[e ( _sprintf (1 , &U _dest :s 1C ]
-[; ;EusartApp.c: 103: UART_Write_Text(dest);
+[e $U 867  ]
+[; ;EusartApp.c: 103: default:
 "103
-[e ( _UART_Write_Text (1 &U _dest ]
-[; ;EusartApp.c: 104: cState = START_RX_MESSAGE_READ;
+[e :U 872 ]
+[; ;EusartApp.c: 104: sprintf(dest, "NOT O.K \n\r");
 "104
-[e = _cState . `E7609 0 ]
-[; ;EusartApp.c: 105: break;
+[e ( _sprintf (1 , &U _dest :s 1C ]
+[; ;EusartApp.c: 105: UART_Write_Text(dest);
 "105
-[e $U 867  ]
+[e ( _UART_Write_Text (1 &U _dest ]
+[; ;EusartApp.c: 106: cState = START_RX_MESSAGE_READ;
 "106
-}
-[; ;EusartApp.c: 106: }
+[e = _cState . `E7601 0 ]
+[; ;EusartApp.c: 107: break;
+"107
 [e $U 867  ]
-"81
+"108
+}
+[; ;EusartApp.c: 108: }
+[e $U 867  ]
+"83
 [e :U 868 ]
 [e [\ _chRec , $ -> -> 82 `ui `uc 869
  , $ -> -> 84 `ui `uc 870
  , $ -> -> 83 `ui `uc 871
  872 ]
-"106
+"108
 [e :U 867 ]
-[; ;EusartApp.c: 107: break;
-"107
-[e $U 853  ]
-[; ;EusartApp.c: 109: case READ_REQUEST:
+[; ;EusartApp.c: 109: break;
 "109
-[e :U 873 ]
-[; ;EusartApp.c: 111: chRec = toupper(rxMsgQueue[1]);
+[e $U 853  ]
+[; ;EusartApp.c: 111: case READ_REQUEST:
 "111
-[e = _chRec ( _toupper (1 *U + &U _rxMsgQueue * -> -> -> 1 `i `ui `ux -> -> # *U &U _rxMsgQueue `ui `ux ]
-[; ;EusartApp.c: 113: switch(group)
+[e :U 873 ]
+[; ;EusartApp.c: 113: chRec = toupper(rxMsgQueue[1]);
 "113
-[e $U 875  ]
-[; ;EusartApp.c: 114: {
-"114
-{
-[; ;EusartApp.c: 115: case RX_GROUP:
+[e = _chRec ( _toupper (1 *U + &U _rxMsgQueue * -> -> -> 1 `i `ui `ux -> -> # *U &U _rxMsgQueue `ui `ux ]
+[; ;EusartApp.c: 115: switch(group)
 "115
-[e :U 876 ]
-[; ;EusartApp.c: 117: if(chRec == 'I' || chRec == 'F' || chRec == 'Q' || chRec == 'X' || chRec == 'C')
+[e $U 875  ]
+[; ;EusartApp.c: 116: {
+"116
+{
+[; ;EusartApp.c: 117: case RX_GROUP:
 "117
-[e $ ! || || || || == -> _chRec `ui -> 73 `ui == -> _chRec `ui -> 70 `ui == -> _chRec `ui -> 81 `ui == -> _chRec `ui -> 88 `ui == -> _chRec `ui -> 67 `ui 877  ]
-[; ;EusartApp.c: 118: {
-"118
-{
-[; ;EusartApp.c: 119: if(chRec == 'C')
-"119
-[e $ ! == -> _chRec `ui -> 67 `ui 878  ]
-[; ;EusartApp.c: 120: {
-"120
-{
-[; ;EusartApp.c: 121: if(toupper(rxMsgQueue[2]) == 'P' || toupper(rxMsgQueue[2]) == 'R')
+[e :U 876 ]
+[; ;EusartApp.c: 119: if( chRec == 'I' || chRec == 'F' || chRec == 'Q' ||
+[; ;EusartApp.c: 120: chRec == 'X' || chRec == 'C' || chRec == 'S' ||
+[; ;EusartApp.c: 121: chRec == 'C')
 "121
-[e $ ! || == -> ( _toupper (1 *U + &U _rxMsgQueue * -> -> -> 2 `i `ui `ux -> -> # *U &U _rxMsgQueue `ui `ux `ui -> 80 `ui == -> ( _toupper (1 *U + &U _rxMsgQueue * -> -> -> 2 `i `ui `ux -> -> # *U &U _rxMsgQueue `ui `ux `ui -> 82 `ui 879  ]
+[e $ ! || || || || || || == -> _chRec `ui -> 73 `ui == -> _chRec `ui -> 70 `ui == -> _chRec `ui -> 81 `ui == -> _chRec `ui -> 88 `ui == -> _chRec `ui -> 67 `ui == -> _chRec `ui -> 83 `ui == -> _chRec `ui -> 67 `ui 877  ]
 [; ;EusartApp.c: 122: {
 "122
 {
-[; ;EusartApp.c: 123: request = chRec + toupper(rxMsgQueue[2]) - '0';
-"123
-[e = _request -> - -> + -> _chRec `i -> ( _toupper (1 *U + &U _rxMsgQueue * -> -> -> 2 `i `ui `ux -> -> # *U &U _rxMsgQueue `ui `ux `i `ui -> 48 `ui `E7312 ]
+[; ;EusartApp.c: 124: request = chRec - '0';
 "124
-}
-[; ;EusartApp.c: 124: }
-[e $U 880  ]
+[e = _request -> - -> _chRec `ui -> 48 `ui `E7313 ]
+[; ;EusartApp.c: 125: cState = READ_DATA_SIZE;
 "125
-[e :U 879 ]
-[; ;EusartApp.c: 125: else
-[; ;EusartApp.c: 126: {
-"126
-{
-[; ;EusartApp.c: 127: sprintf(dest, "NOT O.K \n\r");
+[e = _cState . `E7601 5 ]
 "127
-[e ( _sprintf (1 , &U _dest :s 2C ]
-[; ;EusartApp.c: 128: UART_Write_Text(dest);
-"128
-[e ( _UART_Write_Text (1 &U _dest ]
-[; ;EusartApp.c: 129: cState = START_RX_MESSAGE_READ;
-"129
-[e = _cState . `E7609 0 ]
-[; ;EusartApp.c: 130: return;
-"130
-[e $UE 852  ]
-"131
 }
-[e :U 880 ]
+[; ;EusartApp.c: 127: }
+[e $U 878  ]
+"128
+[e :U 877 ]
+[; ;EusartApp.c: 128: else
+[; ;EusartApp.c: 129: {
+"129
+{
+[; ;EusartApp.c: 130: UART_Write_Text("NOT OK \n\r");
+"130
+[e ( _UART_Write_Text (1 -> :s 2C `*uc ]
+[; ;EusartApp.c: 131: cState = START_RX_MESSAGE_READ;
+"131
+[e = _cState . `E7601 0 ]
 "132
 }
-[; ;EusartApp.c: 131: }
-[; ;EusartApp.c: 132: }
-[e $U 881  ]
-"133
 [e :U 878 ]
-[; ;EusartApp.c: 133: else
-[; ;EusartApp.c: 134: {
-"134
-{
-[; ;EusartApp.c: 135: request = chRec - '0';
+[; ;EusartApp.c: 132: }
+[; ;EusartApp.c: 133: return;
+"133
+[e $UE 852  ]
+[; ;EusartApp.c: 135: case TX_GROUP:
 "135
-[e = _request -> - -> _chRec `ui -> 48 `ui `E7312 ]
-"136
+[e :U 879 ]
+[; ;EusartApp.c: 137: if(chRec == 'I' || chRec == 'F' || chRec == 'Q' || chRec == 'X' || chRec == 'B' || chRec == 'S')
+"137
+[e $ ! || || || || || == -> _chRec `ui -> 73 `ui == -> _chRec `ui -> 70 `ui == -> _chRec `ui -> 81 `ui == -> _chRec `ui -> 88 `ui == -> _chRec `ui -> 66 `ui == -> _chRec `ui -> 83 `ui 880  ]
+[; ;EusartApp.c: 138: {
+"138
+{
+[; ;EusartApp.c: 139: request = (chRec - '0');
+"139
+[e = _request -> - -> _chRec `ui -> 48 `ui `E7313 ]
+[; ;EusartApp.c: 140: cState = READ_DATA_SIZE;
+"140
+[e = _cState . `E7601 5 ]
+[; ;EusartApp.c: 141: return;
+"141
+[e $UE 852  ]
+"142
+}
+[; ;EusartApp.c: 142: }
+[e $U 881  ]
+"143
+[e :U 880 ]
+[; ;EusartApp.c: 143: else
+[; ;EusartApp.c: 144: {
+"144
+{
+[; ;EusartApp.c: 145: UART_Write_Text("NOT OK \n\r");
+"145
+[e ( _UART_Write_Text (1 -> :s 3C `*uc ]
+[; ;EusartApp.c: 146: cState = START_RX_MESSAGE_READ;
+"146
+[e = _cState . `E7601 0 ]
+"147
 }
 [e :U 881 ]
-[; ;EusartApp.c: 136: }
-[; ;EusartApp.c: 138: cState = READ_DATA;
-"138
-[e = _cState . `E7609 5 ]
-[; ;EusartApp.c: 139: return;
-"139
-[e $UE 852  ]
-"140
-}
-[e :U 877 ]
-[; ;EusartApp.c: 140: }
-[; ;EusartApp.c: 141: break;
-"141
-[e $U 874  ]
-[; ;EusartApp.c: 143: case TX_GROUP:
-"143
-[e :U 882 ]
-[; ;EusartApp.c: 145: if(chRec == 'I' || chRec == 'F' || chRec == 'Q' || chRec == 'X' || chRec == 'B')
-"145
-[e $ ! || || || || == -> _chRec `ui -> 73 `ui == -> _chRec `ui -> 70 `ui == -> _chRec `ui -> 81 `ui == -> _chRec `ui -> 88 `ui == -> _chRec `ui -> 66 `ui 883  ]
-[; ;EusartApp.c: 146: {
-"146
-{
-[; ;EusartApp.c: 147: request = (chRec - '0');
-"147
-[e = _request -> - -> _chRec `ui -> 48 `ui `E7312 ]
-[; ;EusartApp.c: 148: cState = READ_DATA;
+[; ;EusartApp.c: 147: }
+[; ;EusartApp.c: 148: break;
 "148
-[e = _cState . `E7609 5 ]
-[; ;EusartApp.c: 149: return;
-"149
-[e $UE 852  ]
+[e $U 874  ]
+[; ;EusartApp.c: 150: case COMMON_GROUP:
 "150
-}
-[e :U 883 ]
-[; ;EusartApp.c: 150: }
-[; ;EusartApp.c: 151: break;
-"151
-[e $U 874  ]
-[; ;EusartApp.c: 153: case COMMON_GROUP:
+[e :U 882 ]
+[; ;EusartApp.c: 152: if(chRec == 'H' || chRec == 'L')
+"152
+[e $ ! || == -> _chRec `ui -> 72 `ui == -> _chRec `ui -> 76 `ui 883  ]
+[; ;EusartApp.c: 153: {
 "153
-[e :U 884 ]
-[; ;EusartApp.c: 155: if(chRec == 'H')
+{
+[; ;EusartApp.c: 154: request = (chRec - '0');
+"154
+[e = _request -> - -> _chRec `ui -> 48 `ui `E7313 ]
+[; ;EusartApp.c: 155: cState = READ_DATA_SIZE;
 "155
-[e $ ! == -> _chRec `ui -> 72 `ui 885  ]
-[; ;EusartApp.c: 156: {
+[e = _cState . `E7601 5 ]
 "156
-{
-[; ;EusartApp.c: 157: request = (chRec - '0');
+}
+[; ;EusartApp.c: 156: }
+[e $U 884  ]
 "157
-[e = _request -> - -> _chRec `ui -> 48 `ui `E7312 ]
-[; ;EusartApp.c: 158: cState = READ_DATA;
+[e :U 883 ]
+[; ;EusartApp.c: 157: else
+[; ;EusartApp.c: 158: {
 "158
-[e = _cState . `E7609 5 ]
-[; ;EusartApp.c: 159: return;
+{
+[; ;EusartApp.c: 159: UART_Write_Text("NOT OK \n\r");
 "159
-[e $UE 852  ]
+[e ( _UART_Write_Text (1 -> :s 4C `*uc ]
+[; ;EusartApp.c: 160: cState = START_RX_MESSAGE_READ;
 "160
-}
-[; ;EusartApp.c: 160: }
-[e $U 886  ]
+[e = _cState . `E7601 0 ]
 "161
-[e :U 885 ]
-[; ;EusartApp.c: 161: else if(chRec == 'L')
-[e $ ! == -> _chRec `ui -> 76 `ui 887  ]
-[; ;EusartApp.c: 162: {
+}
+[e :U 884 ]
 "162
-{
-[; ;EusartApp.c: 163: request = (chRec - '0');
-"163
-[e = _request -> - -> _chRec `ui -> 48 `ui `E7312 ]
-[; ;EusartApp.c: 164: cState = READ_DATA;
-"164
-[e = _cState . `E7609 5 ]
-[; ;EusartApp.c: 165: return;
-"165
-[e $UE 852  ]
-"166
 }
-[; ;EusartApp.c: 166: }
-[e $U 888  ]
-"167
-[e :U 887 ]
-[; ;EusartApp.c: 167: else
-[; ;EusartApp.c: 168: {
-"168
-{
-[; ;EusartApp.c: 169: sprintf(dest, "NOT O.K \n\r");
-"169
-[e ( _sprintf (1 , &U _dest :s 3C ]
-[; ;EusartApp.c: 170: UART_Write_Text(dest);
-"170
-[e ( _UART_Write_Text (1 &U _dest ]
-[; ;EusartApp.c: 171: cState = START_RX_MESSAGE_READ;
-"171
-[e = _cState . `E7609 0 ]
-[; ;EusartApp.c: 172: return;
-"172
-[e $UE 852  ]
-"173
-}
-[e :U 888 ]
-[e :U 886 ]
-[; ;EusartApp.c: 173: }
-[; ;EusartApp.c: 174: break;
-"174
+[; ;EusartApp.c: 161: }
+[; ;EusartApp.c: 162: }
 [e $U 874  ]
-"175
-}
-[; ;EusartApp.c: 175: }
-[e $U 874  ]
-"113
+"115
 [e :U 875 ]
-[e [\ _group , $ . `E7307 0 876
- , $ . `E7307 1 882
- , $ . `E7307 2 884
+[e [\ _group , $ . `E7308 0 876
+ , $ . `E7308 1 879
+ , $ . `E7308 2 882
  874 ]
-"175
+"162
 [e :U 874 ]
-[; ;EusartApp.c: 177: sprintf(dest, "NOT O.K \n\r");
-"177
-[e ( _sprintf (1 , &U _dest :s 4C ]
-[; ;EusartApp.c: 178: UART_Write_Text(dest);
+[; ;EusartApp.c: 163: return;
+"163
+[e $UE 852  ]
+[; ;EusartApp.c: 165: case READ_DATA_SIZE:
+"165
+[e :U 885 ]
+[; ;EusartApp.c: 167: dataSize = msgCount - 2;
+"167
+[e = _dataSize -> - -> _msgCount `i -> 2 `i `uc ]
+[; ;EusartApp.c: 168: rxMsgData[(0x0)] = dataSize;
+"168
+[e = *U + &U _rxMsgData * -> -> -> 0 `i `ui `ux -> -> # *U &U _rxMsgData `ui `ux _dataSize ]
+[; ;EusartApp.c: 169: if(dataSize == 0)
+"169
+[e $ ! == -> _dataSize `i -> 0 `i 886  ]
+[; ;EusartApp.c: 170: {
+"170
+{
+[; ;EusartApp.c: 171: cState = JUMP_FUNCTION;
+"171
+[e = _cState . `E7601 8 ]
+"172
+}
+[; ;EusartApp.c: 172: }
+[e $U 887  ]
+"173
+[e :U 886 ]
+[; ;EusartApp.c: 173: else
+[; ;EusartApp.c: 174: {
+"174
+{
+[; ;EusartApp.c: 175: cState = READ_DATA;
+"175
+[e = _cState . `E7601 6 ]
+"176
+}
+[e :U 887 ]
+[; ;EusartApp.c: 176: }
+[; ;EusartApp.c: 178: break;
 "178
-[e ( _UART_Write_Text (1 &U _dest ]
-[; ;EusartApp.c: 179: cState = START_RX_MESSAGE_READ;
-"179
-[e = _cState . `E7609 0 ]
-[; ;EusartApp.c: 181: break;
-"181
 [e $U 853  ]
-[; ;EusartApp.c: 183: case READ_DATA:
+[; ;EusartApp.c: 180: case READ_DATA:
+"180
+[e :U 888 ]
+[; ;EusartApp.c: 182: for(int idx = 1; idx < dataSize + 1; idx++)
+"182
+{
+[v _idx `i ~T0 @X0 1 a ]
+[e = _idx -> 1 `i ]
+[e $U 892  ]
 "183
 [e :U 889 ]
-[; ;EusartApp.c: 185: cState = JUMP_FUNCTION;
+[; ;EusartApp.c: 183: {
+{
+[; ;EusartApp.c: 184: rxMsgData[idx] = rxMsgQueue[(0x2) + idx - 1];
+"184
+[e = *U + &U _rxMsgData * -> -> _idx `ui `ux -> -> # *U &U _rxMsgData `ui `ux *U + &U _rxMsgQueue * -> -> - + -> 2 `i _idx -> 1 `i `ui `ux -> -> # *U &U _rxMsgQueue `ui `ux ]
 "185
-[e = _cState . `E7609 7 ]
-[; ;EusartApp.c: 186: break;
-"186
-[e $U 853  ]
-[; ;EusartApp.c: 188: case JUMP_FUNCTION:
-"188
-[e :U 890 ]
-[; ;EusartApp.c: 190: groupsArray[group](request, rxMsgData);
-"190
-[e ( *U *U + &U _groupsArray * -> _group `ux -> -> # *U &U _groupsArray `ui `ux , -> _request `i &U _rxMsgData ]
-[; ;EusartApp.c: 191: cState = START_RX_MESSAGE_READ;
-"191
-[e = _cState . `E7609 0 ]
-[; ;EusartApp.c: 192: break;
-"192
-[e $U 853  ]
-"193
 }
-[; ;EusartApp.c: 193: }
+"182
+[e ++ _idx -> 1 `i ]
+[e :U 892 ]
+[e $ < _idx + -> _dataSize `i -> 1 `i 889  ]
+[e :U 890 ]
+"185
+}
+[; ;EusartApp.c: 185: }
+[; ;EusartApp.c: 187: cState = JUMP_FUNCTION;
+"187
+[e = _cState . `E7601 8 ]
+[; ;EusartApp.c: 188: break;
+"188
 [e $U 853  ]
-"32
-[e :U 854 ]
-[e [\ _cState , $ . `E7609 0 855
- , $ . `E7609 1 856
- , $ . `E7609 2 858
- , $ . `E7609 3 866
- , $ . `E7609 4 873
- , $ . `E7609 5 889
- , $ . `E7609 7 890
- 853 ]
+[; ;EusartApp.c: 190: case JUMP_FUNCTION:
+"190
+[e :U 893 ]
+[; ;EusartApp.c: 192: groupsArray[group](request, rxMsgData);
+"192
+[e ( *U *U + &U _groupsArray * -> _group `ux -> -> # *U &U _groupsArray `ui `ux , -> _request `i &U _rxMsgData ]
+[; ;EusartApp.c: 193: cState = START_RX_MESSAGE_READ;
 "193
-[e :U 853 ]
-[; ;EusartApp.c: 194: }
+[e = _cState . `E7601 0 ]
+[; ;EusartApp.c: 194: break;
 "194
+[e $U 853  ]
+"195
+}
+[; ;EusartApp.c: 195: }
+[e $U 853  ]
+"34
+[e :U 854 ]
+[e [\ _cState , $ . `E7601 0 855
+ , $ . `E7601 1 856
+ , $ . `E7601 2 858
+ , $ . `E7601 3 866
+ , $ . `E7601 4 873
+ , $ . `E7601 5 885
+ , $ . `E7601 6 888
+ , $ . `E7601 8 893
+ 853 ]
+"195
+[e :U 853 ]
+[; ;EusartApp.c: 196: }
+"196
 [e :UE 852 ]
 }
-"196
+"198
 [v _InitRxMessageParams `(v ~T0 @X0 1 ef ]
-"197
+"199
 {
-[; ;EusartApp.c: 196: void InitRxMessageParams(void)
-[; ;EusartApp.c: 197: {
+[; ;EusartApp.c: 198: void InitRxMessageParams(void)
+[; ;EusartApp.c: 199: {
 [e :U _InitRxMessageParams ]
 [f ]
-[; ;EusartApp.c: 198: group = 0;
-"198
-[e = _group -> -> 0 `i `E7307 ]
-[; ;EusartApp.c: 199: request = 0;
-"199
-[e = _request -> -> 0 `i `E7312 ]
-[; ;EusartApp.c: 200: msgCount = 0;
+[; ;EusartApp.c: 200: group = 0;
 "200
-[e = _msgCount -> -> 0 `i `uc ]
-[; ;EusartApp.c: 201: ZeroArray(rxMsgQueue, (0x14));
+[e = _group -> -> 0 `i `E7308 ]
+[; ;EusartApp.c: 201: request = 0;
 "201
-[e ( _ZeroArray (2 , &U _rxMsgQueue -> 20 `i ]
-[; ;EusartApp.c: 202: }
+[e = _request -> -> 0 `i `E7313 ]
+[; ;EusartApp.c: 202: msgCount = 0;
 "202
-[e :UE 891 ]
+[e = _msgCount -> -> 0 `i `uc ]
+[; ;EusartApp.c: 203: dataSize = 0;
+"203
+[e = _dataSize -> -> 0 `i `uc ]
+[; ;EusartApp.c: 204: crcCalc = 0;
+"204
+[e = _crcCalc -> -> 0 `i `uc ]
+[; ;EusartApp.c: 205: crcGiven = 0;
+"205
+[e = _crcGiven -> -> 0 `i `uc ]
+[; ;EusartApp.c: 206: ZeroArray(rxMsgQueue, (0x14));
+"206
+[e ( _ZeroArray (2 , &U _rxMsgQueue -> 20 `i ]
+[; ;EusartApp.c: 207: ZeroArray(rxMsgData, (0x14));
+"207
+[e ( _ZeroArray (2 , &U _rxMsgData -> 20 `i ]
+[; ;EusartApp.c: 209: }
+"209
+[e :UE 894 ]
 }
-"209
+"216
 [v _WriteUartMessage `(v ~T0 @X0 1 ef2`*uc`i ]
-"210
+"217
 {
-[; ;EusartApp.c: 209: void WriteUartMessage(char* dataBuf, int dataSize)
-[; ;EusartApp.c: 210: {
+[; ;EusartApp.c: 216: void WriteUartMessage(char* dataBuf, int dataSize)
+[; ;EusartApp.c: 217: {
 [e :U _WriteUartMessage ]
-"209
+"216
 [v _dataBuf `*uc ~T0 @X0 1 r1 ]
 [v _dataSize `i ~T0 @X0 1 r2 ]
-"210
+"217
 [f ]
-[; ;EusartApp.c: 211: for(int idx = 0; idx < dataSize; idx++)
-"211
+[; ;EusartApp.c: 218: for(int idx = 0; idx < dataSize; idx++)
+"218
 {
 [v _idx `i ~T0 @X0 1 a ]
 [e = _idx -> 0 `i ]
-[e $U 896  ]
-"212
-[e :U 893 ]
-[; ;EusartApp.c: 212: {
-{
-[; ;EusartApp.c: 213: EUSART1_Write(dataBuf[idx]);
-"213
-[e ( _EUSART1_Write (1 *U + _dataBuf * -> _idx `x -> -> # *U _dataBuf `i `x ]
-"214
-}
-"211
-[e ++ _idx -> 1 `i ]
-[e :U 896 ]
-[e $ < _idx _dataSize 893  ]
-[e :U 894 ]
-"214
-}
-[; ;EusartApp.c: 214: }
-[; ;EusartApp.c: 215: }
-"215
-[e :UE 892 ]
-}
-"217
-[v _UART_Write_Text `(v ~T0 @X0 1 ef1`*uc ]
-"218
-{
-[; ;EusartApp.c: 217: void UART_Write_Text(char* text)
-[; ;EusartApp.c: 218: {
-[e :U _UART_Write_Text ]
-"217
-[v _text `*uc ~T0 @X0 1 r1 ]
-"218
-[f ]
-[; ;EusartApp.c: 219: for(int i =0;text[i]!='\0';i++)
+[e $U 899  ]
 "219
+[e :U 896 ]
+[; ;EusartApp.c: 219: {
+{
+[; ;EusartApp.c: 220: EUSART1_Write(dataBuf[idx]);
+"220
+[e ( _EUSART1_Write (1 *U + _dataBuf * -> _idx `x -> -> # *U _dataBuf `i `x ]
+"221
+}
+"218
+[e ++ _idx -> 1 `i ]
+[e :U 899 ]
+[e $ < _idx _dataSize 896  ]
+[e :U 897 ]
+"221
+}
+[; ;EusartApp.c: 221: }
+[; ;EusartApp.c: 222: }
+"222
+[e :UE 895 ]
+}
+"224
+[v _UART_Write_Text `(v ~T0 @X0 1 ef1`*uc ]
+"225
+{
+[; ;EusartApp.c: 224: void UART_Write_Text(char* text)
+[; ;EusartApp.c: 225: {
+[e :U _UART_Write_Text ]
+"224
+[v _text `*uc ~T0 @X0 1 r1 ]
+"225
+[f ]
+[; ;EusartApp.c: 226: for(int i =0;text[i]!='\0';i++)
+"226
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-[e $U 901  ]
-"220
-[e :U 898 ]
-[; ;EusartApp.c: 220: {
-{
-[; ;EusartApp.c: 221: EUSART1_Write(text[i]);
-"221
-[e ( _EUSART1_Write (1 *U + _text * -> _i `x -> -> # *U _text `i `x ]
-"222
-}
-"219
-[e ++ _i -> 1 `i ]
+[e $U 904  ]
+"227
 [e :U 901 ]
-[e $ != -> *U + _text * -> _i `x -> -> # *U _text `i `x `ui -> 0 `ui 898  ]
-[e :U 899 ]
-"222
-}
-[; ;EusartApp.c: 222: }
-[; ;EusartApp.c: 223: }
-"223
-[e :UE 897 ]
-}
-"230
-[v _SendAckMessage `(v ~T0 @X0 1 ef2`E7307`E7312 ]
-"231
+[; ;EusartApp.c: 227: {
 {
-[; ;EusartApp.c: 230: void SendAckMessage(MSG_GROUPS inGroup, MSG_REQUEST inRequest)
-[; ;EusartApp.c: 231: {
-[e :U _SendAckMessage ]
+[; ;EusartApp.c: 228: EUSART1_Write(text[i]);
+"228
+[e ( _EUSART1_Write (1 *U + _text * -> _i `x -> -> # *U _text `i `x ]
+"229
+}
+"226
+[e ++ _i -> 1 `i ]
+[e :U 904 ]
+[e $ != -> *U + _text * -> _i `x -> -> # *U _text `i `x `ui -> 0 `ui 901  ]
+[e :U 902 ]
+"229
+}
+[; ;EusartApp.c: 229: }
+[; ;EusartApp.c: 230: }
 "230
-[v _inGroup `E7307 ~T0 @X0 1 r1 ]
-[v _inRequest `E7312 ~T0 @X0 1 r2 ]
-"231
-[f ]
-"233
-[v _TxMsg `uc ~T0 @X0 + -> 5 `i -> 1 `i a ]
-[; ;EusartApp.c: 233: char TxMsg[(0x5) + 1];
-[; ;EusartApp.c: 234: ZeroArray(TxMsg, (0x5) + 1);
-"234
-[e ( _ZeroArray (2 , &U _TxMsg + -> 5 `i -> 1 `i ]
-[; ;EusartApp.c: 237: TxMsg[(0)] = (0x24);
+[e :UE 900 ]
+}
 "237
-[e = *U + &U _TxMsg * -> -> -> 0 `i `ui `ux -> -> # *U &U _TxMsg `ui `ux -> -> 36 `i `uc ]
-[; ;EusartApp.c: 238: TxMsg[(1)] = inGroup;
+[v _SendAckMessage `(v ~T0 @X0 1 ef2`E7308`E7313 ]
 "238
-[e = *U + &U _TxMsg * -> -> -> 1 `i `ui `ux -> -> # *U &U _TxMsg `ui `ux -> _inGroup `uc ]
-[; ;EusartApp.c: 239: TxMsg[(2)] = inRequest;
-"239
-[e = *U + &U _TxMsg * -> -> -> 2 `i `ui `ux -> -> # *U &U _TxMsg `ui `ux -> _inRequest `uc ]
-[; ;EusartApp.c: 240: TxMsg[(3)] = 0;
+{
+[; ;EusartApp.c: 237: void SendAckMessage(MSG_GROUPS inGroup, MSG_REQUEST inRequest)
+[; ;EusartApp.c: 238: {
+[e :U _SendAckMessage ]
+"237
+[v _inGroup `E7308 ~T0 @X0 1 r1 ]
+[v _inRequest `E7313 ~T0 @X0 1 r2 ]
+"238
+[f ]
 "240
-[e = *U + &U _TxMsg * -> -> -> 3 `i `ui `ux -> -> # *U &U _TxMsg `ui `ux -> -> 0 `i `uc ]
-[; ;EusartApp.c: 242: TxMsg[(0x5)] = crc8(TxMsg, (0x5));
-"242
-[e = *U + &U _TxMsg * -> -> -> 5 `i `ui `ux -> -> # *U &U _TxMsg `ui `ux ( _crc8 (2 , &U _TxMsg -> 5 `i ]
-[; ;EusartApp.c: 244: WriteUartMessage(TxMsg, (0x5) + 1);
+[v _TxMsg `uc ~T0 @X0 + -> 5 `i -> 1 `i a ]
+[; ;EusartApp.c: 240: char TxMsg[(0x5) + 1];
+[; ;EusartApp.c: 241: ZeroArray(TxMsg, (0x5) + 1);
+"241
+[e ( _ZeroArray (2 , &U _TxMsg + -> 5 `i -> 1 `i ]
+[; ;EusartApp.c: 244: TxMsg[(0x0)] = (0x24);
 "244
-[e ( _WriteUartMessage (2 , &U _TxMsg + -> 5 `i -> 1 `i ]
-[; ;EusartApp.c: 245: }
+[e = *U + &U _TxMsg * -> -> -> 0 `i `ui `ux -> -> # *U &U _TxMsg `ui `ux -> -> 36 `i `uc ]
+[; ;EusartApp.c: 245: TxMsg[(0x1)] = inGroup;
 "245
-[e :UE 902 ]
+[e = *U + &U _TxMsg * -> -> -> 1 `i `ui `ux -> -> # *U &U _TxMsg `ui `ux -> _inGroup `uc ]
+[; ;EusartApp.c: 246: TxMsg[(0x2)] = inRequest;
+"246
+[e = *U + &U _TxMsg * -> -> -> 2 `i `ui `ux -> -> # *U &U _TxMsg `ui `ux -> _inRequest `uc ]
+[; ;EusartApp.c: 247: TxMsg[(0x0)] = 0;
+"247
+[e = *U + &U _TxMsg * -> -> -> 0 `i `ui `ux -> -> # *U &U _TxMsg `ui `ux -> -> 0 `i `uc ]
+[; ;EusartApp.c: 249: TxMsg[(0x5)] = crc8(TxMsg, (0x5));
+"249
+[e = *U + &U _TxMsg * -> -> -> 5 `i `ui `ux -> -> # *U &U _TxMsg `ui `ux ( _crc8 (2 , &U _TxMsg -> 5 `i ]
+[; ;EusartApp.c: 251: WriteUartMessage(TxMsg, (0x5) + 1);
+"251
+[e ( _WriteUartMessage (2 , &U _TxMsg + -> 5 `i -> 1 `i ]
+[; ;EusartApp.c: 252: }
+"252
+[e :UE 905 ]
 }
 [p f _sprintf 8388608 ]
+[a 2C 78 79 84 32 79 75 32 10 13 0 ]
+[a 3C 78 79 84 32 79 75 32 10 13 0 ]
+[a 4C 78 79 84 32 79 75 32 10 13 0 ]
 [a 1C 78 79 84 32 79 46 75 32 10 13 0 ]
-[a 2C 78 79 84 32 79 46 75 32 10 13 0 ]
-[a 3C 78 79 84 32 79 46 75 32 10 13 0 ]
-[a 4C 78 79 84 32 79 46 75 32 10 13 0 ]

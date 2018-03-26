@@ -15,6 +15,12 @@ Author: RoeeZ (Comm-IT).                                                    ****
 #include <ctype.h>
 #include <stdio.h>
 
+typedef enum
+{
+	TX_TYPE,
+	RX_TYPE,
+}MODULE_TYPE;
+
 #include "mcc_generated_files/mcc.h"
 #include "MessageFunctions.h"
 #include "FlashApp.h"
@@ -33,15 +39,6 @@ Author: RoeeZ (Comm-IT).                                                    ****
 #define MAX_UART_BYTES_SIZE 8
 #define END_UART_STREAM_CHAR 0x40
 
-// MCU Main program FSM:    
-typedef enum
-{
-	START_SYSTEM = 0,
-	ADC_DAC,
-	FLASH,
-	EUSART,
-	FINISH_ROUND
-}SYSTEM_STATE;
 
 unsigned char crc8(char* dataArray, int dataSize);
 uint8_t make8(uint32_t data, uint8_t dataLocation);

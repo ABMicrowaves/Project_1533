@@ -16,6 +16,8 @@ static UART_READ_STATE cState = START_RX_MESSAGE_READ;
 
 MSG_GROUPS group = 0;
 MSG_REQUEST request = 0;
+uint8_t dataSize = 0;
+char crcCalc = 0, crcGiven = 0;
 char rxMsgQueue[MSG_RX_MAX_DATA_SIZE];
 char rxMsgData[MSG_RX_MAX_DATA_SIZE];
 static uint8_t msgCount = 0;
@@ -114,74 +116,74 @@ void readUartByte(void)
             {
                 case RX_GROUP:
                     
-                    if(chRec == 'I' || chRec == 'F' || chRec == 'Q' || chRec == 'X' || chRec == 'C')
+                    if( chRec == 'I' || chRec == 'F' || chRec == 'Q' || 
+                        chRec == 'X' || chRec == 'C' || chRec == 'S' || 
+                        chRec == 'C')
                     {
-                        if(chRec == 'C')
-                        {
-                            if(toupper(rxMsgQueue[2]) == 'P' || toupper(rxMsgQueue[2]) == 'R')
-                            {
-                                request = chRec + toupper(rxMsgQueue[2]) - '0';
-                            }
-                            else
-                            {
-                                sprintf(dest, "NOT O.K \n\r");
-                                UART_Write_Text(dest);
-                                cState = START_RX_MESSAGE_READ;
-                                return;
-                            }   
-                        }
-                        else
-                        {
-                            request = chRec - '0';
-                        }
                         
-                        cState = READ_DATA;
-                        return;
+                        request = chRec - '0';
+                        cState = READ_DATA_SIZE;
+
+                    }
+                    else
+                    {
+                        UART_Write_Text("NOT OK \n\r");
+                        cState = START_RX_MESSAGE_READ;
                     }       
-                    break;
+                    return;
             
                 case TX_GROUP:
                     
-                    if(chRec == 'I' || chRec == 'F' || chRec == 'Q' || chRec == 'X' || chRec == 'B')
+                    if(chRec == 'I' || chRec == 'F' || chRec == 'Q' || chRec == 'X' || chRec == 'B' || chRec == 'S')
                     {
                         request = (chRec - '0');
-                        cState = READ_DATA;
-                        return;
-                    }
-                    break;
-            
-                case COMMON_GROUP:
-                    
-                    if(chRec == 'H')
-                    {
-                        request = (chRec - '0');
-                        cState = READ_DATA;
-                        return;
-                    }
-                    else if(chRec == 'L')
-                    {
-                        request = (chRec - '0');
-                        cState = READ_DATA;
+                        cState = READ_DATA_SIZE;
                         return;
                     }
                     else
                     {
-                        sprintf(dest, "NOT O.K \n\r");
-                        UART_Write_Text(dest);
+                        UART_Write_Text("NOT OK \n\r");
                         cState = START_RX_MESSAGE_READ;
-                        return;
-                    } 
+                    }       
                     break;
+            
+                case COMMON_GROUP:
+                    
+                    if(chRec == 'H' || chRec == 'L')
+                    {
+                        request = (chRec - '0');
+                        cState = READ_DATA_SIZE;
+                    }
+                    else
+                    {
+                        UART_Write_Text("NOT OK \n\r");
+                        cState = START_RX_MESSAGE_READ;
+                    }       
             }
+            return;
             
-            sprintf(dest, "NOT O.K \n\r");
-            UART_Write_Text(dest);
-            cState = START_RX_MESSAGE_READ;
-            
-            break;
-            
+        case READ_DATA_SIZE:
+                
+                dataSize = msgCount - 2;
+                rxMsgData[MSG_DATA_SIZE_LOCATION] = dataSize;
+                if(dataSize == 0)
+                {
+                    cState = JUMP_FUNCTION;
+                }
+                else
+                {
+                    cState = READ_DATA;
+                }
+
+                break;
+                
         case READ_DATA:
-            
+                
+            for(int idx = 1; idx < dataSize + 1; idx++)
+            {
+                rxMsgData[idx] = rxMsgQueue[MSG_DATA_LOCATION + idx - 1];
+            }
+
             cState = JUMP_FUNCTION;
             break;
             
@@ -198,7 +200,12 @@ void InitRxMessageParams(void)
     group = 0;
     request = 0;
     msgCount = 0;
+    dataSize = 0;
+    crcCalc = 0;
+    crcGiven = 0;
     ZeroArray(rxMsgQueue, MSG_RX_MAX_DATA_SIZE);
+    ZeroArray(rxMsgData, MSG_RX_MAX_DATA_SIZE);
+
 }
 
 // </editor-fold>

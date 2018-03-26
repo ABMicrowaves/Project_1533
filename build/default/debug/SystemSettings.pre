@@ -199,6 +199,13 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
+# 18 "SystemCommon.h"
+typedef enum
+{
+TX_TYPE,
+RX_TYPE,
+}MODULE_TYPE;
+
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
 
@@ -8650,10 +8657,10 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 448 "mcc_generated_files/pin_manager.h"
+# 400 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
 
-# 460
+# 412
 void PIN_MANAGER_IOC(void);
 
 # 12 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdbool.h"
@@ -8689,49 +8696,6 @@ uint8_t DATAEE_ReadByte(uint8_t bAdd);
 # 293
 void MEMORY_ISR(void);
 bool FLASH_IsWriteDone();
-
-# 71 "mcc_generated_files/adc.h"
-typedef uint16_t adc_result_t;
-
-# 76
-typedef struct
-{
-adc_result_t adcResult1;
-adc_result_t adcResult2;
-} adc_sync_double_result_t;
-
-# 94
-typedef enum
-{
-ADC_RA5 = 0x4,
-ADC_RE0 = 0x5,
-ADC_RE1 = 0x6,
-ADC_RE2 = 0x7,
-ADC_RB1 = 0xA,
-ADC_RB5 = 0xD,
-ADC_RD5 = 0x19,
-channel_CTMU = 0x1D,
-channel_DAC = 0x1E,
-channel_FVRBuf2 = 0x1F
-} adc_channel_t;
-
-# 141
-void ADC_Initialize(void);
-
-# 171
-void ADC_SelectChannel(adc_channel_t channel);
-
-# 198
-void ADC_StartConversion();
-
-# 230
-bool ADC_IsConversionDone();
-
-# 263
-adc_result_t ADC_GetConversionResult(void);
-
-# 293
-adc_result_t ADC_GetConversion(adc_channel_t channel);
 
 # 74 "mcc_generated_files/tmr0.h"
 volatile bool TimerOneSecFlag = 0;
@@ -8770,6 +8734,46 @@ extern void (*TMR0_InterruptHandler)(void);
 
 # 375
 void TMR0_DefaultInterruptHandler(void);
+
+# 71 "mcc_generated_files/adc.h"
+typedef uint16_t adc_result_t;
+
+# 76
+typedef struct
+{
+adc_result_t adcResult1;
+adc_result_t adcResult2;
+} adc_sync_double_result_t;
+
+# 101
+typedef enum
+{
+ADC_RREV = 0x4,
+ADC_FFWR = 0x5,
+ADC_TMP = 0x6,
+ADC_VG_MON = 0x7,
+channel_CTMU = 0x1D,
+channel_DAC = 0x1E,
+channel_FVRBuf2 = 0x1F
+} adc_channel_t;
+
+# 145
+void ADC_Initialize(void);
+
+# 175
+void ADC_SelectChannel(adc_channel_t channel);
+
+# 202
+void ADC_StartConversion();
+
+# 234
+bool ADC_IsConversionDone();
+
+# 267
+adc_result_t ADC_GetConversionResult(void);
+
+# 297
+adc_result_t ADC_GetConversion(adc_channel_t channel);
 
 # 75 "mcc_generated_files/eusart1.h"
 extern volatile uint8_t eusart1TxBufferRemaining;
@@ -8823,6 +8827,8 @@ RX_SET_COMRESSION_MODE = 0x63,
 RX_SET_COMRESSION_RANGE = 0x65,
 
 
+ADC_SAMPLE = 0x23,
+
 
 SYSTEM_PRINT_HELP_LIST = 0x18,
 SYSTEM_TEST_LED = 0x1C,
@@ -8862,36 +8868,27 @@ void BlinkErrorLeds(LED_OK_INTICATION state);
 void BlinkOkLeds(LED_ERR_INTICATION state);
 void keepAliveSignalLed(void);
 
-# 22 "AdcApp.h"
-typedef enum
-{
-CONVERSION_LEFT_FORAMT = 0,
-CONVERSION_RIGHT_FORAMT,
-}ADC_CONVERSION_FORMAT;
-
+# 19 "AdcApp.h"
 typedef enum
 {
 CIRCULAR = 0x0,
 SINGLE_CHANNEL = 0x1,
 }ADC_SAMPLE_MODE;
 
-
-const adc_channel_t channelArr[(7)] =
+const adc_channel_t channelArr[(0x04)] =
 {
-0x7,
-0x6,
-0x5,
 0x4,
-0x19,
-0xA,
-0xD,
+0x5,
+0x6,
+0x7,
 };
 
-void SetAdcOperationMode(char* data);
-void SetConversionResultFormat(char* data);
+volatile bool needToSample = 0;
+
+void AdcSingleSample(MODULE_TYPE cType, char* data);
 void SetChannelMode(char* data);
 void InitAdcApplicationMgr();
-void AdcConvert();
+bool SampleSingleChannel(void);
 
 # 31 "FlashApp.h"
 void FlashSampleWrite(adc_result_t sampleData, uint8_t channelNum);
@@ -9042,6 +9039,7 @@ FIND_MAGIC,
 READ_STREAM,
 READ_GROUP,
 READ_REQUEST,
+READ_DATA_SIZE,
 READ_DATA,
 CHECK_CRC,
 JUMP_FUNCTION
@@ -9133,16 +9131,7 @@ void SwSpi_Set_Synth_Le_Pin(SPI_PERIPHERAL phrType, bool cPinMode);
 void SWSPI_DAC_send_bits(SPI_PERIPHERAL phrType, uint8_t data);
 void SwSpi_Set_Dac_Sync_Pin(bool cPinMode);
 
-# 37 "SystemCommon.h"
-typedef enum
-{
-START_SYSTEM = 0,
-ADC_DAC,
-FLASH,
-EUSART,
-FINISH_ROUND
-}SYSTEM_STATE;
-
+# 43 "SystemCommon.h"
 unsigned char crc8(char* dataArray, int dataSize);
 uint8_t make8(uint32_t data, uint8_t dataLocation);
 void ZeroArray(char* array, int size);

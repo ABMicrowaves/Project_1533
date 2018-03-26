@@ -11,47 +11,33 @@ Author: RoeeZ (Comm-IT).                                                    ****
 
 #include "SystemCommon.h"
 
-#define ADC_NUM_CHANNELS (7)
-#define VDD             (3340)
-#define ADC_BIT_SIZE    (10)
-
-#ifdef	__cplusplus
-extern "C" {
-#endif
-    
-typedef enum
-{
-	CONVERSION_LEFT_FORAMT = 0,
-	CONVERSION_RIGHT_FORAMT,
-}ADC_CONVERSION_FORMAT;
+#define ADC_NUM_CHANNELS    (0x04)
+#define VDD                 (3340)
+#define ADC_BIT_SIZE        (10)
+#define VGMON_THRESHOLD     (650) // 2.1V
 
 typedef enum
 {
-	CIRCULAR = 0x0,
-    SINGLE_CHANNEL = 0x1,
+	CIRCULAR        = 0x0,
+    SINGLE_CHANNEL  = 0x1,
 }ADC_SAMPLE_MODE;
-
 
 const adc_channel_t channelArr[ADC_NUM_CHANNELS]  = 
 {
-    0x7,        // ADC_RE2
-    0x6,        // ADC_RE1
-    0x5,        // ADC_RE0
-    0x4,        // ADC_RA5
-    0x19,       // ADC_RD5
-    0xA,        // ADC_RB1
-    0xD,        // ADC_RB5
+    0x4,     // ADC_RREV
+    0x5,     // ADC_FFWR
+    0x6,     // ADC_TMP
+    0x7,     // ADC_VG_MON
 };
 
-void SetAdcOperationMode(char* data);
-void SetConversionResultFormat(char* data);
+volatile bool needToSample = false;    // Indicate if we are in middle of sampling
+
+void AdcSingleSample(MODULE_TYPE cType, char* data);
 void SetChannelMode(char* data);
 void InitAdcApplicationMgr();
-void AdcConvert();
+bool SampleSingleChannel(void);
 
-#ifdef	__cplusplus
-}
-#endif
+//void AdcConvert();
 
 #endif	/* ADCAPP_H */
 

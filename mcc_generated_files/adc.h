@@ -90,16 +90,20 @@ typedef struct
  Remarks:
    None
  */
+//1435 pin assignment
+//#define RREV     PIN_A5 // sAN4
+//#define FFWR     PIN_E0 // sAN5 rssi
+//#define TMP      PIN_E1 // sAN6 temperature
+//#define VG_MON   PIN_E2 // sAN7
+//#define VGMON_THRESHOLD 650 // 2.1V
+
 
 typedef enum
 {
-    ADC_RA5 =  0x4,
-    ADC_RE0 =  0x5,
-    ADC_RE1 =  0x6,
-    ADC_RE2 =  0x7,
-    ADC_RB1 =  0xA,
-    ADC_RB5 =  0xD,
-    ADC_RD5 =  0x19,
+    ADC_RREV =  0x4,
+    ADC_FFWR =  0x5,
+    ADC_TMP =  0x6,
+    ADC_VG_MON =  0x7,
     channel_CTMU =  0x1D,
     channel_DAC =  0x1E,
     channel_FVRBuf2 =  0x1F

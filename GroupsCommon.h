@@ -30,6 +30,8 @@ typedef enum
     RX_SET_COMRESSION_MODE      = 0x63,
     RX_SET_COMRESSION_RANGE     = 0x65,
     
+    // ADC
+    ADC_SAMPLE                  = 0x23,                           
     
     // Common system common requests
     SYSTEM_PRINT_HELP_LIST      = 0x18,

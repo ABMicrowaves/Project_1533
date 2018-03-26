@@ -35,24 +35,17 @@ void main(void)
             SetMcuRunTime();
             TimerOneSecFlag = false; 
         }
-        else if (TimerSamplingFlag == true)
-        {
-            keepAliveSignalLed();
-            
-            if(true == CheckFlashPrecentage())
-            {
-                BlinkErrorLeds(FAIL_FLASH_MORE_THEN_HELF);
-            }
-            
-            // Sampling is always occur even if Flash is full.
-            AdcConvert();
-            
-            TimerSamplingFlag = false;
-        }
         else if (TimerKeepAliveFlag == true)
         {
-            //keepAliveSignalUart();
+            keepAliveSignalLed();
             TimerKeepAliveFlag = false; 
+        }
+        else if (TimerSamplingFlag == true)
+        {
+            if(true == needToSample)
+            {
+                SampleSingleChannel();
+            }
         }
     }
 }

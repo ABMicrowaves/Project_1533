@@ -209,7 +209,7 @@ void EUSART1_Receive_ISR(void)
         RCSTA1bits.CREN = 1;
     }
     // Send Acho byte:
-    //TXREG1 = RCREG1;
+    TXREG1 = RCREG1;
 
     // buffer overruns are ignored
     eusart1RxBuffer[eusart1RxHead++] = RCREG1;

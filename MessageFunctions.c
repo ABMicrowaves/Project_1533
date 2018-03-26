@@ -29,6 +29,10 @@ void GroupRx(MSG_REQUEST request, char* data)
             
         case TX_RX_SET_OPERATION_MODE:
             break;
+        
+        case ADC_SAMPLE:
+            AdcSingleSample(RX_TYPE, data);
+            break;
             
         default:
             break;
@@ -62,7 +66,11 @@ void GroupTx(MSG_REQUEST request, char* data)
             
         case RX_SET_COMRESSION_RANGE:
             break;
-            
+        
+        case ADC_SAMPLE:
+            AdcSingleSample(TX_TYPE, data);
+            break;
+        
         default:
             break;
     }

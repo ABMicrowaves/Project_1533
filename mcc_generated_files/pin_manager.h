@@ -112,36 +112,19 @@
 #define DAC_DATA_SetDigitalInput()    do { TRISAbits.TRISA4 = 1; } while(0)
 #define DAC_DATA_SetDigitalOutput()   do { TRISAbits.TRISA4 = 0; } while(0)
 
-// get/set ADC_RA5 aliases
-#define ADC_RA5_TRIS               TRISAbits.TRISA5
-#define ADC_RA5_LAT                LATAbits.LATA5
-#define ADC_RA5_PORT               PORTAbits.RA5
-#define ADC_RA5_ANS                ANSELAbits.ANSA5
-#define ADC_RA5_SetHigh()            do { LATAbits.LATA5 = 1; } while(0)
-#define ADC_RA5_SetLow()             do { LATAbits.LATA5 = 0; } while(0)
-#define ADC_RA5_Toggle()             do { LATAbits.LATA5 = ~LATAbits.LATA5; } while(0)
-#define ADC_RA5_GetValue()           PORTAbits.RA5
-#define ADC_RA5_SetDigitalInput()    do { TRISAbits.TRISA5 = 1; } while(0)
-#define ADC_RA5_SetDigitalOutput()   do { TRISAbits.TRISA5 = 0; } while(0)
-#define ADC_RA5_SetAnalogMode()  do { ANSELAbits.ANSA5 = 1; } while(0)
-#define ADC_RA5_SetDigitalMode() do { ANSELAbits.ANSA5 = 0; } while(0)
-
-// get/set ADC_RB1 aliases
-#define ADC_RB1_TRIS               TRISBbits.TRISB1
-#define ADC_RB1_LAT                LATBbits.LATB1
-#define ADC_RB1_PORT               PORTBbits.RB1
-#define ADC_RB1_WPU                WPUBbits.WPUB1
-#define ADC_RB1_ANS                ANSELBbits.ANSB1
-#define ADC_RB1_SetHigh()            do { LATBbits.LATB1 = 1; } while(0)
-#define ADC_RB1_SetLow()             do { LATBbits.LATB1 = 0; } while(0)
-#define ADC_RB1_Toggle()             do { LATBbits.LATB1 = ~LATBbits.LATB1; } while(0)
-#define ADC_RB1_GetValue()           PORTBbits.RB1
-#define ADC_RB1_SetDigitalInput()    do { TRISBbits.TRISB1 = 1; } while(0)
-#define ADC_RB1_SetDigitalOutput()   do { TRISBbits.TRISB1 = 0; } while(0)
-#define ADC_RB1_SetPullup()      do { WPUBbits.WPUB1 = 1; } while(0)
-#define ADC_RB1_ResetPullup()    do { WPUBbits.WPUB1 = 0; } while(0)
-#define ADC_RB1_SetAnalogMode()  do { ANSELBbits.ANSB1 = 1; } while(0)
-#define ADC_RB1_SetDigitalMode() do { ANSELBbits.ANSB1 = 0; } while(0)
+// get/set ADC_RREV aliases
+#define ADC_RREV_TRIS               TRISAbits.TRISA5
+#define ADC_RREV_LAT                LATAbits.LATA5
+#define ADC_RREV_PORT               PORTAbits.RA5
+#define ADC_RREV_ANS                ANSELAbits.ANSA5
+#define ADC_RREV_SetHigh()            do { LATAbits.LATA5 = 1; } while(0)
+#define ADC_RREV_SetLow()             do { LATAbits.LATA5 = 0; } while(0)
+#define ADC_RREV_Toggle()             do { LATAbits.LATA5 = ~LATAbits.LATA5; } while(0)
+#define ADC_RREV_GetValue()           PORTAbits.RA5
+#define ADC_RREV_SetDigitalInput()    do { TRISAbits.TRISA5 = 1; } while(0)
+#define ADC_RREV_SetDigitalOutput()   do { TRISAbits.TRISA5 = 0; } while(0)
+#define ADC_RREV_SetAnalogMode()  do { ANSELAbits.ANSA5 = 1; } while(0)
+#define ADC_RREV_SetDigitalMode() do { ANSELAbits.ANSA5 = 0; } while(0)
 
 // get/set P7V_SENSE aliases
 #define P7V_SENSE_TRIS               TRISBbits.TRISB2
@@ -193,23 +176,6 @@
 #define LED_S2_ResetPullup()    do { WPUBbits.WPUB4 = 0; } while(0)
 #define LED_S2_SetAnalogMode()  do { ANSELBbits.ANSB4 = 1; } while(0)
 #define LED_S2_SetDigitalMode() do { ANSELBbits.ANSB4 = 0; } while(0)
-
-// get/set ADC_RB5 aliases
-#define ADC_RB5_TRIS               TRISBbits.TRISB5
-#define ADC_RB5_LAT                LATBbits.LATB5
-#define ADC_RB5_PORT               PORTBbits.RB5
-#define ADC_RB5_WPU                WPUBbits.WPUB5
-#define ADC_RB5_ANS                ANSELBbits.ANSB5
-#define ADC_RB5_SetHigh()            do { LATBbits.LATB5 = 1; } while(0)
-#define ADC_RB5_SetLow()             do { LATBbits.LATB5 = 0; } while(0)
-#define ADC_RB5_Toggle()             do { LATBbits.LATB5 = ~LATBbits.LATB5; } while(0)
-#define ADC_RB5_GetValue()           PORTBbits.RB5
-#define ADC_RB5_SetDigitalInput()    do { TRISBbits.TRISB5 = 1; } while(0)
-#define ADC_RB5_SetDigitalOutput()   do { TRISBbits.TRISB5 = 0; } while(0)
-#define ADC_RB5_SetPullup()      do { WPUBbits.WPUB5 = 1; } while(0)
-#define ADC_RB5_ResetPullup()    do { WPUBbits.WPUB5 = 0; } while(0)
-#define ADC_RB5_SetAnalogMode()  do { ANSELBbits.ANSB5 = 1; } while(0)
-#define ADC_RB5_SetDigitalMode() do { ANSELBbits.ANSB5 = 0; } while(0)
 
 // get/set LED_S1 aliases
 #define LED_S1_TRIS               TRISCbits.TRISC0
@@ -379,61 +345,47 @@
 #define RX_SYNT_LD_SetAnalogMode()  do { ANSELDbits.ANSD4 = 1; } while(0)
 #define RX_SYNT_LD_SetDigitalMode() do { ANSELDbits.ANSD4 = 0; } while(0)
 
-// get/set ADC_RD5 aliases
-#define ADC_RD5_TRIS               TRISDbits.TRISD5
-#define ADC_RD5_LAT                LATDbits.LATD5
-#define ADC_RD5_PORT               PORTDbits.RD5
-#define ADC_RD5_ANS                ANSELDbits.ANSD5
-#define ADC_RD5_SetHigh()            do { LATDbits.LATD5 = 1; } while(0)
-#define ADC_RD5_SetLow()             do { LATDbits.LATD5 = 0; } while(0)
-#define ADC_RD5_Toggle()             do { LATDbits.LATD5 = ~LATDbits.LATD5; } while(0)
-#define ADC_RD5_GetValue()           PORTDbits.RD5
-#define ADC_RD5_SetDigitalInput()    do { TRISDbits.TRISD5 = 1; } while(0)
-#define ADC_RD5_SetDigitalOutput()   do { TRISDbits.TRISD5 = 0; } while(0)
-#define ADC_RD5_SetAnalogMode()  do { ANSELDbits.ANSD5 = 1; } while(0)
-#define ADC_RD5_SetDigitalMode() do { ANSELDbits.ANSD5 = 0; } while(0)
+// get/set ADC_FFWR aliases
+#define ADC_FFWR_TRIS               TRISEbits.TRISE0
+#define ADC_FFWR_LAT                LATEbits.LATE0
+#define ADC_FFWR_PORT               PORTEbits.RE0
+#define ADC_FFWR_ANS                ANSELEbits.ANSE0
+#define ADC_FFWR_SetHigh()            do { LATEbits.LATE0 = 1; } while(0)
+#define ADC_FFWR_SetLow()             do { LATEbits.LATE0 = 0; } while(0)
+#define ADC_FFWR_Toggle()             do { LATEbits.LATE0 = ~LATEbits.LATE0; } while(0)
+#define ADC_FFWR_GetValue()           PORTEbits.RE0
+#define ADC_FFWR_SetDigitalInput()    do { TRISEbits.TRISE0 = 1; } while(0)
+#define ADC_FFWR_SetDigitalOutput()   do { TRISEbits.TRISE0 = 0; } while(0)
+#define ADC_FFWR_SetAnalogMode()  do { ANSELEbits.ANSE0 = 1; } while(0)
+#define ADC_FFWR_SetDigitalMode() do { ANSELEbits.ANSE0 = 0; } while(0)
 
-// get/set ADC_RE0 aliases
-#define ADC_RE0_TRIS               TRISEbits.TRISE0
-#define ADC_RE0_LAT                LATEbits.LATE0
-#define ADC_RE0_PORT               PORTEbits.RE0
-#define ADC_RE0_ANS                ANSELEbits.ANSE0
-#define ADC_RE0_SetHigh()            do { LATEbits.LATE0 = 1; } while(0)
-#define ADC_RE0_SetLow()             do { LATEbits.LATE0 = 0; } while(0)
-#define ADC_RE0_Toggle()             do { LATEbits.LATE0 = ~LATEbits.LATE0; } while(0)
-#define ADC_RE0_GetValue()           PORTEbits.RE0
-#define ADC_RE0_SetDigitalInput()    do { TRISEbits.TRISE0 = 1; } while(0)
-#define ADC_RE0_SetDigitalOutput()   do { TRISEbits.TRISE0 = 0; } while(0)
-#define ADC_RE0_SetAnalogMode()  do { ANSELEbits.ANSE0 = 1; } while(0)
-#define ADC_RE0_SetDigitalMode() do { ANSELEbits.ANSE0 = 0; } while(0)
+// get/set ADC_TMP aliases
+#define ADC_TMP_TRIS               TRISEbits.TRISE1
+#define ADC_TMP_LAT                LATEbits.LATE1
+#define ADC_TMP_PORT               PORTEbits.RE1
+#define ADC_TMP_ANS                ANSELEbits.ANSE1
+#define ADC_TMP_SetHigh()            do { LATEbits.LATE1 = 1; } while(0)
+#define ADC_TMP_SetLow()             do { LATEbits.LATE1 = 0; } while(0)
+#define ADC_TMP_Toggle()             do { LATEbits.LATE1 = ~LATEbits.LATE1; } while(0)
+#define ADC_TMP_GetValue()           PORTEbits.RE1
+#define ADC_TMP_SetDigitalInput()    do { TRISEbits.TRISE1 = 1; } while(0)
+#define ADC_TMP_SetDigitalOutput()   do { TRISEbits.TRISE1 = 0; } while(0)
+#define ADC_TMP_SetAnalogMode()  do { ANSELEbits.ANSE1 = 1; } while(0)
+#define ADC_TMP_SetDigitalMode() do { ANSELEbits.ANSE1 = 0; } while(0)
 
-// get/set ADC_RE1 aliases
-#define ADC_RE1_TRIS               TRISEbits.TRISE1
-#define ADC_RE1_LAT                LATEbits.LATE1
-#define ADC_RE1_PORT               PORTEbits.RE1
-#define ADC_RE1_ANS                ANSELEbits.ANSE1
-#define ADC_RE1_SetHigh()            do { LATEbits.LATE1 = 1; } while(0)
-#define ADC_RE1_SetLow()             do { LATEbits.LATE1 = 0; } while(0)
-#define ADC_RE1_Toggle()             do { LATEbits.LATE1 = ~LATEbits.LATE1; } while(0)
-#define ADC_RE1_GetValue()           PORTEbits.RE1
-#define ADC_RE1_SetDigitalInput()    do { TRISEbits.TRISE1 = 1; } while(0)
-#define ADC_RE1_SetDigitalOutput()   do { TRISEbits.TRISE1 = 0; } while(0)
-#define ADC_RE1_SetAnalogMode()  do { ANSELEbits.ANSE1 = 1; } while(0)
-#define ADC_RE1_SetDigitalMode() do { ANSELEbits.ANSE1 = 0; } while(0)
-
-// get/set ADC_RE2 aliases
-#define ADC_RE2_TRIS               TRISEbits.TRISE2
-#define ADC_RE2_LAT                LATEbits.LATE2
-#define ADC_RE2_PORT               PORTEbits.RE2
-#define ADC_RE2_ANS                ANSELEbits.ANSE2
-#define ADC_RE2_SetHigh()            do { LATEbits.LATE2 = 1; } while(0)
-#define ADC_RE2_SetLow()             do { LATEbits.LATE2 = 0; } while(0)
-#define ADC_RE2_Toggle()             do { LATEbits.LATE2 = ~LATEbits.LATE2; } while(0)
-#define ADC_RE2_GetValue()           PORTEbits.RE2
-#define ADC_RE2_SetDigitalInput()    do { TRISEbits.TRISE2 = 1; } while(0)
-#define ADC_RE2_SetDigitalOutput()   do { TRISEbits.TRISE2 = 0; } while(0)
-#define ADC_RE2_SetAnalogMode()  do { ANSELEbits.ANSE2 = 1; } while(0)
-#define ADC_RE2_SetDigitalMode() do { ANSELEbits.ANSE2 = 0; } while(0)
+// get/set ADC_VG_MON aliases
+#define ADC_VG_MON_TRIS               TRISEbits.TRISE2
+#define ADC_VG_MON_LAT                LATEbits.LATE2
+#define ADC_VG_MON_PORT               PORTEbits.RE2
+#define ADC_VG_MON_ANS                ANSELEbits.ANSE2
+#define ADC_VG_MON_SetHigh()            do { LATEbits.LATE2 = 1; } while(0)
+#define ADC_VG_MON_SetLow()             do { LATEbits.LATE2 = 0; } while(0)
+#define ADC_VG_MON_Toggle()             do { LATEbits.LATE2 = ~LATEbits.LATE2; } while(0)
+#define ADC_VG_MON_GetValue()           PORTEbits.RE2
+#define ADC_VG_MON_SetDigitalInput()    do { TRISEbits.TRISE2 = 1; } while(0)
+#define ADC_VG_MON_SetDigitalOutput()   do { TRISEbits.TRISE2 = 0; } while(0)
+#define ADC_VG_MON_SetAnalogMode()  do { ANSELEbits.ANSE2 = 1; } while(0)
+#define ADC_VG_MON_SetDigitalMode() do { ANSELEbits.ANSE2 = 0; } while(0)
 
 /**
    @Param

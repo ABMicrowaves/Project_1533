@@ -10,35 +10,25 @@ Author: RoeeZ (Comm-IT).                                                    ****
 
 // <editor-fold defaultstate="collapsed" desc="Global verbs">
 
-ADC_CONVERSION_FORMAT conversionFormat = CONVERSION_LEFT_FORAMT;
 ADC_SAMPLE_MODE adcSampleMode = CIRCULAR;
 char channel = 0;
-
 uint16_t count = 0;
+uint16_t numSamples = 0;
+uint16_t channelNum = 0;
+
 // </editor-fold>
 
 // <editor-fold defaultstate="collapsed" desc="ADC application manager init">
 
 void InitAdcApplicationMgr()
 {
-    conversionFormat = CONVERSION_LEFT_FORAMT;
     adcSampleMode = CIRCULAR;
-    char channel = 0;
 }
 
 // </editor-fold>
 
 // <editor-fold defaultstate="collapsed" desc="Set ADC operation mode">
 
-void SetAdcOperationMode(char* data)
-{
-    //SendAckMessage((MSG_GROUPS)ADC_MSG, (MSG_REQUEST)ADC_OPERATION);
-}
-
-void SetConversionResultFormat(char* data)
-{
-    //SendAckMessage((MSG_GROUPS)ADC_MSG, (MSG_REQUEST)ADC_CONVERSION_MODE);
-}
 
 void SetChannelMode(char* data)
 {
@@ -53,28 +43,69 @@ void SetChannelMode(char* data)
 
 // <editor-fold defaultstate="collapsed" desc="ADC convert">
 
-void AdcConvert()
-// The samples will be stored in array of FLASH_BLOCK_SIZE = 64
-// This is in order to minimize flash writes.
+void AdcSingleSample(MODULE_TYPE cType, char* data)
 {
+    uint32_t retNum = 0x0;
     
-    uint16_t adcRes = 0; 
-    
-    if (adcSampleMode == CIRCULAR)
+    if(data[0] == '0')
     {
-        for(uint8_t idx = 0; idx < ADC_NUM_CHANNELS; idx++)
+        UART_Write_Text("NOT OK \n\r");
+    }
+    else
+    {
+        retNum = GetIntFromUartData(data);
+        channelNum  = (retNum / 0xA) % 0x64;
+        numSamples  = retNum % 0xA;
+        
+        if(channelNum > ADC_NUM_CHANNELS)
         {
-            adc_result_t _adcResult = ADC_GetConversion(channelArr[idx]);
-            adcRes = (_adcResult/pow(2,ADC_BIT_SIZE))*VDD;
-            FlashSampleWrite(adcRes, idx + 1);
-            __delay_ms(250);
+            UART_Write_Text("NOT OK \n\r");
+        }
+        else
+        {
+            if(cType == TX_TYPE)
+            {
+                if(channelNum == 0) UART_Write_Text("SAMPLE CHANNEL NAME");
+                if(channelNum == 0x0 || channelNum == 0x1)
+                {
+                    needToSample = true;
+                }
+                else
+                {
+                    UART_Write_Text("NOT OK \n\r");
+                }
+                
+            }
+            
+            if(cType == RX_TYPE)
+            {
+                needToSample = true;
+            }
+            else
+            {
+                UART_Write_Text("NOT OK \n\r");
+            }
         }
     }
-    else if (adcSampleMode == SINGLE_CHANNEL)
+}
+
+bool SampleSingleChannel(void)
+{
+    char dest[50];
+    uint16_t adcRes = 0x0;
+    if(numSamples--)
     {
-        adc_result_t _adcResult = ADC_GetConversion(channelArr[channel]);
+        adc_result_t _adcResult = ADC_GetConversion(channelArr[channelNum]);
         adcRes = (_adcResult/pow(2,ADC_BIT_SIZE))*VDD;
-        FlashSampleWrite(adcRes, 1);
+        
+        sprintf(dest, "%d \t", adcRes);
+        UART_Write_Text(dest);
+        __delay_ms(1000);
+    }
+    else
+    {
+        needToSample = false;
+        UART_Write_Text("\n\r OK \n\r");
     }
 }
 // </editor-fold>

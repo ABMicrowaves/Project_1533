@@ -44,19 +44,18 @@ uint32_t GetIntFromUartData(char* data)
     
     for(int idx = 0; idx < MAX_UART_BYTES_SIZE; idx++)
     {
-        char c = data[idx] + '0';
-        if(c == END_UART_STREAM_CHAR)   // @ -> End of UART stream.
+        char c = data[idx + 1];
+        if(c == NULL)   // NULL -> End of UART stream.
         {
             break;
         }
         else
         {
-            dataRegArr[idx] = data[idx] + '0';
+            dataRegArr[idx] = c;
         }
-        
     }
     
-    return strtol(dataRegArr, NULL, 16);
+    return strtol(dataRegArr, NULL, 10);
 }
 
 uint8_t make8(uint32_t data, uint8_t dataLocation)
