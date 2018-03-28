@@ -52,7 +52,8 @@ const uint32_t TEST_PLL_REGISTERS[13] =
 };
 
 
-
+volatile uint32_t rxFreq = 0;    // RX frequency in MHz
+volatile uint32_t txFreq = 0;    // TX frequency in MHz
 
 void PLLUartInitialize(char* data);
 void PLLInitialize(void);

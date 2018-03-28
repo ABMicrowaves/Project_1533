@@ -4,7 +4,7 @@
 [d chip 18F45K22 ]
 [d frameptr 4065 ]
 "26 C:\BA\Software_projects\PIC\1533\AdcApp.h
-[e E7191 . `uc
+[e E7162 . `uc
 ADC_RREV 4
 ADC_FFWR 5
 ADC_TMP 6
@@ -27,10 +27,10 @@ SYSTEM_PRINT_HELP_LIST 24
 SYSTEM_TEST_LED 28
 ]
 "14 C:\BA\Software_projects\PIC\1533\LedsApp.c
-[e E7622 . `uc
+[e E7699 . `uc
 OK_START_SYSTEM 3
 ]
-[e E7625 . `uc
+[e E7702 . `uc
 FAIL_UART_ACK_NOT_RECIEVE 2
 FAIL_FLASH_MORE_THEN_HELF 4
 FAIL_SYNTH_UP_LATCH 8
@@ -49,7 +49,7 @@ SYSTEM_PRINT_HELP_LIST 24
 SYSTEM_TEST_LED 28
 ]
 "26 C:\BA\Software_projects\PIC\1533\AdcApp.h
-[e E7191 . `uc
+[e E7162 . `uc
 ADC_RREV 4
 ADC_FFWR 5
 ADC_TMP 6
@@ -59,17 +59,24 @@ channel_DAC 30
 channel_FVRBuf2 31
 ]
 "13 C:\BA\Software_projects\PIC\1533\AdcApp.c
-[e E7621 . `uc
+[e E7686 . `uc
 CIRCULAR 0
 SINGLE_CHANNEL 1
 ]
-"47
+"33
 [e E177 . `uc
 TX_TYPE 0
 RX_TYPE 1
 ]
+[e E7691 . `uc
+ADC_OFF 0
+CHANK1 0
+CHANK2 1
+CHANK3 2
+CHANK4 3
+]
 "26 C:\BA\Software_projects\PIC\1533\AdcApp.h
-[e E7275 . `uc
+[e E7246 . `uc
 ADC_RREV 4
 ADC_FFWR 5
 ADC_TMP 6
@@ -92,7 +99,7 @@ SYSTEM_PRINT_HELP_LIST 24
 SYSTEM_TEST_LED 28
 ]
 "15 C:\BA\Software_projects\PIC\1533\EusartApp.c
-[e E7614 . `uc
+[e E7691 . `uc
 START_RX_MESSAGE_READ 0
 FIND_MAGIC 1
 READ_STREAM 2
@@ -110,7 +117,7 @@ TX_GROUP 1
 COMMON_GROUP 2
 ]
 "26 C:\BA\Software_projects\PIC\1533\AdcApp.h
-[e E7191 . `uc
+[e E7162 . `uc
 ADC_RREV 4
 ADC_FFWR 5
 ADC_TMP 6
@@ -133,7 +140,7 @@ SYSTEM_PRINT_HELP_LIST 24
 SYSTEM_TEST_LED 28
 ]
 "26 C:\BA\Software_projects\PIC\1533\AdcApp.h
-[e E7191 . `uc
+[e E7162 . `uc
 ADC_RREV 4
 ADC_FFWR 5
 ADC_TMP 6
@@ -162,7 +169,7 @@ SYNTH_RX 1
 EXT_DAC 2
 ]
 "26 C:\BA\Software_projects\PIC\1533\AdcApp.h
-[e E7191 . `uc
+[e E7162 . `uc
 ADC_RREV 4
 ADC_FFWR 5
 ADC_TMP 6
@@ -184,14 +191,14 @@ ADC_SAMPLE 35
 SYSTEM_PRINT_HELP_LIST 24
 SYSTEM_TEST_LED 28
 ]
-"20 C:\BA\Software_projects\PIC\1533\SyntApp.c
+"25 C:\BA\Software_projects\PIC\1533\SyntApp.c
 [e E181 . `uc
 SYNTH_TX 0
 SYNTH_RX 1
 EXT_DAC 2
 ]
 "26 C:\BA\Software_projects\PIC\1533\AdcApp.h
-[e E7191 . `uc
+[e E7162 . `uc
 ADC_RREV 4
 ADC_FFWR 5
 ADC_TMP 6
@@ -230,7 +237,7 @@ channel_DAC 30
 channel_FVRBuf2 31
 ]
 "26 C:\BA\Software_projects\PIC\1533\AdcApp.h
-[e E7191 . `uc
+[e E7162 . `uc
 ADC_RREV 4
 ADC_FFWR 5
 ADC_TMP 6
@@ -253,7 +260,7 @@ SYSTEM_PRINT_HELP_LIST 24
 SYSTEM_TEST_LED 28
 ]
 "26 C:\BA\Software_projects\PIC\1533\AdcApp.h
-[e E7208 . `uc
+[e E7179 . `uc
 ADC_RREV 4
 ADC_FFWR 5
 ADC_TMP 6
@@ -275,13 +282,20 @@ ADC_SAMPLE 35
 SYSTEM_PRINT_HELP_LIST 24
 SYSTEM_TEST_LED 28
 ]
-"74 C:\BA\Software_projects\PIC\1533\MessageFunctions.c
+"42 C:\BA\Software_projects\PIC\1533\MessageFunctions.c
 [e E194 . `uc
 TX_TYPE 0
 RX_TYPE 1
 ]
+[e E7274 . `uc
+ADC_OFF 0
+CHANK1 0
+CHANK2 1
+CHANK3 2
+CHANK4 3
+]
 "26 C:\BA\Software_projects\PIC\1533\AdcApp.h
-[e E7191 . `uc
+[e E7162 . `uc
 ADC_RREV 4
 ADC_FFWR 5
 ADC_TMP 6
@@ -304,7 +318,7 @@ SYSTEM_PRINT_HELP_LIST 24
 SYSTEM_TEST_LED 28
 ]
 "26 C:\BA\Software_projects\PIC\1533\AdcApp.h
-[e E7191 . `uc
+[e E7162 . `uc
 ADC_RREV 4
 ADC_FFWR 5
 ADC_TMP 6
@@ -327,7 +341,7 @@ SYSTEM_PRINT_HELP_LIST 24
 SYSTEM_TEST_LED 28
 ]
 "26 C:\BA\Software_projects\PIC\1533\AdcApp.h
-[e E7191 . `uc
+[e E7162 . `uc
 ADC_RREV 4
 ADC_FFWR 5
 ADC_TMP 6
@@ -350,34 +364,44 @@ SYSTEM_PRINT_HELP_LIST 24
 SYSTEM_TEST_LED 28
 ]
 "25 C:\BA\Software_projects\PIC\1533\main.c
-[e E7265 . `uc
+[e E7328 . `uc
 FAIL_UART_ACK_NOT_RECIEVE 2
 FAIL_FLASH_MORE_THEN_HELF 4
 FAIL_SYNTH_UP_LATCH 8
 ]
-[e E7262 . `uc
+[e E7325 . `uc
 OK_START_SYSTEM 3
 ]
 "23 C:\BA\Software_projects\PIC\1533\AdcApp.c
 [v _InitAdcApplicationMgr InitAdcApplicationMgr `(v  1 e 1 0 ]
-"46
+"32
 [v _AdcSingleSample AdcSingleSample `(v  1 e 1 0 ]
-"101
+"98
 [v _SampleSingleChannel SampleSingleChannel `(uc  1 e 1 0 ]
-"121
-[v _SampleVgMonChannel SampleVgMonChannel `(v  1 e 1 0 ]
+"122
+[v _SampleAllChannels SampleAllChannels `(v  1 e 1 0 ]
 "4 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\abs.c
 [v _abs abs `(i  1 e 2 0 ]
 "42 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\altoft.c
 [v ___altoft __altoft `(f  1 e 3 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
 "32 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awtoft.c
 [v ___awtoft __awtoft `(f  1 e 3 0 ]
-"492 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
+"409 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
+[v _fround fround `(d  1 s 3 fround ]
+"425
+[v _scale scale `(d  1 s 3 scale ]
+"492
 [v _sprintf sprintf `(i  1 e 2 0 ]
 "4 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\evalpoly.c
 [v _eval_poly eval_poly `(d  1 e 3 0 ]
 "12 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\exp.c
 [v _exp exp `(d  1 e 3 0 ]
+"60 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\fldivl.c
+[v __div_to_l_ _div_to_l_ `(ul  1 e 4 0 ]
 "62 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\float.c
 [v ___ftpack __ftpack `(f  1 e 3 0 ]
 "13 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\floor.c
@@ -390,6 +414,8 @@ OK_START_SYSTEM 3
 [v ___ftadd __ftadd `(f  1 e 3 0 ]
 "54 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ftdiv.c
 [v ___ftdiv __ftdiv `(f  1 e 3 0 ]
+"60 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ftdivl.c
+[v __tdiv_to_l_ _tdiv_to_l_ `(ul  1 e 4 0 ]
 "4 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ftge.c
 [v ___ftge __ftge `(b  1 e 0 0 ]
 "62 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ftmul.c
@@ -410,17 +436,16 @@ OK_START_SYSTEM 3
 [v _isupper isupper `(b  1 e 0 0 ]
 "27 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lbtoft.c
 [v ___lbtoft __lbtoft `(f  1 e 3 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
 "8 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\llmod.c
 [v ___llmod __llmod `(ul  1 e 4 0 ]
 "35 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lltoft.c
 [v ___lltoft __lltoft `(f  1 e 3 0 ]
 "5 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\log.c
 [v _log log `(d  1 e 3 0 ]
-"8 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwdiv.c
-[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
 "8 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwmod.c
 [v ___lwmod __lwmod `(ui  1 e 2 0 ]
-[v i2___lwmod __lwmod `(ui  1 e 2 0 ]
 "28 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwtoft.c
 [v ___lwtoft __lwtoft `(f  1 e 3 0 ]
 "8 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\memset.c
@@ -445,9 +470,7 @@ OK_START_SYSTEM 3
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "12 C:\BA\Software_projects\PIC\1533\DacApp.c
 [v _DacInit DacInit `(v  1 e 1 0 ]
-"31
-[v _DacSetValue DacSetValue `(v  1 e 1 0 ]
-"45
+"46
 [v _DacAnalogToDigitalSpi DacAnalogToDigitalSpi `(ui  1 e 2 0 ]
 "28 C:\BA\Software_projects\PIC\1533\EusartApp.c
 [v _readUartByte readUartByte `(v  1 e 1 0 ]
@@ -519,11 +542,11 @@ OK_START_SYSTEM 3
 [v _TMR0_SetInterruptHandler TMR0_SetInterruptHandler `(v  1 e 1 0 ]
 "185
 [v _TMR0_DefaultInterruptHandler TMR0_DefaultInterruptHandler `(v  1 e 1 0 ]
-"11 C:\BA\Software_projects\PIC\1533\MessageFunctions.c
+"14 C:\BA\Software_projects\PIC\1533\MessageFunctions.c
 [v _GroupRx GroupRx `(v  1 e 1 0 ]
-"45
+"54
 [v _GroupTx GroupTx `(v  1 e 1 0 ]
-"82
+"96
 [v _GroupCommon GroupCommon `(v  1 e 1 0 ]
 "17 C:\BA\Software_projects\PIC\1533\SwSpiApp.c
 [v _SWSPI_send_word SWSPI_send_word `(v  1 e 1 0 ]
@@ -541,7 +564,7 @@ OK_START_SYSTEM 3
 [v _SwSpi_Set_Synth_Le_Pin SwSpi_Set_Synth_Le_Pin `(v  1 e 1 0 ]
 "260
 [v _SwSpi_Set_Dac_Sync_Pin SwSpi_Set_Dac_Sync_Pin `(v  1 e 1 0 ]
-"14 C:\BA\Software_projects\PIC\1533\SyntApp.c
+"19 C:\BA\Software_projects\PIC\1533\SyntApp.c
 [v _PLLInitialize PLLInitialize `(v  1 e 1 0 ]
 "13 C:\BA\Software_projects\PIC\1533\SystemCommon.c
 [v _crc8 crc8 `(uc  1 e 1 0 ]
@@ -561,26 +584,36 @@ OK_START_SYSTEM 3
 [v _SetMcuSystem SetMcuSystem `(v  1 e 1 0 ]
 "33
 [v _InitSystemApplicationManagers InitSystemApplicationManagers `(v  1 e 1 0 ]
-"45 C:\BA\Software_projects\PIC\1533\SystemStatus.c
+"34 C:\BA\Software_projects\PIC\1533\SystemStatus.c
 [v _SetMcuRunTime SetMcuRunTime `(v  1 e 1 0 ]
-"51
+"40
 [v _ClearMcuRunTime ClearMcuRunTime `(v  1 e 1 0 ]
-"66
+"55
 [v _SendUartSystemInitMessage SendUartSystemInitMessage `(v  1 e 1 0 ]
-"89
+"78
 [v _PrintHelpScreen PrintHelpScreen `(v  1 e 1 0 ]
+"144
+[v _CollectRxStatusParams CollectRxStatusParams `(v  1 e 1 0 ]
+"160
+[v _CollectTxStatusParams CollectTxStatusParams `(v  1 e 1 0 ]
+"176
+[v _PrintRxStatus PrintRxStatus `(v  1 e 1 0 ]
+"205
+[v _PrintTxStatus PrintTxStatus `(v  1 e 1 0 ]
 "13 C:\BA\Software_projects\PIC\1533\AdcApp.c
-[v _adcSampleMode adcSampleMode `E7621  1 e 1 0 ]
-"14
-[v _channel channel `uc  1 e 1 0 ]
-"16
-[v _numSamples numSamples `ui  1 e 2 0 ]
-"17
-[v _channelNum channelNum `ui  1 e 2 0 ]
+[v _adcSampleMode adcSampleMode `E7686  1 e 1 0 ]
 "26 C:\BA\Software_projects\PIC\1533\AdcApp.h
-[v _channelArr channelArr `C[4]E7191  1 e 4 0 ]
-"34
+[v _channelArr channelArr `C[4]E7162  1 e 4 0 ]
+"43
 [v _needToSample needToSample `VEuc  1 e 1 0 ]
+"44
+[v _lastAdcTemp lastAdcTemp `VEui  1 e 2 0 ]
+"45
+[v _lastAdcFfwrRSSI lastAdcFfwrRSSI `VEui  1 e 2 0 ]
+"46
+[v _lastAdcRREV lastAdcRREV `VEui  1 e 2 0 ]
+"47
+[v _lastAdcVgMon lastAdcVgMon `VEui  1 e 2 0 ]
 "50 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic18f45k22.h
 [v _ANSELA ANSELA `VEuc  1 e 1 @3896 ]
 "95
@@ -595,9 +628,119 @@ OK_START_SYSTEM 3
 [v _WPUB WPUB `VEuc  1 e 1 @3937 ]
 "2779
 [v _IOCB IOCB `VEuc  1 e 1 @3938 ]
+[s S2698 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+"6633
+[s S2707 . 1 `uc 1 INT0 1 0 :1:0 
+`uc 1 INT1 1 0 :1:1 
+`uc 1 INT2 1 0 :1:2 
+`uc 1 CCP2 1 0 :1:3 
+`uc 1 KBI0 1 0 :1:4 
+`uc 1 KBI1 1 0 :1:5 
+`uc 1 KBI2 1 0 :1:6 
+`uc 1 KBI3 1 0 :1:7 
+]
+[s S2716 . 1 `uc 1 AN12 1 0 :1:0 
+`uc 1 AN10 1 0 :1:1 
+`uc 1 AN8 1 0 :1:2 
+`uc 1 AN9 1 0 :1:3 
+`uc 1 AN11 1 0 :1:4 
+`uc 1 AN13 1 0 :1:5 
+`uc 1 PGC 1 0 :1:6 
+`uc 1 PGD 1 0 :1:7 
+]
+[s S2725 . 1 `uc 1 FLT0 1 0 :1:0 
+`uc 1 C12IN3M 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 C12IN2M 1 0 :1:3 
+`uc 1 T5G 1 0 :1:4 
+`uc 1 T1G 1 0 :1:5 
+]
+[s S2732 . 1 `uc 1 SRI 1 0 :1:0 
+`uc 1 C12IN3N 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 C12IN2N 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 CCP3 1 0 :1:5 
+]
+[s S2739 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 CTED1 1 0 :1:2 
+`uc 1 CTED2 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 T3CKI 1 0 :1:5 
+]
+[s S2745 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 P2A 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 P3A 1 0 :1:5 
+]
+[s S2750 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 CCP2_PA2 1 0 :1:3 
+]
+[u S2753 . 1 `S2698 1 . 1 0 `S2707 1 . 1 0 `S2716 1 . 1 0 `S2725 1 . 1 0 `S2732 1 . 1 0 `S2739 1 . 1 0 `S2745 1 . 1 0 `S2750 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES2753  1 e 1 @3969 ]
+[s S2591 . 1 `uc 1 RD0 1 0 :1:0 
+`uc 1 RD1 1 0 :1:1 
+`uc 1 RD2 1 0 :1:2 
+`uc 1 RD3 1 0 :1:3 
+`uc 1 RD4 1 0 :1:4 
+`uc 1 RD5 1 0 :1:5 
+`uc 1 RD6 1 0 :1:6 
+`uc 1 RD7 1 0 :1:7 
+]
+"7203
+[s S2600 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 P2B 1 0 :1:2 
+`uc 1 P2C 1 0 :1:3 
+`uc 1 P2D 1 0 :1:4 
+`uc 1 P1B 1 0 :1:5 
+`uc 1 P1C 1 0 :1:6 
+`uc 1 P1D 1 0 :1:7 
+]
+[s S2608 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 CCP4 1 0 :1:1 
+`uc 1 . 1 0 :4:2 
+`uc 1 TX2 1 0 :1:6 
+`uc 1 RX2 1 0 :1:7 
+]
+[s S2614 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 NOT_SS2 1 0 :1:3 
+]
+[s S2617 . 1 `uc 1 SCK2 1 0 :1:0 
+`uc 1 SDI2 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 nSS2 1 0 :1:3 
+`uc 1 SDO2 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 CK2 1 0 :1:6 
+`uc 1 DT2 1 0 :1:7 
+]
+[s S2626 . 1 `uc 1 SCL2 1 0 :1:0 
+`uc 1 SDA2 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 SS2 1 0 :1:3 
+]
+[s S2631 . 1 `uc 1 AN20 1 0 :1:0 
+`uc 1 AN21 1 0 :1:1 
+`uc 1 AN22 1 0 :1:2 
+`uc 1 AN23 1 0 :1:3 
+`uc 1 AN24 1 0 :1:4 
+`uc 1 AN25 1 0 :1:5 
+`uc 1 AN26 1 0 :1:6 
+`uc 1 AN27 1 0 :1:7 
+]
+[u S2640 . 1 `S2591 1 . 1 0 `S2600 1 . 1 0 `S2608 1 . 1 0 `S2614 1 . 1 0 `S2617 1 . 1 0 `S2626 1 . 1 0 `S2631 1 . 1 0 ]
+[v _PORTDbits PORTDbits `VES2640  1 e 1 @3971 ]
 "7558
 [v _LATA LATA `VEuc  1 e 1 @3977 ]
-[s S862 . 1 `uc 1 LATA0 1 0 :1:0 
+[s S1171 . 1 `uc 1 LATA0 1 0 :1:0 
 `uc 1 LATA1 1 0 :1:1 
 `uc 1 LATA2 1 0 :1:2 
 `uc 1 LATA3 1 0 :1:3 
@@ -607,7 +750,7 @@ OK_START_SYSTEM 3
 `uc 1 LATA7 1 0 :1:7 
 ]
 "7585
-[s S871 . 1 `uc 1 LA0 1 0 :1:0 
+[s S1180 . 1 `uc 1 LA0 1 0 :1:0 
 `uc 1 LA1 1 0 :1:1 
 `uc 1 LA2 1 0 :1:2 
 `uc 1 LA3 1 0 :1:3 
@@ -616,11 +759,11 @@ OK_START_SYSTEM 3
 `uc 1 LA6 1 0 :1:6 
 `uc 1 LA7 1 0 :1:7 
 ]
-[u S880 . 1 `S862 1 . 1 0 `S871 1 . 1 0 ]
-[v _LATAbits LATAbits `VES880  1 e 1 @3977 ]
+[u S1189 . 1 `S1171 1 . 1 0 `S1180 1 . 1 0 ]
+[v _LATAbits LATAbits `VES1189  1 e 1 @3977 ]
 "7670
 [v _LATB LATB `VEuc  1 e 1 @3978 ]
-[s S65 . 1 `uc 1 LATB0 1 0 :1:0 
+[s S100 . 1 `uc 1 LATB0 1 0 :1:0 
 `uc 1 LATB1 1 0 :1:1 
 `uc 1 LATB2 1 0 :1:2 
 `uc 1 LATB3 1 0 :1:3 
@@ -630,7 +773,7 @@ OK_START_SYSTEM 3
 `uc 1 LATB7 1 0 :1:7 
 ]
 "7697
-[s S74 . 1 `uc 1 LB0 1 0 :1:0 
+[s S109 . 1 `uc 1 LB0 1 0 :1:0 
 `uc 1 LB1 1 0 :1:1 
 `uc 1 LB2 1 0 :1:2 
 `uc 1 LB3 1 0 :1:3 
@@ -639,11 +782,11 @@ OK_START_SYSTEM 3
 `uc 1 LB6 1 0 :1:6 
 `uc 1 LB7 1 0 :1:7 
 ]
-[u S83 . 1 `S65 1 . 1 0 `S74 1 . 1 0 ]
-[v _LATBbits LATBbits `VES83  1 e 1 @3978 ]
+[u S118 . 1 `S100 1 . 1 0 `S109 1 . 1 0 ]
+[v _LATBbits LATBbits `VES118  1 e 1 @3978 ]
 "7782
 [v _LATC LATC `VEuc  1 e 1 @3979 ]
-[s S111 . 1 `uc 1 LATC0 1 0 :1:0 
+[s S146 . 1 `uc 1 LATC0 1 0 :1:0 
 `uc 1 LATC1 1 0 :1:1 
 `uc 1 LATC2 1 0 :1:2 
 `uc 1 LATC3 1 0 :1:3 
@@ -653,7 +796,7 @@ OK_START_SYSTEM 3
 `uc 1 LATC7 1 0 :1:7 
 ]
 "7809
-[s S120 . 1 `uc 1 LC0 1 0 :1:0 
+[s S155 . 1 `uc 1 LC0 1 0 :1:0 
 `uc 1 LC1 1 0 :1:1 
 `uc 1 LC2 1 0 :1:2 
 `uc 1 LC3 1 0 :1:3 
@@ -662,11 +805,11 @@ OK_START_SYSTEM 3
 `uc 1 LC6 1 0 :1:6 
 `uc 1 LC7 1 0 :1:7 
 ]
-[u S129 . 1 `S111 1 . 1 0 `S120 1 . 1 0 ]
-[v _LATCbits LATCbits `VES129  1 e 1 @3979 ]
+[u S164 . 1 `S146 1 . 1 0 `S155 1 . 1 0 ]
+[v _LATCbits LATCbits `VES164  1 e 1 @3979 ]
 "7894
 [v _LATD LATD `VEuc  1 e 1 @3980 ]
-[s S800 . 1 `uc 1 LATD0 1 0 :1:0 
+[s S1109 . 1 `uc 1 LATD0 1 0 :1:0 
 `uc 1 LATD1 1 0 :1:1 
 `uc 1 LATD2 1 0 :1:2 
 `uc 1 LATD3 1 0 :1:3 
@@ -676,7 +819,7 @@ OK_START_SYSTEM 3
 `uc 1 LATD7 1 0 :1:7 
 ]
 "7921
-[s S809 . 1 `uc 1 LD0 1 0 :1:0 
+[s S1118 . 1 `uc 1 LD0 1 0 :1:0 
 `uc 1 LD1 1 0 :1:1 
 `uc 1 LD2 1 0 :1:2 
 `uc 1 LD3 1 0 :1:3 
@@ -685,8 +828,8 @@ OK_START_SYSTEM 3
 `uc 1 LD6 1 0 :1:6 
 `uc 1 LD7 1 0 :1:7 
 ]
-[u S818 . 1 `S800 1 . 1 0 `S809 1 . 1 0 ]
-[v _LATDbits LATDbits `VES818  1 e 1 @3980 ]
+[u S1127 . 1 `S1109 1 . 1 0 `S1118 1 . 1 0 ]
+[v _LATDbits LATDbits `VES1127  1 e 1 @3980 ]
 "8006
 [v _LATE LATE `VEuc  1 e 1 @3981 ]
 "8058
@@ -701,7 +844,7 @@ OK_START_SYSTEM 3
 [v _TRISE TRISE `VEuc  1 e 1 @3990 ]
 "9062
 [v _OSCTUNE OSCTUNE `VEuc  1 e 1 @3995 ]
-[s S1182 . 1 `uc 1 TMR1IE 1 0 :1:0 
+[s S1499 . 1 `uc 1 TMR1IE 1 0 :1:0 
 `uc 1 TMR2IE 1 0 :1:1 
 `uc 1 CCP1IE 1 0 :1:2 
 `uc 1 SSP1IE 1 0 :1:3 
@@ -710,14 +853,14 @@ OK_START_SYSTEM 3
 `uc 1 ADIE 1 0 :1:6 
 ]
 "9434
-[s S1190 . 1 `uc 1 . 1 0 :3:0 
+[s S1507 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 SSPIE 1 0 :1:3 
 `uc 1 TXIE 1 0 :1:4 
 `uc 1 RCIE 1 0 :1:5 
 ]
-[u S1195 . 1 `S1182 1 . 1 0 `S1190 1 . 1 0 ]
-[v _PIE1bits PIE1bits `VES1195  1 e 1 @3997 ]
-[s S1212 . 1 `uc 1 TMR1IF 1 0 :1:0 
+[u S1512 . 1 `S1499 1 . 1 0 `S1507 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES1512  1 e 1 @3997 ]
+[s S1529 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 CCP1IF 1 0 :1:2 
 `uc 1 SSP1IF 1 0 :1:3 
@@ -726,14 +869,14 @@ OK_START_SYSTEM 3
 `uc 1 ADIF 1 0 :1:6 
 ]
 "9511
-[s S1220 . 1 `uc 1 . 1 0 :3:0 
+[s S1537 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 SSPIF 1 0 :1:3 
 `uc 1 TXIF 1 0 :1:4 
 `uc 1 RCIF 1 0 :1:5 
 ]
-[u S1225 . 1 `S1212 1 . 1 0 `S1220 1 . 1 0 ]
-[v _PIR1bits PIR1bits `VES1225  1 e 1 @3998 ]
-[s S1104 . 1 `uc 1 CCP2IE 1 0 :1:0 
+[u S1542 . 1 `S1529 1 . 1 0 `S1537 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES1542  1 e 1 @3998 ]
+[s S1421 . 1 `uc 1 CCP2IE 1 0 :1:0 
 `uc 1 TMR3IE 1 0 :1:1 
 `uc 1 HLVDIE 1 0 :1:2 
 `uc 1 BCL1IE 1 0 :1:3 
@@ -743,16 +886,16 @@ OK_START_SYSTEM 3
 `uc 1 OSCFIE 1 0 :1:7 
 ]
 "9669
-[s S1113 . 1 `uc 1 . 1 0 :2:0 
+[s S1430 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 LVDIE 1 0 :1:2 
 `uc 1 BCLIE 1 0 :1:3 
 ]
-[s S1117 . 1 `uc 1 . 1 0 :6:0 
+[s S1434 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 CMIE 1 0 :1:6 
 ]
-[u S1120 . 1 `S1104 1 . 1 0 `S1113 1 . 1 0 `S1117 1 . 1 0 ]
-[v _PIE2bits PIE2bits `VES1120  1 e 1 @4000 ]
-[s S1141 . 1 `uc 1 CCP2IF 1 0 :1:0 
+[u S1437 . 1 `S1421 1 . 1 0 `S1430 1 . 1 0 `S1434 1 . 1 0 ]
+[v _PIE2bits PIE2bits `VES1437  1 e 1 @4000 ]
+[s S1458 . 1 `uc 1 CCP2IF 1 0 :1:0 
 `uc 1 TMR3IF 1 0 :1:1 
 `uc 1 HLVDIF 1 0 :1:2 
 `uc 1 BCL1IF 1 0 :1:3 
@@ -762,16 +905,16 @@ OK_START_SYSTEM 3
 `uc 1 OSCFIF 1 0 :1:7 
 ]
 "9755
-[s S1150 . 1 `uc 1 . 1 0 :2:0 
+[s S1467 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 LVDIF 1 0 :1:2 
 `uc 1 BCLIF 1 0 :1:3 
 ]
-[s S1154 . 1 `uc 1 . 1 0 :6:0 
+[s S1471 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 CMIF 1 0 :1:6 
 ]
-[u S1157 . 1 `S1141 1 . 1 0 `S1150 1 . 1 0 `S1154 1 . 1 0 ]
-[v _PIR2bits PIR2bits `VES1157  1 e 1 @4001 ]
-[s S1572 . 1 `uc 1 RD 1 0 :1:0 
+[u S1474 . 1 `S1458 1 . 1 0 `S1467 1 . 1 0 `S1471 1 . 1 0 ]
+[v _PIR2bits PIR2bits `VES1474  1 e 1 @4001 ]
+[s S1889 . 1 `uc 1 RD 1 0 :1:0 
 `uc 1 WR 1 0 :1:1 
 `uc 1 WREN 1 0 :1:2 
 `uc 1 WRERR 1 0 :1:3 
@@ -781,11 +924,11 @@ OK_START_SYSTEM 3
 `uc 1 EEPGD 1 0 :1:7 
 ]
 "10188
-[s S1581 . 1 `uc 1 . 1 0 :6:0 
+[s S1898 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 EEFS 1 0 :1:6 
 ]
-[u S1584 . 1 `S1572 1 . 1 0 `S1581 1 . 1 0 ]
-[v _EECON1bits EECON1bits `VES1584  1 e 1 @4006 ]
+[u S1901 . 1 `S1889 1 . 1 0 `S1898 1 . 1 0 ]
+[v _EECON1bits EECON1bits `VES1901  1 e 1 @4006 ]
 "10233
 [v _EECON2 EECON2 `VEuc  1 e 1 @4007 ]
 "10253
@@ -794,7 +937,7 @@ OK_START_SYSTEM 3
 [v _EEADR EEADR `VEuc  1 e 1 @4009 ]
 "10343
 [v _RCSTA1 RCSTA1 `VEuc  1 e 1 @4011 ]
-[s S1330 . 1 `uc 1 RX9D 1 0 :1:0 
+[s S1647 . 1 `uc 1 RX9D 1 0 :1:0 
 `uc 1 OERR 1 0 :1:1 
 `uc 1 FERR 1 0 :1:2 
 `uc 1 ADDEN 1 0 :1:3 
@@ -804,10 +947,10 @@ OK_START_SYSTEM 3
 `uc 1 SPEN 1 0 :1:7 
 ]
 "10396
-[s S1339 . 1 `uc 1 . 1 0 :3:0 
+[s S1656 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 ADEN 1 0 :1:3 
 ]
-[s S1342 . 1 `uc 1 RX9D1 1 0 :1:0 
+[s S1659 . 1 `uc 1 RX9D1 1 0 :1:0 
 `uc 1 OERR1 1 0 :1:1 
 `uc 1 FERR1 1 0 :1:2 
 `uc 1 ADDEN1 1 0 :1:3 
@@ -816,18 +959,18 @@ OK_START_SYSTEM 3
 `uc 1 RX91 1 0 :1:6 
 `uc 1 SPEN1 1 0 :1:7 
 ]
-[s S1351 . 1 `uc 1 RCD8 1 0 :1:0 
+[s S1668 . 1 `uc 1 RCD8 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 RC8_9 1 0 :1:6 
 ]
-[s S1355 . 1 `uc 1 . 1 0 :6:0 
+[s S1672 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 RC9 1 0 :1:6 
 ]
-[s S1358 . 1 `uc 1 . 1 0 :5:0 
+[s S1675 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 SRENA 1 0 :1:5 
 ]
-[u S1361 . 1 `S1330 1 . 1 0 `S1339 1 . 1 0 `S1342 1 . 1 0 `S1351 1 . 1 0 `S1355 1 . 1 0 `S1358 1 . 1 0 ]
-[v _RCSTA1bits RCSTA1bits `VES1361  1 e 1 @4011 ]
+[u S1678 . 1 `S1647 1 . 1 0 `S1656 1 . 1 0 `S1659 1 . 1 0 `S1668 1 . 1 0 `S1672 1 . 1 0 `S1675 1 . 1 0 ]
+[v _RCSTA1bits RCSTA1bits `VES1678  1 e 1 @4011 ]
 "10799
 [v _TXSTA1 TXSTA1 `VEuc  1 e 1 @4012 ]
 "11174
@@ -846,15 +989,15 @@ OK_START_SYSTEM 3
 [v _ADCON1 ADCON1 `VEuc  1 e 1 @4033 ]
 "13575
 [v _ADCON0 ADCON0 `VEuc  1 e 1 @4034 ]
-[s S1757 . 1 `uc 1 . 1 0 :1:0 
+[s S2074 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO_NOT_DONE 1 0 :1:1 
 ]
 "13620
-[s S1760 . 1 `uc 1 ADON 1 0 :1:0 
+[s S2077 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 GO_nDONE 1 0 :1:1 
 `uc 1 CHS 1 0 :5:2 
 ]
-[s S1764 . 1 `uc 1 . 1 0 :1:0 
+[s S2081 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO 1 0 :1:1 
 `uc 1 CHS0 1 0 :1:2 
 `uc 1 CHS1 1 0 :1:3 
@@ -862,43 +1005,43 @@ OK_START_SYSTEM 3
 `uc 1 CHS3 1 0 :1:5 
 `uc 1 CHS4 1 0 :1:6 
 ]
-[s S1772 . 1 `uc 1 . 1 0 :1:0 
+[s S2089 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 DONE 1 0 :1:1 
 ]
-[s S1775 . 1 `uc 1 . 1 0 :1:0 
+[s S2092 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 NOT_DONE 1 0 :1:1 
 ]
-[s S1778 . 1 `uc 1 . 1 0 :1:0 
+[s S2095 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 nDONE 1 0 :1:1 
 ]
-[s S1781 . 1 `uc 1 . 1 0 :1:0 
+[s S2098 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO_DONE 1 0 :1:1 
 ]
-[s S1784 . 1 `uc 1 . 1 0 :1:0 
+[s S2101 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GODONE 1 0 :1:1 
 ]
-[u S1787 . 1 `S1757 1 . 1 0 `S1760 1 . 1 0 `S1764 1 . 1 0 `S1772 1 . 1 0 `S1775 1 . 1 0 `S1778 1 . 1 0 `S1781 1 . 1 0 `S1784 1 . 1 0 ]
-[v _ADCON0bits ADCON0bits `VES1787  1 e 1 @4034 ]
+[u S2104 . 1 `S2074 1 . 1 0 `S2077 1 . 1 0 `S2081 1 . 1 0 `S2089 1 . 1 0 `S2092 1 . 1 0 `S2095 1 . 1 0 `S2098 1 . 1 0 `S2101 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES2104  1 e 1 @4034 ]
 "13707
 [v _ADRESL ADRESL `VEuc  1 e 1 @4035 ]
 "13727
 [v _ADRESH ADRESH `VEuc  1 e 1 @4036 ]
-[s S1002 . 1 `uc 1 NOT_BOR 1 0 :1:0 
+[s S1319 . 1 `uc 1 NOT_BOR 1 0 :1:0 
 ]
 "15835
-[s S1004 . 1 `uc 1 . 1 0 :1:0 
+[s S1321 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 NOT_POR 1 0 :1:1 
 ]
-[s S1007 . 1 `uc 1 . 1 0 :2:0 
+[s S1324 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_PD 1 0 :1:2 
 ]
-[s S1010 . 1 `uc 1 . 1 0 :3:0 
+[s S1327 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 NOT_TO 1 0 :1:3 
 ]
-[s S1013 . 1 `uc 1 . 1 0 :4:0 
+[s S1330 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 NOT_RI 1 0 :1:4 
 ]
-[s S1016 . 1 `uc 1 nBOR 1 0 :1:0 
+[s S1333 . 1 `uc 1 nBOR 1 0 :1:0 
 `uc 1 nPOR 1 0 :1:1 
 `uc 1 nPD 1 0 :1:2 
 `uc 1 nTO 1 0 :1:3 
@@ -907,21 +1050,21 @@ OK_START_SYSTEM 3
 `uc 1 SBOREN 1 0 :1:6 
 `uc 1 IPEN 1 0 :1:7 
 ]
-[s S1025 . 1 `uc 1 BOR 1 0 :1:0 
+[s S1342 . 1 `uc 1 BOR 1 0 :1:0 
 `uc 1 POR 1 0 :1:1 
 `uc 1 PD 1 0 :1:2 
 `uc 1 TO 1 0 :1:3 
 `uc 1 RI 1 0 :1:4 
 ]
-[u S1031 . 1 `S1002 1 . 1 0 `S1004 1 . 1 0 `S1007 1 . 1 0 `S1010 1 . 1 0 `S1013 1 . 1 0 `S1016 1 . 1 0 `S1025 1 . 1 0 ]
-[v _RCONbits RCONbits `VES1031  1 e 1 @4048 ]
+[u S1348 . 1 `S1319 1 . 1 0 `S1321 1 . 1 0 `S1324 1 . 1 0 `S1327 1 . 1 0 `S1330 1 . 1 0 `S1333 1 . 1 0 `S1342 1 . 1 0 ]
+[v _RCONbits RCONbits `VES1348  1 e 1 @4048 ]
 "15953
 [v _OSCCON2 OSCCON2 `VEuc  1 e 1 @4050 ]
 "16010
 [v _OSCCON OSCCON `VEuc  1 e 1 @4051 ]
 "16093
 [v _T0CON T0CON `VEuc  1 e 1 @4053 ]
-[s S1684 . 1 `uc 1 T0PS 1 0 :3:0 
+[s S2001 . 1 `uc 1 T0PS 1 0 :3:0 
 `uc 1 PSA 1 0 :1:3 
 `uc 1 T0SE 1 0 :1:4 
 `uc 1 T0CS 1 0 :1:5 
@@ -929,21 +1072,21 @@ OK_START_SYSTEM 3
 `uc 1 TMR0ON 1 0 :1:7 
 ]
 "16113
-[s S1691 . 1 `uc 1 T0PS0 1 0 :1:0 
+[s S2008 . 1 `uc 1 T0PS0 1 0 :1:0 
 `uc 1 T0PS1 1 0 :1:1 
 `uc 1 T0PS2 1 0 :1:2 
 ]
-[u S1695 . 1 `S1684 1 . 1 0 `S1691 1 . 1 0 ]
-[v _T0CONbits T0CONbits `VES1695  1 e 1 @4053 ]
+[u S2012 . 1 `S2001 1 . 1 0 `S2008 1 . 1 0 ]
+[v _T0CONbits T0CONbits `VES2012  1 e 1 @4053 ]
 "16170
 [v _TMR0L TMR0L `VEuc  1 e 1 @4054 ]
 "16190
 [v _TMR0H TMR0H `VEuc  1 e 1 @4055 ]
-[s S1442 . 1 `uc 1 . 1 0 :7:0 
+[s S1759 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 NOT_RBPU 1 0 :1:7 
 ]
 "16845
-[s S1445 . 1 `uc 1 RBIP 1 0 :1:0 
+[s S1762 . 1 `uc 1 RBIP 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 TMR0IP 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -952,12 +1095,12 @@ OK_START_SYSTEM 3
 `uc 1 INTEDG0 1 0 :1:6 
 `uc 1 nRBPU 1 0 :1:7 
 ]
-[s S1454 . 1 `uc 1 . 1 0 :7:0 
+[s S1771 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 RBPU 1 0 :1:7 
 ]
-[u S1457 . 1 `S1442 1 . 1 0 `S1445 1 . 1 0 `S1454 1 . 1 0 ]
-[v _INTCON2bits INTCON2bits `VES1457  1 e 1 @4081 ]
-[s S706 . 1 `uc 1 RBIF 1 0 :1:0 
+[u S1774 . 1 `S1759 1 . 1 0 `S1762 1 . 1 0 `S1771 1 . 1 0 ]
+[v _INTCON2bits INTCON2bits `VES1774  1 e 1 @4081 ]
+[s S1015 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -967,7 +1110,7 @@ OK_START_SYSTEM 3
 `uc 1 GIE_GIEH 1 0 :1:7 
 ]
 "16922
-[s S715 . 1 `uc 1 . 1 0 :1:0 
+[s S1024 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 INT0F 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -976,12 +1119,12 @@ OK_START_SYSTEM 3
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-[s S724 . 1 `uc 1 . 1 0 :6:0 
+[s S1033 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 GIEL 1 0 :1:6 
 `uc 1 GIEH 1 0 :1:7 
 ]
-[u S728 . 1 `S706 1 . 1 0 `S715 1 . 1 0 `S724 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES728  1 e 1 @4082 ]
+[u S1037 . 1 `S1015 1 . 1 0 `S1024 1 . 1 0 `S1033 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES1037  1 e 1 @4082 ]
 "17054
 [v _TABLAT TABLAT `VEuc  1 e 1 @4085 ]
 "17083
@@ -991,15 +1134,19 @@ OK_START_SYSTEM 3
 "17123
 [v _TBLPTRU TBLPTRU `VEuc  1 e 1 @4088 ]
 "354 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-[v _dpowers dpowers `C[5]ui  1 s 10 dpowers ]
+[v _dpowers dpowers `C[10]ul  1 s 40 dpowers ]
 "3 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\errno.c
 [v _errno errno `i  1 e 2 0 ]
+"7 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\powers.c
+[v __powers_ _powers_ `C[13]d  1 e 39 0 ]
+"39
+[v __npowers_ _npowers_ `C[13]d  1 e 39 0 ]
 "23 C:\BA\Software_projects\PIC\1533\DacApp.h
 [v _DAC_ADDRES DAC_ADDRES `C[4]uc  1 e 4 0 ]
 "31
 [v _DAC_DEFAULT_INIT_VALUES DAC_DEFAULT_INIT_VALUES `C[4]ui  1 e 8 0 ]
 "15 C:\BA\Software_projects\PIC\1533\EusartApp.c
-[v _cState cState `E7614  1 s 1 cState ]
+[v _cState cState `E7691  1 s 1 cState ]
 "17
 [v _group group `E7314  1 e 1 0 ]
 "18
@@ -1057,14 +1204,31 @@ OK_START_SYSTEM 3
 [v _TimerKeepAliveFlag TimerKeepAliveFlag `VEuc  1 e 1 0 ]
 "78
 [v _TimertenSecFlag TimertenSecFlag `VEuc  1 e 1 0 ]
+"10 C:\BA\Software_projects\PIC\1533\MessageFunctions.c
+[v _retNum retNum `ul  1 e 4 0 ]
+"11
+[v _numSamples numSamples `ui  1 e 2 0 ]
+"12
+[v _channelNum channelNum `ui  1 e 2 0 ]
 "25 C:\BA\Software_projects\PIC\1533\MessageFunctions.h
 [v _groupsArray groupsArray `[6]*.37(v  1 e 12 0 ]
 "20 C:\BA\Software_projects\PIC\1533\SyntApp.h
 [v _PLL_INIT_REGISTERS PLL_INIT_REGISTERS `C[13]ul  1 e 52 0 ]
 "37
 [v _TEST_PLL_REGISTERS TEST_PLL_REGISTERS `C[13]ul  1 e 52 0 ]
+"55
+[v _rxFreq rxFreq `VEul  1 e 4 0 ]
+"56
+[v _txFreq txFreq `VEul  1 e 4 0 ]
 "12 C:\BA\Software_projects\PIC\1533\SystemStatus.c
 [v _mcuRunTimeIn5SecTicks mcuRunTimeIn5SecTicks `ul  1 s 4 mcuRunTimeIn5SecTicks ]
+[s S21 . 5 `uc 1 OperState 1 0 `ui 1 ADC0 2 1 `ui 1 ADC1 2 3 ]
+"83 C:\BA\Software_projects\PIC\1533\SystemStatus.h
+[s S25 . 29 `uc 1 Synt 1 0 `S21 1 AdcValues 5 1 `d 1 DeviceTemperature 3 6 `uc 1 InputPowerStatus 1 9 `d 1 Freq 3 10 `c 1 RSSI 1 13 `d 1 TEMP 3 14 `uc 1 Light 1 17 `c 1 UnitId 1 18 `i 1 UnitDc 2 19 `*.25uc 1 SwVersion 2 21 `uc 1 UnitType 1 23 `c 1 CompressionPoint 1 24 `l 1 PassCounter 4 25 ]
+[v _rxStatistics rxStatistics `VES25  1 e 29 0 ]
+"84
+[s S40 . 30 `uc 1 Synt 1 0 `S21 1 AdcValues 5 1 `d 1 DeviceTemperature 3 6 `uc 1 InputPowerStatus 1 9 `d 1 Freq 3 10 `c 1 RSSI 1 13 `d 1 TEMP 3 14 `uc 1 Light 1 17 `c 1 UnitId 1 18 `i 1 UnitDc 2 19 `*.25uc 1 SwVersion 2 21 `uc 1 UnitType 1 23 `c 1 CompressionPoint 1 24 `l 1 PassCounter 4 25 `uc 1 IntMode 1 29 ]
+[v _txStatistics txStatistics `VES40  1 e 30 0 ]
 "13 C:\BA\Software_projects\PIC\1533\main.c
 [v _main main `(v  1 e 1 0 ]
 {
@@ -1074,11 +1238,11 @@ OK_START_SYSTEM 3
 [v _readUartByte readUartByte `(v  1 e 1 0 ]
 {
 "181
-[v readUartByte@idx idx `i  1 a 2 50 ]
+[v readUartByte@idx idx `i  1 a 2 130 ]
 "32
-[v readUartByte@dest dest `[50]uc  1 a 50 0 ]
+[v readUartByte@dest dest `[50]uc  1 a 50 80 ]
 "31
-[v readUartByte@chRec chRec `uc  1 a 1 52 ]
+[v readUartByte@chRec chRec `uc  1 a 1 132 ]
 "195
 } 0
 "197
@@ -1086,60 +1250,51 @@ OK_START_SYSTEM 3
 {
 "208
 } 0
-"82 C:\BA\Software_projects\PIC\1533\MessageFunctions.c
+"96 C:\BA\Software_projects\PIC\1533\MessageFunctions.c
 [v _GroupCommon GroupCommon `(v  1 e 1 0 ]
 {
 [v GroupCommon@request request `E6  1 a 1 wreg ]
 [v GroupCommon@request request `E6  1 a 1 wreg ]
 [v GroupCommon@data data `*.39uc  1 p 2 130 ]
 [v GroupCommon@request request `E6  1 a 1 132 ]
-"97
+"113
 } 0
-"11
+"14
 [v _GroupRx GroupRx `(v  1 e 1 0 ]
 {
 [v GroupRx@request request `E6  1 a 1 wreg ]
 [v GroupRx@request request `E6  1 a 1 wreg ]
 [v GroupRx@data data `*.2uc  1 p 2 130 ]
-[v GroupRx@request request `E6  1 a 1 132 ]
-"43
+[v GroupRx@request request `E6  1 a 1 139 ]
+"52
 } 0
-"45
+"54
 [v _GroupTx GroupTx `(v  1 e 1 0 ]
 {
 [v GroupTx@request request `E6  1 a 1 wreg ]
 [v GroupTx@request request `E6  1 a 1 wreg ]
 [v GroupTx@data data `*.2uc  1 p 2 130 ]
-[v GroupTx@request request `E6  1 a 1 132 ]
-"80
+[v GroupTx@request request `E6  1 a 1 139 ]
+"94
 } 0
-"46 C:\BA\Software_projects\PIC\1533\AdcApp.c
-[v _AdcSingleSample AdcSingleSample `(v  1 e 1 0 ]
+"205 C:\BA\Software_projects\PIC\1533\SystemStatus.c
+[v _PrintTxStatus PrintTxStatus `(v  1 e 1 0 ]
 {
-[v AdcSingleSample@cType cType `E177  1 a 1 wreg ]
-"48
-[v AdcSingleSample@retNum retNum `ul  1 a 4 106 ]
-"46
-[v AdcSingleSample@cType cType `E177  1 a 1 wreg ]
-[v AdcSingleSample@data data `*.2uc  1 p 2 97 ]
-"48
-[v AdcSingleSample@cType cType `E177  1 a 1 110 ]
-"99
+"207
+[v PrintTxStatus@dest dest `[80]uc  1 a 80 0 ]
+"232
 } 0
-"31 C:\BA\Software_projects\PIC\1533\DacApp.c
-[v _DacSetValue DacSetValue `(v  1 e 1 0 ]
+"160
+[v _CollectTxStatusParams CollectTxStatusParams `(v  1 e 1 0 ]
 {
-"33
-[v DacSetValue@retNum retNum `ul  1 a 4 115 ]
-"36
-[v DacSetValue@dacDigital dacDigital `ui  1 a 2 127 ]
-"35
-[v DacSetValue@dacAnalog dacAnalog `ui  1 a 2 125 ]
-"34
-[v DacSetValue@dacNum dacNum `uc  1 a 1 129 ]
-"31
-[v DacSetValue@data data `*.2uc  1 p 2 112 ]
-"43
+"174
+} 0
+"176
+[v _PrintRxStatus PrintRxStatus `(v  1 e 1 0 ]
+{
+"178
+[v PrintRxStatus@dest dest `[80]uc  1 a 80 0 ]
+"203
 } 0
 "60 C:\BA\Software_projects\PIC\1533\SystemCommon.c
 [v _GetIntFromUartData GetIntFromUartData `(ul  1 e 4 0 ]
@@ -1213,26 +1368,24 @@ OK_START_SYSTEM 3
 [v isupper@c c `uc  1 a 1 25 ]
 "15
 } 0
-"45 C:\BA\Software_projects\PIC\1533\DacApp.c
-[v _DacAnalogToDigitalSpi DacAnalogToDigitalSpi `(ui  1 e 2 0 ]
+"144 C:\BA\Software_projects\PIC\1533\SystemStatus.c
+[v _CollectRxStatusParams CollectRxStatusParams `(v  1 e 1 0 ]
 {
-"48
-[v DacAnalogToDigitalSpi@dacSpiVal dacSpiVal `ui  1 a 2 110 ]
-"47
-[v DacAnalogToDigitalSpi@dacDigital dacDigital `ui  1 a 2 108 ]
-"45
-[v DacAnalogToDigitalSpi@AnalogValMili AnalogValMili `ui  1 p 2 89 ]
-[v DacAnalogToDigitalSpi@dacNum dacNum `uc  1 p 1 91 ]
-"50
+"158
 } 0
-"27 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lbtoft.c
-[v ___lbtoft __lbtoft `(f  1 e 3 0 ]
+"32 C:\BA\Software_projects\PIC\1533\AdcApp.c
+[v _AdcSingleSample AdcSingleSample `(v  1 e 1 0 ]
 {
-[v ___lbtoft@c c `uc  1 a 1 wreg ]
-[v ___lbtoft@c c `uc  1 a 1 wreg ]
-"29
-[v ___lbtoft@c c `uc  1 a 1 34 ]
-"30
+[v AdcSingleSample@cType cType `E177  1 a 1 wreg ]
+"34
+[v AdcSingleSample@retNum retNum `ul  1 a 4 35 ]
+"32
+[v AdcSingleSample@cType cType `E177  1 a 1 wreg ]
+[v AdcSingleSample@chType chType `E7691  1 p 1 30 ]
+[v AdcSingleSample@numSamples numSamples `l  1 p 4 31 ]
+"34
+[v AdcSingleSample@cType cType `E177  1 a 1 39 ]
+"96
 } 0
 "43 C:\BA\Software_projects\PIC\1533\LedsApp.c
 [v _testLeds testLeds `(v  1 e 1 0 ]
@@ -1241,12 +1394,12 @@ OK_START_SYSTEM 3
 [v testLeds@idx idx `i  1 a 2 24 ]
 "59
 } 0
-"89 C:\BA\Software_projects\PIC\1533\SystemStatus.c
+"78 C:\BA\Software_projects\PIC\1533\SystemStatus.c
 [v _PrintHelpScreen PrintHelpScreen `(v  1 e 1 0 ]
 {
-"91
-[v PrintHelpScreen@dest dest `[50]uc  1 a 50 9 ]
-"147
+"80
+[v PrintHelpScreen@dest dest `[50]uc  1 a 50 0 ]
+"136
 } 0
 "110 C:\BA\Software_projects\PIC\1533\mcc_generated_files/eusart1.c
 [v _EUSART1_Read EUSART1_Read `(uc  1 e 1 0 ]
@@ -1306,94 +1459,143 @@ OK_START_SYSTEM 3
 {
 "77
 } 0
-"45 C:\BA\Software_projects\PIC\1533\SystemStatus.c
+"34 C:\BA\Software_projects\PIC\1533\SystemStatus.c
 [v _SetMcuRunTime SetMcuRunTime `(v  1 e 1 0 ]
 {
-"49
+"38
+} 0
+"55
+[v _SendUartSystemInitMessage SendUartSystemInitMessage `(v  1 e 1 0 ]
+{
+"57
+[v SendUartSystemInitMessage@dest dest `[50]uc  1 a 50 0 ]
+"76
+} 0
+"98 C:\BA\Software_projects\PIC\1533\AdcApp.c
+[v _SampleSingleChannel SampleSingleChannel `(uc  1 e 1 0 ]
+{
+"104
+[v SampleSingleChannel@_adcResult _adcResult `ui  1 a 2 53 ]
+"100
+[v SampleSingleChannel@dest dest `[50]uc  1 a 50 0 ]
+"101
+[v SampleSingleChannel@adcRes adcRes `ui  1 a 2 55 ]
+"120
+} 0
+"492 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
+[v _sprintf sprintf `(i  1 e 2 0 ]
+{
+[u S3079 . 4 `ul 1 vd 4 0 `d 1 integ 3 0 ]
+"526
+[v sprintf@tmpval tmpval `S3079  1 a 4 122 ]
+"528
+[v sprintf@val val `ul  1 a 4 116 ]
+"516
+[v sprintf@fval fval `d  1 a 3 126 ]
+[v sprintf@exp exp `i  1 a 2 120 ]
+"504
+[v sprintf@prec prec `i  1 a 2 114 ]
+"508
+[v sprintf@flag flag `us  1 a 2 112 ]
+"494
+[v sprintf@ap ap `[1]*.39v  1 a 2 110 ]
+"530
+[v sprintf@cp cp `*.25Cuc  1 a 2 108 ]
+"499
+[v sprintf@c c `c  1 a 1 129 ]
+"492
+[v sprintf@sp sp `*.39uc  1 p 2 92 ]
+[v sprintf@f f `*.25Cuc  1 p 2 94 ]
+"1541
+} 0
+"425
+[v _scale scale `(d  1 s 3 scale ]
+{
+[v scale@scl scl `c  1 a 1 wreg ]
+[v scale@scl scl `c  1 a 1 wreg ]
+"428
+[v scale@scl scl `c  1 a 1 24 ]
+"441
+} 0
+"409
+[v _fround fround `(d  1 s 3 fround ]
+{
+[v fround@prec prec `uc  1 a 1 wreg ]
+[v fround@prec prec `uc  1 a 1 wreg ]
+"413
+[v fround@prec prec `uc  1 a 1 27 ]
+"418
+} 0
+"8 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+{
+"11
+[v ___awmod@sign sign `uc  1 a 1 28 ]
+[v ___awmod@counter counter `uc  1 a 1 27 ]
+"8
+[v ___awmod@dividend dividend `i  1 p 2 23 ]
+[v ___awmod@divisor divisor `i  1 p 2 25 ]
+"35
+} 0
+"8 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+{
+"11
+[v ___awdiv@quotient quotient `i  1 a 2 35 ]
+"12
+[v ___awdiv@sign sign `uc  1 a 1 34 ]
+[v ___awdiv@counter counter `uc  1 a 1 33 ]
+"8
+[v ___awdiv@dividend dividend `i  1 p 2 29 ]
+[v ___awdiv@divisor divisor `i  1 p 2 31 ]
+"42
+} 0
+"60 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ftdivl.c
+[v __tdiv_to_l_ _tdiv_to_l_ `(ul  1 e 4 0 ]
+{
+"63
+[v __tdiv_to_l_@quot quot `ul  1 a 4 32 ]
+"62
+[v __tdiv_to_l_@exp1 exp1 `uc  1 a 1 37 ]
+[v __tdiv_to_l_@cntr cntr `uc  1 a 1 36 ]
+"60
+[v __tdiv_to_l_@f1 f1 `f  1 p 3 23 ]
+[v __tdiv_to_l_@f2 f2 `f  1 p 3 26 ]
+"101
+} 0
+"60 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\fldivl.c
+[v __div_to_l_ _div_to_l_ `(ul  1 e 4 0 ]
+{
+"63
+[v __div_to_l_@quot quot `ul  1 a 4 29 ]
+"62
+[v __div_to_l_@exp1 exp1 `uc  1 a 1 34 ]
+[v __div_to_l_@cntr cntr `uc  1 a 1 33 ]
+"60
+[v __div_to_l_@f1 f1 `d  1 p 3 23 ]
+[v __div_to_l_@f2 f2 `d  1 p 3 26 ]
+"101
 } 0
 "8 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\llmod.c
 [v ___llmod __llmod `(ul  1 e 4 0 ]
 {
 "11
-[v ___llmod@counter counter `uc  1 a 1 47 ]
+[v ___llmod@counter counter `uc  1 a 1 91 ]
 "8
-[v ___llmod@dividend dividend `ul  1 p 4 89 ]
-[v ___llmod@divisor divisor `ul  1 p 4 93 ]
+[v ___llmod@dividend dividend `ul  1 p 4 83 ]
+[v ___llmod@divisor divisor `ul  1 p 4 87 ]
 "26
 } 0
-"66 C:\BA\Software_projects\PIC\1533\SystemStatus.c
-[v _SendUartSystemInitMessage SendUartSystemInitMessage `(v  1 e 1 0 ]
-{
-"68
-[v SendUartSystemInitMessage@dest dest `[50]uc  1 a 50 9 ]
-"87
-} 0
-"121 C:\BA\Software_projects\PIC\1533\AdcApp.c
-[v _SampleVgMonChannel SampleVgMonChannel `(v  1 e 1 0 ]
-{
-"124
-[v SampleVgMonChannel@adcRes adcRes `ui  1 a 2 94 ]
-"126
-[v SampleVgMonChannel@_adcResult _adcResult `ui  1 a 2 92 ]
-"138
-} 0
-"101
-[v _SampleSingleChannel SampleSingleChannel `(uc  1 e 1 0 ]
-{
-"107
-[v SampleSingleChannel@_adcResult _adcResult `ui  1 a 2 53 ]
-"103
-[v SampleSingleChannel@dest dest `[50]uc  1 a 50 0 ]
-"104
-[v SampleSingleChannel@adcRes adcRes `ui  1 a 2 55 ]
-"119
-} 0
-"492 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-[v _sprintf sprintf `(i  1 e 2 0 ]
-{
-"528
-[v sprintf@val val `ui  1 a 2 6 ]
-"530
-[v sprintf@cp cp `*.25Cuc  1 a 2 4 ]
-"494
-[v sprintf@ap ap `[1]*.39v  1 a 2 2 ]
-"499
-[v sprintf@c c `c  1 a 1 8 ]
-"506
-[v sprintf@prec prec `c  1 a 1 1 ]
-"508
-[v sprintf@flag flag `uc  1 a 1 0 ]
-"492
-[v sprintf@sp sp `*.39uc  1 p 2 35 ]
-[v sprintf@f f `*.25Cuc  1 p 2 37 ]
-"1541
-} 0
-"8 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwmod.c
-[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
 {
 "11
-[v ___lwmod@counter counter `uc  1 a 1 34 ]
-"8
-[v ___lwmod@dividend dividend `ui  1 p 2 30 ]
-[v ___lwmod@divisor divisor `ui  1 p 2 32 ]
-"26
-} 0
-"8 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwdiv.c
-[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
-{
-"11
-[v ___lwdiv@quotient quotient `ui  1 a 2 28 ]
+[v ___lldiv@quotient quotient `ul  1 a 4 31 ]
 "12
-[v ___lwdiv@counter counter `uc  1 a 1 27 ]
+[v ___lldiv@counter counter `uc  1 a 1 35 ]
 "8
-[v ___lwdiv@dividend dividend `ui  1 p 2 23 ]
-[v ___lwdiv@divisor divisor `ui  1 p 2 25 ]
-"31
-} 0
-"28 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwtoft.c
-[v ___lwtoft __lwtoft `(f  1 e 3 0 ]
-{
-[v ___lwtoft@c c `ui  1 p 2 31 ]
+[v ___lldiv@dividend dividend `ul  1 p 4 23 ]
+[v ___lldiv@divisor divisor `ul  1 p 4 27 ]
 "31
 } 0
 "223 C:\BA\Software_projects\PIC\1533\EusartApp.c
@@ -1412,6 +1614,23 @@ OK_START_SYSTEM 3
 [v EUSART1_Write@txData txData `uc  1 a 1 wreg ]
 [v EUSART1_Write@txData txData `uc  1 a 1 23 ]
 "178
+} 0
+"122 C:\BA\Software_projects\PIC\1533\AdcApp.c
+[v _SampleAllChannels SampleAllChannels `(v  1 e 1 0 ]
+{
+"128
+[v SampleAllChannels@_adcResult _adcResult `ui  1 a 2 86 ]
+"124
+[v SampleAllChannels@adcRes adcRes `ui  1 a 2 88 ]
+"125
+[v SampleAllChannels@i i `uc  1 a 1 90 ]
+"135
+} 0
+"28 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwtoft.c
+[v ___lwtoft __lwtoft `(f  1 e 3 0 ]
+{
+[v ___lwtoft@c c `ui  1 p 2 31 ]
+"31
 } 0
 "106 C:\BA\Software_projects\PIC\1533\mcc_generated_files/adc.c
 [v _ADC_GetConversion ADC_GetConversion `(ui  1 e 2 0 ]
@@ -1432,14 +1651,14 @@ OK_START_SYSTEM 3
 {
 "97
 } 0
-"14 C:\BA\Software_projects\PIC\1533\SyntApp.c
+"19 C:\BA\Software_projects\PIC\1533\SyntApp.c
 [v _PLLInitialize PLLInitialize `(v  1 e 1 0 ]
 {
-"39
-[v PLLInitialize@idx_670 idx `i  1 a 2 42 ]
-"24
+"44
+[v PLLInitialize@idx_945 idx `i  1 a 2 42 ]
+"29
 [v PLLInitialize@idx idx `i  1 a 2 40 ]
-"49
+"54
 } 0
 "201 C:\BA\Software_projects\PIC\1533\SwSpiApp.c
 [v _SwSpi_Set_CE_Pin SwSpi_Set_CE_Pin `(v  1 e 1 0 ]
@@ -1459,9 +1678,9 @@ OK_START_SYSTEM 3
 [v _DacInit DacInit `(v  1 e 1 0 ]
 {
 "16
-[v DacInit@dacInput dacInput `ui  1 a 2 114 ]
+[v DacInit@dacInput dacInput `ui  1 a 2 108 ]
 "14
-[v DacInit@idx idx `c  1 a 1 116 ]
+[v DacInit@idx idx `c  1 a 1 110 ]
 "27
 } 0
 "38 C:\BA\Software_projects\PIC\1533\SystemCommon.c
@@ -1620,37 +1839,37 @@ OK_START_SYSTEM 3
 {
 [v ReadIntFromEeprom@address address `uc  1 a 1 wreg ]
 "54
-[v ReadIntFromEeprom@base base `ul  1 a 4 96 ]
+[v ReadIntFromEeprom@base base `ul  1 a 4 90 ]
 "52
-[v ReadIntFromEeprom@idx idx `uc  1 a 1 111 ]
+[v ReadIntFromEeprom@idx idx `uc  1 a 1 105 ]
 "49
-[v ReadIntFromEeprom@retVal retVal `ul  1 a 4 107 ]
+[v ReadIntFromEeprom@retVal retVal `ul  1 a 4 101 ]
 "47
 [v ReadIntFromEeprom@address address `uc  1 a 1 wreg ]
-[v ReadIntFromEeprom@numOfByes numOfByes `i  1 p 2 89 ]
+[v ReadIntFromEeprom@numOfByes numOfByes `i  1 p 2 83 ]
 "49
-[v ReadIntFromEeprom@address address `uc  1 a 1 106 ]
+[v ReadIntFromEeprom@address address `uc  1 a 1 100 ]
 "58
 } 0
 "5 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\pow.c
 [v _pow pow `(d  1 e 3 0 ]
 {
 "8
-[v pow@yi yi `ul  1 a 4 85 ]
+[v pow@yi yi `ul  1 a 4 79 ]
 "7
-[v pow@sign sign `uc  1 a 1 84 ]
+[v pow@sign sign `uc  1 a 1 78 ]
 "5
-[v pow@x x `d  1 p 3 72 ]
-[v pow@y y `d  1 p 3 75 ]
+[v pow@x x `d  1 p 3 66 ]
+[v pow@y y `d  1 p 3 69 ]
 "31
 } 0
 "5 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\log.c
 [v _log log `(d  1 e 3 0 ]
 {
 "7
-[v log@exponent exponent `i  1 a 2 30 ]
+[v log@exponent exponent `i  1 a 2 53 ]
 "5
-[v log@x x `d  1 p 3 27 ]
+[v log@x x `d  1 p 3 50 ]
 "9
 [v log@coeff coeff `C[9]d  1 s 27 coeff ]
 "36
@@ -1659,11 +1878,11 @@ OK_START_SYSTEM 3
 [v _exp exp `(d  1 e 3 0 ]
 {
 "14
-[v exp@exponent exponent `i  1 a 2 69 ]
+[v exp@exponent exponent `i  1 a 2 63 ]
 "15
-[v exp@sign sign `uc  1 a 1 71 ]
+[v exp@sign sign `uc  1 a 1 65 ]
 "12
-[v exp@x x `d  1 p 3 63 ]
+[v exp@x x `d  1 p 3 57 ]
 "17
 [v exp@coeff coeff `C[10]d  1 s 30 coeff ]
 "57
@@ -1671,19 +1890,19 @@ OK_START_SYSTEM 3
 "277 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\frexp.c
 [v _ldexp ldexp `(d  1 e 3 0 ]
 {
-[v ldexp@value value `d  1 p 3 27 ]
-[v ldexp@newexp newexp `i  1 p 2 30 ]
+[v ldexp@value value `d  1 p 3 50 ]
+[v ldexp@newexp newexp `i  1 p 2 53 ]
 "307
 } 0
 "13 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\floor.c
 [v _floor floor `(d  1 e 3 0 ]
 {
 "15
-[v floor@i i `d  1 a 3 58 ]
+[v floor@i i `d  1 a 3 51 ]
 "16
-[v floor@expon expon `i  1 a 2 61 ]
+[v floor@expon expon `i  1 a 2 54 ]
 "13
-[v floor@x x `d  1 p 3 55 ]
+[v floor@x x `d  1 p 3 48 ]
 "30
 } 0
 "254 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\frexp.c
@@ -1697,12 +1916,12 @@ OK_START_SYSTEM 3
 [v ___fttol __fttol `(l  1 e 4 0 ]
 {
 "47
-[v ___fttol@lval lval `ul  1 a 4 40 ]
+[v ___fttol@lval lval `ul  1 a 4 35 ]
 "46
-[v ___fttol@exp1 exp1 `uc  1 a 1 44 ]
-[v ___fttol@sign1 sign1 `uc  1 a 1 39 ]
+[v ___fttol@exp1 exp1 `uc  1 a 1 39 ]
+[v ___fttol@sign1 sign1 `uc  1 a 1 34 ]
 "44
-[v ___fttol@f1 f1 `f  1 p 3 30 ]
+[v ___fttol@f1 f1 `f  1 p 3 25 ]
 "73
 } 0
 "4 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ftge.c
@@ -1716,64 +1935,64 @@ OK_START_SYSTEM 3
 [v ___altoft __altoft `(f  1 e 3 0 ]
 {
 "44
-[v ___altoft@sign sign `uc  1 a 1 54 ]
-[v ___altoft@exp exp `uc  1 a 1 53 ]
+[v ___altoft@sign sign `uc  1 a 1 47 ]
+[v ___altoft@exp exp `uc  1 a 1 46 ]
 "42
-[v ___altoft@c c `l  1 p 4 45 ]
+[v ___altoft@c c `l  1 p 4 40 ]
 "57
 } 0
 "4 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\evalpoly.c
 [v _eval_poly eval_poly `(d  1 e 3 0 ]
 {
 "6
-[v eval_poly@res res `d  1 a 3 24 ]
+[v eval_poly@res res `d  1 a 3 47 ]
 "4
-[v eval_poly@x x `d  1 p 3 15 ]
-[v eval_poly@d d `*.25Cd  1 p 2 18 ]
-[v eval_poly@n n `i  1 p 2 20 ]
+[v eval_poly@x x `d  1 p 3 40 ]
+[v eval_poly@d d `*.25Cd  1 p 2 43 ]
+[v eval_poly@n n `i  1 p 2 45 ]
 "12
 } 0
 "15 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
 {
 "17
-[v ___wmul@product product `ui  1 a 2 27 ]
+[v ___wmul@product product `ui  1 a 2 41 ]
 "15
-[v ___wmul@multiplier multiplier `ui  1 p 2 23 ]
-[v ___wmul@multiplicand multiplicand `ui  1 p 2 25 ]
+[v ___wmul@multiplier multiplier `ui  1 p 2 37 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 39 ]
 "53
 } 0
 "62 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ftmul.c
 [v ___ftmul __ftmul `(f  1 e 3 0 ]
 {
 "65
-[v ___ftmul@f3_as_product f3_as_product `um  1 a 3 10 ]
+[v ___ftmul@f3_as_product f3_as_product `um  1 a 3 13 ]
 "64
-[v ___ftmul@sign sign `uc  1 a 1 14 ]
-[v ___ftmul@cntr cntr `uc  1 a 1 13 ]
-[v ___ftmul@exp exp `uc  1 a 1 9 ]
+[v ___ftmul@sign sign `uc  1 a 1 17 ]
+[v ___ftmul@cntr cntr `uc  1 a 1 16 ]
+[v ___ftmul@exp exp `uc  1 a 1 12 ]
 "62
-[v ___ftmul@f1 f1 `f  1 p 3 0 ]
-[v ___ftmul@f2 f2 `f  1 p 3 3 ]
+[v ___ftmul@f1 f1 `f  1 p 3 6 ]
+[v ___ftmul@f2 f2 `f  1 p 3 9 ]
 "157
 } 0
 "20 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ftsub.c
 [v ___ftsub __ftsub `(f  1 e 3 0 ]
 {
-[v ___ftsub@f1 f1 `f  1 p 3 0 ]
-[v ___ftsub@f2 f2 `f  1 p 3 3 ]
+[v ___ftsub@f1 f1 `f  1 p 3 40 ]
+[v ___ftsub@f2 f2 `f  1 p 3 43 ]
 "27
 } 0
 "86 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ftadd.c
 [v ___ftadd __ftadd `(f  1 e 3 0 ]
 {
 "88
-[v ___ftadd@exp1 exp1 `uc  1 a 1 46 ]
-[v ___ftadd@exp2 exp2 `uc  1 a 1 45 ]
-[v ___ftadd@sign sign `uc  1 a 1 44 ]
+[v ___ftadd@exp1 exp1 `uc  1 a 1 39 ]
+[v ___ftadd@exp2 exp2 `uc  1 a 1 38 ]
+[v ___ftadd@sign sign `uc  1 a 1 37 ]
 "86
-[v ___ftadd@f1 f1 `f  1 p 3 35 ]
-[v ___ftadd@f2 f2 `f  1 p 3 38 ]
+[v ___ftadd@f1 f1 `f  1 p 3 28 ]
+[v ___ftadd@f2 f2 `f  1 p 3 31 ]
 "148
 } 0
 "15 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ftneg.c
@@ -1786,14 +2005,14 @@ OK_START_SYSTEM 3
 [v ___ftdiv __ftdiv `(f  1 e 3 0 ]
 {
 "60
-[v ___ftdiv@f3 f3 `f  1 a 3 25 ]
+[v ___ftdiv@f3 f3 `f  1 a 3 1 ]
 "59
-[v ___ftdiv@sign sign `uc  1 a 1 29 ]
-[v ___ftdiv@exp exp `uc  1 a 1 28 ]
-[v ___ftdiv@cntr cntr `uc  1 a 1 24 ]
+[v ___ftdiv@sign sign `uc  1 a 1 5 ]
+[v ___ftdiv@exp exp `uc  1 a 1 4 ]
+[v ___ftdiv@cntr cntr `uc  1 a 1 0 ]
 "54
-[v ___ftdiv@f1 f1 `f  1 p 3 15 ]
-[v ___ftdiv@f2 f2 `f  1 p 3 18 ]
+[v ___ftdiv@f1 f1 `f  1 p 3 34 ]
+[v ___ftdiv@f2 f2 `f  1 p 3 37 ]
 "86
 } 0
 "32 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awtoft.c
@@ -1850,21 +2069,21 @@ OK_START_SYSTEM 3
 [v DATAEE_ReadByte@bAdd bAdd `uc  1 a 1 23 ]
 "205
 } 0
-"51 C:\BA\Software_projects\PIC\1533\SystemStatus.c
+"40 C:\BA\Software_projects\PIC\1533\SystemStatus.c
 [v _ClearMcuRunTime ClearMcuRunTime `(v  1 e 1 0 ]
 {
-"54
+"43
 } 0
 "24 C:\BA\Software_projects\PIC\1533\LedsApp.c
 [v _BlinkOkLeds BlinkOkLeds `(v  1 e 1 0 ]
 {
-[v BlinkOkLeds@state state `E7622  1 a 1 wreg ]
+[v BlinkOkLeds@state state `E7699  1 a 1 wreg ]
 "26
 [v BlinkOkLeds@idx idx `i  1 a 2 27 ]
 "24
-[v BlinkOkLeds@state state `E7622  1 a 1 wreg ]
+[v BlinkOkLeds@state state `E7699  1 a 1 wreg ]
 "26
-[v BlinkOkLeds@state state `E7622  1 a 1 26 ]
+[v BlinkOkLeds@state state `E7699  1 a 1 26 ]
 "33
 } 0
 "57 C:\BA\Software_projects\PIC\1533\mcc_generated_files/interrupt_manager.c
@@ -1880,11 +2099,13 @@ OK_START_SYSTEM 3
 "167
 } 0
 "8 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwmod.c
-[v i2___lwmod __lwmod `(ui  1 e 2 0 ]
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
 {
-[v i2___lwmod@counter __lwmod `uc  1 a 1 4 ]
-[v i2___lwmod@dividend dividend `ui  1 p 2 0 ]
-[v i2___lwmod@divisor divisor `ui  1 p 2 2 ]
+"11
+[v ___lwmod@counter counter `uc  1 a 1 4 ]
+"8
+[v ___lwmod@dividend dividend `ui  1 p 2 0 ]
+[v ___lwmod@divisor divisor `ui  1 p 2 2 ]
 "26
 } 0
 "96 C:\BA\Software_projects\PIC\1533\mcc_generated_files/pin_manager.c

@@ -7,6 +7,9 @@ Author: RoeeZ (Comm-IT).                                                    ****
 ****************************************************************************** */
 
 #include "MessageFunctions.h"
+uint32_t retNum =0;
+uint16_t numSamples = 0;
+uint16_t channelNum = 0;
 
 void GroupRx(MSG_REQUEST request, char* data)
 {
@@ -22,6 +25,8 @@ void GroupRx(MSG_REQUEST request, char* data)
             
         case TX_RX_READ_UNIT_STATUS:
             //ResetCpld();
+            CollectRxStatusParams();
+            PrintRxStatus();
             break;
             
         case TX_RX_SET_BIT_MODE:
@@ -31,10 +36,14 @@ void GroupRx(MSG_REQUEST request, char* data)
             break;
         
         case ADC_SAMPLE:
+            retNum = GetIntFromUartData(data);
+            channelNum  = data[1] - '0';
+            numSamples  = retNum % (int)(pow(10,data[0] - 1));
+            AdcSingleSample(RX_TYPE, channelNum, numSamples);
             //AdcSingleSample(RX_TYPE, data);
             
             // For testing
-            DacSetValue(data);
+            //DacSetValue(data);
             break;
             
         default:
@@ -55,7 +64,8 @@ void GroupTx(MSG_REQUEST request, char* data)
             break;
             
         case TX_RX_READ_UNIT_STATUS:
-            //ResetCpld();
+            CollectTxStatusParams();
+            PrintTxStatus();
             break;
             
         case TX_RX_SET_BIT_MODE:
@@ -71,7 +81,11 @@ void GroupTx(MSG_REQUEST request, char* data)
             break;
         
         case ADC_SAMPLE:
-            AdcSingleSample(TX_TYPE, data);
+            retNum = GetIntFromUartData(data);
+            channelNum  = data[1] - '0';
+            numSamples  = retNum % (int)(pow(10,data[0] - 1));
+            AdcSingleSample(TX_TYPE, channelNum, numSamples);
+            //AdcSingleSample(TX_TYPE, data);
             break;
         
         default:
@@ -90,6 +104,8 @@ void GroupCommon(MSG_REQUEST request, char* data)
         case SYSTEM_TEST_LED:
             testLeds();
             break;
+            
+
             
         default:
             break;

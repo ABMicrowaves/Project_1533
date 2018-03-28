@@ -39,7 +39,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S817 . . . . ]
 "16922
 [v _INTCONbits `VS817 ~T0 @X0 0 e@4082 ]
-"429 mcc_generated_files/pin_manager.h
+"443 mcc_generated_files/pin_manager.h
 [v _PIN_MANAGER_IOC `(v ~T0 @X0 0 ef ]
 "305 mcc_generated_files/tmr0.h
 [v _TMR0_ISR `(v ~T0 @X0 0 ef ]
@@ -6648,8 +6648,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 164: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 166: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 168: extern __nonreentrant void _delay3(unsigned char);
-[; ;pin_manager.h: 417: void PIN_MANAGER_Initialize (void);
-[; ;pin_manager.h: 429: void PIN_MANAGER_IOC(void);
+[; ;pin_manager.h: 431: void PIN_MANAGER_Initialize (void);
+[; ;pin_manager.h: 443: void PIN_MANAGER_IOC(void);
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 28: typedef signed short long int int24_t;
@@ -6688,6 +6688,28 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;memory.h: 277: uint8_t DATAEE_ReadByte(uint8_t bAdd);
 [; ;memory.h: 293: void MEMORY_ISR(void);
 [; ;memory.h: 294: bool FLASH_IsWriteDone();
+[; ;adc.h: 71: typedef uint16_t adc_result_t;
+[; ;adc.h: 76: typedef struct
+[; ;adc.h: 77: {
+[; ;adc.h: 78: adc_result_t adcResult1;
+[; ;adc.h: 79: adc_result_t adcResult2;
+[; ;adc.h: 80: } adc_sync_double_result_t;
+[; ;adc.h: 101: typedef enum
+[; ;adc.h: 102: {
+[; ;adc.h: 103: ADC_RREV = 0x4,
+[; ;adc.h: 104: ADC_FFWR = 0x5,
+[; ;adc.h: 105: ADC_TMP = 0x6,
+[; ;adc.h: 106: ADC_VG_MON = 0x7,
+[; ;adc.h: 107: channel_CTMU = 0x1D,
+[; ;adc.h: 108: channel_DAC = 0x1E,
+[; ;adc.h: 109: channel_FVRBuf2 = 0x1F
+[; ;adc.h: 110: } adc_channel_t;
+[; ;adc.h: 145: void ADC_Initialize(void);
+[; ;adc.h: 175: void ADC_SelectChannel(adc_channel_t channel);
+[; ;adc.h: 202: void ADC_StartConversion();
+[; ;adc.h: 234: bool ADC_IsConversionDone();
+[; ;adc.h: 267: adc_result_t ADC_GetConversionResult(void);
+[; ;adc.h: 297: adc_result_t ADC_GetConversion(adc_channel_t channel);
 "75 mcc_generated_files/tmr0.h
 [v _TimerOneSecFlag `Vuc ~T0 @X0 1 e ]
 [i _TimerOneSecFlag
@@ -6723,28 +6745,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tmr0.h: 341: void TMR0_SetInterruptHandler(void (* InterruptHandler)(void));
 [; ;tmr0.h: 359: extern void (*TMR0_InterruptHandler)(void);
 [; ;tmr0.h: 377: void TMR0_DefaultInterruptHandler(void);
-[; ;adc.h: 71: typedef uint16_t adc_result_t;
-[; ;adc.h: 76: typedef struct
-[; ;adc.h: 77: {
-[; ;adc.h: 78: adc_result_t adcResult1;
-[; ;adc.h: 79: adc_result_t adcResult2;
-[; ;adc.h: 80: } adc_sync_double_result_t;
-[; ;adc.h: 101: typedef enum
-[; ;adc.h: 102: {
-[; ;adc.h: 103: ADC_RREV = 0x4,
-[; ;adc.h: 104: ADC_FFWR = 0x5,
-[; ;adc.h: 105: ADC_TMP = 0x6,
-[; ;adc.h: 106: ADC_VG_MON = 0x7,
-[; ;adc.h: 107: channel_CTMU = 0x1D,
-[; ;adc.h: 108: channel_DAC = 0x1E,
-[; ;adc.h: 109: channel_FVRBuf2 = 0x1F
-[; ;adc.h: 110: } adc_channel_t;
-[; ;adc.h: 145: void ADC_Initialize(void);
-[; ;adc.h: 175: void ADC_SelectChannel(adc_channel_t channel);
-[; ;adc.h: 202: void ADC_StartConversion();
-[; ;adc.h: 234: bool ADC_IsConversionDone();
-[; ;adc.h: 267: adc_result_t ADC_GetConversionResult(void);
-[; ;adc.h: 297: adc_result_t ADC_GetConversion(adc_channel_t channel);
 [; ;eusart1.h: 75: extern volatile uint8_t eusart1TxBufferRemaining;
 [; ;eusart1.h: 76: extern volatile uint8_t eusart1RxCount;
 [; ;eusart1.h: 102: void EUSART1_Initialize(void);

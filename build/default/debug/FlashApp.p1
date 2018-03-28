@@ -1,8 +1,17 @@
 Version 3.2 HI-TECH Software Intermediate Code
+"21 SystemStatus.h
+[s S848 `uc 1 `ui 1 `ui 1 ]
+[n S848 . OperState ADC0 ADC1 ]
+"28
+[s S849 `uc 1 `S848 1 `d 1 `uc 1 `d 1 `c 1 `d 1 `uc 1 `c 1 `i 1 `*uc 1 `uc 1 `c 1 `l 1 ]
+[n S849 . Synt AdcValues DeviceTemperature InputPowerStatus Freq RSSI TEMP Light UnitId UnitDc SwVersion UnitType CompressionPoint PassCounter ]
+"64
+[s S851 `uc 1 `S848 1 `d 1 `uc 1 `d 1 `c 1 `d 1 `uc 1 `c 1 `i 1 `*uc 1 `uc 1 `c 1 `l 1 `uc 1 ]
+[n S851 . Synt AdcValues DeviceTemperature InputPowerStatus Freq RSSI TEMP Light UnitId UnitDc SwVersion UnitType CompressionPoint PassCounter IntMode ]
 "26 AdcApp.h
-[c E7191 4 5 6 7 29 30 31 .. ]
-[n E7191 . ADC_RREV ADC_FFWR ADC_TMP ADC_VG_MON channel_CTMU channel_DAC channel_FVRBuf2  ]
-[v F7303 `(v ~T0 @X0 0 tf ]
+[c E7162 4 5 6 7 29 30 31 .. ]
+[n E7162 . ADC_RREV ADC_FFWR ADC_TMP ADC_VG_MON channel_CTMU channel_DAC channel_FVRBuf2  ]
+[v F7378 `(v ~T0 @X0 0 tf ]
 "27 MessageFunctions.h
 [c E7235 18 22 25 33 40 99 101 35 24 28 .. ]
 [n E7235 . TX_RX_SET_BIT_MODE TX_RX_SET_UNIT_FREQUENCY TX_RX_UNIT_UNIT TX_RX_READ_UNIT_STATUS TX_RX_SET_OPERATION_MODE RX_SET_COMRESSION_MODE RX_SET_COMRESSION_RANGE ADC_SAMPLE SYSTEM_PRINT_HELP_LIST SYSTEM_TEST_LED  ]
@@ -16,17 +25,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _FLASH_IsWriteDone `(uc ~T0 @X0 0 ef ]
 "195
 [v _FLASH_WriteBlock `(c ~T0 @X0 0 ef2`ul`*uc ]
-"53 SystemCommon.h
+"54 SystemCommon.h
 [v _ZeroArray `(v ~T0 @X0 0 ef2`*uc`i ]
 "92 C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdlib.h
 [v _abs `(i ~T0 @X0 0 ef1`i ]
 "101 mcc_generated_files/memory.h
 [v _FLASH_ReadByte `(uc ~T0 @X0 0 ef1`ul ]
-"51 SystemCommon.h
+"52 SystemCommon.h
 [v _crc8 `(uc ~T0 @X0 0 ef2`*uc`i ]
 "58 EusartApp.h
 [v _WriteUartMessage `(v ~T0 @X0 0 ef2`*uc`i ]
-"52 SystemCommon.h
+"53 SystemCommon.h
 [v _make8 `(uc ~T0 @X0 0 ef2`ul`uc ]
 "277 mcc_generated_files/memory.h
 [v _DATAEE_ReadByte `(uc ~T0 @X0 0 ef1`uc ]
@@ -6687,8 +6696,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 164: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 166: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 168: extern __nonreentrant void _delay3(unsigned char);
-[; ;pin_manager.h: 417: void PIN_MANAGER_Initialize (void);
-[; ;pin_manager.h: 429: void PIN_MANAGER_IOC(void);
+[; ;pin_manager.h: 431: void PIN_MANAGER_Initialize (void);
+[; ;pin_manager.h: 443: void PIN_MANAGER_IOC(void);
 [; ;stdbool.h: 12: typedef unsigned char bool;
 [; ;interrupt_manager.h: 108: void interrupt INTERRUPT_InterruptManager(void);
 [; ;interrupt_manager.h: 120: void INTERRUPT_Initialize (void);
@@ -6701,6 +6710,28 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;memory.h: 277: uint8_t DATAEE_ReadByte(uint8_t bAdd);
 [; ;memory.h: 293: void MEMORY_ISR(void);
 [; ;memory.h: 294: bool FLASH_IsWriteDone();
+[; ;adc.h: 71: typedef uint16_t adc_result_t;
+[; ;adc.h: 76: typedef struct
+[; ;adc.h: 77: {
+[; ;adc.h: 78: adc_result_t adcResult1;
+[; ;adc.h: 79: adc_result_t adcResult2;
+[; ;adc.h: 80: } adc_sync_double_result_t;
+[; ;adc.h: 101: typedef enum
+[; ;adc.h: 102: {
+[; ;adc.h: 103: ADC_RREV = 0x4,
+[; ;adc.h: 104: ADC_FFWR = 0x5,
+[; ;adc.h: 105: ADC_TMP = 0x6,
+[; ;adc.h: 106: ADC_VG_MON = 0x7,
+[; ;adc.h: 107: channel_CTMU = 0x1D,
+[; ;adc.h: 108: channel_DAC = 0x1E,
+[; ;adc.h: 109: channel_FVRBuf2 = 0x1F
+[; ;adc.h: 110: } adc_channel_t;
+[; ;adc.h: 145: void ADC_Initialize(void);
+[; ;adc.h: 175: void ADC_SelectChannel(adc_channel_t channel);
+[; ;adc.h: 202: void ADC_StartConversion();
+[; ;adc.h: 234: bool ADC_IsConversionDone();
+[; ;adc.h: 267: adc_result_t ADC_GetConversionResult(void);
+[; ;adc.h: 297: adc_result_t ADC_GetConversion(adc_channel_t channel);
 "75 mcc_generated_files/tmr0.h
 [v _TimerOneSecFlag `Vuc ~T0 @X0 1 e ]
 [i _TimerOneSecFlag
@@ -6736,28 +6767,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tmr0.h: 341: void TMR0_SetInterruptHandler(void (* InterruptHandler)(void));
 [; ;tmr0.h: 359: extern void (*TMR0_InterruptHandler)(void);
 [; ;tmr0.h: 377: void TMR0_DefaultInterruptHandler(void);
-[; ;adc.h: 71: typedef uint16_t adc_result_t;
-[; ;adc.h: 76: typedef struct
-[; ;adc.h: 77: {
-[; ;adc.h: 78: adc_result_t adcResult1;
-[; ;adc.h: 79: adc_result_t adcResult2;
-[; ;adc.h: 80: } adc_sync_double_result_t;
-[; ;adc.h: 101: typedef enum
-[; ;adc.h: 102: {
-[; ;adc.h: 103: ADC_RREV = 0x4,
-[; ;adc.h: 104: ADC_FFWR = 0x5,
-[; ;adc.h: 105: ADC_TMP = 0x6,
-[; ;adc.h: 106: ADC_VG_MON = 0x7,
-[; ;adc.h: 107: channel_CTMU = 0x1D,
-[; ;adc.h: 108: channel_DAC = 0x1E,
-[; ;adc.h: 109: channel_FVRBuf2 = 0x1F
-[; ;adc.h: 110: } adc_channel_t;
-[; ;adc.h: 145: void ADC_Initialize(void);
-[; ;adc.h: 175: void ADC_SelectChannel(adc_channel_t channel);
-[; ;adc.h: 202: void ADC_StartConversion();
-[; ;adc.h: 234: bool ADC_IsConversionDone();
-[; ;adc.h: 267: adc_result_t ADC_GetConversionResult(void);
-[; ;adc.h: 297: adc_result_t ADC_GetConversion(adc_channel_t channel);
 [; ;eusart1.h: 75: extern volatile uint8_t eusart1TxBufferRemaining;
 [; ;eusart1.h: 76: extern volatile uint8_t eusart1RxCount;
 [; ;eusart1.h: 102: void EUSART1_Initialize(void);
@@ -6788,16 +6797,84 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;GroupsCommon.h: 37: SYSTEM_PRINT_HELP_LIST = 0x18,
 [; ;GroupsCommon.h: 38: SYSTEM_TEST_LED = 0x1C,
 [; ;GroupsCommon.h: 39: }MSG_REQUEST;
-[; ;SystemStatus.h: 31: void SetMcuFwVersion(char* data);
-[; ;SystemStatus.h: 32: void SetCpldFwVersion(char* data);
-[; ;SystemStatus.h: 34: void GetMcuFwVersion();
-[; ;SystemStatus.h: 35: void GetCpldFwVersion();
-[; ;SystemStatus.h: 37: void SetMcuRunTime();
-[; ;SystemStatus.h: 38: void GetMcuRunTime();
-[; ;SystemStatus.h: 39: void ClearMcuRunTime();
-[; ;SystemStatus.h: 40: void keepAliveSignalUart(void);
-[; ;SystemStatus.h: 41: void SendUartSystemInitMessage(void);
-[; ;SystemStatus.h: 42: void PrintHelpScreen(void);
+[; ;SystemStatus.h: 20: typedef struct
+[; ;SystemStatus.h: 21: {
+[; ;SystemStatus.h: 22: bool OperState;
+[; ;SystemStatus.h: 23: uint16_t ADC0;
+[; ;SystemStatus.h: 24: uint16_t ADC1;
+[; ;SystemStatus.h: 25: }ADC_VALUES;
+[; ;SystemStatus.h: 27: typedef struct
+[; ;SystemStatus.h: 28: {
+[; ;SystemStatus.h: 29: bool Synt;
+[; ;SystemStatus.h: 30: ADC_VALUES AdcValues;
+[; ;SystemStatus.h: 31: double DeviceTemperature;
+[; ;SystemStatus.h: 32: bool InputPowerStatus;
+[; ;SystemStatus.h: 33: double Freq;
+[; ;SystemStatus.h: 34: int8_t RSSI;
+[; ;SystemStatus.h: 35: double TEMP;
+[; ;SystemStatus.h: 36: bool Light;
+[; ;SystemStatus.h: 37: int8_t UnitId;
+[; ;SystemStatus.h: 38: int16_t UnitDc;
+[; ;SystemStatus.h: 39: char* SwVersion;
+[; ;SystemStatus.h: 40: bool UnitType;
+[; ;SystemStatus.h: 41: int8_t CompressionPoint;
+[; ;SystemStatus.h: 42: int32_t PassCounter;
+[; ;SystemStatus.h: 43: }RX_STATISTICS;
+[; ;SystemStatus.h: 45: typedef struct
+[; ;SystemStatus.h: 46: {
+[; ;SystemStatus.h: 47: bool Synt;
+[; ;SystemStatus.h: 48: ADC_VALUES AdcValues;
+[; ;SystemStatus.h: 49: double DeviceTemperature;
+[; ;SystemStatus.h: 50: bool InputPowerStatus;
+[; ;SystemStatus.h: 51: double Freq;
+[; ;SystemStatus.h: 52: int8_t RSSI;
+[; ;SystemStatus.h: 53: double TEMP;
+[; ;SystemStatus.h: 54: bool Light;
+[; ;SystemStatus.h: 55: int8_t UnitId;
+[; ;SystemStatus.h: 56: int16_t UnitDc;
+[; ;SystemStatus.h: 57: char* SwVersion;
+[; ;SystemStatus.h: 58: bool UnitType;
+[; ;SystemStatus.h: 59: int8_t CompressionPoint;
+[; ;SystemStatus.h: 60: int32_t PassCounter;
+[; ;SystemStatus.h: 61: }RX_STATISTICS;
+[; ;SystemStatus.h: 63: typedef struct
+[; ;SystemStatus.h: 64: {
+[; ;SystemStatus.h: 65: bool Synt;
+[; ;SystemStatus.h: 66: ADC_VALUES AdcValues;
+[; ;SystemStatus.h: 67: double DeviceTemperature;
+[; ;SystemStatus.h: 68: bool InputPowerStatus;
+[; ;SystemStatus.h: 69: double Freq;
+[; ;SystemStatus.h: 70: int8_t RSSI;
+[; ;SystemStatus.h: 71: double TEMP;
+[; ;SystemStatus.h: 72: bool Light;
+[; ;SystemStatus.h: 73: int8_t UnitId;
+[; ;SystemStatus.h: 74: int16_t UnitDc;
+[; ;SystemStatus.h: 75: char* SwVersion;
+[; ;SystemStatus.h: 76: bool UnitType;
+[; ;SystemStatus.h: 77: int8_t CompressionPoint;
+[; ;SystemStatus.h: 78: int32_t PassCounter;
+[; ;SystemStatus.h: 80: bool IntMode;
+[; ;SystemStatus.h: 81: }TX_STATISTICS;
+"83 SystemStatus.h
+[v _rxStatistics `VS849 ~T0 @X0 1 e ]
+[; ;SystemStatus.h: 83: volatile RX_STATISTICS rxStatistics;
+"84
+[v _txStatistics `VS851 ~T0 @X0 1 e ]
+[; ;SystemStatus.h: 84: volatile TX_STATISTICS txStatistics;
+[; ;SystemStatus.h: 86: void SetMcuFwVersion(char* data);
+[; ;SystemStatus.h: 87: void SetCpldFwVersion(char* data);
+[; ;SystemStatus.h: 89: void GetMcuFwVersion();
+[; ;SystemStatus.h: 90: void GetCpldFwVersion();
+[; ;SystemStatus.h: 92: void SetMcuRunTime();
+[; ;SystemStatus.h: 93: void GetMcuRunTime();
+[; ;SystemStatus.h: 94: void ClearMcuRunTime();
+[; ;SystemStatus.h: 95: void keepAliveSignalUart(void);
+[; ;SystemStatus.h: 96: void SendUartSystemInitMessage(void);
+[; ;SystemStatus.h: 97: void PrintHelpScreen(void);
+[; ;SystemStatus.h: 98: void CollectRxStatusParams(void);
+[; ;SystemStatus.h: 99: void CollectTxStatusParams(void);
+[; ;SystemStatus.h: 100: void PrintRxStatus(void);
+[; ;SystemStatus.h: 101: void PrintTxStatus(void);
 [; ;LedsApp.h: 22: typedef enum
 [; ;LedsApp.h: 24: {
 [; ;LedsApp.h: 25: OK_START_SYSTEM = 0x3,
@@ -6818,17 +6895,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;AdcApp.h: 23: SINGLE_CHANNEL = 0x1,
 [; ;AdcApp.h: 24: }ADC_SAMPLE_MODE;
 "26 AdcApp.h
-[v _channelArr `CE7191 ~T0 @X0 -> 4 `i e ]
+[v _channelArr `CE7162 ~T0 @X0 -> 4 `i e ]
 [i _channelArr
 :U ..
 "28
--> -> 4 `i `CE7191
+-> -> 4 `i `CE7162
 "29
--> -> 6 `i `CE7191
+-> -> 6 `i `CE7162
 "30
--> -> 5 `i `CE7191
+-> -> 5 `i `CE7162
 "31
--> -> 7 `i `CE7191
+-> -> 7 `i `CE7162
 ..
 ]
 [; ;AdcApp.h: 26: const adc_channel_t channelArr[(0x04)] =
@@ -6838,30 +6915,62 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;AdcApp.h: 30: 0x5,
 [; ;AdcApp.h: 31: 0x7,
 [; ;AdcApp.h: 32: };
-"34
+[; ;AdcApp.h: 34: typedef enum
+[; ;AdcApp.h: 35: {
+[; ;AdcApp.h: 36: ADC_OFF = 0x0,
+[; ;AdcApp.h: 37: CHANK1 = 0x0,
+[; ;AdcApp.h: 38: CHANK2 = 0x1,
+[; ;AdcApp.h: 39: CHANK3 = 0x2,
+[; ;AdcApp.h: 40: CHANK4 = 0x3,
+[; ;AdcApp.h: 41: }ADC_CHANNEL_INDEX;
+"43
 [v _needToSample `Vuc ~T0 @X0 1 e ]
 [i _needToSample
 -> -> 0 `i `uc
 ]
-[; ;AdcApp.h: 34: volatile bool needToSample = 0;
-[; ;AdcApp.h: 36: void AdcSingleSample(MODULE_TYPE cType, char* data);
-[; ;AdcApp.h: 37: void SetChannelMode(char* data);
-[; ;AdcApp.h: 38: void InitAdcApplicationMgr();
-[; ;AdcApp.h: 39: bool SampleSingleChannel(void);
-[; ;AdcApp.h: 40: void SampleVgMonChannel(void);
+[; ;AdcApp.h: 43: volatile bool needToSample = 0;
+"44
+[v _lastAdcTemp `Vui ~T0 @X0 1 e ]
+[i _lastAdcTemp
+-> -> 0 `i `ui
+]
+[; ;AdcApp.h: 44: volatile uint16_t lastAdcTemp = 0;
+"45
+[v _lastAdcFfwrRSSI `Vui ~T0 @X0 1 e ]
+[i _lastAdcFfwrRSSI
+-> -> 0 `i `ui
+]
+[; ;AdcApp.h: 45: volatile uint16_t lastAdcFfwrRSSI = 0;
+"46
+[v _lastAdcRREV `Vui ~T0 @X0 1 e ]
+[i _lastAdcRREV
+-> -> 0 `i `ui
+]
+[; ;AdcApp.h: 46: volatile uint16_t lastAdcRREV = 0;
+"47
+[v _lastAdcVgMon `Vui ~T0 @X0 1 e ]
+[i _lastAdcVgMon
+-> -> 0 `i `ui
+]
+[; ;AdcApp.h: 47: volatile uint16_t lastAdcVgMon =0;
+[; ;AdcApp.h: 49: void AdcSingleSample(MODULE_TYPE cType, ADC_CHANNEL_INDEX chType, int32_t numSamples);
+[; ;AdcApp.h: 50: void SetChannelMode(char* data);
+[; ;AdcApp.h: 51: void InitAdcApplicationMgr();
+[; ;AdcApp.h: 52: bool SampleSingleChannel(void);
+[; ;AdcApp.h: 53: void SampleAllChannels(void);
 [; ;MessageFunctions.h: 20: void GroupRx(MSG_REQUEST request, char* data);
 [; ;MessageFunctions.h: 21: void GroupTx(MSG_REQUEST request, char* data);
 [; ;MessageFunctions.h: 22: void GroupCommon(MSG_REQUEST request, char* data);
 "25 MessageFunctions.h
-[v _groupsArray `*F7303 ~T0 @X0 -> 6 `i e ]
+[v _groupsArray `*F7378 ~T0 @X0 -> 6 `i e ]
 [i _groupsArray
 :U ..
 "27
--> &U _GroupRx `*F7303
+-> &U _GroupRx `*F7378
 "28
--> &U _GroupTx `*F7303
+-> &U _GroupTx `*F7378
 "29
--> &U _GroupCommon `*F7303
+-> &U _GroupCommon `*F7378
 ..
 ]
 [; ;MessageFunctions.h: 25: void (*groupsArray[(6)])() =
@@ -7112,11 +7221,23 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SyntApp.h: 50: 0x1AAAAA1,
 [; ;SyntApp.h: 51: 200410
 [; ;SyntApp.h: 52: };
-[; ;SyntApp.h: 57: void PLLUartInitialize(char* data);
-[; ;SyntApp.h: 58: void PLLInitialize(void);
-[; ;SyntApp.h: 60: void UpdateTxFreq(char* data);
-[; ;SyntApp.h: 61: void UpdateRxFreq(char* data);
-[; ;SyntApp.h: 63: void SYNTH_ISR(void);
+"55
+[v _rxFreq `Vul ~T0 @X0 1 e ]
+[i _rxFreq
+-> -> -> 0 `i `l `ul
+]
+[; ;SyntApp.h: 55: volatile uint32_t rxFreq = 0;
+"56
+[v _txFreq `Vul ~T0 @X0 1 e ]
+[i _txFreq
+-> -> -> 0 `i `l `ul
+]
+[; ;SyntApp.h: 56: volatile uint32_t txFreq = 0;
+[; ;SyntApp.h: 58: void PLLUartInitialize(char* data);
+[; ;SyntApp.h: 59: void PLLInitialize(void);
+[; ;SyntApp.h: 61: void UpdateTxFreq(char* data);
+[; ;SyntApp.h: 62: void UpdateRxFreq(char* data);
+[; ;SyntApp.h: 64: void SYNTH_ISR(void);
 [; ;SwSpiApp.h: 14: void SWSPI_send_word (SPI_PERIPHERAL phrType, uint32_t data, uint8_t dataSize);
 [; ;SwSpiApp.h: 15: void SwSpi_Data_Pin (SPI_PERIPHERAL phrType, bool cPinMode);
 [; ;SwSpiApp.h: 16: void SwSpi_Clk_Pin (SPI_PERIPHERAL phrType, bool cPinMode);
@@ -7126,15 +7247,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SwSpiApp.h: 22: void SwSpi_Set_Synth_Le_Pin(SPI_PERIPHERAL phrType, bool cPinMode);
 [; ;SwSpiApp.h: 25: void SWSPI_DAC_send_bits(SPI_PERIPHERAL phrType, uint8_t data);
 [; ;SwSpiApp.h: 26: void SwSpi_Set_Dac_Sync_Pin(bool cPinMode);
-[; ;SystemCommon.h: 51: unsigned char crc8(char* dataArray, int dataSize);
-[; ;SystemCommon.h: 52: uint8_t make8(uint32_t data, uint8_t dataLocation);
-[; ;SystemCommon.h: 53: void ZeroArray(char* array, int size);
-[; ;SystemCommon.h: 54: uint32_t GetIntFromUartData(char* data);
-[; ;SystemCommon.h: 55: void Make32bitsArray(bool* array, uint32_t data);
-[; ;SystemCommon.h: 57: void StoreIntInEeprom(uint32_t data, uint8_t address, int numOfByes);
-[; ;SystemCommon.h: 58: uint32_t ReadIntFromEeprom(uint8_t address, int numOfByes);
-[; ;SystemCommon.h: 61: void ResetMcu(void);
-[; ;SystemCommon.h: 62: void SendSystemStartAck(void);
+[; ;SystemCommon.h: 52: unsigned char crc8(char* dataArray, int dataSize);
+[; ;SystemCommon.h: 53: uint8_t make8(uint32_t data, uint8_t dataLocation);
+[; ;SystemCommon.h: 54: void ZeroArray(char* array, int size);
+[; ;SystemCommon.h: 55: uint32_t GetIntFromUartData(char* data);
+[; ;SystemCommon.h: 56: void Make32bitsArray(bool* array, uint32_t data);
+[; ;SystemCommon.h: 58: void StoreIntInEeprom(uint32_t data, uint8_t address, int numOfByes);
+[; ;SystemCommon.h: 59: uint32_t ReadIntFromEeprom(uint8_t address, int numOfByes);
+[; ;SystemCommon.h: 62: void ResetMcu(void);
+[; ;SystemCommon.h: 63: void SendSystemStartAck(void);
 [; ;FlashApp.h: 36: void FlashSampleWrite(adc_result_t sampleData, uint8_t channelNum);
 [; ;FlashApp.h: 37: void FlashReadUart(int numOfSampleToRead);
 [; ;FlashApp.h: 38: void FlashEreaseMem(void);
@@ -7210,7 +7331,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ++ _sampleCount -> 1 `i ]
 [; ;FlashApp.c: 37: if(((sampleCount*sizeof(adc_result_t)) >= (64)) && FLASH_IsWriteDone())
 "37
-[e $ ! && >= * -> _sampleCount `ui -> # `ui `ui -> -> 64 `i `ui != -> ( _FLASH_IsWriteDone ..  `i -> -> -> 0 `i `uc `i 853  ]
+[e $ ! && >= * -> _sampleCount `ui -> # `ui `ui -> -> 64 `i `ui != -> ( _FLASH_IsWriteDone ..  `i -> -> -> 0 `i `uc `i 857  ]
 [; ;FlashApp.c: 38: {
 "38
 {
@@ -7222,7 +7343,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e =+ _writeAddress -> -> -> 64 `i `l `ul ]
 [; ;FlashApp.c: 41: if (writeAddress >= 0x7FF0)
 "41
-[e $ ! >= _writeAddress -> -> -> 32752 `i `l `ul 854  ]
+[e $ ! >= _writeAddress -> -> -> 32752 `i `l `ul 858  ]
 [; ;FlashApp.c: 42: {
 "42
 {
@@ -7234,7 +7355,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _isReWriteDone -> -> 1 `i `uc ]
 [; ;FlashApp.c: 45: if (readAddress == 0x4000)
 "45
-[e $ ! == _readAddress -> -> -> 16384 `i `l `ul 855  ]
+[e $ ! == _readAddress -> -> -> 16384 `i `l `ul 859  ]
 [; ;FlashApp.c: 46: {
 "46
 {
@@ -7243,15 +7364,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e =+ _readAddress -> -> -> 64 `i `l `ul ]
 "48
 }
-[e :U 855 ]
+[e :U 859 ]
 "49
 }
-[e :U 854 ]
+[e :U 858 ]
 [; ;FlashApp.c: 48: }
 [; ;FlashApp.c: 49: }
 [; ;FlashApp.c: 51: if (numOfValidateSamples < ((0x4000-0x7FF0)/(64)))
 "51
-[e $ ! < _numOfValidateSamples -> -> / - -> 16384 `i -> 32752 `i -> 64 `i `l `ul 856  ]
+[e $ ! < _numOfValidateSamples -> -> / - -> 16384 `i -> 32752 `i -> 64 `i `l `ul 860  ]
 [; ;FlashApp.c: 52: {
 "52
 {
@@ -7260,18 +7381,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ++ _numOfValidateSamples -> -> -> 1 `i `l `ul ]
 "54
 }
-[e :U 856 ]
+[e :U 860 ]
 [; ;FlashApp.c: 54: }
 [; ;FlashApp.c: 55: sampleCount = 0;
 "55
 [e = _sampleCount -> 0 `i ]
 "56
 }
-[e :U 853 ]
+[e :U 857 ]
 [; ;FlashApp.c: 56: }
 [; ;FlashApp.c: 57: }
 "57
-[e :UE 852 ]
+[e :UE 856 ]
 }
 "62
 [v _FlashReadUart `(v ~T0 @X0 1 ef1`i ]
@@ -7300,26 +7421,26 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _ZeroArray (2 , &U _TxMsg + + -> 64 `i -> 2 `i -> 1 `i ]
 [; ;FlashApp.c: 71: if (FLASH_IsWriteDone() == 0)
 "71
-[e $ ! == -> ( _FLASH_IsWriteDone ..  `i -> 0 `i 858  ]
+[e $ ! == -> ( _FLASH_IsWriteDone ..  `i -> 0 `i 862  ]
 [; ;FlashApp.c: 72: {
 "72
 {
 [; ;FlashApp.c: 73: return;
 "73
-[e $UE 857  ]
+[e $UE 861  ]
 "74
 }
-[e :U 858 ]
+[e :U 862 ]
 [; ;FlashApp.c: 74: }
 [; ;FlashApp.c: 76: if (numOfReadSamples)
 "76
-[e $ ! != _numOfReadSamples -> -> 0 `i `ul 859  ]
+[e $ ! != _numOfReadSamples -> -> 0 `i `ul 863  ]
 [; ;FlashApp.c: 77: {
 "77
 {
 [; ;FlashApp.c: 78: if (numOfValidateSamples)
 "78
-[e $ ! != _numOfValidateSamples -> -> 0 `i `ul 860  ]
+[e $ ! != _numOfValidateSamples -> -> 0 `i `ul 864  ]
 [; ;FlashApp.c: 79: {
 "79
 {
@@ -7328,13 +7449,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _offset -> ? != - _numOfValidateSamples -> -> -> > _numOfValidateSamples -> -> _numOfSampleToRead `l `ul `i `l `ul -> -> 0 `i `ul : _numOfValidateSamples -> -> _numOfSampleToRead `l `ul `i ]
 [; ;FlashApp.c: 81: if(offset < 0)
 "81
-[e $ ! < _offset -> 0 `i 861  ]
+[e $ ! < _offset -> 0 `i 865  ]
 [; ;FlashApp.c: 82: {
 "82
 {
 [; ;FlashApp.c: 83: if (abs(offset) > numOfReadSamples)
 "83
-[e $ ! > -> -> ( _abs (1 _offset `l `ul _numOfReadSamples 862  ]
+[e $ ! > -> -> ( _abs (1 _offset `l `ul _numOfReadSamples 866  ]
 [; ;FlashApp.c: 84: {
 "84
 {
@@ -7346,21 +7467,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _offset -> * _numOfReadSamples -> -> -U -> 1 `i `l `ul `i ]
 "88
 }
-[e :U 862 ]
+[e :U 866 ]
 [; ;FlashApp.c: 88: }
 [; ;FlashApp.c: 90: readAddress += offset * (64);
 "90
 [e =+ _readAddress -> -> * _offset -> 64 `i `l `ul ]
 "91
 }
-[e :U 861 ]
+[e :U 865 ]
 "92
 }
 [; ;FlashApp.c: 91: }
 [; ;FlashApp.c: 92: }
-[e $U 863  ]
+[e $U 867  ]
 "93
-[e :U 860 ]
+[e :U 864 ]
 [; ;FlashApp.c: 93: else
 [; ;FlashApp.c: 94: {
 "94
@@ -7373,11 +7494,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e =- _readAddress -> -> * _numOfSampleToRead -> 64 `i `l `ul ]
 "97
 }
-[e :U 863 ]
+[e :U 867 ]
 [; ;FlashApp.c: 97: }
 [; ;FlashApp.c: 99: if (readAddress <= 0x4000)
 "99
-[e $ ! <= _readAddress -> -> -> 16384 `i `l `ul 864  ]
+[e $ ! <= _readAddress -> -> -> 16384 `i `l `ul 868  ]
 [; ;FlashApp.c: 100: {
 "100
 {
@@ -7386,21 +7507,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _readAddress -> -> -> 16384 `i `l `ul ]
 "102
 }
-[e :U 864 ]
+[e :U 868 ]
 "103
 }
 [; ;FlashApp.c: 102: }
 [; ;FlashApp.c: 103: }
-[e $U 865  ]
+[e $U 869  ]
 "104
-[e :U 859 ]
+[e :U 863 ]
 [; ;FlashApp.c: 104: else
 [; ;FlashApp.c: 105: {
 "105
 {
 [; ;FlashApp.c: 106: if ((isReWriteDone) && (readAddress <= writeAddress))
 "106
-[e $ ! && != -> _isReWriteDone `i -> -> -> 0 `i `uc `i <= _readAddress _writeAddress 866  ]
+[e $ ! && != -> _isReWriteDone `i -> -> -> 0 `i `uc `i <= _readAddress _writeAddress 870  ]
 [; ;FlashApp.c: 107: {
 "107
 {
@@ -7409,7 +7530,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _readAddress + _writeAddress -> -> -> 64 `i `l `ul ]
 [; ;FlashApp.c: 109: if (readAddress >= 0x7FF0)
 "109
-[e $ ! >= _readAddress -> -> -> 32752 `i `l `ul 867  ]
+[e $ ! >= _readAddress -> -> -> 32752 `i `l `ul 871  ]
 [; ;FlashApp.c: 110: {
 "110
 {
@@ -7418,36 +7539,36 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _readAddress -> -> -> 16384 `i `l `ul ]
 "112
 }
-[e :U 867 ]
+[e :U 871 ]
 "114
 }
 [; ;FlashApp.c: 112: }
 [; ;FlashApp.c: 114: }
-[e $U 868  ]
+[e $U 872  ]
 "115
-[e :U 866 ]
+[e :U 870 ]
 [; ;FlashApp.c: 115: else
 [; ;FlashApp.c: 116: {
 "116
 {
 [; ;FlashApp.c: 117: if(numOfValidateSamples == 0)
 "117
-[e $ ! == _numOfValidateSamples -> -> -> 0 `i `l `ul 869  ]
+[e $ ! == _numOfValidateSamples -> -> -> 0 `i `l `ul 873  ]
 [; ;FlashApp.c: 118: {
 "118
 {
 [; ;FlashApp.c: 120: return;
 "120
-[e $UE 857  ]
+[e $UE 861  ]
 "121
 }
-[e :U 869 ]
+[e :U 873 ]
 "123
 }
-[e :U 868 ]
+[e :U 872 ]
 "124
 }
-[e :U 865 ]
+[e :U 869 ]
 [; ;FlashApp.c: 121: }
 [; ;FlashApp.c: 123: }
 [; ;FlashApp.c: 124: }
@@ -7461,9 +7582,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "132
 {
 [e = _j -> 0 `i ]
-[e $U 873  ]
+[e $U 877  ]
 "133
-[e :U 870 ]
+[e :U 874 ]
 [; ;FlashApp.c: 133: {
 {
 [; ;FlashApp.c: 135: for(int idx = 0; idx < (64); idx++)
@@ -7471,10 +7592,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [v _idx `i ~T0 @X0 1 a ]
 [e = _idx -> 0 `i ]
-[e $ < _idx -> 64 `i 874  ]
-[e $U 875  ]
+[e $ < _idx -> 64 `i 878  ]
+[e $U 879  ]
 "136
-[e :U 874 ]
+[e :U 878 ]
 [; ;FlashApp.c: 136: {
 {
 [; ;FlashApp.c: 137: TxMsg[(0x2) + idx] = FLASH_ReadByte(readAddress + idx);
@@ -7484,8 +7605,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "135
 [e ++ _idx -> 1 `i ]
-[e $ < _idx -> 64 `i 874  ]
-[e :U 875 ]
+[e $ < _idx -> 64 `i 878  ]
+[e :U 879 ]
 "138
 }
 [; ;FlashApp.c: 138: }
@@ -7494,7 +7615,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e =+ _readAddress -> -> -> 64 `i `l `ul ]
 [; ;FlashApp.c: 141: if (readAddress >= 0x7FF0)
 "141
-[e $ ! >= _readAddress -> -> -> 32752 `i `l `ul 877  ]
+[e $ ! >= _readAddress -> -> -> 32752 `i `l `ul 881  ]
 [; ;FlashApp.c: 142: {
 "142
 {
@@ -7503,7 +7624,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _readAddress -> -> -> 16384 `i `l `ul ]
 "144
 }
-[e :U 877 ]
+[e :U 881 ]
 [; ;FlashApp.c: 144: }
 [; ;FlashApp.c: 145: TxMsg[(64) + (0x2)] = crc8(TxMsg, (64) + (0x2));
 "145
@@ -7513,13 +7634,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _WriteUartMessage (2 , &U _TxMsg + + -> 64 `i -> 2 `i -> 1 `i ]
 [; ;FlashApp.c: 149: if(numOfValidateSamples)
 "149
-[e $ ! != _numOfValidateSamples -> -> 0 `i `ul 878  ]
+[e $ ! != _numOfValidateSamples -> -> 0 `i `ul 882  ]
 [; ;FlashApp.c: 150: {
 "150
 {
 [; ;FlashApp.c: 151: if (numOfReadSamples < ((0x4000-0x7FF0)/(64)))
 "151
-[e $ ! < _numOfReadSamples -> -> / - -> 16384 `i -> 32752 `i -> 64 `i `l `ul 879  ]
+[e $ ! < _numOfReadSamples -> -> / - -> 16384 `i -> 32752 `i -> 64 `i `l `ul 883  ]
 [; ;FlashApp.c: 152: {
 "152
 {
@@ -7528,11 +7649,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ++ _numOfReadSamples -> -> -> 1 `i `l `ul ]
 "154
 }
-[e :U 879 ]
+[e :U 883 ]
 [; ;FlashApp.c: 154: }
 [; ;FlashApp.c: 155: if (numOfValidateSamples > 0)
 "155
-[e $ ! > _numOfValidateSamples -> -> -> 0 `i `l `ul 880  ]
+[e $ ! > _numOfValidateSamples -> -> -> 0 `i `l `ul 884  ]
 [; ;FlashApp.c: 156: {
 "156
 {
@@ -7541,17 +7662,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e -- _numOfValidateSamples -> -> -> 1 `i `l `ul ]
 "158
 }
-[e :U 880 ]
+[e :U 884 ]
 "159
 }
-[e :U 878 ]
+[e :U 882 ]
 "160
 }
 "132
 [e ++ _j -> 1 `i ]
-[e :U 873 ]
-[e $ < _j _numOfSampleToRead 870  ]
-[e :U 871 ]
+[e :U 877 ]
+[e $ < _j _numOfSampleToRead 874  ]
+[e :U 875 ]
 "160
 }
 [; ;FlashApp.c: 158: }
@@ -7559,7 +7680,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;FlashApp.c: 160: }
 [; ;FlashApp.c: 161: }
 "161
-[e :UE 857 ]
+[e :UE 861 ]
 }
 "168
 [v _FlashEreaseMem `(v ~T0 @X0 1 ef ]
@@ -7583,7 +7704,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _ZeroArray (2 , -> &U _sampleArray `*uc -> / -> -> 64 `i `ui -> # `ui `ui `i ]
 [; ;FlashApp.c: 175: }
 "175
-[e :UE 881 ]
+[e :UE 885 ]
 }
 "178
 [v _FlashReadCondition `(v ~T0 @X0 1 ef ]
@@ -7625,7 +7746,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _WriteUartMessage (2 , &U _TxMsg + + -> 4 `i -> 2 `i -> 1 `i ]
 [; ;FlashApp.c: 203: }
 "203
-[e :UE 882 ]
+[e :UE 886 ]
 }
 "205
 [v _CheckFlashPrecentage `(uc ~T0 @X0 1 ef ]
@@ -7642,10 +7763,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;FlashApp.c: 208: return (precentage > 75) ? 1 : 0;
 "208
 [e ) -> ? > _precentage -> -> 75 `i `d : -> 1 `i -> 0 `i `uc ]
-[e $UE 883  ]
+[e $UE 887  ]
 [; ;FlashApp.c: 209: }
 "209
-[e :UE 883 ]
+[e :UE 887 ]
 }
 "215
 [v _EepromRead `(uc ~T0 @X0 1 ef1`uc ]
@@ -7661,10 +7782,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;FlashApp.c: 217: return DATAEE_ReadByte(address);
 "217
 [e ) ( _DATAEE_ReadByte (1 _address ]
-[e $UE 884  ]
+[e $UE 888  ]
 [; ;FlashApp.c: 218: }
 "218
-[e :UE 884 ]
+[e :UE 888 ]
 }
 "220
 [v _EepromWrite `(v ~T0 @X0 1 ef2`uc`uc ]
@@ -7683,7 +7804,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _DATAEE_WriteByte (2 , _address _data ]
 [; ;FlashApp.c: 223: }
 "223
-[e :UE 885 ]
+[e :UE 889 ]
 }
 "229
 [v _FlashTest `(uc ~T0 @X0 1 ef2`i`i ]
@@ -7699,17 +7820,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;FlashApp.c: 231: if(numOfSamples > 128)
 "231
-[e $ ! > _numOfSamples -> 128 `i 887  ]
+[e $ ! > _numOfSamples -> 128 `i 891  ]
 [; ;FlashApp.c: 232: {
 "232
 {
 [; ;FlashApp.c: 233: return 0;
 "233
 [e ) -> -> 0 `i `uc ]
-[e $UE 886  ]
+[e $UE 890  ]
 "234
 }
-[e :U 887 ]
+[e :U 891 ]
 "235
 [v _buff `uc ~T0 @X0 -> 128 `i a ]
 [; ;FlashApp.c: 234: }
@@ -7719,9 +7840,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [v _idx `uc ~T0 @X0 1 a ]
 [e = _idx -> -> 0 `i `uc ]
-[e $U 891  ]
+[e $U 895  ]
 "237
-[e :U 888 ]
+[e :U 892 ]
 [; ;FlashApp.c: 237: {
 {
 [; ;FlashApp.c: 238: buff[idx] = idx;
@@ -7731,9 +7852,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "236
 [e ++ _idx -> -> 1 `i `uc ]
-[e :U 891 ]
-[e $ < -> _idx `i _numOfSamples 888  ]
-[e :U 889 ]
+[e :U 895 ]
+[e $ < -> _idx `i _numOfSamples 892  ]
+[e :U 893 ]
 "239
 }
 [; ;FlashApp.c: 239: }
@@ -7745,9 +7866,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [v _idx `uc ~T0 @X0 1 a ]
 [e = _idx -> -> 0 `i `uc ]
-[e $U 895  ]
+[e $U 899  ]
 "244
-[e :U 892 ]
+[e :U 896 ]
 [; ;FlashApp.c: 244: {
 {
 "245
@@ -7756,24 +7877,24 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _FlashData ( _FLASH_ReadByte (1 -> -> + _startAddress -> _idx `i `l `ul ]
 [; ;FlashApp.c: 246: if(FlashData != idx)
 "246
-[e $ ! != -> _FlashData `i -> _idx `i 896  ]
+[e $ ! != -> _FlashData `i -> _idx `i 900  ]
 [; ;FlashApp.c: 247: {
 "247
 {
 [; ;FlashApp.c: 248: return 0;
 "248
 [e ) -> -> 0 `i `uc ]
-[e $UE 886  ]
+[e $UE 890  ]
 "249
 }
-[e :U 896 ]
+[e :U 900 ]
 "250
 }
 "243
 [e ++ _idx -> -> 1 `i `uc ]
-[e :U 895 ]
-[e $ < -> _idx `i _numOfSamples 892  ]
-[e :U 893 ]
+[e :U 899 ]
+[e $ < -> _idx `i _numOfSamples 896  ]
+[e :U 897 ]
 "250
 }
 [; ;FlashApp.c: 249: }
@@ -7781,10 +7902,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;FlashApp.c: 252: return 1;
 "252
 [e ) -> -> 1 `i `uc ]
-[e $UE 886  ]
+[e $UE 890  ]
 [; ;FlashApp.c: 253: }
 "253
-[e :UE 886 ]
+[e :UE 890 ]
 }
 "255
 [v _EepromTest `(uc ~T0 @X0 1 ef2`i`i ]
@@ -7800,26 +7921,26 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;FlashApp.c: 257: if(numOfSamples > 128)
 "257
-[e $ ! > _numOfSamples -> 128 `i 898  ]
+[e $ ! > _numOfSamples -> 128 `i 902  ]
 [; ;FlashApp.c: 258: {
 "258
 {
 [; ;FlashApp.c: 259: return 0;
 "259
 [e ) -> -> 0 `i `uc ]
-[e $UE 897  ]
+[e $UE 901  ]
 "260
 }
-[e :U 898 ]
+[e :U 902 ]
 [; ;FlashApp.c: 260: }
 [; ;FlashApp.c: 262: for(uint8_t idx = 0; idx < numOfSamples; idx++)
 "262
 {
 [v _idx `uc ~T0 @X0 1 a ]
 [e = _idx -> -> 0 `i `uc ]
-[e $U 902  ]
+[e $U 906  ]
 "263
-[e :U 899 ]
+[e :U 903 ]
 [; ;FlashApp.c: 263: {
 {
 [; ;FlashApp.c: 264: DATAEE_WriteByte(startAddress + idx, idx);
@@ -7829,9 +7950,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "262
 [e ++ _idx -> -> 1 `i `uc ]
-[e :U 902 ]
-[e $ < -> _idx `i _numOfSamples 899  ]
-[e :U 900 ]
+[e :U 906 ]
+[e $ < -> _idx `i _numOfSamples 903  ]
+[e :U 904 ]
 "265
 }
 [; ;FlashApp.c: 265: }
@@ -7840,10 +7961,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [v _idx `uc ~T0 @X0 1 a ]
 [e = _idx -> -> 0 `i `uc ]
-[e $ < -> _idx `i -> 256 `i 903  ]
-[e $U 904  ]
+[e $ < -> _idx `i -> 256 `i 907  ]
+[e $U 908  ]
 "268
-[e :U 903 ]
+[e :U 907 ]
 [; ;FlashApp.c: 268: {
 {
 "269
@@ -7852,23 +7973,23 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _EEdata ( _DATAEE_ReadByte (1 -> + _startAddress -> _idx `i `uc ]
 [; ;FlashApp.c: 270: if(EEdata != idx)
 "270
-[e $ ! != -> _EEdata `i -> _idx `i 906  ]
+[e $ ! != -> _EEdata `i -> _idx `i 910  ]
 [; ;FlashApp.c: 271: {
 "271
 {
 [; ;FlashApp.c: 272: return 0;
 "272
 [e ) -> -> 0 `i `uc ]
-[e $UE 897  ]
+[e $UE 901  ]
 "273
 }
-[e :U 906 ]
+[e :U 910 ]
 "274
 }
 "267
 [e ++ _idx -> -> 1 `i `uc ]
-[e $ < -> _idx `i -> 256 `i 903  ]
-[e :U 904 ]
+[e $ < -> _idx `i -> 256 `i 907  ]
+[e :U 908 ]
 "274
 }
 [; ;FlashApp.c: 273: }
@@ -7876,8 +7997,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;FlashApp.c: 275: return 1;
 "275
 [e ) -> -> 1 `i `uc ]
-[e $UE 897  ]
+[e $UE 901  ]
 [; ;FlashApp.c: 276: }
 "276
-[e :UE 897 ]
+[e :UE 901 ]
 }

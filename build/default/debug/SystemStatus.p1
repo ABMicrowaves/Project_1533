@@ -1,8 +1,8 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "26 AdcApp.h
-[c E7191 4 5 6 7 29 30 31 .. ]
-[n E7191 . ADC_RREV ADC_FFWR ADC_TMP ADC_VG_MON channel_CTMU channel_DAC channel_FVRBuf2  ]
-[v F7310 `(v ~T0 @X0 0 tf ]
+[c E7162 4 5 6 7 29 30 31 .. ]
+[n E7162 . ADC_RREV ADC_FFWR ADC_TMP ADC_VG_MON channel_CTMU channel_DAC channel_FVRBuf2  ]
+[v F7322 `(v ~T0 @X0 0 tf ]
 "27 MessageFunctions.h
 [c E7235 18 22 25 33 40 99 101 35 24 28 .. ]
 [n E7235 . TX_RX_SET_BIT_MODE TX_RX_SET_UNIT_FREQUENCY TX_RX_UNIT_UNIT TX_RX_READ_UNIT_STATUS TX_RX_SET_OPERATION_MODE RX_SET_COMRESSION_MODE RX_SET_COMRESSION_RANGE ADC_SAMPLE SYSTEM_PRINT_HELP_LIST SYSTEM_TEST_LED  ]
@@ -12,10 +12,74 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _GroupTx `(v ~T0 @X0 0 ef2`E7235`*uc ]
 "22
 [v _GroupCommon `(v ~T0 @X0 0 ef2`E7235`*uc ]
+"21 SystemStatus.h
+[s S852 `uc 1 `ui 1 `ui 1 ]
+[n S852 . OperState ADC0 ADC1 ]
+"28
+[s S853 `uc 1 `S852 1 `d 1 `uc 1 `d 1 `c 1 `d 1 `uc 1 `c 1 `i 1 `*uc 1 `uc 1 `c 1 `l 1 ]
+[n S853 . Synt AdcValues DeviceTemperature InputPowerStatus Freq RSSI TEMP Light UnitId UnitDc SwVersion UnitType CompressionPoint PassCounter ]
+"64
+[s S855 `uc 1 `S852 1 `d 1 `uc 1 `d 1 `c 1 `d 1 `uc 1 `c 1 `i 1 `*uc 1 `uc 1 `c 1 `l 1 `uc 1 ]
+[n S855 . Synt AdcValues DeviceTemperature InputPowerStatus Freq RSSI TEMP Light UnitId UnitDc SwVersion UnitType CompressionPoint PassCounter IntMode ]
 "194 C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdio.h
 [v _sprintf `(i ~T0 @X0 0 e1v`*uc`*Cuc ]
 "60 EusartApp.h
 [v _UART_Write_Text `(v ~T0 @X0 0 ef1`*uc ]
+"7146 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic18f45k22.h
+[s S359 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S359 . RD0 RD1 RD2 RD3 RD4 RD5 RD6 RD7 ]
+"7156
+[s S360 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S360 . . P2B P2C P2D P1B P1C P1D ]
+"7165
+[s S361 :1 `uc 1 :1 `uc 1 :4 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S361 . . CCP4 . TX2 RX2 ]
+"7172
+[s S362 :3 `uc 1 :1 `uc 1 ]
+[n S362 . . NOT_SS2 ]
+"7176
+[s S363 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S363 . SCK2 SDI2 . nSS2 SDO2 . CK2 DT2 ]
+"7186
+[s S364 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S364 . SCL2 SDA2 . SS2 ]
+"7192
+[s S365 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S365 . AN20 AN21 AN22 AN23 AN24 AN25 AN26 AN27 ]
+"7145
+[u S358 `S359 1 `S360 1 `S361 1 `S362 1 `S363 1 `S364 1 `S365 1 ]
+[n S358 . . . . . . . . ]
+"7203
+[v _PORTDbits `VS358 ~T0 @X0 0 e@3971 ]
+"6569
+[s S342 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S342 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
+"6579
+[s S343 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S343 . INT0 INT1 INT2 CCP2 KBI0 KBI1 KBI2 KBI3 ]
+"6589
+[s S344 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S344 . AN12 AN10 AN8 AN9 AN11 AN13 PGC PGD ]
+"6599
+[s S345 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S345 . FLT0 C12IN3M . C12IN2M T5G T1G ]
+"6607
+[s S346 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S346 . SRI C12IN3N . C12IN2N . CCP3 ]
+"6615
+[s S347 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S347 . . CTED1 CTED2 . T3CKI ]
+"6622
+[s S348 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S348 . . P2A . P3A ]
+"6628
+[s S349 :3 `uc 1 :1 `uc 1 ]
+[n S349 . . CCP2_PA2 ]
+"6568
+[u S341 `S342 1 `S343 1 `S344 1 `S345 1 `S346 1 `S347 1 `S348 1 `S349 1 ]
+[n S341 . . . . . . . . . ]
+"6633
+[v _PORTBbits `VS341 ~T0 @X0 0 e@3969 ]
 [; ;math.h: 30: extern double fabs(double);
 [; ;math.h: 31: extern double floor(double);
 [; ;math.h: 32: extern double ceil(double);
@@ -6671,8 +6735,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 164: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 166: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 168: extern __nonreentrant void _delay3(unsigned char);
-[; ;pin_manager.h: 417: void PIN_MANAGER_Initialize (void);
-[; ;pin_manager.h: 429: void PIN_MANAGER_IOC(void);
+[; ;pin_manager.h: 431: void PIN_MANAGER_Initialize (void);
+[; ;pin_manager.h: 443: void PIN_MANAGER_IOC(void);
 [; ;stdbool.h: 12: typedef unsigned char bool;
 [; ;interrupt_manager.h: 108: void interrupt INTERRUPT_InterruptManager(void);
 [; ;interrupt_manager.h: 120: void INTERRUPT_Initialize (void);
@@ -6685,6 +6749,28 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;memory.h: 277: uint8_t DATAEE_ReadByte(uint8_t bAdd);
 [; ;memory.h: 293: void MEMORY_ISR(void);
 [; ;memory.h: 294: bool FLASH_IsWriteDone();
+[; ;adc.h: 71: typedef uint16_t adc_result_t;
+[; ;adc.h: 76: typedef struct
+[; ;adc.h: 77: {
+[; ;adc.h: 78: adc_result_t adcResult1;
+[; ;adc.h: 79: adc_result_t adcResult2;
+[; ;adc.h: 80: } adc_sync_double_result_t;
+[; ;adc.h: 101: typedef enum
+[; ;adc.h: 102: {
+[; ;adc.h: 103: ADC_RREV = 0x4,
+[; ;adc.h: 104: ADC_FFWR = 0x5,
+[; ;adc.h: 105: ADC_TMP = 0x6,
+[; ;adc.h: 106: ADC_VG_MON = 0x7,
+[; ;adc.h: 107: channel_CTMU = 0x1D,
+[; ;adc.h: 108: channel_DAC = 0x1E,
+[; ;adc.h: 109: channel_FVRBuf2 = 0x1F
+[; ;adc.h: 110: } adc_channel_t;
+[; ;adc.h: 145: void ADC_Initialize(void);
+[; ;adc.h: 175: void ADC_SelectChannel(adc_channel_t channel);
+[; ;adc.h: 202: void ADC_StartConversion();
+[; ;adc.h: 234: bool ADC_IsConversionDone();
+[; ;adc.h: 267: adc_result_t ADC_GetConversionResult(void);
+[; ;adc.h: 297: adc_result_t ADC_GetConversion(adc_channel_t channel);
 "75 mcc_generated_files/tmr0.h
 [v _TimerOneSecFlag `Vuc ~T0 @X0 1 e ]
 [i _TimerOneSecFlag
@@ -6720,28 +6806,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tmr0.h: 341: void TMR0_SetInterruptHandler(void (* InterruptHandler)(void));
 [; ;tmr0.h: 359: extern void (*TMR0_InterruptHandler)(void);
 [; ;tmr0.h: 377: void TMR0_DefaultInterruptHandler(void);
-[; ;adc.h: 71: typedef uint16_t adc_result_t;
-[; ;adc.h: 76: typedef struct
-[; ;adc.h: 77: {
-[; ;adc.h: 78: adc_result_t adcResult1;
-[; ;adc.h: 79: adc_result_t adcResult2;
-[; ;adc.h: 80: } adc_sync_double_result_t;
-[; ;adc.h: 101: typedef enum
-[; ;adc.h: 102: {
-[; ;adc.h: 103: ADC_RREV = 0x4,
-[; ;adc.h: 104: ADC_FFWR = 0x5,
-[; ;adc.h: 105: ADC_TMP = 0x6,
-[; ;adc.h: 106: ADC_VG_MON = 0x7,
-[; ;adc.h: 107: channel_CTMU = 0x1D,
-[; ;adc.h: 108: channel_DAC = 0x1E,
-[; ;adc.h: 109: channel_FVRBuf2 = 0x1F
-[; ;adc.h: 110: } adc_channel_t;
-[; ;adc.h: 145: void ADC_Initialize(void);
-[; ;adc.h: 175: void ADC_SelectChannel(adc_channel_t channel);
-[; ;adc.h: 202: void ADC_StartConversion();
-[; ;adc.h: 234: bool ADC_IsConversionDone();
-[; ;adc.h: 267: adc_result_t ADC_GetConversionResult(void);
-[; ;adc.h: 297: adc_result_t ADC_GetConversion(adc_channel_t channel);
 [; ;eusart1.h: 75: extern volatile uint8_t eusart1TxBufferRemaining;
 [; ;eusart1.h: 76: extern volatile uint8_t eusart1RxCount;
 [; ;eusart1.h: 102: void EUSART1_Initialize(void);
@@ -6792,17 +6856,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;AdcApp.h: 23: SINGLE_CHANNEL = 0x1,
 [; ;AdcApp.h: 24: }ADC_SAMPLE_MODE;
 "26 AdcApp.h
-[v _channelArr `CE7191 ~T0 @X0 -> 4 `i e ]
+[v _channelArr `CE7162 ~T0 @X0 -> 4 `i e ]
 [i _channelArr
 :U ..
 "28
--> -> 4 `i `CE7191
+-> -> 4 `i `CE7162
 "29
--> -> 6 `i `CE7191
+-> -> 6 `i `CE7162
 "30
--> -> 5 `i `CE7191
+-> -> 5 `i `CE7162
 "31
--> -> 7 `i `CE7191
+-> -> 7 `i `CE7162
 ..
 ]
 [; ;AdcApp.h: 26: const adc_channel_t channelArr[(0x04)] =
@@ -6812,17 +6876,49 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;AdcApp.h: 30: 0x5,
 [; ;AdcApp.h: 31: 0x7,
 [; ;AdcApp.h: 32: };
-"34
+[; ;AdcApp.h: 34: typedef enum
+[; ;AdcApp.h: 35: {
+[; ;AdcApp.h: 36: ADC_OFF = 0x0,
+[; ;AdcApp.h: 37: CHANK1 = 0x0,
+[; ;AdcApp.h: 38: CHANK2 = 0x1,
+[; ;AdcApp.h: 39: CHANK3 = 0x2,
+[; ;AdcApp.h: 40: CHANK4 = 0x3,
+[; ;AdcApp.h: 41: }ADC_CHANNEL_INDEX;
+"43
 [v _needToSample `Vuc ~T0 @X0 1 e ]
 [i _needToSample
 -> -> 0 `i `uc
 ]
-[; ;AdcApp.h: 34: volatile bool needToSample = 0;
-[; ;AdcApp.h: 36: void AdcSingleSample(MODULE_TYPE cType, char* data);
-[; ;AdcApp.h: 37: void SetChannelMode(char* data);
-[; ;AdcApp.h: 38: void InitAdcApplicationMgr();
-[; ;AdcApp.h: 39: bool SampleSingleChannel(void);
-[; ;AdcApp.h: 40: void SampleVgMonChannel(void);
+[; ;AdcApp.h: 43: volatile bool needToSample = 0;
+"44
+[v _lastAdcTemp `Vui ~T0 @X0 1 e ]
+[i _lastAdcTemp
+-> -> 0 `i `ui
+]
+[; ;AdcApp.h: 44: volatile uint16_t lastAdcTemp = 0;
+"45
+[v _lastAdcFfwrRSSI `Vui ~T0 @X0 1 e ]
+[i _lastAdcFfwrRSSI
+-> -> 0 `i `ui
+]
+[; ;AdcApp.h: 45: volatile uint16_t lastAdcFfwrRSSI = 0;
+"46
+[v _lastAdcRREV `Vui ~T0 @X0 1 e ]
+[i _lastAdcRREV
+-> -> 0 `i `ui
+]
+[; ;AdcApp.h: 46: volatile uint16_t lastAdcRREV = 0;
+"47
+[v _lastAdcVgMon `Vui ~T0 @X0 1 e ]
+[i _lastAdcVgMon
+-> -> 0 `i `ui
+]
+[; ;AdcApp.h: 47: volatile uint16_t lastAdcVgMon =0;
+[; ;AdcApp.h: 49: void AdcSingleSample(MODULE_TYPE cType, ADC_CHANNEL_INDEX chType, int32_t numSamples);
+[; ;AdcApp.h: 50: void SetChannelMode(char* data);
+[; ;AdcApp.h: 51: void InitAdcApplicationMgr();
+[; ;AdcApp.h: 52: bool SampleSingleChannel(void);
+[; ;AdcApp.h: 53: void SampleAllChannels(void);
 [; ;FlashApp.h: 36: void FlashSampleWrite(adc_result_t sampleData, uint8_t channelNum);
 [; ;FlashApp.h: 37: void FlashReadUart(int numOfSampleToRead);
 [; ;FlashApp.h: 38: void FlashEreaseMem(void);
@@ -6836,15 +6932,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MessageFunctions.h: 21: void GroupTx(MSG_REQUEST request, char* data);
 [; ;MessageFunctions.h: 22: void GroupCommon(MSG_REQUEST request, char* data);
 "25 MessageFunctions.h
-[v _groupsArray `*F7310 ~T0 @X0 -> 6 `i e ]
+[v _groupsArray `*F7322 ~T0 @X0 -> 6 `i e ]
 [i _groupsArray
 :U ..
 "27
--> &U _GroupRx `*F7310
+-> &U _GroupRx `*F7322
 "28
--> &U _GroupTx `*F7310
+-> &U _GroupTx `*F7322
 "29
--> &U _GroupCommon `*F7310
+-> &U _GroupCommon `*F7322
 ..
 ]
 [; ;MessageFunctions.h: 25: void (*groupsArray[(6)])() =
@@ -7095,11 +7191,23 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SyntApp.h: 50: 0x1AAAAA1,
 [; ;SyntApp.h: 51: 200410
 [; ;SyntApp.h: 52: };
-[; ;SyntApp.h: 57: void PLLUartInitialize(char* data);
-[; ;SyntApp.h: 58: void PLLInitialize(void);
-[; ;SyntApp.h: 60: void UpdateTxFreq(char* data);
-[; ;SyntApp.h: 61: void UpdateRxFreq(char* data);
-[; ;SyntApp.h: 63: void SYNTH_ISR(void);
+"55
+[v _rxFreq `Vul ~T0 @X0 1 e ]
+[i _rxFreq
+-> -> -> 0 `i `l `ul
+]
+[; ;SyntApp.h: 55: volatile uint32_t rxFreq = 0;
+"56
+[v _txFreq `Vul ~T0 @X0 1 e ]
+[i _txFreq
+-> -> -> 0 `i `l `ul
+]
+[; ;SyntApp.h: 56: volatile uint32_t txFreq = 0;
+[; ;SyntApp.h: 58: void PLLUartInitialize(char* data);
+[; ;SyntApp.h: 59: void PLLInitialize(void);
+[; ;SyntApp.h: 61: void UpdateTxFreq(char* data);
+[; ;SyntApp.h: 62: void UpdateRxFreq(char* data);
+[; ;SyntApp.h: 64: void SYNTH_ISR(void);
 [; ;SwSpiApp.h: 14: void SWSPI_send_word (SPI_PERIPHERAL phrType, uint32_t data, uint8_t dataSize);
 [; ;SwSpiApp.h: 15: void SwSpi_Data_Pin (SPI_PERIPHERAL phrType, bool cPinMode);
 [; ;SwSpiApp.h: 16: void SwSpi_Clk_Pin (SPI_PERIPHERAL phrType, bool cPinMode);
@@ -7109,354 +7217,710 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SwSpiApp.h: 22: void SwSpi_Set_Synth_Le_Pin(SPI_PERIPHERAL phrType, bool cPinMode);
 [; ;SwSpiApp.h: 25: void SWSPI_DAC_send_bits(SPI_PERIPHERAL phrType, uint8_t data);
 [; ;SwSpiApp.h: 26: void SwSpi_Set_Dac_Sync_Pin(bool cPinMode);
-[; ;SystemCommon.h: 51: unsigned char crc8(char* dataArray, int dataSize);
-[; ;SystemCommon.h: 52: uint8_t make8(uint32_t data, uint8_t dataLocation);
-[; ;SystemCommon.h: 53: void ZeroArray(char* array, int size);
-[; ;SystemCommon.h: 54: uint32_t GetIntFromUartData(char* data);
-[; ;SystemCommon.h: 55: void Make32bitsArray(bool* array, uint32_t data);
-[; ;SystemCommon.h: 57: void StoreIntInEeprom(uint32_t data, uint8_t address, int numOfByes);
-[; ;SystemCommon.h: 58: uint32_t ReadIntFromEeprom(uint8_t address, int numOfByes);
-[; ;SystemCommon.h: 61: void ResetMcu(void);
-[; ;SystemCommon.h: 62: void SendSystemStartAck(void);
-[; ;SystemStatus.h: 31: void SetMcuFwVersion(char* data);
-[; ;SystemStatus.h: 32: void SetCpldFwVersion(char* data);
-[; ;SystemStatus.h: 34: void GetMcuFwVersion();
-[; ;SystemStatus.h: 35: void GetCpldFwVersion();
-[; ;SystemStatus.h: 37: void SetMcuRunTime();
-[; ;SystemStatus.h: 38: void GetMcuRunTime();
-[; ;SystemStatus.h: 39: void ClearMcuRunTime();
-[; ;SystemStatus.h: 40: void keepAliveSignalUart(void);
-[; ;SystemStatus.h: 41: void SendUartSystemInitMessage(void);
-[; ;SystemStatus.h: 42: void PrintHelpScreen(void);
+[; ;SystemCommon.h: 52: unsigned char crc8(char* dataArray, int dataSize);
+[; ;SystemCommon.h: 53: uint8_t make8(uint32_t data, uint8_t dataLocation);
+[; ;SystemCommon.h: 54: void ZeroArray(char* array, int size);
+[; ;SystemCommon.h: 55: uint32_t GetIntFromUartData(char* data);
+[; ;SystemCommon.h: 56: void Make32bitsArray(bool* array, uint32_t data);
+[; ;SystemCommon.h: 58: void StoreIntInEeprom(uint32_t data, uint8_t address, int numOfByes);
+[; ;SystemCommon.h: 59: uint32_t ReadIntFromEeprom(uint8_t address, int numOfByes);
+[; ;SystemCommon.h: 62: void ResetMcu(void);
+[; ;SystemCommon.h: 63: void SendSystemStartAck(void);
+[; ;SystemStatus.h: 20: typedef struct
+[; ;SystemStatus.h: 21: {
+[; ;SystemStatus.h: 22: bool OperState;
+[; ;SystemStatus.h: 23: uint16_t ADC0;
+[; ;SystemStatus.h: 24: uint16_t ADC1;
+[; ;SystemStatus.h: 25: }ADC_VALUES;
+[; ;SystemStatus.h: 27: typedef struct
+[; ;SystemStatus.h: 28: {
+[; ;SystemStatus.h: 29: bool Synt;
+[; ;SystemStatus.h: 30: ADC_VALUES AdcValues;
+[; ;SystemStatus.h: 31: double DeviceTemperature;
+[; ;SystemStatus.h: 32: bool InputPowerStatus;
+[; ;SystemStatus.h: 33: double Freq;
+[; ;SystemStatus.h: 34: int8_t RSSI;
+[; ;SystemStatus.h: 35: double TEMP;
+[; ;SystemStatus.h: 36: bool Light;
+[; ;SystemStatus.h: 37: int8_t UnitId;
+[; ;SystemStatus.h: 38: int16_t UnitDc;
+[; ;SystemStatus.h: 39: char* SwVersion;
+[; ;SystemStatus.h: 40: bool UnitType;
+[; ;SystemStatus.h: 41: int8_t CompressionPoint;
+[; ;SystemStatus.h: 42: int32_t PassCounter;
+[; ;SystemStatus.h: 43: }RX_STATISTICS;
+[; ;SystemStatus.h: 45: typedef struct
+[; ;SystemStatus.h: 46: {
+[; ;SystemStatus.h: 47: bool Synt;
+[; ;SystemStatus.h: 48: ADC_VALUES AdcValues;
+[; ;SystemStatus.h: 49: double DeviceTemperature;
+[; ;SystemStatus.h: 50: bool InputPowerStatus;
+[; ;SystemStatus.h: 51: double Freq;
+[; ;SystemStatus.h: 52: int8_t RSSI;
+[; ;SystemStatus.h: 53: double TEMP;
+[; ;SystemStatus.h: 54: bool Light;
+[; ;SystemStatus.h: 55: int8_t UnitId;
+[; ;SystemStatus.h: 56: int16_t UnitDc;
+[; ;SystemStatus.h: 57: char* SwVersion;
+[; ;SystemStatus.h: 58: bool UnitType;
+[; ;SystemStatus.h: 59: int8_t CompressionPoint;
+[; ;SystemStatus.h: 60: int32_t PassCounter;
+[; ;SystemStatus.h: 61: }RX_STATISTICS;
+[; ;SystemStatus.h: 63: typedef struct
+[; ;SystemStatus.h: 64: {
+[; ;SystemStatus.h: 65: bool Synt;
+[; ;SystemStatus.h: 66: ADC_VALUES AdcValues;
+[; ;SystemStatus.h: 67: double DeviceTemperature;
+[; ;SystemStatus.h: 68: bool InputPowerStatus;
+[; ;SystemStatus.h: 69: double Freq;
+[; ;SystemStatus.h: 70: int8_t RSSI;
+[; ;SystemStatus.h: 71: double TEMP;
+[; ;SystemStatus.h: 72: bool Light;
+[; ;SystemStatus.h: 73: int8_t UnitId;
+[; ;SystemStatus.h: 74: int16_t UnitDc;
+[; ;SystemStatus.h: 75: char* SwVersion;
+[; ;SystemStatus.h: 76: bool UnitType;
+[; ;SystemStatus.h: 77: int8_t CompressionPoint;
+[; ;SystemStatus.h: 78: int32_t PassCounter;
+[; ;SystemStatus.h: 80: bool IntMode;
+[; ;SystemStatus.h: 81: }TX_STATISTICS;
+"83 SystemStatus.h
+[v _rxStatistics `VS853 ~T0 @X0 1 e ]
+[; ;SystemStatus.h: 83: volatile RX_STATISTICS rxStatistics;
+"84
+[v _txStatistics `VS855 ~T0 @X0 1 e ]
+[; ;SystemStatus.h: 84: volatile TX_STATISTICS txStatistics;
+[; ;SystemStatus.h: 86: void SetMcuFwVersion(char* data);
+[; ;SystemStatus.h: 87: void SetCpldFwVersion(char* data);
+[; ;SystemStatus.h: 89: void GetMcuFwVersion();
+[; ;SystemStatus.h: 90: void GetCpldFwVersion();
+[; ;SystemStatus.h: 92: void SetMcuRunTime();
+[; ;SystemStatus.h: 93: void GetMcuRunTime();
+[; ;SystemStatus.h: 94: void ClearMcuRunTime();
+[; ;SystemStatus.h: 95: void keepAliveSignalUart(void);
+[; ;SystemStatus.h: 96: void SendUartSystemInitMessage(void);
+[; ;SystemStatus.h: 97: void PrintHelpScreen(void);
+[; ;SystemStatus.h: 98: void CollectRxStatusParams(void);
+[; ;SystemStatus.h: 99: void CollectTxStatusParams(void);
+[; ;SystemStatus.h: 100: void PrintRxStatus(void);
+[; ;SystemStatus.h: 101: void PrintTxStatus(void);
 "12 SystemStatus.c
 [v _mcuRunTimeIn5SecTicks `ul ~T0 @X0 1 s ]
 [i _mcuRunTimeIn5SecTicks
 -> -> -> 0 `i `l `ul
 ]
 [; ;SystemStatus.c: 12: static uint32_t mcuRunTimeIn5SecTicks = 0;
-[; ;SystemStatus.c: 15: typedef union
-[; ;SystemStatus.c: 16: {
-[; ;SystemStatus.c: 17: struct
-[; ;SystemStatus.c: 18: {
-[; ;SystemStatus.c: 19: bool TB;
-[; ;SystemStatus.c: 20: }TX_UNIT;
-[; ;SystemStatus.c: 23: }SYSTEM;
-"25
+"14
 [v _SetMcuFwVersion `(v ~T0 @X0 1 ef1`*uc ]
-"26
+"15
 {
-[; ;SystemStatus.c: 25: void SetMcuFwVersion(char* data)
-[; ;SystemStatus.c: 26: {
+[; ;SystemStatus.c: 14: void SetMcuFwVersion(char* data)
+[; ;SystemStatus.c: 15: {
 [e :U _SetMcuFwVersion ]
-"25
+"14
 [v _data `*uc ~T0 @X0 1 r1 ]
-"26
+"15
 [f ]
-[; ;SystemStatus.c: 28: }
-"28
-[e :UE 854 ]
-}
-"30
-[v _GetMcuFwVersion `(v ~T0 @X0 1 ef ]
-"31
-{
-[; ;SystemStatus.c: 30: void GetMcuFwVersion()
-[; ;SystemStatus.c: 31: {
-[e :U _GetMcuFwVersion ]
-[f ]
-[; ;SystemStatus.c: 33: }
-"33
-[e :UE 855 ]
-}
-"35
-[v _SetCpldFwVersion `(v ~T0 @X0 1 ef1`*uc ]
-"36
-{
-[; ;SystemStatus.c: 35: void SetCpldFwVersion(char* data)
-[; ;SystemStatus.c: 36: {
-[e :U _SetCpldFwVersion ]
-"35
-[v _data `*uc ~T0 @X0 1 r1 ]
-"36
-[f ]
-[; ;SystemStatus.c: 38: }
-"38
+[; ;SystemStatus.c: 17: }
+"17
 [e :UE 856 ]
 }
-"40
-[v _GetCpldFwVersion `(v ~T0 @X0 1 ef ]
-"41
+"19
+[v _GetMcuFwVersion `(v ~T0 @X0 1 ef ]
+"20
 {
-[; ;SystemStatus.c: 40: void GetCpldFwVersion()
-[; ;SystemStatus.c: 41: {
-[e :U _GetCpldFwVersion ]
+[; ;SystemStatus.c: 19: void GetMcuFwVersion()
+[; ;SystemStatus.c: 20: {
+[e :U _GetMcuFwVersion ]
 [f ]
-[; ;SystemStatus.c: 43: }
-"43
+[; ;SystemStatus.c: 22: }
+"22
 [e :UE 857 ]
 }
-"45
-[v _SetMcuRunTime `(v ~T0 @X0 1 ef ]
-"46
+"24
+[v _SetCpldFwVersion `(v ~T0 @X0 1 ef1`*uc ]
+"25
 {
-[; ;SystemStatus.c: 45: void SetMcuRunTime()
-[; ;SystemStatus.c: 46: {
-[e :U _SetMcuRunTime ]
+[; ;SystemStatus.c: 24: void SetCpldFwVersion(char* data)
+[; ;SystemStatus.c: 25: {
+[e :U _SetCpldFwVersion ]
+"24
+[v _data `*uc ~T0 @X0 1 r1 ]
+"25
 [f ]
-[; ;SystemStatus.c: 47: mcuRunTimeIn5SecTicks++;
-"47
-[e ++ _mcuRunTimeIn5SecTicks -> -> -> 1 `i `l `ul ]
-[; ;SystemStatus.c: 48: mcuRunTimeIn5SecTicks %= (17280);
-"48
-[e =% _mcuRunTimeIn5SecTicks -> -> 17280 `us `ul ]
-[; ;SystemStatus.c: 49: }
-"49
+[; ;SystemStatus.c: 27: }
+"27
 [e :UE 858 ]
 }
-"51
-[v _ClearMcuRunTime `(v ~T0 @X0 1 ef ]
-"52
+"29
+[v _GetCpldFwVersion `(v ~T0 @X0 1 ef ]
+"30
 {
-[; ;SystemStatus.c: 51: void ClearMcuRunTime()
-[; ;SystemStatus.c: 52: {
-[e :U _ClearMcuRunTime ]
+[; ;SystemStatus.c: 29: void GetCpldFwVersion()
+[; ;SystemStatus.c: 30: {
+[e :U _GetCpldFwVersion ]
 [f ]
-[; ;SystemStatus.c: 53: mcuRunTimeIn5SecTicks = 0;
-"53
-[e = _mcuRunTimeIn5SecTicks -> -> -> 0 `i `l `ul ]
-[; ;SystemStatus.c: 54: }
-"54
+[; ;SystemStatus.c: 32: }
+"32
 [e :UE 859 ]
 }
-"56
-[v _GetMcuRunTime `(v ~T0 @X0 1 ef ]
-"57
+"34
+[v _SetMcuRunTime `(v ~T0 @X0 1 ef ]
+"35
 {
-[; ;SystemStatus.c: 56: void GetMcuRunTime()
-[; ;SystemStatus.c: 57: {
-[e :U _GetMcuRunTime ]
+[; ;SystemStatus.c: 34: void SetMcuRunTime()
+[; ;SystemStatus.c: 35: {
+[e :U _SetMcuRunTime ]
 [f ]
-[; ;SystemStatus.c: 59: }
-"59
+[; ;SystemStatus.c: 36: mcuRunTimeIn5SecTicks++;
+"36
+[e ++ _mcuRunTimeIn5SecTicks -> -> -> 1 `i `l `ul ]
+[; ;SystemStatus.c: 37: mcuRunTimeIn5SecTicks %= (17280);
+"37
+[e =% _mcuRunTimeIn5SecTicks -> -> 17280 `us `ul ]
+[; ;SystemStatus.c: 38: }
+"38
 [e :UE 860 ]
 }
-"61
-[v _keepAliveSignalUart `(v ~T0 @X0 1 ef ]
-"62
+"40
+[v _ClearMcuRunTime `(v ~T0 @X0 1 ef ]
+"41
 {
-[; ;SystemStatus.c: 61: void keepAliveSignalUart(void)
-[; ;SystemStatus.c: 62: {
-[e :U _keepAliveSignalUart ]
+[; ;SystemStatus.c: 40: void ClearMcuRunTime()
+[; ;SystemStatus.c: 41: {
+[e :U _ClearMcuRunTime ]
 [f ]
-[; ;SystemStatus.c: 64: }
-"64
+[; ;SystemStatus.c: 42: mcuRunTimeIn5SecTicks = 0;
+"42
+[e = _mcuRunTimeIn5SecTicks -> -> -> 0 `i `l `ul ]
+[; ;SystemStatus.c: 43: }
+"43
 [e :UE 861 ]
 }
-"66
-[v _SendUartSystemInitMessage `(v ~T0 @X0 1 ef ]
-"67
+"45
+[v _GetMcuRunTime `(v ~T0 @X0 1 ef ]
+"46
 {
-[; ;SystemStatus.c: 66: void SendUartSystemInitMessage(void)
-[; ;SystemStatus.c: 67: {
-[e :U _SendUartSystemInitMessage ]
+[; ;SystemStatus.c: 45: void GetMcuRunTime()
+[; ;SystemStatus.c: 46: {
+[e :U _GetMcuRunTime ]
 [f ]
-"68
-[v _dest `uc ~T0 @X0 -> 50 `i a ]
-[; ;SystemStatus.c: 68: char dest[50];
-[; ;SystemStatus.c: 70: sprintf(dest, "*************************** \n\r");
-"70
-[e ( _sprintf (1 , &U _dest :s 1C ]
-[; ;SystemStatus.c: 71: UART_Write_Text(dest);
-"71
-[e ( _UART_Write_Text (1 &U _dest ]
-[; ;SystemStatus.c: 73: sprintf(dest, "FAST LINK SYSTEM \n\r");
-"73
-[e ( _sprintf (1 , &U _dest :s 2C ]
-[; ;SystemStatus.c: 74: UART_Write_Text(dest);
-"74
-[e ( _UART_Write_Text (1 &U _dest ]
-[; ;SystemStatus.c: 76: sprintf(dest, "SW VESRION: %s \n\r", "1_002");
-"76
-[e ( _sprintf (1 , (. , &U _dest :s 3C :s 4C ]
-[; ;SystemStatus.c: 77: UART_Write_Text(dest);
-"77
-[e ( _UART_Write_Text (1 &U _dest ]
-[; ;SystemStatus.c: 79: sprintf(dest, "Compile date: %s \n\r", "Mar 26 2018");
-"79
-[e ( _sprintf (1 , (. , &U _dest :s 5C :s 6C ]
-[; ;SystemStatus.c: 80: UART_Write_Text(dest);
-"80
-[e ( _UART_Write_Text (1 &U _dest ]
-[; ;SystemStatus.c: 82: sprintf(dest, "Compile time: %s \n\r", "18:01:44");
-"82
-[e ( _sprintf (1 , (. , &U _dest :s 7C :s 8C ]
-[; ;SystemStatus.c: 83: UART_Write_Text(dest);
-"83
-[e ( _UART_Write_Text (1 &U _dest ]
-[; ;SystemStatus.c: 85: sprintf(dest, "*************************** \n\r");
-"85
-[e ( _sprintf (1 , &U _dest :s 9C ]
-[; ;SystemStatus.c: 86: UART_Write_Text(dest);
-"86
-[e ( _UART_Write_Text (1 &U _dest ]
-[; ;SystemStatus.c: 87: }
-"87
+[; ;SystemStatus.c: 48: }
+"48
 [e :UE 862 ]
 }
-"89
-[v _PrintHelpScreen `(v ~T0 @X0 1 ef ]
-"90
+"50
+[v _keepAliveSignalUart `(v ~T0 @X0 1 ef ]
+"51
 {
-[; ;SystemStatus.c: 89: void PrintHelpScreen(void)
-[; ;SystemStatus.c: 90: {
+[; ;SystemStatus.c: 50: void keepAliveSignalUart(void)
+[; ;SystemStatus.c: 51: {
+[e :U _keepAliveSignalUart ]
+[f ]
+[; ;SystemStatus.c: 53: }
+"53
+[e :UE 863 ]
+}
+"55
+[v _SendUartSystemInitMessage `(v ~T0 @X0 1 ef ]
+"56
+{
+[; ;SystemStatus.c: 55: void SendUartSystemInitMessage(void)
+[; ;SystemStatus.c: 56: {
+[e :U _SendUartSystemInitMessage ]
+[f ]
+"57
+[v _dest `uc ~T0 @X0 -> 50 `i a ]
+[; ;SystemStatus.c: 57: char dest[50];
+[; ;SystemStatus.c: 59: sprintf(dest, "*************************** \n\r");
+"59
+[e ( _sprintf (1 , &U _dest :s 1C ]
+[; ;SystemStatus.c: 60: UART_Write_Text(dest);
+"60
+[e ( _UART_Write_Text (1 &U _dest ]
+[; ;SystemStatus.c: 62: sprintf(dest, "FAST LINK SYSTEM \n\r");
+"62
+[e ( _sprintf (1 , &U _dest :s 2C ]
+[; ;SystemStatus.c: 63: UART_Write_Text(dest);
+"63
+[e ( _UART_Write_Text (1 &U _dest ]
+[; ;SystemStatus.c: 65: sprintf(dest, "SW VESRION: %s \n\r", "1_002");
+"65
+[e ( _sprintf (1 , (. , &U _dest :s 3C :s 4C ]
+[; ;SystemStatus.c: 66: UART_Write_Text(dest);
+"66
+[e ( _UART_Write_Text (1 &U _dest ]
+[; ;SystemStatus.c: 68: sprintf(dest, "Compile date: %s \n\r", "Mar 28 2018");
+"68
+[e ( _sprintf (1 , (. , &U _dest :s 5C :s 6C ]
+[; ;SystemStatus.c: 69: UART_Write_Text(dest);
+"69
+[e ( _UART_Write_Text (1 &U _dest ]
+[; ;SystemStatus.c: 71: sprintf(dest, "Compile time: %s \n\r", "13:04:17");
+"71
+[e ( _sprintf (1 , (. , &U _dest :s 7C :s 8C ]
+[; ;SystemStatus.c: 72: UART_Write_Text(dest);
+"72
+[e ( _UART_Write_Text (1 &U _dest ]
+[; ;SystemStatus.c: 74: sprintf(dest, "*************************** \n\r");
+"74
+[e ( _sprintf (1 , &U _dest :s 9C ]
+[; ;SystemStatus.c: 75: UART_Write_Text(dest);
+"75
+[e ( _UART_Write_Text (1 &U _dest ]
+[; ;SystemStatus.c: 76: }
+"76
+[e :UE 864 ]
+}
+"78
+[v _PrintHelpScreen `(v ~T0 @X0 1 ef ]
+"79
+{
+[; ;SystemStatus.c: 78: void PrintHelpScreen(void)
+[; ;SystemStatus.c: 79: {
 [e :U _PrintHelpScreen ]
 [f ]
-"91
+"80
 [v _dest `uc ~T0 @X0 -> 50 `i a ]
-[; ;SystemStatus.c: 91: char dest[50];
-[; ;SystemStatus.c: 94: sprintf(dest, "<TX system commands>\n\r");
-"94
+[; ;SystemStatus.c: 80: char dest[50];
+[; ;SystemStatus.c: 83: sprintf(dest, "<TX system commands>\n\r");
+"83
 [e ( _sprintf (1 , &U _dest :s 10C ]
+[; ;SystemStatus.c: 84: UART_Write_Text(dest);
+"84
+[e ( _UART_Write_Text (1 &U _dest ]
+[; ;SystemStatus.c: 86: sprintf(dest, "$TI <XXXX><cr>   Init TX system and set frequency (0-9999)[MHz]\r\n");
+"86
+[e ( _sprintf (1 , &U _dest :s 11C ]
+[; ;SystemStatus.c: 87: UART_Write_Text(dest);
+"87
+[e ( _UART_Write_Text (1 &U _dest ]
+[; ;SystemStatus.c: 88: sprintf(dest, "$TF <XXXX><cr>   Set TX system frequency at (0-9999)[MHz].\r\n");
+"88
+[e ( _sprintf (1 , &U _dest :s 12C ]
+[; ;SystemStatus.c: 89: UART_Write_Text(dest);
+"89
+[e ( _UART_Write_Text (1 &U _dest ]
+[; ;SystemStatus.c: 90: sprintf(dest, "$TQ <cr>         Get status from TX system.\r\n");
+"90
+[e ( _sprintf (1 , &U _dest :s 13C ]
+[; ;SystemStatus.c: 91: UART_Write_Text(dest);
+"91
+[e ( _UART_Write_Text (1 &U _dest ]
+[; ;SystemStatus.c: 92: sprintf(dest, "$TB <X><cr>      Turn on[1] / off[0] BIT mode at TX system [Default = 0]\r\n");
+"92
+[e ( _sprintf (1 , &U _dest :s 14C ]
+[; ;SystemStatus.c: 93: UART_Write_Text(dest);
+"93
+[e ( _UART_Write_Text (1 &U _dest ]
+[; ;SystemStatus.c: 94: sprintf(dest, "$TX <X><cr>      Turn on[1] / off[0] transmission at TX system [Default = 0]\r\n");
+"94
+[e ( _sprintf (1 , &U _dest :s 15C ]
 [; ;SystemStatus.c: 95: UART_Write_Text(dest);
 "95
 [e ( _UART_Write_Text (1 &U _dest ]
-[; ;SystemStatus.c: 97: sprintf(dest, "$TI <XXXX><cr>   Init TX system and set frequency (0-9999)[MHz]\r\n");
-"97
-[e ( _sprintf (1 , &U _dest :s 11C ]
-[; ;SystemStatus.c: 98: UART_Write_Text(dest);
+[; ;SystemStatus.c: 98: sprintf(dest, "\n\r<RX system commands>\n\r");
 "98
-[e ( _UART_Write_Text (1 &U _dest ]
-[; ;SystemStatus.c: 99: sprintf(dest, "$TF <XXXX><cr>   Set TX system frequency at (0-9999)[MHz].\r\n");
-"99
-[e ( _sprintf (1 , &U _dest :s 12C ]
-[; ;SystemStatus.c: 100: UART_Write_Text(dest);
-"100
-[e ( _UART_Write_Text (1 &U _dest ]
-[; ;SystemStatus.c: 101: sprintf(dest, "$TQ <cr>         Get status from TX system.\r\n");
-"101
-[e ( _sprintf (1 , &U _dest :s 13C ]
-[; ;SystemStatus.c: 102: UART_Write_Text(dest);
-"102
-[e ( _UART_Write_Text (1 &U _dest ]
-[; ;SystemStatus.c: 103: sprintf(dest, "$TB <X><cr>      Turn on[1] / off[0] BIT mode at TX system [Default = 0]\r\n");
-"103
-[e ( _sprintf (1 , &U _dest :s 14C ]
-[; ;SystemStatus.c: 104: UART_Write_Text(dest);
-"104
-[e ( _UART_Write_Text (1 &U _dest ]
-[; ;SystemStatus.c: 105: sprintf(dest, "$TX <X><cr>      Turn on[1] / off[0] transmission at TX system [Default = 0]\r\n");
-"105
-[e ( _sprintf (1 , &U _dest :s 15C ]
-[; ;SystemStatus.c: 106: UART_Write_Text(dest);
-"106
-[e ( _UART_Write_Text (1 &U _dest ]
-[; ;SystemStatus.c: 109: sprintf(dest, "\n\r<RX system commands>\n\r");
-"109
 [e ( _sprintf (1 , &U _dest :s 16C ]
-[; ;SystemStatus.c: 110: UART_Write_Text(dest);
-"110
+[; ;SystemStatus.c: 99: UART_Write_Text(dest);
+"99
 [e ( _UART_Write_Text (1 &U _dest ]
-[; ;SystemStatus.c: 111: sprintf(dest, "$RI <XXXX><cr>   Init RX system and set frequency at XXXX (0-9999)[MHz]\r\n");
-"111
+[; ;SystemStatus.c: 100: sprintf(dest, "$RI <XXXX><cr>   Init RX system and set frequency at XXXX (0-9999)[MHz]\r\n");
+"100
 [e ( _sprintf (1 , &U _dest :s 17C ]
-[; ;SystemStatus.c: 112: UART_Write_Text(dest);
-"112
+[; ;SystemStatus.c: 101: UART_Write_Text(dest);
+"101
 [e ( _UART_Write_Text (1 &U _dest ]
-[; ;SystemStatus.c: 113: sprintf(dest, "$RQ <cr>         Get status from RX system\r\n");
-"113
+[; ;SystemStatus.c: 102: sprintf(dest, "$RQ <cr>         Get status from RX system\r\n");
+"102
 [e ( _sprintf (1 , &U _dest :s 18C ]
-[; ;SystemStatus.c: 114: UART_Write_Text(dest);
-"114
+[; ;SystemStatus.c: 103: UART_Write_Text(dest);
+"103
 [e ( _UART_Write_Text (1 &U _dest ]
-[; ;SystemStatus.c: 115: sprintf(dest, "$RB <X><cr>      Turn on[1] / off[0] BIT mode at RX system.\r\n");
-"115
+[; ;SystemStatus.c: 104: sprintf(dest, "$RB <X><cr>      Turn on[1] / off[0] BIT mode at RX system.\r\n");
+"104
 [e ( _sprintf (1 , &U _dest :s 19C ]
-[; ;SystemStatus.c: 116: UART_Write_Text(dest);
-"116
+[; ;SystemStatus.c: 105: UART_Write_Text(dest);
+"105
 [e ( _UART_Write_Text (1 &U _dest ]
-[; ;SystemStatus.c: 117: sprintf(dest, "$RX <X><cr>      Turn on[1] / off[0] receive at RX system.\r\n");
-"117
+[; ;SystemStatus.c: 106: sprintf(dest, "$RX <X><cr>      Turn on[1] / off[0] receive at RX system.\r\n");
+"106
 [e ( _sprintf (1 , &U _dest :s 20C ]
-[; ;SystemStatus.c: 118: UART_Write_Text(dest);
-"118
+[; ;SystemStatus.c: 107: UART_Write_Text(dest);
+"107
 [e ( _UART_Write_Text (1 &U _dest ]
-[; ;SystemStatus.c: 119: sprintf(dest, "$RCR <X><cr>     Set Compression range at RX system. High [1] Low [0] [Default = 0]\r\n");
-"119
+[; ;SystemStatus.c: 108: sprintf(dest, "$RCR <X><cr>     Set Compression range at RX system. High [1] Low [0] [Default = 0]\r\n");
+"108
 [e ( _sprintf (1 , &U _dest :s 21C ]
-[; ;SystemStatus.c: 120: UART_Write_Text(dest);
-"120
+[; ;SystemStatus.c: 109: UART_Write_Text(dest);
+"109
 [e ( _UART_Write_Text (1 &U _dest ]
-[; ;SystemStatus.c: 121: sprintf(dest, "$RCP <X><cr>     Set Compression operation mode at RX system: Automatic[1] Manual[0] [Default = 0]\r\n");
-"121
+[; ;SystemStatus.c: 110: sprintf(dest, "$RCP <X><cr>     Set Compression operation mode at RX system: Automatic[1] Manual[0] [Default = 0]\r\n");
+"110
 [e ( _sprintf (1 , &U _dest :s 22C ]
-[; ;SystemStatus.c: 122: UART_Write_Text(dest);
-"122
+[; ;SystemStatus.c: 111: UART_Write_Text(dest);
+"111
 [e ( _UART_Write_Text (1 &U _dest ]
-[; ;SystemStatus.c: 125: sprintf(dest, "\n\r<Common system commands>\n\r");
-"125
+[; ;SystemStatus.c: 114: sprintf(dest, "\n\r<Common system commands>\n\r");
+"114
 [e ( _sprintf (1 , &U _dest :s 23C ]
-[; ;SystemStatus.c: 126: UART_Write_Text(dest);
-"126
+[; ;SystemStatus.c: 115: UART_Write_Text(dest);
+"115
 [e ( _UART_Write_Text (1 &U _dest ]
-[; ;SystemStatus.c: 127: sprintf(dest, "$SH <cr>         Print system help message.\r\n");
-"127
+[; ;SystemStatus.c: 116: sprintf(dest, "$SH <cr>         Print system help message.\r\n");
+"116
 [e ( _sprintf (1 , &U _dest :s 24C ]
-[; ;SystemStatus.c: 128: UART_Write_Text(dest);
-"128
+[; ;SystemStatus.c: 117: UART_Write_Text(dest);
+"117
 [e ( _UART_Write_Text (1 &U _dest ]
-[; ;SystemStatus.c: 129: sprintf(dest, "$SBT <XX><cr>    Set UART refresh rate (1-20)[Hz].\r\n");
-"129
+[; ;SystemStatus.c: 118: sprintf(dest, "$SBT <XX><cr>    Set UART refresh rate (1-20)[Hz].\r\n");
+"118
 [e ( _sprintf (1 , &U _dest :s 25C ]
-[; ;SystemStatus.c: 130: UART_Write_Text(dest);
-"130
+[; ;SystemStatus.c: 119: UART_Write_Text(dest);
+"119
 [e ( _UART_Write_Text (1 &U _dest ]
-[; ;SystemStatus.c: 131: sprintf(dest, "$SBU <X><cr>     Set UART automatic operation: Automatic[1] Manual[0] [Default = 0]\r\n");
-"131
+[; ;SystemStatus.c: 120: sprintf(dest, "$SBU <X><cr>     Set UART automatic operation: Automatic[1] Manual[0] [Default = 0]\r\n");
+"120
 [e ( _sprintf (1 , &U _dest :s 26C ]
-[; ;SystemStatus.c: 132: UART_Write_Text(dest);
-"132
+[; ;SystemStatus.c: 121: UART_Write_Text(dest);
+"121
 [e ( _UART_Write_Text (1 &U _dest ]
-[; ;SystemStatus.c: 133: sprintf(dest, "$SQ <X><cr>      Get system status.\r\n");
-"133
+[; ;SystemStatus.c: 122: sprintf(dest, "$SQ <X><cr>      Get system status.\r\n");
+"122
 [e ( _sprintf (1 , &U _dest :s 27C ]
-[; ;SystemStatus.c: 134: UART_Write_Text(dest);
-"134
+[; ;SystemStatus.c: 123: UART_Write_Text(dest);
+"123
 [e ( _UART_Write_Text (1 &U _dest ]
-[; ;SystemStatus.c: 135: sprintf(dest, "$SL <cr>         Test system LEDs.\r\n");
-"135
+[; ;SystemStatus.c: 124: sprintf(dest, "$SL <cr>         Test system LEDs.\r\n");
+"124
 [e ( _sprintf (1 , &U _dest :s 28C ]
-[; ;SystemStatus.c: 136: UART_Write_Text(dest);
-"136
+[; ;SystemStatus.c: 125: UART_Write_Text(dest);
+"125
 [e ( _UART_Write_Text (1 &U _dest ]
-[; ;SystemStatus.c: 137: sprintf(dest, "$TD <DAC NUM><DAC VALUE><cr>         Set TX DAC <0-3> <0-Vref[4 dig]> \r\n");
-"137
+[; ;SystemStatus.c: 126: sprintf(dest, "$TD <DAC NUM><DAC VALUE><cr>         Set TX DAC <0-3> <0-Vref[4 dig]> \r\n");
+"126
 [e ( _sprintf (1 , &U _dest :s 29C ]
-[; ;SystemStatus.c: 138: UART_Write_Text(dest);
-"138
+[; ;SystemStatus.c: 127: UART_Write_Text(dest);
+"127
 [e ( _UART_Write_Text (1 &U _dest ]
-[; ;SystemStatus.c: 147: }
-"147
-[e :UE 863 ]
+[; ;SystemStatus.c: 136: }
+"136
+[e :UE 865 ]
 }
-"149
+"138
 [v _PrintSystemStatus `(v ~T0 @X0 1 ef ]
-"150
+"139
 {
-[; ;SystemStatus.c: 149: void PrintSystemStatus()
-[; ;SystemStatus.c: 150: {
+[; ;SystemStatus.c: 138: void PrintSystemStatus()
+[; ;SystemStatus.c: 139: {
 [e :U _PrintSystemStatus ]
 [f ]
-[; ;SystemStatus.c: 152: }
-"152
-[e :UE 864 ]
+"140
+[v _dest `uc ~T0 @X0 -> 50 `i a ]
+[; ;SystemStatus.c: 140: char dest[50];
+[; ;SystemStatus.c: 141: sprintf(dest, "%d\t",PORTDbits.RD6);
+"141
+[e ( _sprintf (1 , (. , &U _dest :s 30C -> . . _PORTDbits 0 6 `i ]
+[; ;SystemStatus.c: 142: }
+"142
+[e :UE 866 ]
 }
-[p f _sprintf 8650752 ]
-[a 6C 77 97 114 32 50 54 32 50 48 49 56 0 ]
-[a 8C 49 56 58 48 49 58 52 52 0 ]
+"144
+[v _CollectRxStatusParams `(v ~T0 @X0 1 ef ]
+"145
+{
+[; ;SystemStatus.c: 144: void CollectRxStatusParams(void)
+[; ;SystemStatus.c: 145: {
+[e :U _CollectRxStatusParams ]
+[f ]
+[; ;SystemStatus.c: 146: rxStatistics.Synt = rxFreq;
+"146
+[e = . _rxStatistics 0 -> _rxFreq `uc ]
+[; ;SystemStatus.c: 147: rxStatistics.DeviceTemperature = lastAdcTemp;
+"147
+[e = . _rxStatistics 2 -> _lastAdcTemp `d ]
+[; ;SystemStatus.c: 148: rxStatistics.InputPowerStatus = PORTDbits.RD6;
+"148
+[e = . _rxStatistics 3 . . _PORTDbits 0 6 ]
+[; ;SystemStatus.c: 149: rxStatistics.Freq = rxFreq;
+"149
+[e = . _rxStatistics 4 -> _rxFreq `d ]
+[; ;SystemStatus.c: 150: rxStatistics.RSSI = lastAdcFfwrRSSI;
+"150
+[e = . _rxStatistics 5 -> _lastAdcFfwrRSSI `c ]
+[; ;SystemStatus.c: 151: rxStatistics.Light = PORTBbits.RB3;
+"151
+[e = . _rxStatistics 7 . . _PORTBbits 0 3 ]
+[; ;SystemStatus.c: 152: rxStatistics.UnitId = 123;
+"152
+[e = . _rxStatistics 8 -> -> 123 `i `c ]
+[; ;SystemStatus.c: 153: rxStatistics.UnitDc = 1234;
+"153
+[e = . _rxStatistics 9 -> 1234 `i ]
+[; ;SystemStatus.c: 154: rxStatistics.SwVersion = "1_002";
+[v F7725 `*uc ~T0 @X0 1 t ]
+"154
+[e = . _rxStatistics 10 -> :s 31C `V*uc ]
+[; ;SystemStatus.c: 155: rxStatistics.UnitType = 0;
+"155
+[e = . _rxStatistics 11 -> -> 0 `i `uc ]
+[; ;SystemStatus.c: 158: }
+"158
+[e :UE 867 ]
+}
+"160
+[v _CollectTxStatusParams `(v ~T0 @X0 1 ef ]
+"161
+{
+[; ;SystemStatus.c: 160: void CollectTxStatusParams(void)
+[; ;SystemStatus.c: 161: {
+[e :U _CollectTxStatusParams ]
+[f ]
+[; ;SystemStatus.c: 162: txStatistics.Synt = txFreq;
+"162
+[e = . _txStatistics 0 -> _txFreq `uc ]
+[; ;SystemStatus.c: 163: txStatistics.DeviceTemperature = lastAdcTemp;
+"163
+[e = . _txStatistics 2 -> _lastAdcTemp `d ]
+[; ;SystemStatus.c: 164: txStatistics.InputPowerStatus = PORTDbits.RD6;
+"164
+[e = . _txStatistics 3 . . _PORTDbits 0 6 ]
+[; ;SystemStatus.c: 165: txStatistics.Freq = txFreq;
+"165
+[e = . _txStatistics 4 -> _txFreq `d ]
+[; ;SystemStatus.c: 166: txStatistics.RSSI = lastAdcFfwrRSSI;
+"166
+[e = . _txStatistics 5 -> _lastAdcFfwrRSSI `c ]
+[; ;SystemStatus.c: 167: txStatistics.Light = PORTBbits.RB3;
+"167
+[e = . _txStatistics 7 . . _PORTBbits 0 3 ]
+[; ;SystemStatus.c: 168: txStatistics.UnitId = 123;
+"168
+[e = . _txStatistics 8 -> -> 123 `i `c ]
+[; ;SystemStatus.c: 169: txStatistics.UnitDc = 1234;
+"169
+[e = . _txStatistics 9 -> 1234 `i ]
+[; ;SystemStatus.c: 170: txStatistics.SwVersion = "1_002";
+[v F7727 `*uc ~T0 @X0 1 t ]
+"170
+[e = . _txStatistics 10 -> :s 32C `V*uc ]
+[; ;SystemStatus.c: 171: txStatistics.UnitType = 1;
+"171
+[e = . _txStatistics 11 -> -> 1 `i `uc ]
+[; ;SystemStatus.c: 173: txStatistics.AdcValues.ADC0 = 0x7;
+"173
+[e = . . _txStatistics 1 1 -> -> 7 `i `ui ]
+[; ;SystemStatus.c: 174: }
+"174
+[e :UE 868 ]
+}
+"176
+[v _PrintRxStatus `(v ~T0 @X0 1 ef ]
+"177
+{
+[; ;SystemStatus.c: 176: void PrintRxStatus(void)
+[; ;SystemStatus.c: 177: {
+[e :U _PrintRxStatus ]
+[f ]
+"178
+[v _dest `uc ~T0 @X0 -> 80 `i a ]
+[; ;SystemStatus.c: 178: char dest[80];
+[; ;SystemStatus.c: 179: sprintf(dest, "*******************\n\r");
+"179
+[e ( _sprintf (1 , &U _dest :s 33C ]
+[; ;SystemStatus.c: 180: UART_Write_Text(dest);
+"180
+[e ( _UART_Write_Text (1 &U _dest ]
+[; ;SystemStatus.c: 181: sprintf(dest, "RX SYNTH (PLL) Lock indication 0: not locked 1: locked%d\n\r",rxStatistics.Synt);
+"181
+[e ( _sprintf (1 , (. , &U _dest :s 34C -> . _rxStatistics 0 `i ]
+[; ;SystemStatus.c: 182: UART_Write_Text(dest);
+"182
+[e ( _UART_Write_Text (1 &U _dest ]
+[; ;SystemStatus.c: 183: sprintf(dest, "Device Temperature %f\n\r",rxStatistics.DeviceTemperature);
+"183
+[e ( _sprintf (1 , (. , &U _dest :s 35C . _rxStatistics 2 ]
+[; ;SystemStatus.c: 184: UART_Write_Text(dest);
+"184
+[e ( _UART_Write_Text (1 &U _dest ]
+[; ;SystemStatus.c: 185: sprintf(dest, "Input power status 0: OFF 1: ON%d\n\r",rxStatistics.InputPowerStatus);
+"185
+[e ( _sprintf (1 , (. , &U _dest :s 36C -> . _rxStatistics 3 `i ]
+[; ;SystemStatus.c: 186: UART_Write_Text(dest);
+"186
+[e ( _UART_Write_Text (1 &U _dest ]
+[; ;SystemStatus.c: 187: sprintf(dest, "RX Frequency in MHz%f\n\r",rxStatistics.Freq);
+"187
+[e ( _sprintf (1 , (. , &U _dest :s 37C . _rxStatistics 4 ]
+[; ;SystemStatus.c: 188: UART_Write_Text(dest);
+"188
+[e ( _UART_Write_Text (1 &U _dest ]
+[; ;SystemStatus.c: 189: sprintf(dest, "RSSI %d\n\r",rxStatistics.RSSI);
+"189
+[e ( _sprintf (1 , (. , &U _dest :s 38C -> . _rxStatistics 5 `i ]
+[; ;SystemStatus.c: 190: UART_Write_Text(dest);
+"190
+[e ( _UART_Write_Text (1 &U _dest ]
+[; ;SystemStatus.c: 191: sprintf(dest, "Light 0: OFF 1: ON%d\n\r",rxStatistics.Light);
+"191
+[e ( _sprintf (1 , (. , &U _dest :s 39C -> . _rxStatistics 7 `i ]
+[; ;SystemStatus.c: 192: UART_Write_Text(dest);
+"192
+[e ( _UART_Write_Text (1 &U _dest ]
+[; ;SystemStatus.c: 193: sprintf(dest, "UNIT ID %d\n\r",rxStatistics.UnitId);
+"193
+[e ( _sprintf (1 , (. , &U _dest :s 40C -> . _rxStatistics 8 `i ]
+[; ;SystemStatus.c: 194: UART_Write_Text(dest);
+"194
+[e ( _UART_Write_Text (1 &U _dest ]
+[; ;SystemStatus.c: 195: sprintf(dest, "UNIT DC %d\n\r",rxStatistics.UnitDc);
+"195
+[e ( _sprintf (1 , (. , &U _dest :s 41C . _rxStatistics 9 ]
+[; ;SystemStatus.c: 196: UART_Write_Text(dest);
+"196
+[e ( _UART_Write_Text (1 &U _dest ]
+[; ;SystemStatus.c: 197: sprintf(dest, "SOFTWARE VERSION %s\n\r",rxStatistics.SwVersion);
+"197
+[e ( _sprintf (1 , (. , &U _dest :s 42C . _rxStatistics 10 ]
+[; ;SystemStatus.c: 198: UART_Write_Text(dest);
+"198
+[e ( _UART_Write_Text (1 &U _dest ]
+[; ;SystemStatus.c: 199: sprintf(dest, "UNIT TYPE %d\n\r",rxStatistics.UnitType);
+"199
+[e ( _sprintf (1 , (. , &U _dest :s 43C -> . _rxStatistics 11 `i ]
+[; ;SystemStatus.c: 200: UART_Write_Text(dest);
+"200
+[e ( _UART_Write_Text (1 &U _dest ]
+[; ;SystemStatus.c: 201: sprintf(dest, "*******************\n\r");
+"201
+[e ( _sprintf (1 , &U _dest :s 44C ]
+[; ;SystemStatus.c: 202: UART_Write_Text(dest);
+"202
+[e ( _UART_Write_Text (1 &U _dest ]
+[; ;SystemStatus.c: 203: }
+"203
+[e :UE 869 ]
+}
+"205
+[v _PrintTxStatus `(v ~T0 @X0 1 ef ]
+"206
+{
+[; ;SystemStatus.c: 205: void PrintTxStatus(void)
+[; ;SystemStatus.c: 206: {
+[e :U _PrintTxStatus ]
+[f ]
+"207
+[v _dest `uc ~T0 @X0 -> 80 `i a ]
+[; ;SystemStatus.c: 207: char dest[80];
+[; ;SystemStatus.c: 208: sprintf(dest, "*******************\n\r");
+"208
+[e ( _sprintf (1 , &U _dest :s 45C ]
+[; ;SystemStatus.c: 209: UART_Write_Text(dest);
+"209
+[e ( _UART_Write_Text (1 &U _dest ]
+[; ;SystemStatus.c: 210: sprintf(dest, "TX SYNTH (PLL) Lock indication %d\n\r",txStatistics.Synt);
+"210
+[e ( _sprintf (1 , (. , &U _dest :s 46C -> . _txStatistics 0 `i ]
+[; ;SystemStatus.c: 211: UART_Write_Text(dest);
+"211
+[e ( _UART_Write_Text (1 &U _dest ]
+[; ;SystemStatus.c: 212: sprintf(dest, "Device Temperature %f\n\r",txStatistics.DeviceTemperature);
+"212
+[e ( _sprintf (1 , (. , &U _dest :s 47C . _txStatistics 2 ]
+[; ;SystemStatus.c: 213: UART_Write_Text(dest);
+"213
+[e ( _UART_Write_Text (1 &U _dest ]
+[; ;SystemStatus.c: 214: sprintf(dest, "Input power status 0: OFF 1: ON%d\n\r",txStatistics.InputPowerStatus);
+"214
+[e ( _sprintf (1 , (. , &U _dest :s 48C -> . _txStatistics 3 `i ]
+[; ;SystemStatus.c: 215: UART_Write_Text(dest);
+"215
+[e ( _UART_Write_Text (1 &U _dest ]
+[; ;SystemStatus.c: 216: sprintf(dest, "TX Frequency in MHz%f\n\r",txStatistics.Freq);
+"216
+[e ( _sprintf (1 , (. , &U _dest :s 49C . _txStatistics 4 ]
+[; ;SystemStatus.c: 217: UART_Write_Text(dest);
+"217
+[e ( _UART_Write_Text (1 &U _dest ]
+[; ;SystemStatus.c: 218: sprintf(dest, "RSSI %d\n\r",txStatistics.RSSI);
+"218
+[e ( _sprintf (1 , (. , &U _dest :s 50C -> . _txStatistics 5 `i ]
+[; ;SystemStatus.c: 219: UART_Write_Text(dest);
+"219
+[e ( _UART_Write_Text (1 &U _dest ]
+[; ;SystemStatus.c: 220: sprintf(dest, "Light 0: OFF 1: ON%d\n\r",txStatistics.Light);
+"220
+[e ( _sprintf (1 , (. , &U _dest :s 51C -> . _txStatistics 7 `i ]
+[; ;SystemStatus.c: 221: UART_Write_Text(dest);
+"221
+[e ( _UART_Write_Text (1 &U _dest ]
+[; ;SystemStatus.c: 222: sprintf(dest, "UNIT ID %d\n\r",txStatistics.UnitId);
+"222
+[e ( _sprintf (1 , (. , &U _dest :s 52C -> . _txStatistics 8 `i ]
+[; ;SystemStatus.c: 223: UART_Write_Text(dest);
+"223
+[e ( _UART_Write_Text (1 &U _dest ]
+[; ;SystemStatus.c: 224: sprintf(dest, "UNIT DC %d\n\r",txStatistics.UnitDc);
+"224
+[e ( _sprintf (1 , (. , &U _dest :s 53C . _txStatistics 9 ]
+[; ;SystemStatus.c: 225: UART_Write_Text(dest);
+"225
+[e ( _UART_Write_Text (1 &U _dest ]
+[; ;SystemStatus.c: 226: sprintf(dest, "SOFTWARE VERSION %s\n\r",txStatistics.SwVersion);
+"226
+[e ( _sprintf (1 , (. , &U _dest :s 54C . _txStatistics 10 ]
+[; ;SystemStatus.c: 227: UART_Write_Text(dest);
+"227
+[e ( _UART_Write_Text (1 &U _dest ]
+[; ;SystemStatus.c: 228: sprintf(dest, "UNIT TYPE %d\n\r",txStatistics.UnitType);
+"228
+[e ( _sprintf (1 , (. , &U _dest :s 55C -> . _txStatistics 11 `i ]
+[; ;SystemStatus.c: 229: UART_Write_Text(dest);
+"229
+[e ( _UART_Write_Text (1 &U _dest ]
+[; ;SystemStatus.c: 230: sprintf(dest, "*******************\n\r");
+"230
+[e ( _sprintf (1 , &U _dest :s 56C ]
+[; ;SystemStatus.c: 231: UART_Write_Text(dest);
+"231
+[e ( _UART_Write_Text (1 &U _dest ]
+[; ;SystemStatus.c: 232: }
+"232
+[e :UE 870 ]
+}
+[p f _sprintf 8659072 ]
+[a 6C 77 97 114 32 50 56 32 50 48 49 56 0 ]
+[a 8C 49 51 58 48 52 58 49 55 0 ]
 [a 4C 49 95 48 48 50 0 ]
+[a 31C 49 95 48 48 50 0 ]
+[a 32C 49 95 48 48 50 0 ]
+[a 42C 83 79 70 84 87 65 82 69 32 86 69 82 83 73 79 78 32 37 115 10 13 0 ]
+[a 54C 83 79 70 84 87 65 82 69 32 86 69 82 83 73 79 78 32 37 115 10 13 0 ]
+[a 49C 84 88 32 70 114 101 113 117 101 110 99 121 32 105 110 32 77 72 122 37 102 10 13 0 ]
+[a 37C 82 88 32 70 114 101 113 117 101 110 99 121 32 105 110 32 77 72 122 37 102 10 13 0 ]
+[a 35C 68 101 118 105 99 101 32 84 101 109 112 101 114 97 116 117 114 101 32 37 102 10 13 0 ]
+[a 47C 68 101 118 105 99 101 32 84 101 109 112 101 114 97 116 117 114 101 32 37 102 10 13 0 ]
+[a 34C 82 88 32 83 89 78 84 72 32 40 80 76 76 41 32 76 111 99 107 32 105 110 100 105 99 97 116 105 111 110 32 48 58 32 110 111 116 32 108 111 99 107 101 100 32 49 58 32 108 111 99 107 101 100 37 100 10 13 0 ]
+[a 39C 76 105 103 104 116 32 48 58 32 79 70 70 32 49 58 32 79 78 37 100 10 13 0 ]
+[a 51C 76 105 103 104 116 32 48 58 32 79 70 70 32 49 58 32 79 78 37 100 10 13 0 ]
+[a 36C 73 110 112 117 116 32 112 111 119 101 114 32 115 116 97 116 117 115 32 48 58 32 79 70 70 32 49 58 32 79 78 37 100 10 13 0 ]
+[a 48C 73 110 112 117 116 32 112 111 119 101 114 32 115 116 97 116 117 115 32 48 58 32 79 70 70 32 49 58 32 79 78 37 100 10 13 0 ]
+[a 46C 84 88 32 83 89 78 84 72 32 40 80 76 76 41 32 76 111 99 107 32 105 110 100 105 99 97 116 105 111 110 32 37 100 10 13 0 ]
+[a 38C 82 83 83 73 32 37 100 10 13 0 ]
+[a 50C 82 83 83 73 32 37 100 10 13 0 ]
+[a 43C 85 78 73 84 32 84 89 80 69 32 37 100 10 13 0 ]
+[a 55C 85 78 73 84 32 84 89 80 69 32 37 100 10 13 0 ]
+[a 40C 85 78 73 84 32 73 68 32 37 100 10 13 0 ]
+[a 52C 85 78 73 84 32 73 68 32 37 100 10 13 0 ]
+[a 41C 85 78 73 84 32 68 67 32 37 100 10 13 0 ]
+[a 53C 85 78 73 84 32 68 67 32 37 100 10 13 0 ]
 [a 23C 10 13 60 67 111 109 109 111 110 32 115 121 115 116 101 109 32 99 111 109 109 97 110 100 115 62 10 13 0 ]
 [a 10C 60 84 88 32 115 121 115 116 101 109 32 99 111 109 109 97 110 100 115 62 10 13 0 ]
 [a 16C 10 13 60 82 88 32 115 121 115 116 101 109 32 99 111 109 109 97 110 100 115 62 10 13 0 ]
+[a 33C 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 10 13 0 ]
+[a 44C 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 10 13 0 ]
+[a 45C 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 10 13 0 ]
+[a 56C 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 10 13 0 ]
 [a 5C 67 111 109 112 105 108 101 32 100 97 116 101 58 32 37 115 32 10 13 0 ]
 [a 7C 67 111 109 112 105 108 101 32 116 105 109 101 58 32 37 115 32 10 13 0 ]
 [a 3C 83 87 32 86 69 83 82 73 79 78 58 32 37 115 32 10 13 0 ]
@@ -7480,3 +7944,4 @@ Version 3.2 HI-TECH Software Intermediate Code
 [a 25C 36 83 66 84 32 60 88 88 62 60 99 114 62 32 32 32 32 83 101 116 32 85 65 82 84 32 114 101 102 114 101 115 104 32 114 97 116 101 32 40 49 45 50 48 41 91 72 122 93 46 13 10 0 ]
 [a 12C 36 84 70 32 60 88 88 88 88 62 60 99 114 62 32 32 32 83 101 116 32 84 88 32 115 121 115 116 101 109 32 102 114 101 113 117 101 110 99 121 32 97 116 32 40 48 45 57 57 57 57 41 91 77 72 122 93 46 13 10 0 ]
 [a 29C 36 84 68 32 60 68 65 67 32 78 85 77 62 60 68 65 67 32 86 65 76 85 69 62 60 99 114 62 32 32 32 32 32 32 32 32 32 83 101 116 32 84 88 32 68 65 67 32 60 48 45 51 62 32 60 48 45 86 114 101 102 91 52 32 100 105 103 93 62 32 13 10 0 ]
+[a 30C 37 100 9 0 ]

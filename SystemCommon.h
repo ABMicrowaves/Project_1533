@@ -48,6 +48,7 @@ typedef enum
 #define END_UART_STREAM_CHAR        0x40
 #define NUM_OF_BITS_SYNTH_REG       32
 
+
 unsigned char crc8(char* dataArray, int dataSize);
 uint8_t make8(uint32_t data, uint8_t dataLocation);
 void ZeroArray(char* array, int size);

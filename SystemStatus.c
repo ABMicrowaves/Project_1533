@@ -11,17 +11,6 @@ Author: RoeeZ (Comm-IT).                                                    ****
 
 static uint32_t mcuRunTimeIn5SecTicks = 0;   // Max Time to store = 24 hours
 
-
-typedef union 
-{
-    struct 
-    {
-        bool TB;
-    }TX_UNIT;
-    
-    
-}SYSTEM;
-
 void SetMcuFwVersion(char* data)
 {
 
@@ -148,5 +137,96 @@ void PrintHelpScreen(void)
 
 void PrintSystemStatus()
 {
+    char dest[50];
+    sprintf(dest, "%d\t",POWER_EN_GetValue());       
+}
+
+void CollectRxStatusParams(void)
+{
+    rxStatistics.Synt = rxFreq;
+    rxStatistics.DeviceTemperature = lastAdcTemp;
+    rxStatistics.InputPowerStatus = POWER_EN_GetValue();   
+    rxStatistics.Freq = rxFreq; 
+    rxStatistics.RSSI = lastAdcFfwrRSSI;
+    rxStatistics.Light = LED_LIGHT_EN_GetValue();
+    rxStatistics.UnitId = 123;
+    rxStatistics.UnitDc = 1234;
+    rxStatistics.SwVersion = SYS_VERSION;
+    rxStatistics.UnitType = false;
     
+    //rxStatistics.AdcValues.ADC0 = 0x7;
+}
+
+void CollectTxStatusParams(void)
+{
+    txStatistics.Synt = txFreq;
+    txStatistics.DeviceTemperature = lastAdcTemp;
+    txStatistics.InputPowerStatus = POWER_EN_GetValue();   
+    txStatistics.Freq = txFreq; 
+    txStatistics.RSSI = lastAdcFfwrRSSI;
+    txStatistics.Light = LED_LIGHT_EN_GetValue();
+    txStatistics.UnitId = 123;
+    txStatistics.UnitDc = 1234;
+    txStatistics.SwVersion = SYS_VERSION;
+    txStatistics.UnitType = true;
+    
+    txStatistics.AdcValues.ADC0 = 0x7;
+}
+
+void PrintRxStatus(void)
+{
+    char dest[80];
+    sprintf(dest, "*******************\n\r"); 
+    UART_Write_Text(dest);
+    sprintf(dest, "RX SYNTH (PLL) Lock indication 0: not locked 1: locked%d\n\r",rxStatistics.Synt); 
+    UART_Write_Text(dest);
+    sprintf(dest, "Device Temperature %f\n\r",rxStatistics.DeviceTemperature); 
+    UART_Write_Text(dest);
+    sprintf(dest, "Input power status 0: OFF 1: ON%d\n\r",rxStatistics.InputPowerStatus); 
+    UART_Write_Text(dest);
+    sprintf(dest, "RX Frequency in MHz%f\n\r",rxStatistics.Freq); 
+    UART_Write_Text(dest);
+    sprintf(dest, "RSSI %d\n\r",rxStatistics.RSSI); 
+    UART_Write_Text(dest);
+    sprintf(dest, "Light 0: OFF 1: ON%d\n\r",rxStatistics.Light); 
+    UART_Write_Text(dest);
+    sprintf(dest, "UNIT ID %d\n\r",rxStatistics.UnitId); 
+    UART_Write_Text(dest);
+    sprintf(dest, "UNIT DC %d\n\r",rxStatistics.UnitDc); 
+    UART_Write_Text(dest);
+    sprintf(dest, "SOFTWARE VERSION %s\n\r",rxStatistics.SwVersion); 
+    UART_Write_Text(dest);
+    sprintf(dest, "UNIT TYPE %d\n\r",rxStatistics.UnitType); 
+    UART_Write_Text(dest);
+    sprintf(dest, "*******************\n\r"); 
+    UART_Write_Text(dest);
+}
+
+void PrintTxStatus(void)
+{
+    char dest[80];
+    sprintf(dest, "*******************\n\r"); 
+    UART_Write_Text(dest);
+    sprintf(dest, "TX SYNTH (PLL) Lock indication %d\n\r",txStatistics.Synt); 
+    UART_Write_Text(dest);
+    sprintf(dest, "Device Temperature %f\n\r",txStatistics.DeviceTemperature); 
+    UART_Write_Text(dest);
+    sprintf(dest, "Input power status 0: OFF 1: ON%d\n\r",txStatistics.InputPowerStatus); 
+    UART_Write_Text(dest);
+    sprintf(dest, "TX Frequency in MHz%f\n\r",txStatistics.Freq); 
+    UART_Write_Text(dest);
+    sprintf(dest, "RSSI %d\n\r",txStatistics.RSSI); 
+    UART_Write_Text(dest);
+    sprintf(dest, "Light 0: OFF 1: ON%d\n\r",txStatistics.Light); 
+    UART_Write_Text(dest);
+    sprintf(dest, "UNIT ID %d\n\r",txStatistics.UnitId); 
+    UART_Write_Text(dest);
+    sprintf(dest, "UNIT DC %d\n\r",txStatistics.UnitDc); 
+    UART_Write_Text(dest);
+    sprintf(dest, "SOFTWARE VERSION %s\n\r",txStatistics.SwVersion); 
+    UART_Write_Text(dest);
+    sprintf(dest, "UNIT TYPE %d\n\r",txStatistics.UnitType); 
+    UART_Write_Text(dest);
+    sprintf(dest, "*******************\n\r"); 
+    UART_Write_Text(dest);
 }

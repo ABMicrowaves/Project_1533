@@ -8696,10 +8696,10 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 417 "mcc_generated_files/pin_manager.h"
+# 431 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
 
-# 429
+# 443
 void PIN_MANAGER_IOC(void);
 
 # 12 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdbool.h"
@@ -8735,45 +8735,6 @@ uint8_t DATAEE_ReadByte(uint8_t bAdd);
 # 293
 void MEMORY_ISR(void);
 bool FLASH_IsWriteDone();
-
-# 75 "mcc_generated_files/tmr0.h"
-volatile bool TimerOneSecFlag = 0;
-volatile bool TimerSamplingFlag = 0;
-volatile bool TimerKeepAliveFlag = 0;
-volatile bool TimertenSecFlag = 0;
-
-# 115
-void TMR0_Initialize(void);
-
-# 144
-void TMR0_StartTimer(void);
-
-# 176
-void TMR0_StopTimer(void);
-
-# 212
-uint16_t TMR0_ReadTimer(void);
-
-# 251
-void TMR0_WriteTimer(uint16_t timerVal);
-
-# 287
-void TMR0_Reload(void);
-
-# 305
-void TMR0_ISR(void);
-
-# 323
-void TMR0_CallBack(void);
-
-# 341
-void TMR0_SetInterruptHandler(void (* InterruptHandler)(void));
-
-# 359
-extern void (*TMR0_InterruptHandler)(void);
-
-# 377
-void TMR0_DefaultInterruptHandler(void);
 
 # 71 "mcc_generated_files/adc.h"
 typedef uint16_t adc_result_t;
@@ -8814,6 +8775,45 @@ adc_result_t ADC_GetConversionResult(void);
 
 # 297
 adc_result_t ADC_GetConversion(adc_channel_t channel);
+
+# 75 "mcc_generated_files/tmr0.h"
+volatile bool TimerOneSecFlag = 0;
+volatile bool TimerSamplingFlag = 0;
+volatile bool TimerKeepAliveFlag = 0;
+volatile bool TimertenSecFlag = 0;
+
+# 115
+void TMR0_Initialize(void);
+
+# 144
+void TMR0_StartTimer(void);
+
+# 176
+void TMR0_StopTimer(void);
+
+# 212
+uint16_t TMR0_ReadTimer(void);
+
+# 251
+void TMR0_WriteTimer(uint16_t timerVal);
+
+# 287
+void TMR0_Reload(void);
+
+# 305
+void TMR0_ISR(void);
+
+# 323
+void TMR0_CallBack(void);
+
+# 341
+void TMR0_SetInterruptHandler(void (* InterruptHandler)(void));
+
+# 359
+extern void (*TMR0_InterruptHandler)(void);
+
+# 377
+void TMR0_DefaultInterruptHandler(void);
 
 # 75 "mcc_generated_files/eusart1.h"
 extern volatile uint8_t eusart1TxBufferRemaining;
@@ -8874,7 +8874,73 @@ SYSTEM_PRINT_HELP_LIST = 0x18,
 SYSTEM_TEST_LED = 0x1C,
 }MSG_REQUEST;
 
-# 31 "SystemStatus.h"
+# 20 "SystemStatus.h"
+typedef struct
+{
+bool OperState;
+uint16_t ADC0;
+uint16_t ADC1;
+}ADC_VALUES;
+
+typedef struct
+{
+bool Synt;
+ADC_VALUES AdcValues;
+double DeviceTemperature;
+bool InputPowerStatus;
+double Freq;
+int8_t RSSI;
+double TEMP;
+bool Light;
+int8_t UnitId;
+int16_t UnitDc;
+char* SwVersion;
+bool UnitType;
+int8_t CompressionPoint;
+int32_t PassCounter;
+}RX_STATISTICS;
+
+typedef struct
+{
+bool Synt;
+ADC_VALUES AdcValues;
+double DeviceTemperature;
+bool InputPowerStatus;
+double Freq;
+int8_t RSSI;
+double TEMP;
+bool Light;
+int8_t UnitId;
+int16_t UnitDc;
+char* SwVersion;
+bool UnitType;
+int8_t CompressionPoint;
+int32_t PassCounter;
+}RX_STATISTICS;
+
+typedef struct
+{
+bool Synt;
+ADC_VALUES AdcValues;
+double DeviceTemperature;
+bool InputPowerStatus;
+double Freq;
+int8_t RSSI;
+double TEMP;
+bool Light;
+int8_t UnitId;
+int16_t UnitDc;
+char* SwVersion;
+bool UnitType;
+int8_t CompressionPoint;
+int32_t PassCounter;
+
+bool IntMode;
+}TX_STATISTICS;
+
+volatile RX_STATISTICS rxStatistics;
+volatile TX_STATISTICS txStatistics;
+
 void SetMcuFwVersion(char* data);
 void SetCpldFwVersion(char* data);
 
@@ -8887,6 +8953,10 @@ void ClearMcuRunTime();
 void keepAliveSignalUart(void);
 void SendUartSystemInitMessage(void);
 void PrintHelpScreen(void);
+void CollectRxStatusParams(void);
+void CollectTxStatusParams(void);
+void PrintRxStatus(void);
+void PrintTxStatus(void);
 
 # 22 "LedsApp.h"
 typedef enum
@@ -8923,13 +8993,26 @@ const adc_channel_t channelArr[(0x04)] =
 0x7,
 };
 
-volatile bool needToSample = 0;
+typedef enum
+{
+ADC_OFF = 0x0,
+CHANK1 = 0x0,
+CHANK2 = 0x1,
+CHANK3 = 0x2,
+CHANK4 = 0x3,
+}ADC_CHANNEL_INDEX;
 
-void AdcSingleSample(MODULE_TYPE cType, char* data);
+volatile bool needToSample = 0;
+volatile uint16_t lastAdcTemp = 0;
+volatile uint16_t lastAdcFfwrRSSI = 0;
+volatile uint16_t lastAdcRREV = 0;
+volatile uint16_t lastAdcVgMon =0;
+
+void AdcSingleSample(MODULE_TYPE cType, ADC_CHANNEL_INDEX chType, int32_t numSamples);
 void SetChannelMode(char* data);
 void InitAdcApplicationMgr();
 bool SampleSingleChannel(void);
-void SampleVgMonChannel(void);
+void SampleAllChannels(void);
 
 # 36 "FlashApp.h"
 void FlashSampleWrite(adc_result_t sampleData, uint8_t channelNum);
@@ -9024,7 +9107,8 @@ const uint32_t TEST_PLL_REGISTERS[13] =
 };
 
 
-
+volatile uint32_t rxFreq = 0;
+volatile uint32_t txFreq = 0;
 
 void PLLUartInitialize(char* data);
 void PLLInitialize(void);
@@ -9049,7 +9133,7 @@ void SwSpi_Set_Synth_Le_Pin(SPI_PERIPHERAL phrType, bool cPinMode);
 void SWSPI_DAC_send_bits(SPI_PERIPHERAL phrType, uint8_t data);
 void SwSpi_Set_Dac_Sync_Pin(bool cPinMode);
 
-# 51 "SystemCommon.h"
+# 52 "SystemCommon.h"
 unsigned char crc8(char* dataArray, int dataSize);
 uint8_t make8(uint32_t data, uint8_t dataLocation);
 void ZeroArray(char* array, int size);

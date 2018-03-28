@@ -42,7 +42,7 @@ void main(void)
         }
         else if (TimertenSecFlag == true)
         {
-            SampleVgMonChannel();
+            SampleAllChannels();
             TimertenSecFlag = false;
         }
         else if (TimerSamplingFlag == true)

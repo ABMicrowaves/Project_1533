@@ -31,13 +31,27 @@ const adc_channel_t channelArr[ADC_NUM_CHANNELS]  =
     0x7,     // RX-ADC_VG_MON
 };
 
-volatile bool needToSample = false;    // Indicate if we are in middle of sampling
+typedef enum
+{
+    ADC_OFF = 0x0,
+    CHANK1  = 0x0,
+    CHANK2  = 0x1,
+    CHANK3  = 0x2,
+    CHANK4  = 0x3,
+}ADC_CHANNEL_INDEX;
 
-void AdcSingleSample(MODULE_TYPE cType, char* data);
+volatile bool needToSample = false;    // Indicate if we are in middle of sampling
+volatile uint16_t lastAdcTemp = 0;
+volatile uint16_t lastAdcFfwrRSSI = 0;
+volatile uint16_t lastAdcRREV = 0;
+volatile uint16_t lastAdcVgMon =0;
+
+void AdcSingleSample(MODULE_TYPE cType, ADC_CHANNEL_INDEX chType, int32_t numSamples);
 void SetChannelMode(char* data);
 void InitAdcApplicationMgr();
 bool SampleSingleChannel(void);
-void SampleVgMonChannel(void);
+void SampleAllChannels(void);
+//void SampleVgMonChannel(void);
 
 //void AdcConvert();
 

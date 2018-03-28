@@ -8664,10 +8664,10 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 417 "mcc_generated_files/pin_manager.h"
+# 431 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
 
-# 429
+# 443
 void PIN_MANAGER_IOC(void);
 
 # 12 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdbool.h"
@@ -8703,45 +8703,6 @@ uint8_t DATAEE_ReadByte(uint8_t bAdd);
 # 293
 void MEMORY_ISR(void);
 bool FLASH_IsWriteDone();
-
-# 75 "mcc_generated_files/tmr0.h"
-volatile bool TimerOneSecFlag = 0;
-volatile bool TimerSamplingFlag = 0;
-volatile bool TimerKeepAliveFlag = 0;
-volatile bool TimertenSecFlag = 0;
-
-# 115
-void TMR0_Initialize(void);
-
-# 144
-void TMR0_StartTimer(void);
-
-# 176
-void TMR0_StopTimer(void);
-
-# 212
-uint16_t TMR0_ReadTimer(void);
-
-# 251
-void TMR0_WriteTimer(uint16_t timerVal);
-
-# 287
-void TMR0_Reload(void);
-
-# 305
-void TMR0_ISR(void);
-
-# 323
-void TMR0_CallBack(void);
-
-# 341
-void TMR0_SetInterruptHandler(void (* InterruptHandler)(void));
-
-# 359
-extern void (*TMR0_InterruptHandler)(void);
-
-# 377
-void TMR0_DefaultInterruptHandler(void);
 
 # 71 "mcc_generated_files/adc.h"
 typedef uint16_t adc_result_t;
@@ -8782,6 +8743,45 @@ adc_result_t ADC_GetConversionResult(void);
 
 # 297
 adc_result_t ADC_GetConversion(adc_channel_t channel);
+
+# 75 "mcc_generated_files/tmr0.h"
+volatile bool TimerOneSecFlag = 0;
+volatile bool TimerSamplingFlag = 0;
+volatile bool TimerKeepAliveFlag = 0;
+volatile bool TimertenSecFlag = 0;
+
+# 115
+void TMR0_Initialize(void);
+
+# 144
+void TMR0_StartTimer(void);
+
+# 176
+void TMR0_StopTimer(void);
+
+# 212
+uint16_t TMR0_ReadTimer(void);
+
+# 251
+void TMR0_WriteTimer(uint16_t timerVal);
+
+# 287
+void TMR0_Reload(void);
+
+# 305
+void TMR0_ISR(void);
+
+# 323
+void TMR0_CallBack(void);
+
+# 341
+void TMR0_SetInterruptHandler(void (* InterruptHandler)(void));
+
+# 359
+extern void (*TMR0_InterruptHandler)(void);
+
+# 377
+void TMR0_DefaultInterruptHandler(void);
 
 # 75 "mcc_generated_files/eusart1.h"
 extern volatile uint8_t eusart1TxBufferRemaining;
@@ -8877,13 +8877,26 @@ const adc_channel_t channelArr[(0x04)] =
 0x7,
 };
 
-volatile bool needToSample = 0;
+typedef enum
+{
+ADC_OFF = 0x0,
+CHANK1 = 0x0,
+CHANK2 = 0x1,
+CHANK3 = 0x2,
+CHANK4 = 0x3,
+}ADC_CHANNEL_INDEX;
 
-void AdcSingleSample(MODULE_TYPE cType, char* data);
+volatile bool needToSample = 0;
+volatile uint16_t lastAdcTemp = 0;
+volatile uint16_t lastAdcFfwrRSSI = 0;
+volatile uint16_t lastAdcRREV = 0;
+volatile uint16_t lastAdcVgMon =0;
+
+void AdcSingleSample(MODULE_TYPE cType, ADC_CHANNEL_INDEX chType, int32_t numSamples);
 void SetChannelMode(char* data);
 void InitAdcApplicationMgr();
 bool SampleSingleChannel(void);
-void SampleVgMonChannel(void);
+void SampleAllChannels(void);
 
 # 36 "FlashApp.h"
 void FlashSampleWrite(adc_result_t sampleData, uint8_t channelNum);
@@ -9108,7 +9121,8 @@ const uint32_t TEST_PLL_REGISTERS[13] =
 };
 
 
-
+volatile uint32_t rxFreq = 0;
+volatile uint32_t txFreq = 0;
 
 void PLLUartInitialize(char* data);
 void PLLInitialize(void);
@@ -9133,7 +9147,7 @@ void SwSpi_Set_Synth_Le_Pin(SPI_PERIPHERAL phrType, bool cPinMode);
 void SWSPI_DAC_send_bits(SPI_PERIPHERAL phrType, uint8_t data);
 void SwSpi_Set_Dac_Sync_Pin(bool cPinMode);
 
-# 51 "SystemCommon.h"
+# 52 "SystemCommon.h"
 unsigned char crc8(char* dataArray, int dataSize);
 uint8_t make8(uint32_t data, uint8_t dataLocation);
 void ZeroArray(char* array, int size);
@@ -9147,7 +9161,73 @@ uint32_t ReadIntFromEeprom(uint8_t address, int numOfByes);
 void ResetMcu(void);
 void SendSystemStartAck(void);
 
-# 31 "SystemStatus.h"
+# 20 "SystemStatus.h"
+typedef struct
+{
+bool OperState;
+uint16_t ADC0;
+uint16_t ADC1;
+}ADC_VALUES;
+
+typedef struct
+{
+bool Synt;
+ADC_VALUES AdcValues;
+double DeviceTemperature;
+bool InputPowerStatus;
+double Freq;
+int8_t RSSI;
+double TEMP;
+bool Light;
+int8_t UnitId;
+int16_t UnitDc;
+char* SwVersion;
+bool UnitType;
+int8_t CompressionPoint;
+int32_t PassCounter;
+}RX_STATISTICS;
+
+typedef struct
+{
+bool Synt;
+ADC_VALUES AdcValues;
+double DeviceTemperature;
+bool InputPowerStatus;
+double Freq;
+int8_t RSSI;
+double TEMP;
+bool Light;
+int8_t UnitId;
+int16_t UnitDc;
+char* SwVersion;
+bool UnitType;
+int8_t CompressionPoint;
+int32_t PassCounter;
+}RX_STATISTICS;
+
+typedef struct
+{
+bool Synt;
+ADC_VALUES AdcValues;
+double DeviceTemperature;
+bool InputPowerStatus;
+double Freq;
+int8_t RSSI;
+double TEMP;
+bool Light;
+int8_t UnitId;
+int16_t UnitDc;
+char* SwVersion;
+bool UnitType;
+int8_t CompressionPoint;
+int32_t PassCounter;
+
+bool IntMode;
+}TX_STATISTICS;
+
+volatile RX_STATISTICS rxStatistics;
+volatile TX_STATISTICS txStatistics;
+
 void SetMcuFwVersion(char* data);
 void SetCpldFwVersion(char* data);
 
@@ -9160,20 +9240,13 @@ void ClearMcuRunTime();
 void keepAliveSignalUart(void);
 void SendUartSystemInitMessage(void);
 void PrintHelpScreen(void);
+void CollectRxStatusParams(void);
+void CollectTxStatusParams(void);
+void PrintRxStatus(void);
+void PrintTxStatus(void);
 
 # 12 "SystemStatus.c"
 static uint32_t mcuRunTimeIn5SecTicks = 0;
-
-
-typedef union
-{
-struct
-{
-bool TB;
-}TX_UNIT;
-
-
-}SYSTEM;
 
 void SetMcuFwVersion(char* data)
 {
@@ -9229,10 +9302,10 @@ UART_Write_Text(dest);
 sprintf(dest, "SW VESRION: %s \n\r", "1_002");
 UART_Write_Text(dest);
 
-sprintf(dest, "Compile date: %s \n\r", "Mar 26 2018");
+sprintf(dest, "Compile date: %s \n\r", "Mar 28 2018");
 UART_Write_Text(dest);
 
-sprintf(dest, "Compile time: %s \n\r", "18:01:44");
+sprintf(dest, "Compile time: %s \n\r", "13:04:17");
 UART_Write_Text(dest);
 
 sprintf(dest, "*************************** \n\r");
@@ -9290,10 +9363,101 @@ UART_Write_Text(dest);
 sprintf(dest, "$TD <DAC NUM><DAC VALUE><cr>         Set TX DAC <0-3> <0-Vref[4 dig]> \r\n");
 UART_Write_Text(dest);
 
-# 147
+# 136
 }
 
 void PrintSystemStatus()
 {
+char dest[50];
+sprintf(dest, "%d\t",PORTDbits.RD6);
+}
 
+void CollectRxStatusParams(void)
+{
+rxStatistics.Synt = rxFreq;
+rxStatistics.DeviceTemperature = lastAdcTemp;
+rxStatistics.InputPowerStatus = PORTDbits.RD6;
+rxStatistics.Freq = rxFreq;
+rxStatistics.RSSI = lastAdcFfwrRSSI;
+rxStatistics.Light = PORTBbits.RB3;
+rxStatistics.UnitId = 123;
+rxStatistics.UnitDc = 1234;
+rxStatistics.SwVersion = "1_002";
+rxStatistics.UnitType = 0;
+
+
+}
+
+void CollectTxStatusParams(void)
+{
+txStatistics.Synt = txFreq;
+txStatistics.DeviceTemperature = lastAdcTemp;
+txStatistics.InputPowerStatus = PORTDbits.RD6;
+txStatistics.Freq = txFreq;
+txStatistics.RSSI = lastAdcFfwrRSSI;
+txStatistics.Light = PORTBbits.RB3;
+txStatistics.UnitId = 123;
+txStatistics.UnitDc = 1234;
+txStatistics.SwVersion = "1_002";
+txStatistics.UnitType = 1;
+
+txStatistics.AdcValues.ADC0 = 0x7;
+}
+
+void PrintRxStatus(void)
+{
+char dest[80];
+sprintf(dest, "*******************\n\r");
+UART_Write_Text(dest);
+sprintf(dest, "RX SYNTH (PLL) Lock indication 0: not locked 1: locked%d\n\r",rxStatistics.Synt);
+UART_Write_Text(dest);
+sprintf(dest, "Device Temperature %f\n\r",rxStatistics.DeviceTemperature);
+UART_Write_Text(dest);
+sprintf(dest, "Input power status 0: OFF 1: ON%d\n\r",rxStatistics.InputPowerStatus);
+UART_Write_Text(dest);
+sprintf(dest, "RX Frequency in MHz%f\n\r",rxStatistics.Freq);
+UART_Write_Text(dest);
+sprintf(dest, "RSSI %d\n\r",rxStatistics.RSSI);
+UART_Write_Text(dest);
+sprintf(dest, "Light 0: OFF 1: ON%d\n\r",rxStatistics.Light);
+UART_Write_Text(dest);
+sprintf(dest, "UNIT ID %d\n\r",rxStatistics.UnitId);
+UART_Write_Text(dest);
+sprintf(dest, "UNIT DC %d\n\r",rxStatistics.UnitDc);
+UART_Write_Text(dest);
+sprintf(dest, "SOFTWARE VERSION %s\n\r",rxStatistics.SwVersion);
+UART_Write_Text(dest);
+sprintf(dest, "UNIT TYPE %d\n\r",rxStatistics.UnitType);
+UART_Write_Text(dest);
+sprintf(dest, "*******************\n\r");
+UART_Write_Text(dest);
+}
+
+void PrintTxStatus(void)
+{
+char dest[80];
+sprintf(dest, "*******************\n\r");
+UART_Write_Text(dest);
+sprintf(dest, "TX SYNTH (PLL) Lock indication %d\n\r",txStatistics.Synt);
+UART_Write_Text(dest);
+sprintf(dest, "Device Temperature %f\n\r",txStatistics.DeviceTemperature);
+UART_Write_Text(dest);
+sprintf(dest, "Input power status 0: OFF 1: ON%d\n\r",txStatistics.InputPowerStatus);
+UART_Write_Text(dest);
+sprintf(dest, "TX Frequency in MHz%f\n\r",txStatistics.Freq);
+UART_Write_Text(dest);
+sprintf(dest, "RSSI %d\n\r",txStatistics.RSSI);
+UART_Write_Text(dest);
+sprintf(dest, "Light 0: OFF 1: ON%d\n\r",txStatistics.Light);
+UART_Write_Text(dest);
+sprintf(dest, "UNIT ID %d\n\r",txStatistics.UnitId);
+UART_Write_Text(dest);
+sprintf(dest, "UNIT DC %d\n\r",txStatistics.UnitDc);
+UART_Write_Text(dest);
+sprintf(dest, "SOFTWARE VERSION %s\n\r",txStatistics.SwVersion);
+UART_Write_Text(dest);
+sprintf(dest, "UNIT TYPE %d\n\r",txStatistics.UnitType);
+UART_Write_Text(dest);
+sprintf(dest, "*******************\n\r");
+UART_Write_Text(dest);
 }

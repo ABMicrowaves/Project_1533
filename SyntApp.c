@@ -8,6 +8,11 @@ Author: RoeeZ (Comm-IT).                                                    ****
 
 #include "SyntApp.h"
 
+// <editor-fold defaultstate="collapsed" desc="Global verbs">
+
+
+// </editor-fold>
+
 
 // <editor-fold defaultstate="collapsed" desc="Init synthesizers">
 
@@ -63,6 +68,7 @@ void UpdateTxFreq(char* data)
 //    SWSPI_send_word(SYNTH_TX, regData, 3);
 //    SendAckMessage((MSG_GROUPS)SYNTH_MSG, (MSG_REQUEST)SYNTH_DOWN_SET);
     
+    txFreq = GetIntFromUartData(data);
     
     SWSPI_send_word(SYNTH_TX, 0x00C026BA, 3);
     SWSPI_send_word(SYNTH_TX, 0x3501E076, 3);
@@ -78,8 +84,9 @@ void UpdateTxFreq(char* data)
 
 void UpdateRxFreq(char* data)
 {
-    uint32_t regData = GetIntFromUartData(data);
-    SWSPI_send_word(SYNTH_RX, regData, 3);
+    rxFreq = GetIntFromUartData(data);
+     
+    SWSPI_send_word(SYNTH_RX, rxFreq, 3);
     //SendAckMessage((MSG_GROUPS)SYNTH_MSG, (MSG_REQUEST)SYNTH_UP_SET); 
 }
 // </editor-fold>
