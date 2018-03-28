@@ -39,12 +39,16 @@ typedef enum
 #define MAX_UART_BYTES_SIZE 8
 #define END_UART_STREAM_CHAR 0x40
 
+#define UART_OK_MESSAGE         "NOT OK \n\r"
+#define UART_NOT_OK_MESSAGE     "NOT OK \n\r"
 
 unsigned char crc8(char* dataArray, int dataSize);
 uint8_t make8(uint32_t data, uint8_t dataLocation);
 void ZeroArray(char* array, int size);
-int GCD(int num1, int num2); 
 uint32_t GetIntFromUartData(char* data);
+double GetDoubleFromUartData(char* data, char dataSize);
+double getFractionPartOfDivide(double num1, double num2);
+double getFractionPartOfMultiple(double num1, double num2);
 
 // System common functions
 void ResetMcu(void);

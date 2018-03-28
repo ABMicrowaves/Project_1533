@@ -24,10 +24,10 @@ typedef enum
 
 const adc_channel_t channelArr[ADC_NUM_CHANNELS]  = 
 {
-    0x4,     // ADC_RREV
-    0x5,     // ADC_FFWR
-    0x6,     // ADC_TMP
-    0x7,     // ADC_VG_MON
+    0x4,        // ADC_RREV
+    0x5,        // ADC_FFWR
+    0x6,        // ADC_TMP
+    0x7,        // ADC_VG_MON
 };
 
 volatile bool needToSample = false;    // Indicate if we are in middle of sampling

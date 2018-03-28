@@ -49,7 +49,7 @@ void AdcSingleSample(MODULE_TYPE cType, char* data)
     
     if(data[0] == '0')
     {
-        UART_Write_Text("NOT OK \n\r");
+        UART_Write_Text(UART_NOT_OK_MESSAGE);
     }
     else
     {
@@ -59,7 +59,7 @@ void AdcSingleSample(MODULE_TYPE cType, char* data)
         
         if(channelNum > ADC_NUM_CHANNELS)
         {
-            UART_Write_Text("NOT OK \n\r");
+            UART_Write_Text(UART_NOT_OK_MESSAGE);
         }
         else
         {
@@ -70,9 +70,10 @@ void AdcSingleSample(MODULE_TYPE cType, char* data)
                 {
                     needToSample = true;
                 }
+                
                 else
                 {
-                    UART_Write_Text("NOT OK \n\r");
+                    UART_Write_Text(UART_NOT_OK_MESSAGE);
                 }
                 
             }
@@ -83,7 +84,7 @@ void AdcSingleSample(MODULE_TYPE cType, char* data)
             }
             else
             {
-                UART_Write_Text("NOT OK \n\r");
+                UART_Write_Text(UART_NOT_OK_MESSAGE);
             }
         }
     }
@@ -105,7 +106,7 @@ bool SampleSingleChannel(void)
     else
     {
         needToSample = false;
-        UART_Write_Text("\n\r OK \n\r");
+        UART_Write_Text(UART_OK_MESSAGE);
     }
 }
 // </editor-fold>

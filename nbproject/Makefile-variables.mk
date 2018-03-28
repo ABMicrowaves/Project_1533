@@ -6,8 +6,8 @@
 CND_BASEDIR=`pwd`
 # default configuration
 CND_ARTIFACT_DIR_default=dist/default/production
-CND_ARTIFACT_NAME_default=1533.production.hex
-CND_ARTIFACT_PATH_default=dist/default/production/1533.production.hex
+CND_ARTIFACT_NAME_default=Project_1533.production.hex
+CND_ARTIFACT_PATH_default=dist/default/production/Project_1533.production.hex
 CND_PACKAGE_DIR_default=${CND_DISTDIR}/default/package
-CND_PACKAGE_NAME_default=1533.tar
-CND_PACKAGE_PATH_default=${CND_DISTDIR}/default/package/1533.tar
+CND_PACKAGE_NAME_default=project1533.tar
+CND_PACKAGE_PATH_default=${CND_DISTDIR}/default/package/project1533.tar

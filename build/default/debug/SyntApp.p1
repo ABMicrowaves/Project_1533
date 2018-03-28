@@ -5,24 +5,29 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v F7317 `(v ~T0 @X0 0 tf ]
 "27 MessageFunctions.h
 [c E7229 18 22 25 33 40 99 101 35 24 28 .. ]
-[n E7229 . TX_RX_SET_BIT_MODE TX_RX_SET_UNIT_FREQUENCY TX_RX_UNIT_UNIT TX_RX_READ_UNIT_STATUS TX_RX_SET_OPERATION_MODE RX_SET_COMRESSION_MODE RX_SET_COMRESSION_RANGE ADC_SAMPLE SYSTEM_PRINT_HELP_LIST SYSTEM_TEST_LED  ]
+[n E7229 . SET_MODULE_BIT_MODE SET_MODULE_FREQUENCY UNIT_MODULE READ_MODULE_STATUS SET_MODULE_OPERATION_MODE RX_SET_COMRESSION_MODE RX_SET_COMRESSION_RANGE ADC_SAMPLE SYSTEM_PRINT_HELP_LIST SYSTEM_TEST_LED  ]
 "20
 [v _GroupRx `(v ~T0 @X0 0 ef2`E7229`*uc ]
 "21
 [v _GroupTx `(v ~T0 @X0 0 ef2`E7229`*uc ]
 "22
 [v _GroupCommon `(v ~T0 @X0 0 ef2`E7229`*uc ]
-"2779 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic18f45k22.h
-[v _IOCB `Vuc ~T0 @X0 0 e@3938 ]
-"20 SyntApp.c
-[c E7561 0 1 2 .. ]
-[n E7561 . SYNTH_TX SYNTH_RX EXT_DAC  ]
-"27 SwSpiApp.h
-[v _SwSpi_Set_CE_Pin `(v ~T0 @X0 0 ef2`E7561`uc ]
-"22
-[v _SWSPI_send_word `(v ~T0 @X0 0 ef3`E7561`ul`uc ]
-"47 SystemCommon.h
-[v _GetIntFromUartData `(ul ~T0 @X0 0 ef1`*uc ]
+"14 SyntApp.c
+[s S852 `d 1 `d 1 `l 1 `l 1 `d 1 `l 1 `d 1 `l 1 `l 1 ]
+[n S852 . fVco fPFD INT Mod1 Fraq Fraq1 remFraq1 Mod2 Fraq2 ]
+"46
+[c E177 0 1 .. ]
+[n E177 . TX_TYPE RX_TYPE  ]
+"49 SystemCommon.h
+[v _GetDoubleFromUartData `(d ~T0 @X0 0 ef2`*uc`uc ]
+"47
+[v _ZeroArray `(v ~T0 @X0 0 ef2`*uc`i ]
+"50
+[v _getFractionPartOfDivide `(d ~T0 @X0 0 ef2`d`d ]
+"52 SyntApp.h
+[v _CalcSynthRegParams `(uc ~T0 @X0 0 ef2`*l`l ]
+"45 C:\Program Files (x86)\Microchip\xc8\v1.45\include\math.h
+[v _pow `(d ~T0 @X0 0 ef2`d`d ]
 [; ;math.h: 30: extern double fabs(double);
 [; ;math.h: 31: extern double floor(double);
 [; ;math.h: 32: extern double ceil(double);
@@ -6756,11 +6761,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;GroupsCommon.h: 17: }MSG_GROUPS;
 [; ;GroupsCommon.h: 19: typedef enum
 [; ;GroupsCommon.h: 20: {
-[; ;GroupsCommon.h: 23: TX_RX_SET_BIT_MODE = 0x12,
-[; ;GroupsCommon.h: 24: TX_RX_SET_UNIT_FREQUENCY = 0x16,
-[; ;GroupsCommon.h: 25: TX_RX_UNIT_UNIT = 0x19,
-[; ;GroupsCommon.h: 26: TX_RX_READ_UNIT_STATUS = 0x21,
-[; ;GroupsCommon.h: 27: TX_RX_SET_OPERATION_MODE = 0x28,
+[; ;GroupsCommon.h: 23: SET_MODULE_BIT_MODE = 0x12,
+[; ;GroupsCommon.h: 24: SET_MODULE_FREQUENCY = 0x16,
+[; ;GroupsCommon.h: 25: UNIT_MODULE = 0x19,
+[; ;GroupsCommon.h: 26: READ_MODULE_STATUS = 0x21,
+[; ;GroupsCommon.h: 27: SET_MODULE_OPERATION_MODE = 0x28,
 [; ;GroupsCommon.h: 30: RX_SET_COMRESSION_MODE = 0x63,
 [; ;GroupsCommon.h: 31: RX_SET_COMRESSION_RANGE = 0x65,
 [; ;GroupsCommon.h: 34: ADC_SAMPLE = 0x23,
@@ -6975,279 +6980,207 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SwSpiApp.h: 32: void SwSpi_Set_Synth_Le_Pin(SPI_PERIPHERAL phrType, bool cPinMode);
 [; ;SwSpiApp.h: 35: void SWSPI_DAC_send_bits(SPI_PERIPHERAL phrType, uint8_t data);
 [; ;SwSpiApp.h: 36: void SwSpi_Set_Dac_Sync_Pin(bool cPinMode);
-[; ;SystemCommon.h: 43: unsigned char crc8(char* dataArray, int dataSize);
-[; ;SystemCommon.h: 44: uint8_t make8(uint32_t data, uint8_t dataLocation);
-[; ;SystemCommon.h: 45: void ZeroArray(char* array, int size);
-[; ;SystemCommon.h: 46: int GCD(int num1, int num2);
-[; ;SystemCommon.h: 47: uint32_t GetIntFromUartData(char* data);
-[; ;SystemCommon.h: 50: void ResetMcu(void);
-[; ;SystemCommon.h: 51: void ResetCpld(void);
-[; ;SystemCommon.h: 52: void SendSystemStartAck(void);
-"20 SyntApp.h
+[; ;SystemCommon.h: 45: unsigned char crc8(char* dataArray, int dataSize);
+[; ;SystemCommon.h: 46: uint8_t make8(uint32_t data, uint8_t dataLocation);
+[; ;SystemCommon.h: 47: void ZeroArray(char* array, int size);
+[; ;SystemCommon.h: 48: uint32_t GetIntFromUartData(char* data);
+[; ;SystemCommon.h: 49: double GetDoubleFromUartData(char* data, char dataSize);
+[; ;SystemCommon.h: 50: double getFractionPartOfDivide(double num1, double num2);
+[; ;SystemCommon.h: 51: double getFractionPartOfMultiple(double num1, double num2);
+[; ;SystemCommon.h: 54: void ResetMcu(void);
+[; ;SystemCommon.h: 55: void ResetCpld(void);
+[; ;SystemCommon.h: 56: void SendSystemStartAck(void);
+"31 SyntApp.h
 [v _PLL_INIT_REGISTERS `Cul ~T0 @X0 -> 13 `i e ]
 [i _PLL_INIT_REGISTERS
 :U ..
-"22
--> -> 66588 `l `ul
-"23
--> -> 6369291 `l `ul
-"24
--> -> 12595770 `l `ul
-"25
--> -> 572636361 `l `ul
-"26
--> -> 271385640 `l `ul
-"27
--> -> 301990119 `l `ul
-"28
--> -> 889266294 `l `ul
-"29
--> -> 8388645 `l `ul
-"30
--> -> 872455044 `l `ul
-"31
--> -> -> 3 `i `l `ul
-"32
--> -> -> 18 `i `l `ul
 "33
--> -> 100663297 `l `ul
+-> -> 66588 `l `ul
+"34
+-> -> 6369291 `l `ul
 "35
+-> -> 12595770 `l `ul
+"36
+-> -> 572636361 `l `ul
+"37
+-> -> 271385640 `l `ul
+"38
+-> -> 301990119 `l `ul
+"39
+-> -> 889266294 `l `ul
+"40
+-> -> 8388645 `l `ul
+"41
+-> -> 872455044 `l `ul
+"42
+-> -> -> 3 `i `l `ul
+"43
+-> -> -> 18 `i `l `ul
+"44
+-> -> 100663297 `l `ul
+"46
 -> -> 2097984 `l `ul
 ..
 ]
-[; ;SyntApp.h: 20: const uint32_t PLL_INIT_REGISTERS[13] =
-[; ;SyntApp.h: 21: {
-[; ;SyntApp.h: 22: 0x0001041C,
-[; ;SyntApp.h: 23: 0x0061300B,
-[; ;SyntApp.h: 24: 0x00C0323A,
-[; ;SyntApp.h: 25: 0x2221BCC9,
-[; ;SyntApp.h: 26: 0x102D0428,
-[; ;SyntApp.h: 27: 0x120000E7,
-[; ;SyntApp.h: 28: 0x35012076,
-[; ;SyntApp.h: 29: 0x00800025,
-[; ;SyntApp.h: 30: 0x34009B84,
-[; ;SyntApp.h: 31: 0x00000003,
-[; ;SyntApp.h: 32: 0x00000012,
-[; ;SyntApp.h: 33: 0x06000001,
-[; ;SyntApp.h: 34: 0x00200340
-[; ;SyntApp.h: 35: };
-"37
-[v _TEST_PLL_REGISTERS `Cul ~T0 @X0 -> 13 `i e ]
-[i _TEST_PLL_REGISTERS
-:U ..
-"39
--> -> 66588 `l `ul
-"40
--> -> 6369291 `l `ul
-"41
--> -> 12592826 `l `ul
-"42
--> -> 437910729 `l `ul
-"43
--> -> 271385640 `l `ul
-"44
--> -> 301990119 `l `ul
-"45
--> -> 889544822 `l `ul
-"46
--> -> 8388645 `l `ul
-"47
--> -> 838896516 `l `ul
-"48
--> -> -> 3 `i `l `ul
-"49
--> -> 524338 `l `ul
-"50
--> -> 27962017 `l `ul
-"52
--> -> 200410 `l `ul
-..
-]
-[; ;SyntApp.h: 37: const uint32_t TEST_PLL_REGISTERS[13] =
-[; ;SyntApp.h: 38: {
-[; ;SyntApp.h: 39: 0x1041C,
-[; ;SyntApp.h: 40: 0x61300B,
-[; ;SyntApp.h: 41: 0xC026BA,
-[; ;SyntApp.h: 42: 0x1A19FCC9,
-[; ;SyntApp.h: 43: 0x102D0428,
-[; ;SyntApp.h: 44: 0x120000E7,
-[; ;SyntApp.h: 45: 0x35056076,
-[; ;SyntApp.h: 46: 0x800025,
-[; ;SyntApp.h: 47: 0x32008B84,
-[; ;SyntApp.h: 48: 0x3,
-[; ;SyntApp.h: 49: 0x80032,
-[; ;SyntApp.h: 50: 0x1AAAAA1,
-[; ;SyntApp.h: 51: 200410
-[; ;SyntApp.h: 52: };
-[; ;SyntApp.h: 57: void PLLUartInitialize(char* data);
-[; ;SyntApp.h: 58: void PLLInitialize(void);
-[; ;SyntApp.h: 60: void UpdateTxFreq(char* data);
-[; ;SyntApp.h: 61: void UpdateRxFreq(char* data);
-[; ;SyntApp.h: 63: void SYNTH_ISR(void);
-"14 SyntApp.c
+[; ;SyntApp.h: 31: const uint32_t PLL_INIT_REGISTERS[13] =
+[; ;SyntApp.h: 32: {
+[; ;SyntApp.h: 33: 0x0001041C,
+[; ;SyntApp.h: 34: 0x0061300B,
+[; ;SyntApp.h: 35: 0x00C0323A,
+[; ;SyntApp.h: 36: 0x2221BCC9,
+[; ;SyntApp.h: 37: 0x102D0428,
+[; ;SyntApp.h: 38: 0x120000E7,
+[; ;SyntApp.h: 39: 0x35012076,
+[; ;SyntApp.h: 40: 0x00800025,
+[; ;SyntApp.h: 41: 0x34009B84,
+[; ;SyntApp.h: 42: 0x00000003,
+[; ;SyntApp.h: 43: 0x00000012,
+[; ;SyntApp.h: 44: 0x06000001,
+[; ;SyntApp.h: 45: 0x00200340
+[; ;SyntApp.h: 46: };
+[; ;SyntApp.h: 48: void PLLUartInitialize(char* data);
+[; ;SyntApp.h: 49: void PLLInitialize(void);
+[; ;SyntApp.h: 51: void UpdateSynthFreq(MODULE_TYPE cType, char* data);
+[; ;SyntApp.h: 52: bool CalcSynthRegParams(int32_t* regArray, int32_t inputFreq);
+[; ;SyntApp.c: 13: typedef struct
+[; ;SyntApp.c: 14: {
+[; ;SyntApp.c: 15: double fVco;
+[; ;SyntApp.c: 16: double fPFD;
+[; ;SyntApp.c: 17: int32_t INT;
+[; ;SyntApp.c: 18: int32_t Mod1;
+[; ;SyntApp.c: 19: double Fraq;
+[; ;SyntApp.c: 20: int32_t Fraq1;
+[; ;SyntApp.c: 21: double remFraq1;
+[; ;SyntApp.c: 22: int32_t Mod2;
+[; ;SyntApp.c: 23: int32_t Fraq2;
+[; ;SyntApp.c: 24: }SYNTH_CALC_PARAMS;
+"26 SyntApp.c
+[v _synthCalcParams `S852 ~T0 @X0 1 e ]
+[; ;SyntApp.c: 26: SYNTH_CALC_PARAMS synthCalcParams;
+"31
 [v _PLLInitialize `(v ~T0 @X0 1 ef ]
-"15
+"32
 {
-[; ;SyntApp.c: 14: void PLLInitialize()
-[; ;SyntApp.c: 15: {
+[; ;SyntApp.c: 31: void PLLInitialize()
+[; ;SyntApp.c: 32: {
 [e :U _PLLInitialize ]
 [f ]
-[; ;SyntApp.c: 17: IOCB = 0b10000000;
-"17
-[e = _IOCB -> -> 128 `i `uc ]
-[; ;SyntApp.c: 20: SwSpi_Set_CE_Pin(SYNTH_TX, 1);
-"20
-[e ( _SwSpi_Set_CE_Pin (2 , . `E7561 0 -> -> 1 `i `uc ]
-[; ;SyntApp.c: 24: for(int idx = 0; idx < 13; idx++)
-"24
-{
-[v _idx `i ~T0 @X0 1 a ]
-[e = _idx -> 0 `i ]
-[e $ < _idx -> 13 `i 853  ]
-[e $U 854  ]
-"25
-[e :U 853 ]
-[; ;SyntApp.c: 25: {
-{
-[; ;SyntApp.c: 26: SWSPI_send_word(SYNTH_TX, TEST_PLL_REGISTERS[idx], 3);
-"26
-[e ( _SWSPI_send_word (3 , , . `E7561 0 *U + &U _TEST_PLL_REGISTERS * -> -> _idx `ui `ux -> -> # *U &U _TEST_PLL_REGISTERS `ui `ux -> -> 3 `i `uc ]
-"27
+[; ;SyntApp.c: 34: }
+"34
+[e :UE 853 ]
 }
-"24
-[e ++ _idx -> 1 `i ]
-[e $ < _idx -> 13 `i 853  ]
-[e :U 854 ]
-"27
-}
-[; ;SyntApp.c: 27: }
-[; ;SyntApp.c: 36: SwSpi_Set_CE_Pin(SYNTH_RX, 1);
 "36
-[e ( _SwSpi_Set_CE_Pin (2 , . `E7561 1 -> -> 1 `i `uc ]
-[; ;SyntApp.c: 39: for(int idx = 0; idx < 13; idx++)
-"39
-{
-[v _idx `i ~T0 @X0 1 a ]
-[e = _idx -> 0 `i ]
-[e $ < _idx -> 13 `i 856  ]
-[e $U 857  ]
-"40
-[e :U 856 ]
-[; ;SyntApp.c: 40: {
-{
-[; ;SyntApp.c: 41: SWSPI_send_word(SYNTH_RX, PLL_INIT_REGISTERS[idx], 3);
-"41
-[e ( _SWSPI_send_word (3 , , . `E7561 1 *U + &U _PLL_INIT_REGISTERS * -> -> _idx `ui `ux -> -> # *U &U _PLL_INIT_REGISTERS `ui `ux -> -> 3 `i `uc ]
-"42
-}
-"39
-[e ++ _idx -> 1 `i ]
-[e $ < _idx -> 13 `i 856  ]
-[e :U 857 ]
-"42
-}
-[; ;SyntApp.c: 42: }
-[; ;SyntApp.c: 45: SWSPI_send_word(SYNTH_RX, PLL_INIT_REGISTERS[4], 3);
-"45
-[e ( _SWSPI_send_word (3 , , . `E7561 1 *U + &U _PLL_INIT_REGISTERS * -> -> -> 4 `i `ui `ux -> -> # *U &U _PLL_INIT_REGISTERS `ui `ux -> -> 3 `i `uc ]
-[; ;SyntApp.c: 46: SWSPI_send_word(SYNTH_RX, PLL_INIT_REGISTERS[2], 3);
-"46
-[e ( _SWSPI_send_word (3 , , . `E7561 1 *U + &U _PLL_INIT_REGISTERS * -> -> -> 2 `i `ui `ux -> -> # *U &U _PLL_INIT_REGISTERS `ui `ux -> -> 3 `i `uc ]
-[; ;SyntApp.c: 47: SWSPI_send_word(SYNTH_RX, PLL_INIT_REGISTERS[1], 3);
-"47
-[e ( _SWSPI_send_word (3 , , . `E7561 1 *U + &U _PLL_INIT_REGISTERS * -> -> -> 1 `i `ui `ux -> -> # *U &U _PLL_INIT_REGISTERS `ui `ux -> -> 3 `i `uc ]
-[; ;SyntApp.c: 48: SWSPI_send_word(SYNTH_RX, PLL_INIT_REGISTERS[0], 3);
-"48
-[e ( _SWSPI_send_word (3 , , . `E7561 1 *U + &U _PLL_INIT_REGISTERS * -> -> -> 0 `i `ui `ux -> -> # *U &U _PLL_INIT_REGISTERS `ui `ux -> -> 3 `i `uc ]
-[; ;SyntApp.c: 49: }
-"49
-[e :UE 852 ]
-}
-"51
 [v _PLLUartInitialize `(v ~T0 @X0 1 ef1`*uc ]
-"52
+"37
 {
-[; ;SyntApp.c: 51: void PLLUartInitialize(char* data)
-[; ;SyntApp.c: 52: {
+[; ;SyntApp.c: 36: void PLLUartInitialize(char* data)
+[; ;SyntApp.c: 37: {
 [e :U _PLLUartInitialize ]
+"36
+[v _data `*uc ~T0 @X0 1 r1 ]
+"37
+[f ]
+[; ;SyntApp.c: 39: }
+"39
+[e :UE 854 ]
+}
+"45
+[v _UpdateSynthFreq `(v ~T0 @X0 1 ef2`E177`*uc ]
+"46
+{
+[; ;SyntApp.c: 45: void UpdateSynthFreq(MODULE_TYPE cType, char* data)
+[; ;SyntApp.c: 46: {
+[e :U _UpdateSynthFreq ]
+"45
+[v _cType `E177 ~T0 @X0 1 r1 ]
+[v _data `*uc ~T0 @X0 1 r2 ]
+"46
+[f ]
+"47
+[v _insertFraqData `d ~T0 @X0 1 a ]
+[; ;SyntApp.c: 47: double insertFraqData = GetDoubleFromUartData(data, data[0]);
+[e = _insertFraqData ( _GetDoubleFromUartData (2 , _data *U + _data * -> -> 0 `i `x -> -> # *U _data `i `x ]
+"48
+[v _regSynthArray `ul ~T0 @X0 -> 4 `i a ]
+[; ;SyntApp.c: 48: uint32_t regSynthArray[4];
+[; ;SyntApp.c: 49: ZeroArray(regSynthArray, sizeof(regSynthArray));
+"49
+[e ( _ZeroArray (2 , -> &U _regSynthArray `*uc -> -> # _regSynthArray `ui `i ]
 "51
-[v _data `*uc ~T0 @X0 1 r1 ]
-"52
-[f ]
-[; ;SyntApp.c: 54: }
+[v _t `d ~T0 @X0 1 a ]
+[; ;SyntApp.c: 51: double t = getFractionPartOfDivide(5, 3);
+[e = _t ( _getFractionPartOfDivide (2 , -> -> 5 `i `d -> -> 3 `i `d ]
+[; ;SyntApp.c: 53: CalcSynthRegParams(regSynthArray, insertFraqData);
+"53
+[e ( _CalcSynthRegParams (2 , -> &U _regSynthArray `*l -> _insertFraqData `l ]
+[; ;SyntApp.c: 54: regSynthArray[4] = 0x30008384;
 "54
-[e :UE 859 ]
+[e = *U + &U _regSynthArray * -> -> -> 4 `i `ui `ux -> -> # *U &U _regSynthArray `ui `ux -> -> 805340036 `l `ul ]
+[; ;SyntApp.c: 55: }
+"55
+[e :UE 855 ]
 }
-"60
-[v _UpdateTxFreq `(v ~T0 @X0 1 ef1`*uc ]
 "61
+[v _CalcSynthRegParams `(uc ~T0 @X0 1 ef2`*l`l ]
+"62
 {
-[; ;SyntApp.c: 60: void UpdateTxFreq(char* data)
-[; ;SyntApp.c: 61: {
-[e :U _UpdateTxFreq ]
-"60
-[v _data `*uc ~T0 @X0 1 r1 ]
+[; ;SyntApp.c: 61: bool CalcSynthRegParams(int32_t* regArray, int32_t inputFreq)
+[; ;SyntApp.c: 62: {
+[e :U _CalcSynthRegParams ]
 "61
+[v _regArray `*l ~T0 @X0 1 r1 ]
+[v _inputFreq `l ~T0 @X0 1 r2 ]
+"62
 [f ]
-[; ;SyntApp.c: 67: SWSPI_send_word(SYNTH_TX, 0x00C026BA, 3);
+"63
+[v _tempVal1 `l ~T0 @X0 1 a ]
+[; ;SyntApp.c: 63: int32_t tempVal1 = 0x0, tempVal2 = 0x0, tempVal3 = 0x0;
+[e = _tempVal1 -> -> 0 `i `l ]
+[v _tempVal2 `l ~T0 @X0 1 a ]
+[e = _tempVal2 -> -> 0 `i `l ]
+[v _tempVal3 `l ~T0 @X0 1 a ]
+[e = _tempVal3 -> -> 0 `i `l ]
+[; ;SyntApp.c: 64: synthCalcParams.fVco = inputFreq / 2.0;
+"64
+[e = . _synthCalcParams 0 / -> _inputFreq `d .2.0 ]
+[; ;SyntApp.c: 65: synthCalcParams.fPFD = 40.0;
+"65
+[e = . _synthCalcParams 1 .40.0 ]
+[; ;SyntApp.c: 66: synthCalcParams.INT = (int)(synthCalcParams.fVco / synthCalcParams.fPFD);
+"66
+[e = . _synthCalcParams 2 -> -> / . _synthCalcParams 0 . _synthCalcParams 1 `i `l ]
+[; ;SyntApp.c: 67: synthCalcParams.Mod1 = 16777216;
 "67
-[e ( _SWSPI_send_word (3 , , . `E7561 0 -> -> 12592826 `l `ul -> -> 3 `i `uc ]
-[; ;SyntApp.c: 68: SWSPI_send_word(SYNTH_TX, 0x3501E076, 3);
+[e = . _synthCalcParams 3 -> 16777216 `l ]
+[; ;SyntApp.c: 68: synthCalcParams.Fraq = getFractionPartOfDivide(synthCalcParams.fVco, synthCalcParams.fPFD);
 "68
-[e ( _SWSPI_send_word (3 , , . `E7561 0 -> -> 889315446 `l `ul -> -> 3 `i `uc ]
-[; ;SyntApp.c: 69: SWSPI_send_word(SYNTH_TX, 0x32008B84, 3);
+[e = . _synthCalcParams 4 ( _getFractionPartOfDivide (2 , . _synthCalcParams 0 . _synthCalcParams 1 ]
+[; ;SyntApp.c: 69: synthCalcParams.Fraq1 = synthCalcParams.Fraq * 16777216;
 "69
-[e ( _SWSPI_send_word (3 , , . `E7561 0 -> -> 838896516 `l `ul -> -> 3 `i `uc ]
-[; ;SyntApp.c: 70: SWSPI_send_word(SYNTH_TX, 0x00080032, 3);
+[e = . _synthCalcParams 5 -> * . _synthCalcParams 4 -> -> 16777216 `l `d `l ]
+[; ;SyntApp.c: 70: synthCalcParams.remFraq1 = 0;
 "70
-[e ( _SWSPI_send_word (3 , , . `E7561 0 -> -> 524338 `l `ul -> -> 3 `i `uc ]
-[; ;SyntApp.c: 71: SWSPI_send_word(SYNTH_TX, 0x01AAAAA1, 3);
+[e = . _synthCalcParams 6 -> -> 0 `i `d ]
+[; ;SyntApp.c: 71: synthCalcParams.Mod2 = 0x15550;
 "71
-[e ( _SWSPI_send_word (3 , , . `E7561 0 -> -> 27962017 `l `ul -> -> 3 `i `uc ]
-[; ;SyntApp.c: 72: SWSPI_send_word(SYNTH_TX, 0x00200410, 3);
+[e = . _synthCalcParams 7 -> 87376 `l ]
+[; ;SyntApp.c: 72: synthCalcParams.Fraq2 = (int)(synthCalcParams.remFraq1 * synthCalcParams.Mod2);
 "72
-[e ( _SWSPI_send_word (3 , , . `E7561 0 -> -> 2098192 `l `ul -> -> 3 `i `uc ]
-[; ;SyntApp.c: 73: SWSPI_send_word(SYNTH_TX, 0x32008B84, 3);
-"73
-[e ( _SWSPI_send_word (3 , , . `E7561 0 -> -> 838896516 `l `ul -> -> 3 `i `uc ]
-[; ;SyntApp.c: 74: SWSPI_send_word(SYNTH_TX, 0x00200410, 3);
+[e = . _synthCalcParams 8 -> -> * . _synthCalcParams 6 -> . _synthCalcParams 7 `d `i `l ]
+[; ;SyntApp.c: 74: regArray[0] = (int)(synthCalcParams.INT * pow(2,4)) | 0x200000 | 0x0;
 "74
-[e ( _SWSPI_send_word (3 , , . `E7561 0 -> -> 2098192 `l `ul -> -> 3 `i `uc ]
-[; ;SyntApp.c: 77: }
+[e = *U + _regArray * -> -> 0 `i `x -> -> # *U _regArray `i `x | | -> -> * -> . _synthCalcParams 2 `d ( _pow (2 , -> -> 2 `i `d -> -> 4 `i `d `i `l -> 2097152 `l -> -> 0 `i `l ]
+[; ;SyntApp.c: 75: regArray[1] = synthCalcParams.Fraq1 | 0x1;
+"75
+[e = *U + _regArray * -> -> 1 `i `x -> -> # *U _regArray `i `x | . _synthCalcParams 5 -> -> 1 `i `l ]
+[; ;SyntApp.c: 76: regArray[2] = (int)(synthCalcParams.Fraq2 * pow(2,18)) | 0x15550 | 0x2;
+"76
+[e = *U + _regArray * -> -> 2 `i `x -> -> # *U _regArray `i `x | | -> -> * -> . _synthCalcParams 8 `d ( _pow (2 , -> -> 2 `i `d -> -> 18 `i `d `i `l -> 87376 `l -> -> 2 `i `l ]
+[; ;SyntApp.c: 77: return 1;
 "77
-[e :UE 860 ]
-}
-"79
-[v _UpdateRxFreq `(v ~T0 @X0 1 ef1`*uc ]
-"80
-{
-[; ;SyntApp.c: 79: void UpdateRxFreq(char* data)
-[; ;SyntApp.c: 80: {
-[e :U _UpdateRxFreq ]
-"79
-[v _data `*uc ~T0 @X0 1 r1 ]
-"80
-[f ]
-"81
-[v _regData `ul ~T0 @X0 1 a ]
-[; ;SyntApp.c: 81: uint32_t regData = GetIntFromUartData(data);
-[e = _regData ( _GetIntFromUartData (1 _data ]
-[; ;SyntApp.c: 82: SWSPI_send_word(SYNTH_RX, regData, 3);
-"82
-[e ( _SWSPI_send_word (3 , , . `E7561 1 _regData -> -> 3 `i `uc ]
-[; ;SyntApp.c: 84: }
-"84
-[e :UE 861 ]
-}
-"93
-[v _SYNTH_ISR `(v ~T0 @X0 1 ef ]
-"94
-{
-[; ;SyntApp.c: 93: void SYNTH_ISR(void)
-[; ;SyntApp.c: 94: {
-[e :U _SYNTH_ISR ]
-[f ]
-[; ;SyntApp.c: 96: }
-"96
-[e :UE 862 ]
+[e ) -> -> 1 `i `uc ]
+[e $UE 856  ]
+[; ;SyntApp.c: 78: }
+"78
+[e :UE 856 ]
 }

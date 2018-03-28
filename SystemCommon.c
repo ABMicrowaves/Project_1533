@@ -26,17 +26,6 @@ void ZeroArray(char* array, int size)
     memset(array, 0x0, size);
 }
 
-int GCD(int num1, int num2) 
-{
-  while (num2 != 0)  
-  {
-    int temp = num2;
-    num2 = num1 % num2;
-    num1 = temp;
-  }
-  return num1;
-}
-
 uint32_t GetIntFromUartData(char* data)
 {
     char dataRegArr[MAX_UART_BYTES_SIZE];
@@ -56,6 +45,16 @@ uint32_t GetIntFromUartData(char* data)
     }
     
     return strtol(dataRegArr, NULL, 10);
+}
+
+double getFractionPartOfDivide(double num1, double num2)
+{
+    return ((num1 / num2) - (int)(num1 / num2));
+}
+
+double getFractionPartOfMultiple(double num1, double num2)
+{
+    return ((num1 * num2) - (int)(num1 * num2));
 }
 
 uint8_t make8(uint32_t data, uint8_t dataLocation)
@@ -80,6 +79,16 @@ uint8_t make8(uint32_t data, uint8_t dataLocation)
 }
 
 
+double GetDoubleFromUartData(char* data, char dataSize)
+{
+    char tempNum[10];
+    ZeroArray(tempNum, sizeof(tempNum));
+    for(int idx = 0; idx < dataSize; idx++)
+    {
+        tempNum[idx] = data[idx + 1];
+    }
+    double doubleFreq = atof(tempNum);    
+}
 
 void ResetMcu()
 {
