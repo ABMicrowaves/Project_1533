@@ -28,7 +28,6 @@ typedef enum
     EXT_DAC
 }SPI_PERIPHERAL;
 
-
 #include "mcc_generated_files/mcc.h"
 #include "MessageFunctions.h"
 #include "FlashApp.h"
@@ -61,6 +60,8 @@ uint32_t ReadIntFromEeprom(uint8_t address, int numOfByes);
 // System common functions
 void ResetMcu(void);
 void SendSystemStartAck(void);
-
+void set_system_type(char* data);
+void SetUartRefrashRate (char* data);
+void SetUartMode (char* data);
 #endif	/* SYSTEMCOMMON_H */
 

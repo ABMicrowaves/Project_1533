@@ -36,6 +36,11 @@ typedef enum
     // Common system common requests
     SYSTEM_PRINT_HELP_LIST      = 0x18,
     SYSTEM_TEST_LED             = 0x1C,
+    SET_SYSTEM_TYPE             = 0x24,
+    PRINT_SYSTEM_STATUS         = 0x21,
+    SET_UART_REFRASH_RATE       = 0x25,
+    SET_UART_MODE               = 0x11,
+    SAVE_SYSTEM_STATUS          = 0x26,
 }MSG_REQUEST;
 
 #endif	/* GROUPSCOMMON_H */

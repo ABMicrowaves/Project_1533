@@ -105,6 +105,26 @@ void GroupCommon(MSG_REQUEST request, char* data)
             testLeds();
             break;
             
+        case SET_SYSTEM_TYPE:
+            set_system_type(data);
+            
+            break;
+            
+        case PRINT_SYSTEM_STATUS:
+            PrintSystemStatus();
+            break;
+            
+        case SET_UART_REFRASH_RATE:     //SU
+            SetUartRefrashRate(data);
+            break;
+            
+        case SET_UART_MODE:             //SA
+            SetUartMode(data);
+            break;
+            
+        case SAVE_SYSTEM_STATUS:
+            SaveSystemStatus();
+            break;
 
             
         default:

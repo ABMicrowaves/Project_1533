@@ -16,9 +16,22 @@ void SetMcuFwVersion(char* data)
 
 }
 
-void GetMcuFwVersion()
+void ReadSystemStatusFromEprom(void)
 {
-
+    uint16_t sysData = ReadIntFromEeprom(EEPROM_SYSTEM_ADDRESS_OFSEET | SYSTEM_INFO_ADDRES[0], 1);
+    systemStatus.UnitType = sysData & 0x1;
+    sysData = ReadIntFromEeprom(EEPROM_SYSTEM_ADDRESS_OFSEET | SYSTEM_INFO_ADDRES[1], 1);
+    systemStatus.UartMode = sysData & 0x1;
+    sysData = ReadIntFromEeprom(EEPROM_SYSTEM_ADDRESS_OFSEET | SYSTEM_INFO_ADDRES[2], 2);
+    systemStatus.UartRefreshRate = sysData & 0x1F;
+}
+void SaveSystemStatus(void)
+{
+    StoreIntInEeprom(systemStatus.UnitType,EEPROM_SYSTEM_ADDRESS_OFSEET | SYSTEM_INFO_ADDRES[0], 1);
+    StoreIntInEeprom(systemStatus.UartMode,EEPROM_SYSTEM_ADDRESS_OFSEET | SYSTEM_INFO_ADDRES[1], 1);
+    StoreIntInEeprom(systemStatus.UartRefreshRate,EEPROM_SYSTEM_ADDRESS_OFSEET | SYSTEM_INFO_ADDRES[2], 2);
+    //uint16_t sysData = ReadIntFromEeprom(EEPROM_SYSTEM_ADDRESS_OFSEET | SYSTEM_INFO_ADDRES[0], 1);
+    //systemStatus.UnitType = sysData & 0x1;
 }
 
 void SetCpldFwVersion(char* data)
@@ -115,15 +128,21 @@ void PrintHelpScreen(void)
     UART_Write_Text(dest);
     sprintf(dest, "$SH <cr>         Print system help message.\r\n");
     UART_Write_Text(dest);
-    sprintf(dest, "$SBT <XX><cr>    Set UART refresh rate (1-20)[Hz].\r\n");
+    sprintf(dest, "$SU <XX><cr>    Set UART refresh rate (1-20)[Hz].\r\n");
     UART_Write_Text(dest);
-    sprintf(dest, "$SBU <X><cr>     Set UART automatic operation: Automatic[1] Manual[0] [Default = 0]\r\n");
+    sprintf(dest, "$SA <X><cr>     Set UART automatic operation: Automatic[1] Manual[0] [Default = 0]\r\n");
     UART_Write_Text(dest);
     sprintf(dest, "$SQ <X><cr>      Get system status.\r\n");
     UART_Write_Text(dest);
     sprintf(dest, "$SL <cr>         Test system LEDs.\r\n");
     UART_Write_Text(dest);
     sprintf(dest, "$TD <DAC NUM><DAC VALUE><cr>         Set TX DAC <0-3> <0-Vref[4 dig]> \r\n");
+    UART_Write_Text(dest);
+    sprintf(dest, "$SQ <cr>         Read System Status \r\n");
+    UART_Write_Text(dest);
+    sprintf(dest, "$ST <cr>         Set Unit Type \r\n");
+    UART_Write_Text(dest);
+    sprintf(dest, "$SV <cr>         Save System status To EEPROM \r\n");
     UART_Write_Text(dest);
 //    sprintf(dest, "$                                    DAC0: bla \r\n");
 //    UART_Write_Text(dest);
@@ -135,10 +154,20 @@ void PrintHelpScreen(void)
 //    UART_Write_Text(dest);
 }
 
-void PrintSystemStatus()
+void PrintSystemStatus(void)
 {
-    char dest[50];
-    sprintf(dest, "%d\t",POWER_EN_GetValue());       
+    char dest[80];
+    systemStatus.SwVersion = SYS_VERSION;
+    //char dest[50];
+    //sprintf(dest, "%d\t",POWER_EN_GetValue());  
+    sprintf(dest, "UNIT ID %d\n\r",systemStatus.UnitId); 
+    UART_Write_Text(dest);
+    sprintf(dest, "SOFTWARE VERSION %s\n\r",systemStatus.SwVersion); 
+    UART_Write_Text(dest);
+    sprintf(dest, "UNIT TYPE %d\n\r",systemStatus.UnitType); 
+    UART_Write_Text(dest);
+    sprintf(dest, "PASS COUNTER %d\n\r",systemStatus.PassCounter); 
+    UART_Write_Text(dest);
 }
 
 void CollectRxStatusParams(void)
@@ -149,10 +178,10 @@ void CollectRxStatusParams(void)
     rxStatistics.Freq = rxFreq; 
     rxStatistics.RSSI = lastAdcFfwrRSSI;
     rxStatistics.Light = LED_LIGHT_EN_GetValue();
-    rxStatistics.UnitId = 123;
+    //rxStatistics.UnitId = 123;
     rxStatistics.UnitDc = 1234;
-    rxStatistics.SwVersion = SYS_VERSION;
-    rxStatistics.UnitType = false;
+    //rxStatistics.SwVersion = SYS_VERSION;
+    //rxStatistics.UnitType = false;
     
     //rxStatistics.AdcValues.ADC0 = 0x7;
 }
@@ -165,10 +194,10 @@ void CollectTxStatusParams(void)
     txStatistics.Freq = txFreq; 
     txStatistics.RSSI = lastAdcFfwrRSSI;
     txStatistics.Light = LED_LIGHT_EN_GetValue();
-    txStatistics.UnitId = 123;
+    //txStatistics.UnitId = 123;
     txStatistics.UnitDc = 1234;
-    txStatistics.SwVersion = SYS_VERSION;
-    txStatistics.UnitType = true;
+    //txStatistics.SwVersion = SYS_VERSION;
+    //txStatistics.UnitType = true;
     
     txStatistics.AdcValues.ADC0 = 0x7;
 }
@@ -190,14 +219,14 @@ void PrintRxStatus(void)
     UART_Write_Text(dest);
     sprintf(dest, "Light 0: OFF 1: ON%d\n\r",rxStatistics.Light); 
     UART_Write_Text(dest);
-    sprintf(dest, "UNIT ID %d\n\r",rxStatistics.UnitId); 
-    UART_Write_Text(dest);
+    //sprintf(dest, "UNIT ID %d\n\r",rxStatistics.UnitId); 
+    //UART_Write_Text(dest);
     sprintf(dest, "UNIT DC %d\n\r",rxStatistics.UnitDc); 
     UART_Write_Text(dest);
-    sprintf(dest, "SOFTWARE VERSION %s\n\r",rxStatistics.SwVersion); 
-    UART_Write_Text(dest);
-    sprintf(dest, "UNIT TYPE %d\n\r",rxStatistics.UnitType); 
-    UART_Write_Text(dest);
+    //sprintf(dest, "SOFTWARE VERSION %s\n\r",rxStatistics.SwVersion); 
+   // UART_Write_Text(dest);
+    //sprintf(dest, "UNIT TYPE %d\n\r",rxStatistics.UnitType); 
+    //UART_Write_Text(dest);
     sprintf(dest, "*******************\n\r"); 
     UART_Write_Text(dest);
 }
@@ -219,14 +248,15 @@ void PrintTxStatus(void)
     UART_Write_Text(dest);
     sprintf(dest, "Light 0: OFF 1: ON%d\n\r",txStatistics.Light); 
     UART_Write_Text(dest);
-    sprintf(dest, "UNIT ID %d\n\r",txStatistics.UnitId); 
-    UART_Write_Text(dest);
+    //sprintf(dest, "UNIT ID %d\n\r",txStatistics.UnitId); 
+    //UART_Write_Text(dest);
     sprintf(dest, "UNIT DC %d\n\r",txStatistics.UnitDc); 
     UART_Write_Text(dest);
-    sprintf(dest, "SOFTWARE VERSION %s\n\r",txStatistics.SwVersion); 
-    UART_Write_Text(dest);
-    sprintf(dest, "UNIT TYPE %d\n\r",txStatistics.UnitType); 
-    UART_Write_Text(dest);
+    //sprintf(dest, "SOFTWARE VERSION %s\n\r",txStatistics.SwVersion); 
+    //UART_Write_Text(dest);
+    //sprintf(dest, "UNIT TYPE %d\n\r",txStatistics.UnitType); 
+    //UART_Write_Text(dest);
     sprintf(dest, "*******************\n\r"); 
     UART_Write_Text(dest);
 }
+

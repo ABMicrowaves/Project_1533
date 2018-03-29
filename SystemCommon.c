@@ -99,7 +99,47 @@ uint8_t make8(uint32_t data, uint8_t dataLocation)
     }
 }
 
+void set_system_type(char* data)
+{
+    uint32_t retNum =0;  
+    retNum = GetIntFromUartData(data);
+    if((retNum / 10) == (1234))
+        {
+            if((retNum & 0x1) == 1)
+                systemStatus.UnitType = true;
+            else if((retNum & 0x1) == 0)
+                systemStatus.UnitType = false;
+            else 
+                UART_Write_Text("NOT OK \n\r");
+        }
+        else
+            UART_Write_Text("NOT OK \n\r");
+}
 
+void SetUartRefrashRate (char* data)
+{
+    uint32_t retNum =0;  
+    retNum = GetIntFromUartData(data);
+    if(retNum > 0 || retNum < 21)
+    {
+        systemStatus.UartRefreshRate = retNum;
+    }
+    else
+        UART_Write_Text("NOT OK \n\r");
+}
+
+
+void SetUartMode (char* data)
+{
+    uint32_t retNum =0;  
+    retNum = GetIntFromUartData(data);
+    if(retNum == 0)
+        systemStatus.UartMode = false;
+    else if(retNum == 1)
+        systemStatus.UartMode = true;
+    else
+        UART_Write_Text("NOT OK \n\r");
+}
 
 void ResetMcu()
 {

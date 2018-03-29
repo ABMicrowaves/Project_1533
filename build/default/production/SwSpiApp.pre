@@ -8840,9 +8840,14 @@ ADC_SAMPLE = 0x23,
 
 SYSTEM_PRINT_HELP_LIST = 0x18,
 SYSTEM_TEST_LED = 0x1C,
+SET_SYSTEM_TYPE = 0x24,
+PRINT_SYSTEM_STATUS = 0x21,
+SET_UART_REFRASH_RATE = 0x25,
+SET_UART_MODE = 0x11,
+SAVE_SYSTEM_STATUS = 0x26,
 }MSG_REQUEST;
 
-# 20 "SystemStatus.h"
+# 21 "SystemStatus.h"
 typedef struct
 {
 bool OperState;
@@ -8852,6 +8857,20 @@ uint16_t ADC1;
 
 typedef struct
 {
+bool OperState;
+uint16_t DAC0;
+uint16_t DAC1;
+}DAC_VALUES;
+
+const uint8_t SYSTEM_INFO_ADDRES[(3)] =
+{
+0x0,
+0x1,
+0x2,
+};
+
+typedef struct
+{
 bool Synt;
 ADC_VALUES AdcValues;
 double DeviceTemperature;
@@ -8860,12 +8879,8 @@ double Freq;
 int8_t RSSI;
 double TEMP;
 bool Light;
-int8_t UnitId;
 int16_t UnitDc;
-char* SwVersion;
-bool UnitType;
 int8_t CompressionPoint;
-int32_t PassCounter;
 }RX_STATISTICS;
 
 typedef struct
@@ -8878,36 +8893,25 @@ double Freq;
 int8_t RSSI;
 double TEMP;
 bool Light;
-int8_t UnitId;
 int16_t UnitDc;
-char* SwVersion;
-bool UnitType;
 int8_t CompressionPoint;
-int32_t PassCounter;
-}RX_STATISTICS;
-
-typedef struct
-{
-bool Synt;
-ADC_VALUES AdcValues;
-double DeviceTemperature;
-bool InputPowerStatus;
-double Freq;
-int8_t RSSI;
-double TEMP;
-bool Light;
-int8_t UnitId;
-int16_t UnitDc;
-char* SwVersion;
-bool UnitType;
-int8_t CompressionPoint;
-int32_t PassCounter;
-
 bool IntMode;
 }TX_STATISTICS;
 
+typedef struct
+{
+int8_t UnitId;
+char* SwVersion;
+bool UnitType;
+int32_t PassCounter;
+bool UartMode;
+uint8_t UartRefreshRate;
+}SYSTEM_STATUS;
+
+
 volatile RX_STATISTICS rxStatistics;
 volatile TX_STATISTICS txStatistics;
+volatile SYSTEM_STATUS systemStatus;
 
 void SetMcuFwVersion(char* data);
 void SetCpldFwVersion(char* data);
@@ -8925,6 +8929,9 @@ void CollectRxStatusParams(void);
 void CollectTxStatusParams(void);
 void PrintRxStatus(void);
 void PrintTxStatus(void);
+void PrintSystemStatus(void);
+void SaveSystemStatus();
+void ReadSystemStatusFromEprom(void);
 
 # 22 "LedsApp.h"
 typedef enum
@@ -8982,22 +8989,7 @@ void InitAdcApplicationMgr();
 bool SampleSingleChannel(void);
 void SampleAllChannels(void);
 
-# 36 "FlashApp.h"
-void FlashSampleWrite(adc_result_t sampleData, uint8_t channelNum);
-void FlashReadUart(int numOfSampleToRead);
-void FlashEreaseMem(void);
-void FlashReadCondition(void);
-bool CheckFlashPrecentage(void);
-
-
-uint8_t EepromRead(uint8_t address);
-void EepromWrite(uint8_t address, uint8_t data);
-
-
-bool FlashTest(int startAddress, int numOfSamples);
-bool EepromTest(int startAddress, int numOfSamples);
-
-# 20 "MessageFunctions.h"
+# 19 "MessageFunctions.h"
 void GroupRx(MSG_REQUEST request, char* data);
 void GroupTx(MSG_REQUEST request, char* data);
 void GroupCommon(MSG_REQUEST request, char* data);
@@ -9009,6 +9001,10 @@ GroupRx,
 GroupTx,
 GroupCommon,
 };
+
+# 23 "FlashApp.h"
+uint8_t EepromRead(uint8_t address);
+void EepromWrite(uint8_t address, uint8_t data);
 
 # 23 "DacApp.h"
 const uint8_t DAC_ADDRES[(4)] =
@@ -9216,7 +9212,7 @@ void UpdateRxFreq(char* data);
 
 void SYNTH_ISR(void);
 
-# 52 "SystemCommon.h"
+# 51 "SystemCommon.h"
 unsigned char crc8(char* dataArray, int dataSize);
 uint8_t make8(uint32_t data, uint8_t dataLocation);
 void ZeroArray(char* array, int size);
@@ -9229,6 +9225,9 @@ uint32_t ReadIntFromEeprom(uint8_t address, int numOfByes);
 
 void ResetMcu(void);
 void SendSystemStartAck(void);
+void set_system_type(char* data);
+void SetUartRefrashRate (char* data);
+void SetUartMode (char* data);
 
 # 14 "SwSpiApp.h"
 void SWSPI_send_word (SPI_PERIPHERAL phrType, uint32_t data, uint8_t dataSize);

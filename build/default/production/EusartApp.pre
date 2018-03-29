@@ -8872,9 +8872,14 @@ ADC_SAMPLE = 0x23,
 
 SYSTEM_PRINT_HELP_LIST = 0x18,
 SYSTEM_TEST_LED = 0x1C,
+SET_SYSTEM_TYPE = 0x24,
+PRINT_SYSTEM_STATUS = 0x21,
+SET_UART_REFRASH_RATE = 0x25,
+SET_UART_MODE = 0x11,
+SAVE_SYSTEM_STATUS = 0x26,
 }MSG_REQUEST;
 
-# 20 "SystemStatus.h"
+# 21 "SystemStatus.h"
 typedef struct
 {
 bool OperState;
@@ -8884,6 +8889,20 @@ uint16_t ADC1;
 
 typedef struct
 {
+bool OperState;
+uint16_t DAC0;
+uint16_t DAC1;
+}DAC_VALUES;
+
+const uint8_t SYSTEM_INFO_ADDRES[(3)] =
+{
+0x0,
+0x1,
+0x2,
+};
+
+typedef struct
+{
 bool Synt;
 ADC_VALUES AdcValues;
 double DeviceTemperature;
@@ -8892,12 +8911,8 @@ double Freq;
 int8_t RSSI;
 double TEMP;
 bool Light;
-int8_t UnitId;
 int16_t UnitDc;
-char* SwVersion;
-bool UnitType;
 int8_t CompressionPoint;
-int32_t PassCounter;
 }RX_STATISTICS;
 
 typedef struct
@@ -8910,36 +8925,25 @@ double Freq;
 int8_t RSSI;
 double TEMP;
 bool Light;
-int8_t UnitId;
 int16_t UnitDc;
-char* SwVersion;
-bool UnitType;
 int8_t CompressionPoint;
-int32_t PassCounter;
-}RX_STATISTICS;
-
-typedef struct
-{
-bool Synt;
-ADC_VALUES AdcValues;
-double DeviceTemperature;
-bool InputPowerStatus;
-double Freq;
-int8_t RSSI;
-double TEMP;
-bool Light;
-int8_t UnitId;
-int16_t UnitDc;
-char* SwVersion;
-bool UnitType;
-int8_t CompressionPoint;
-int32_t PassCounter;
-
 bool IntMode;
 }TX_STATISTICS;
 
+typedef struct
+{
+int8_t UnitId;
+char* SwVersion;
+bool UnitType;
+int32_t PassCounter;
+bool UartMode;
+uint8_t UartRefreshRate;
+}SYSTEM_STATUS;
+
+
 volatile RX_STATISTICS rxStatistics;
 volatile TX_STATISTICS txStatistics;
+volatile SYSTEM_STATUS systemStatus;
 
 void SetMcuFwVersion(char* data);
 void SetCpldFwVersion(char* data);
@@ -8957,6 +8961,9 @@ void CollectRxStatusParams(void);
 void CollectTxStatusParams(void);
 void PrintRxStatus(void);
 void PrintTxStatus(void);
+void PrintSystemStatus(void);
+void SaveSystemStatus();
+void ReadSystemStatusFromEprom(void);
 
 # 22 "LedsApp.h"
 typedef enum
@@ -9014,22 +9021,7 @@ void InitAdcApplicationMgr();
 bool SampleSingleChannel(void);
 void SampleAllChannels(void);
 
-# 36 "FlashApp.h"
-void FlashSampleWrite(adc_result_t sampleData, uint8_t channelNum);
-void FlashReadUart(int numOfSampleToRead);
-void FlashEreaseMem(void);
-void FlashReadCondition(void);
-bool CheckFlashPrecentage(void);
-
-
-uint8_t EepromRead(uint8_t address);
-void EepromWrite(uint8_t address, uint8_t data);
-
-
-bool FlashTest(int startAddress, int numOfSamples);
-bool EepromTest(int startAddress, int numOfSamples);
-
-# 20 "MessageFunctions.h"
+# 19 "MessageFunctions.h"
 void GroupRx(MSG_REQUEST request, char* data);
 void GroupTx(MSG_REQUEST request, char* data);
 void GroupCommon(MSG_REQUEST request, char* data);
@@ -9041,6 +9033,10 @@ GroupRx,
 GroupTx,
 GroupCommon,
 };
+
+# 23 "FlashApp.h"
+uint8_t EepromRead(uint8_t address);
+void EepromWrite(uint8_t address, uint8_t data);
 
 # 23 "DacApp.h"
 const uint8_t DAC_ADDRES[(4)] =
@@ -9133,7 +9129,7 @@ void SwSpi_Set_Synth_Le_Pin(SPI_PERIPHERAL phrType, bool cPinMode);
 void SWSPI_DAC_send_bits(SPI_PERIPHERAL phrType, uint8_t data);
 void SwSpi_Set_Dac_Sync_Pin(bool cPinMode);
 
-# 52 "SystemCommon.h"
+# 51 "SystemCommon.h"
 unsigned char crc8(char* dataArray, int dataSize);
 uint8_t make8(uint32_t data, uint8_t dataLocation);
 void ZeroArray(char* array, int size);
@@ -9146,6 +9142,9 @@ uint32_t ReadIntFromEeprom(uint8_t address, int numOfByes);
 
 void ResetMcu(void);
 void SendSystemStartAck(void);
+void set_system_type(char* data);
+void SetUartRefrashRate (char* data);
+void SetUartMode (char* data);
 
 # 7 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdlib.h"
 typedef unsigned short wchar_t;
@@ -9367,7 +9366,8 @@ return;
 
 case TX_GROUP:
 
-if(chRec == 'I' || chRec == 'F' || chRec == 'Q' || chRec == 'X' || chRec == 'B' || chRec == 'S')
+if(chRec == 'I' || chRec == 'F' || chRec == 'Q' || chRec == 'X' || chRec == 'B'
+|| chRec == 'S')
 {
 request = (chRec - '0');
 cState = READ_DATA_SIZE;
@@ -9382,7 +9382,8 @@ break;
 
 case COMMON_GROUP:
 
-if(chRec == 'H' || chRec == 'L')
+if(chRec == 'H' || chRec == 'L' || chRec == 'T' || chRec == 'A' || chRec == 'U'
+|| chRec == 'Q' || chRec == 'V')
 {
 request = (chRec - '0');
 cState = READ_DATA_SIZE;
@@ -9441,7 +9442,7 @@ ZeroArray(rxMsgData, (0x14));
 
 }
 
-# 215
+# 217
 void WriteUartMessage(char* dataBuf, int dataSize)
 {
 for(int idx = 0; idx < dataSize; idx++)
@@ -9456,23 +9457,5 @@ for(int i =0;text[i]!='\0';i++)
 {
 EUSART1_Write(text[i]);
 }
-}
-
-# 236
-void SendAckMessage(MSG_GROUPS inGroup, MSG_REQUEST inRequest)
-{
-
-char TxMsg[(0x5) + 1];
-ZeroArray(TxMsg, (0x5) + 1);
-
-
-TxMsg[(0x0)] = (0x24);
-TxMsg[(0x1)] = inGroup;
-TxMsg[(0x2)] = inRequest;
-TxMsg[(0x0)] = 0;
-
-TxMsg[(0x5)] = crc8(TxMsg, (0x5));
-
-WriteUartMessage(TxMsg, (0x5) + 1);
 }
 
