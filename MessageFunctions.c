@@ -7,6 +7,9 @@ Author: RoeeZ (Comm-IT).                                                    ****
 ****************************************************************************** */
 
 #include "MessageFunctions.h"
+uint32_t retNum =0;
+uint16_t numSamples = 0;
+uint16_t channelNum = 0;
 
 void GroupRx(MSG_REQUEST request, char* data)
 {
@@ -22,6 +25,8 @@ void GroupRx(MSG_REQUEST request, char* data)
             
         case READ_MODULE_STATUS:
             //ResetCpld();
+            CollectRxStatusParams();
+            PrintRxStatus();
             break;
             
         case SET_MODULE_BIT_MODE:
@@ -31,7 +36,14 @@ void GroupRx(MSG_REQUEST request, char* data)
             break;
         
         case ADC_SAMPLE:
-            AdcSingleSample(RX_TYPE, data);
+            retNum = GetIntFromUartData(data);
+            channelNum  = data[1] - '0';
+            numSamples  = retNum % (int)(pow(10,data[0] - 1));
+            AdcSingleSample(RX_TYPE, channelNum, numSamples);
+            //AdcSingleSample(RX_TYPE, data);
+            
+            // For testing
+            //DacSetValue(data);
             break;
             
         default:
@@ -53,7 +65,8 @@ void GroupTx(MSG_REQUEST request, char* data)
             break;
             
         case READ_MODULE_STATUS:
-            //ResetCpld();
+            CollectTxStatusParams();
+            PrintTxStatus();
             break;
             
         case SET_MODULE_BIT_MODE:
@@ -69,7 +82,11 @@ void GroupTx(MSG_REQUEST request, char* data)
             break;
         
         case ADC_SAMPLE:
-            AdcSingleSample(TX_TYPE, data);
+            retNum = GetIntFromUartData(data);
+            channelNum  = data[1] - '0';
+            numSamples  = retNum % (int)(pow(10,data[0] - 1));
+            AdcSingleSample(TX_TYPE, channelNum, numSamples);
+            //AdcSingleSample(TX_TYPE, data);
             break;
         
         default:
@@ -88,6 +105,28 @@ void GroupCommon(MSG_REQUEST request, char* data)
         case SYSTEM_TEST_LED:
             testLeds();
             break;
+            
+        case SET_SYSTEM_TYPE:
+            set_system_type(data);
+            
+            break;
+            
+        case PRINT_SYSTEM_STATUS:
+            PrintSystemStatus();
+            break;
+            
+        case SET_UART_REFRASH_RATE:     //SU
+            SetUartRefrashRate(data);
+            break;
+            
+        case SET_UART_MODE:             //SA
+            SetUartMode(data);
+            break;
+            
+        case SAVE_SYSTEM_STATUS:
+            SaveSystemStatus();
+            break;
+
             
         default:
             break;

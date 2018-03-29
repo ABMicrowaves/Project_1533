@@ -1,6 +1,6 @@
- build/default/debug/SwSpiApp.d  \
- build/default/debug/SwSpiApp.p1:  \
- SwSpiApp.c  \
+ build/default/production/SyntApp.d  \
+ build/default/production/SyntApp.p1:  \
+ SyntApp.c  \
 DacApp.h  \
 SystemCommon.h  \
 mcc_generated_files/mcc.h  \

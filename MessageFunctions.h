@@ -13,7 +13,6 @@ Author: RoeeZ (Comm-IT).                                                    ****
 #include "SystemStatus.h"
 #include "LedsApp.h"
 #include "AdcApp.h"
-#include "FlashApp.h"
 
 #define NUMBER_OF_MESSAGE_GROUPS    (6)
 

@@ -8545,42 +8545,43 @@ typedef uint16_t uintptr_t;
 # 12 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdbool.h"
 typedef unsigned char bool;
 
-# 74 "mcc_generated_files/tmr0.h"
+# 75 "mcc_generated_files/tmr0.h"
 volatile bool TimerOneSecFlag = 0;
 volatile bool TimerSamplingFlag = 0;
 volatile bool TimerKeepAliveFlag = 0;
+volatile bool TimertenSecFlag = 0;
 
-# 113
+# 115
 void TMR0_Initialize(void);
 
-# 142
+# 144
 void TMR0_StartTimer(void);
 
-# 174
+# 176
 void TMR0_StopTimer(void);
 
-# 210
+# 212
 uint16_t TMR0_ReadTimer(void);
 
-# 249
+# 251
 void TMR0_WriteTimer(uint16_t timerVal);
 
-# 285
+# 287
 void TMR0_Reload(void);
 
-# 303
+# 305
 void TMR0_ISR(void);
 
-# 321
+# 323
 void TMR0_CallBack(void);
 
-# 339
+# 341
 void TMR0_SetInterruptHandler(void (* InterruptHandler)(void));
 
-# 357
+# 359
 extern void (*TMR0_InterruptHandler)(void);
 
-# 375
+# 377
 void TMR0_DefaultInterruptHandler(void);
 
 # 57 "mcc_generated_files/tmr0.c"
@@ -8682,6 +8683,10 @@ TimerSamplingFlag = 1;
 if ((CountCallBack % 300) == 0)
 {
 TimerKeepAliveFlag = 1;
+}
+if ((CountCallBack % 200) == 0)
+{
+TimertenSecFlag = 1;
 }
 
 CountCallBack %= 300;

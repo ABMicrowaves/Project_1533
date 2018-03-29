@@ -16,17 +16,6 @@ Author: RoeeZ (Comm-IT).                                                    ****
 #define REG_DATA_BYTES_SIZE 6
 #define NUM_OF_REGISTERS 13
 
-// Stored registers
-#define SYNTH_REG_10    0xC0193A    
-#define SYNTH_REG_06    0x35006076
-#define SYNTH_REG_04    0x30008384
-
-// Registers params:
-#define SYNTH_F_PFD     40.0
-#define SYNTH_MOD1      16777216
-#define SYNTH_MOD2      0x15550     // MOD2(5461) << 4
-#define SYNTH_AUTOCAL   0x200000
-
 // Registers will be write on opposite direction.
 const uint32_t PLL_INIT_REGISTERS[13] = 
 {
@@ -45,11 +34,34 @@ const uint32_t PLL_INIT_REGISTERS[13] =
     0x00200340      /* R00  */
 };  
 
+const uint32_t TEST_PLL_REGISTERS[13] = 
+{
+    0x1041C,        /* R12  */
+    0x61300B,       /* R11  */
+    0xC026BA,       /* R10  */
+    0x1A19FCC9,     /* R09  */
+    0x102D0428,     /* R08  */
+    0x120000E7,     /* R07  */
+    0x35056076,     /* R06  */
+    0x800025,       /* R05  */
+    0x32008B84,     /* R04  */
+    0x3,            /* R03  */
+    0x80032,        /* R02  */
+    0x1AAAAA1,      /* R01  */
+    200410          /* R00  */
+};
+
+
+volatile uint32_t rxFreq = 0;    // RX frequency in MHz
+volatile uint32_t txFreq = 0;    // TX frequency in MHz
+
 void PLLUartInitialize(char* data);
 void PLLInitialize(void);
 
-void UpdateSynthFreq(MODULE_TYPE cType, char* data);
-bool CalcSynthRegParams(int32_t* regArray, int32_t inputFreq);
+void UpdateTxFreq(char* data);
+void UpdateRxFreq(char* data);
+
+void SYNTH_ISR(void);
 
 #endif	/* SYNTAPP_H */
 

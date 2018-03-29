@@ -21,9 +21,40 @@ unsigned char crc8(char* dataArray, int dataSize)
     return crc;
 }
 
+void Make32bitsArray(bool* array, uint32_t data)
+{
+    for(int idx = 0; idx <= NUM_OF_BITS_SYNTH_REG; idx++)
+    {
+        array[NUM_OF_BITS_SYNTH_REG - idx - 1] = data % 2;
+        data /= 2;
+    }
+}
+
 void ZeroArray(char* array, int size)
 {
     memset(array, 0x0, size);
+}
+
+void StoreIntInEeprom(uint32_t data, uint8_t address, int numOfByes)
+{
+    for(uint8_t idx = numOfByes; idx; idx--)
+    {
+        uint8_t val = make8(data, idx - 1);
+        EepromWrite(address - idx, val);
+    }
+}
+
+uint32_t ReadIntFromEeprom(uint8_t address, int numOfByes)
+{
+    uint32_t retVal = 0x00;
+    address -= numOfByes;
+    
+    for(uint8_t idx = 0; idx < numOfByes; idx++)
+    {
+        uint32_t base = pow(2,8*(numOfByes - 1 - idx));
+        retVal = retVal | EepromRead(address + idx) * base;
+    }
+    return retVal;
 }
 
 uint32_t GetIntFromUartData(char* data)
@@ -47,16 +78,6 @@ uint32_t GetIntFromUartData(char* data)
     return strtol(dataRegArr, NULL, 10);
 }
 
-double getFractionPartOfDivide(double num1, double num2)
-{
-    return ((num1 / num2) - (int)(num1 / num2));
-}
-
-double getFractionPartOfMultiple(double num1, double num2)
-{
-    return ((num1 * num2) - (int)(num1 * num2));
-}
-
 uint8_t make8(uint32_t data, uint8_t dataLocation)
 {
     switch(dataLocation)
@@ -78,16 +99,46 @@ uint8_t make8(uint32_t data, uint8_t dataLocation)
     }
 }
 
-
-double GetDoubleFromUartData(char* data, char dataSize)
+void set_system_type(char* data)
 {
-    char tempNum[10];
-    ZeroArray(tempNum, sizeof(tempNum));
-    for(int idx = 0; idx < dataSize; idx++)
+    uint32_t retNum =0;  
+    retNum = GetIntFromUartData(data);
+    if((retNum / 10) == (1234))
+        {
+            if((retNum & 0x1) == 1)
+                systemStatus.UnitType = true;
+            else if((retNum & 0x1) == 0)
+                systemStatus.UnitType = false;
+            else 
+                UART_Write_Text("NOT OK \n\r");
+        }
+        else
+            UART_Write_Text("NOT OK \n\r");
+}
+
+void SetUartRefrashRate (char* data)
+{
+    uint32_t retNum =0;  
+    retNum = GetIntFromUartData(data);
+    if(retNum > 0 || retNum < 21)
     {
-        tempNum[idx] = data[idx + 1];
+        systemStatus.UartRefreshRate = retNum;
     }
-    double doubleFreq = atof(tempNum);    
+    else
+        UART_Write_Text("NOT OK \n\r");
+}
+
+
+void SetUartMode (char* data)
+{
+    uint32_t retNum =0;  
+    retNum = GetIntFromUartData(data);
+    if(retNum == 0)
+        systemStatus.UartMode = false;
+    else if(retNum == 1)
+        systemStatus.UartMode = true;
+    else
+        UART_Write_Text("NOT OK \n\r");
 }
 
 void ResetMcu()
@@ -97,15 +148,6 @@ void ResetMcu()
     
     // Now reset MCU:
     Reset();
-}
-
-void ResetCpld()
-{
-    // Before MCU system reset send ACK:
-    //SendAckMessage((MSG_GROUPS)CONTROL_MSG, (MSG_REQUEST)CONTROL_RESET_CPLD);
-   
-    // Now reset CPLD unit:
-    
 }
 
 void SendSystemStartAck()

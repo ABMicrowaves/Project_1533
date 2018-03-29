@@ -23,41 +23,19 @@ void SWSPI_send_word (SPI_PERIPHERAL phrType, uint32_t data, uint8_t dataSize)
     if(phrType == SYNTH_TX || phrType == SYNTH_RX)
     {
         SwSpi_Set_Synth_Le_Pin(phrType, LOW);
-    }
-    if(phrType == EXT_DAC)
-    {  
-        SwSpi_Set_Dac_Sync_Pin(LOW);
-    }
-    // </editor-fold>
-
-    // <editor-fold defaultstate="collapsed" desc="Send word (2 bytes)">
-    
-    for(int idx = dataSize + 1; idx > 0; idx--)
-    {
-        uint8_t datac = make8(data, idx - 1);
-        
-        if(phrType == SYNTH_TX || phrType == SYNTH_RX)
-        {
-            SWSPI_Synth_send_bits(phrType, datac);
-        }
-        else if (phrType == EXT_DAC)
-        {
-            SWSPI_DAC_send_bits(phrType, datac);
-        }
-    }
-    // </editor-fold>
-
-    // <editor-fold defaultstate="collapsed" desc="End cycle">
-    
-    if(phrType == EXT_DAC)
-    {
-        SwSpi_Set_Dac_Sync_Pin(HIGH);
-    }
-    else if(phrType == SYNTH_TX || phrType == SYNTH_RX)
-    {
+        SWSPI_Synth_send_bits(phrType, data);
         SwSpi_Set_Synth_Le_Pin(phrType, HIGH);
     }
-    // </editor-fold>
+    else if(phrType == EXT_DAC)
+    {  
+        SwSpi_Set_Dac_Sync_Pin(LOW);
+        for(int idx = dataSize + 1; idx > 0; idx--)
+        {
+            uint8_t datac = make8(data, idx - 1);
+            SWSPI_DAC_send_bits(phrType, datac);
+        }
+        SwSpi_Set_Dac_Sync_Pin(HIGH);
+    }
     
     INTERRUPT_GlobalInterruptEnable();
 }
@@ -86,16 +64,23 @@ void SWSPI_DAC_send_bits(SPI_PERIPHERAL phrType, uint8_t data)
     SwSpi_Clk_Pin(phrType, LOW);
 }
 
-void SWSPI_Synth_send_bits(SPI_PERIPHERAL phrType, uint8_t data)
+void SWSPI_Synth_send_bits(SPI_PERIPHERAL phrType, uint32_t data)
 {
     UCHAR count;
-    for (count = 8; count ; count--, data <<= 1)
+    uint32_t mask = 0x1;
+    
+    bool bitArray[32];
+    ZeroArray(bitArray, sizeof(bitArray));
+    
+    Make32bitsArray(bitArray, data);
+    
+    for (count = 0; count <= 31 ; count++)
     {
+        
         SwSpi_Clk_Pin(phrType, LOW);
         
-        if (data & 0X80)
+        if (bitArray[count])
         {
-            
             SwSpi_Data_Pin(phrType, HIGH);
         } 
         else
@@ -104,14 +89,9 @@ void SWSPI_Synth_send_bits(SPI_PERIPHERAL phrType, uint8_t data)
         }
         
         SwSpi_Clk_Pin(phrType, HIGH);
-        
-        
-//        // Make some delay between each bit
-//        __delay_us(10);
-//        SwSpi_Synth_Toggle_Clock(phrType);
-//        __delay_us(25);
     }
     
+    __delay_us(50);
     SwSpi_Data_Pin(phrType, LOW);
     SwSpi_Clk_Pin(phrType, LOW);
 }
@@ -240,7 +220,7 @@ void SwSpi_Set_CE_Pin (SPI_PERIPHERAL phrType, bool cPinMode)
             }
             else if(cPinMode == LOW)
             {
-                TX_SYNT_CE_SetLow(); 
+                RX_SYNT_CE_SetLow(); 
             }
             break;
     }

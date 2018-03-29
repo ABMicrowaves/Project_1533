@@ -157,6 +157,10 @@ void TMR0_ISR(void)
     {
         TimerKeepAliveFlag = true;
     }
+    if ((CountCallBack % TMR0_TEN_SEC_FACTOR) == 0)
+    {
+        TimertenSecFlag = true;
+    }
     
     CountCallBack %= MAX_COUNTER_SIZE;
      

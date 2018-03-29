@@ -21,6 +21,8 @@ void main(void)
     // Then send keep alive signal to PC host application:
     SendUartSystemInitMessage();
     
+    // Read system status from EEPROM:
+    ReadSystemStatusFromEprom();
     // Indicate by Green led that system start OK:
     BlinkOkLeds(OK_START_SYSTEM);
             
@@ -39,6 +41,11 @@ void main(void)
         {
             keepAliveSignalLed();
             TimerKeepAliveFlag = false; 
+        }
+        else if (TimertenSecFlag == true)
+        {
+            SampleAllChannels();
+            TimertenSecFlag = false;
         }
         else if (TimerSamplingFlag == true)
         {

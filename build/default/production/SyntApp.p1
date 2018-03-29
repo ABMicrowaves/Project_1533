@@ -1,100 +1,148 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"120 mcc_generated_files/interrupt_manager.h
-[v _INTERRUPT_Initialize `(v ~T0 @X0 0 ef ]
-"400 mcc_generated_files/pin_manager.h
-[v _PIN_MANAGER_Initialize `(v ~T0 @X0 0 ef ]
-"85 mcc_generated_files/mcc.h
-[v _OSCILLATOR_Initialize `(v ~T0 @X0 0 ef ]
-"113 mcc_generated_files/tmr0.h
-[v _TMR0_Initialize `(v ~T0 @X0 0 ef ]
-"145 mcc_generated_files/adc.h
-[v _ADC_Initialize `(v ~T0 @X0 0 ef ]
-"102 mcc_generated_files/eusart1.h
-[v _EUSART1_Initialize `(v ~T0 @X0 0 ef ]
-"16010 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic18f45k22.h
-[v _OSCCON `Vuc ~T0 @X0 0 e@4051 ]
-"15953
-[v _OSCCON2 `Vuc ~T0 @X0 0 e@4050 ]
-"9062
-[v _OSCTUNE `Vuc ~T0 @X0 0 e@3995 ]
-"49 mcc_generated_files/mcc.c
-[p x FOSC=INTIO67 ]
-"50
-[p x PLLCFG=OFF ]
-"51
-[p x PRICLKEN=ON ]
-"52
-[p x FCMEN=OFF ]
-"53
-[p x IESO=OFF ]
-"56
-[p x PWRTEN=OFF ]
+"22 SystemStatus.h
+[s S848 `uc 1 `ui 1 `ui 1 ]
+[n S848 . OperState ADC0 ADC1 ]
+"43
+[s S850 `uc 1 `S848 1 `d 1 `uc 1 `d 1 `c 1 `d 1 `uc 1 `i 1 `c 1 ]
+[n S850 . Synt AdcValues DeviceTemperature InputPowerStatus Freq RSSI TEMP Light UnitDc CompressionPoint ]
 "57
-[p x BOREN=SBORDIS ]
-"58
-[p x BORV=190 ]
-"61
-[p x WDTEN=OFF ]
-"62
-[p x WDTPS=32768 ]
-"65
-[p x CCP2MX=PORTC1 ]
-"66
-[p x PBADEN=ON ]
-"67
-[p x CCP3MX=PORTB5 ]
-"68
-[p x HFOFST=ON ]
-"69
-[p x T3CMX=PORTC0 ]
-"70
-[p x P2BMX=PORTD2 ]
-"71
-[p x MCLRE=EXTMCLR ]
-"74
-[p x STVREN=ON ]
-"75
-[p x LVP=ON ]
-"76
-[p x XINST=OFF ]
-"77
-[p x DEBUG=OFF ]
-"80
-[p x CP0=OFF ]
-"81
-[p x CP1=OFF ]
-"82
-[p x CP2=OFF ]
-"83
-[p x CP3=OFF ]
-"86
-[p x CPB=OFF ]
-"87
-[p x CPD=OFF ]
-"90
-[p x WRT0=OFF ]
-"91
-[p x WRT1=OFF ]
-"92
-[p x WRT2=OFF ]
-"93
-[p x WRT3=OFF ]
-"96
-[p x WRTC=OFF ]
-"97
-[p x WRTB=OFF ]
-"98
-[p x WRTD=OFF ]
-"101
-[p x EBTR0=OFF ]
-"102
-[p x EBTR1=OFF ]
-"103
-[p x EBTR2=OFF ]
-"104
-[p x EBTR3=OFF ]
-"107
-[p x EBTRB=OFF ]
+[s S851 `uc 1 `S848 1 `d 1 `uc 1 `d 1 `c 1 `d 1 `uc 1 `i 1 `c 1 `uc 1 ]
+[n S851 . Synt AdcValues DeviceTemperature InputPowerStatus Freq RSSI TEMP Light UnitDc CompressionPoint IntMode ]
+"72
+[s S852 `c 1 `*uc 1 `uc 1 `l 1 `uc 1 `uc 1 ]
+[n S852 . UnitId SwVersion UnitType PassCounter UartMode UartRefreshRate ]
+"26 AdcApp.h
+[c E7162 4 5 6 7 29 30 31 .. ]
+[n E7162 . ADC_RREV ADC_FFWR ADC_TMP ADC_VG_MON channel_CTMU channel_DAC channel_FVRBuf2  ]
+[v F7380 `(v ~T0 @X0 0 tf ]
+"26 MessageFunctions.h
+[c E7235 18 22 25 33 40 99 101 35 24 28 36 33 37 17 38 .. ]
+[n E7235 . TX_RX_SET_BIT_MODE TX_RX_SET_UNIT_FREQUENCY TX_RX_UNIT_UNIT TX_RX_READ_UNIT_STATUS TX_RX_SET_OPERATION_MODE RX_SET_COMRESSION_MODE RX_SET_COMRESSION_RANGE ADC_SAMPLE SYSTEM_PRINT_HELP_LIST SYSTEM_TEST_LED SET_SYSTEM_TYPE PRINT_SYSTEM_STATUS SET_UART_REFRASH_RATE SET_UART_MODE SAVE_SYSTEM_STATUS  ]
+"19
+[v _GroupRx `(v ~T0 @X0 0 ef2`E7235`*uc ]
+"20
+[v _GroupTx `(v ~T0 @X0 0 ef2`E7235`*uc ]
+"21
+[v _GroupCommon `(v ~T0 @X0 0 ef2`E7235`*uc ]
+"2779 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic18f45k22.h
+[v _IOCB `Vuc ~T0 @X0 0 e@3938 ]
+"25 SyntApp.c
+[c E181 0 1 2 .. ]
+[n E181 . SYNTH_TX SYNTH_RX EXT_DAC  ]
+"17 SwSpiApp.h
+[v _SwSpi_Set_CE_Pin `(v ~T0 @X0 0 ef2`E181`uc ]
+"14
+[v _SWSPI_send_word `(v ~T0 @X0 0 ef3`E181`ul`uc ]
+"54 SystemCommon.h
+[v _GetIntFromUartData `(ul ~T0 @X0 0 ef1`*uc ]
+[; ;math.h: 30: extern double fabs(double);
+[; ;math.h: 31: extern double floor(double);
+[; ;math.h: 32: extern double ceil(double);
+[; ;math.h: 33: extern double modf(double, double *);
+[; ;math.h: 34: extern double sqrt(double);
+[; ;math.h: 35: extern double atof(const char *);
+[; ;math.h: 36: extern double sin(double) ;
+[; ;math.h: 37: extern double cos(double) ;
+[; ;math.h: 38: extern double tan(double) ;
+[; ;math.h: 39: extern double asin(double) ;
+[; ;math.h: 40: extern double acos(double) ;
+[; ;math.h: 41: extern double atan(double);
+[; ;math.h: 42: extern double atan2(double, double) ;
+[; ;math.h: 43: extern double log(double);
+[; ;math.h: 44: extern double log10(double);
+[; ;math.h: 45: extern double pow(double, double) ;
+[; ;math.h: 46: extern double exp(double) ;
+[; ;math.h: 47: extern double sinh(double) ;
+[; ;math.h: 48: extern double cosh(double) ;
+[; ;math.h: 49: extern double tanh(double);
+[; ;math.h: 50: extern double eval_poly(double, const double *, int);
+[; ;math.h: 51: extern double frexp(double, int *);
+[; ;math.h: 52: extern double ldexp(double, int);
+[; ;math.h: 53: extern double fmod(double, double);
+[; ;math.h: 54: extern double trunc(double);
+[; ;math.h: 55: extern double round(double);
+[; ;stdint.h: 13: typedef signed char int8_t;
+[; ;stdint.h: 20: typedef signed int int16_t;
+[; ;stdint.h: 28: typedef signed short long int int24_t;
+[; ;stdint.h: 36: typedef signed long int int32_t;
+[; ;stdint.h: 43: typedef unsigned char uint8_t;
+[; ;stdint.h: 49: typedef unsigned int uint16_t;
+[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
+[; ;stdint.h: 63: typedef unsigned long int uint32_t;
+[; ;stdint.h: 71: typedef signed char int_least8_t;
+[; ;stdint.h: 78: typedef signed int int_least16_t;
+[; ;stdint.h: 90: typedef signed short long int int_least24_t;
+[; ;stdint.h: 98: typedef signed long int int_least32_t;
+[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
+[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
+[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
+[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
+[; ;stdint.h: 137: typedef signed char int_fast8_t;
+[; ;stdint.h: 144: typedef signed int int_fast16_t;
+[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
+[; ;stdint.h: 164: typedef signed long int int_fast32_t;
+[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
+[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
+[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
+[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
+[; ;stdint.h: 200: typedef int32_t intmax_t;
+[; ;stdint.h: 205: typedef uint32_t uintmax_t;
+[; ;stdint.h: 210: typedef int16_t intptr_t;
+[; ;stdint.h: 215: typedef uint16_t uintptr_t;
+[; ;ctype.h: 4: extern __bit isalpha(char);
+[; ;ctype.h: 5: extern __bit isupper(char);
+[; ;ctype.h: 6: extern __bit islower(char);
+[; ;ctype.h: 7: extern __bit isdigit(char);
+[; ;ctype.h: 8: extern __bit isxdigit(char);
+[; ;ctype.h: 9: extern __bit isspace(char);
+[; ;ctype.h: 10: extern __bit ispunct(char);
+[; ;ctype.h: 11: extern __bit isalnum(char);
+[; ;ctype.h: 12: extern __bit isprint(char);
+[; ;ctype.h: 13: extern __bit isgraph(char);
+[; ;ctype.h: 14: extern __bit iscntrl(char);
+[; ;ctype.h: 17: extern char toupper(char);
+[; ;ctype.h: 18: extern char tolower(char);
+[; ;__size_t.h: 4: typedef unsigned size_t;
+[; ;stdarg.h: 7: typedef void * va_list[1];
+[; ;stdarg.h: 10: extern void * __va_start(void);
+[; ;stdarg.h: 13: extern void * __va_arg(void *, ...);
+[; ;stdio.h: 43: struct __prbuf
+[; ;stdio.h: 44: {
+[; ;stdio.h: 45: char * ptr;
+[; ;stdio.h: 46: void (* func)(char);
+[; ;stdio.h: 47: };
+[; ;errno.h: 29: extern int errno;
+[; ;conio.h: 12: extern void init_uart(void);
+[; ;conio.h: 14: extern char getch(void);
+[; ;conio.h: 15: extern char getche(void);
+[; ;conio.h: 16: extern void putch(char);
+[; ;conio.h: 17: extern void ungetch(char);
+[; ;conio.h: 19: extern __bit kbhit(void);
+[; ;conio.h: 23: extern char * cgets(char *);
+[; ;conio.h: 24: extern void cputs(const char *);
+[; ;stdio.h: 88: extern int cprintf(char *, ...);
+[; ;stdio.h: 93: extern int _doprnt(struct __prbuf *, const register char *, register va_list);
+[; ;stdio.h: 183: extern char * gets(char *);
+[; ;stdio.h: 184: extern int puts(const char *);
+[; ;stdio.h: 185: extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
+[; ;stdio.h: 186: extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
+[; ;stdio.h: 187: extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
+[; ;stdio.h: 188: extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
+[; ;stdio.h: 189: extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
+[; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
+[; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
+[; ;stdio.h: 195: extern int printf(const char *, ...);
+[; ;SystemCommon.h: 18: typedef enum
+[; ;SystemCommon.h: 19: {
+[; ;SystemCommon.h: 20: TX_TYPE,
+[; ;SystemCommon.h: 21: RX_TYPE,
+[; ;SystemCommon.h: 22: }MODULE_TYPE;
+[; ;SystemCommon.h: 24: typedef enum
+[; ;SystemCommon.h: 25: {
+[; ;SystemCommon.h: 26: SYNTH_TX = 0,
+[; ;SystemCommon.h: 27: SYNTH_RX,
+[; ;SystemCommon.h: 28: EXT_DAC
+[; ;SystemCommon.h: 29: }SPI_PERIPHERAL;
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -6642,36 +6690,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 164: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 166: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 168: extern __nonreentrant void _delay3(unsigned char);
-[; ;pin_manager.h: 400: void PIN_MANAGER_Initialize (void);
-[; ;pin_manager.h: 412: void PIN_MANAGER_IOC(void);
-[; ;stdint.h: 13: typedef signed char int8_t;
-[; ;stdint.h: 20: typedef signed int int16_t;
-[; ;stdint.h: 28: typedef signed short long int int24_t;
-[; ;stdint.h: 36: typedef signed long int int32_t;
-[; ;stdint.h: 43: typedef unsigned char uint8_t;
-[; ;stdint.h: 49: typedef unsigned int uint16_t;
-[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
-[; ;stdint.h: 63: typedef unsigned long int uint32_t;
-[; ;stdint.h: 71: typedef signed char int_least8_t;
-[; ;stdint.h: 78: typedef signed int int_least16_t;
-[; ;stdint.h: 90: typedef signed short long int int_least24_t;
-[; ;stdint.h: 98: typedef signed long int int_least32_t;
-[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
-[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
-[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
-[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
-[; ;stdint.h: 137: typedef signed char int_fast8_t;
-[; ;stdint.h: 144: typedef signed int int_fast16_t;
-[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
-[; ;stdint.h: 164: typedef signed long int int_fast32_t;
-[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
-[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
-[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
-[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
-[; ;stdint.h: 200: typedef int32_t intmax_t;
-[; ;stdint.h: 205: typedef uint32_t uintmax_t;
-[; ;stdint.h: 210: typedef int16_t intptr_t;
-[; ;stdint.h: 215: typedef uint16_t uintptr_t;
+[; ;pin_manager.h: 431: void PIN_MANAGER_Initialize (void);
+[; ;pin_manager.h: 443: void PIN_MANAGER_IOC(void);
 [; ;stdbool.h: 12: typedef unsigned char bool;
 [; ;interrupt_manager.h: 108: void interrupt INTERRUPT_InterruptManager(void);
 [; ;interrupt_manager.h: 120: void INTERRUPT_Initialize (void);
@@ -6684,35 +6704,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;memory.h: 277: uint8_t DATAEE_ReadByte(uint8_t bAdd);
 [; ;memory.h: 293: void MEMORY_ISR(void);
 [; ;memory.h: 294: bool FLASH_IsWriteDone();
-"74 mcc_generated_files/tmr0.h
-[v _TimerOneSecFlag `Vuc ~T0 @X0 1 e ]
-[i _TimerOneSecFlag
--> -> 0 `i `uc
-]
-[; ;tmr0.h: 74: volatile bool TimerOneSecFlag = 0;
-"75
-[v _TimerSamplingFlag `Vuc ~T0 @X0 1 e ]
-[i _TimerSamplingFlag
--> -> 0 `i `uc
-]
-[; ;tmr0.h: 75: volatile bool TimerSamplingFlag = 0;
-"76
-[v _TimerKeepAliveFlag `Vuc ~T0 @X0 1 e ]
-[i _TimerKeepAliveFlag
--> -> 0 `i `uc
-]
-[; ;tmr0.h: 76: volatile bool TimerKeepAliveFlag = 0;
-[; ;tmr0.h: 113: void TMR0_Initialize(void);
-[; ;tmr0.h: 142: void TMR0_StartTimer(void);
-[; ;tmr0.h: 174: void TMR0_StopTimer(void);
-[; ;tmr0.h: 210: uint16_t TMR0_ReadTimer(void);
-[; ;tmr0.h: 249: void TMR0_WriteTimer(uint16_t timerVal);
-[; ;tmr0.h: 285: void TMR0_Reload(void);
-[; ;tmr0.h: 303: void TMR0_ISR(void);
-[; ;tmr0.h: 321: void TMR0_CallBack(void);
-[; ;tmr0.h: 339: void TMR0_SetInterruptHandler(void (* InterruptHandler)(void));
-[; ;tmr0.h: 357: extern void (*TMR0_InterruptHandler)(void);
-[; ;tmr0.h: 375: void TMR0_DefaultInterruptHandler(void);
 [; ;adc.h: 71: typedef uint16_t adc_result_t;
 [; ;adc.h: 76: typedef struct
 [; ;adc.h: 77: {
@@ -6735,6 +6726,41 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;adc.h: 234: bool ADC_IsConversionDone();
 [; ;adc.h: 267: adc_result_t ADC_GetConversionResult(void);
 [; ;adc.h: 297: adc_result_t ADC_GetConversion(adc_channel_t channel);
+"75 mcc_generated_files/tmr0.h
+[v _TimerOneSecFlag `Vuc ~T0 @X0 1 e ]
+[i _TimerOneSecFlag
+-> -> 0 `i `uc
+]
+[; ;tmr0.h: 75: volatile bool TimerOneSecFlag = 0;
+"76
+[v _TimerSamplingFlag `Vuc ~T0 @X0 1 e ]
+[i _TimerSamplingFlag
+-> -> 0 `i `uc
+]
+[; ;tmr0.h: 76: volatile bool TimerSamplingFlag = 0;
+"77
+[v _TimerKeepAliveFlag `Vuc ~T0 @X0 1 e ]
+[i _TimerKeepAliveFlag
+-> -> 0 `i `uc
+]
+[; ;tmr0.h: 77: volatile bool TimerKeepAliveFlag = 0;
+"78
+[v _TimertenSecFlag `Vuc ~T0 @X0 1 e ]
+[i _TimertenSecFlag
+-> -> 0 `i `uc
+]
+[; ;tmr0.h: 78: volatile bool TimertenSecFlag = 0;
+[; ;tmr0.h: 115: void TMR0_Initialize(void);
+[; ;tmr0.h: 144: void TMR0_StartTimer(void);
+[; ;tmr0.h: 176: void TMR0_StopTimer(void);
+[; ;tmr0.h: 212: uint16_t TMR0_ReadTimer(void);
+[; ;tmr0.h: 251: void TMR0_WriteTimer(uint16_t timerVal);
+[; ;tmr0.h: 287: void TMR0_Reload(void);
+[; ;tmr0.h: 305: void TMR0_ISR(void);
+[; ;tmr0.h: 323: void TMR0_CallBack(void);
+[; ;tmr0.h: 341: void TMR0_SetInterruptHandler(void (* InterruptHandler)(void));
+[; ;tmr0.h: 359: extern void (*TMR0_InterruptHandler)(void);
+[; ;tmr0.h: 377: void TMR0_DefaultInterruptHandler(void);
 [; ;eusart1.h: 75: extern volatile uint8_t eusart1TxBufferRemaining;
 [; ;eusart1.h: 76: extern volatile uint8_t eusart1RxCount;
 [; ;eusart1.h: 102: void EUSART1_Initialize(void);
@@ -6746,54 +6772,674 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;eusart1.h: 189: uint8_t EUSART1_ReadByte(void);
 [; ;mcc.h: 72: void SYSTEM_Initialize(void);
 [; ;mcc.h: 85: void OSCILLATOR_Initialize(void);
-"112 mcc_generated_files/mcc.c
-[v _SYSTEM_Initialize `(v ~T0 @X0 1 ef ]
-"113
+[; ;GroupsCommon.h: 12: typedef enum
+[; ;GroupsCommon.h: 13: {
+[; ;GroupsCommon.h: 14: RX_GROUP = 0x0,
+[; ;GroupsCommon.h: 15: TX_GROUP = 0x1,
+[; ;GroupsCommon.h: 16: COMMON_GROUP = 0x2,
+[; ;GroupsCommon.h: 17: }MSG_GROUPS;
+[; ;GroupsCommon.h: 19: typedef enum
+[; ;GroupsCommon.h: 20: {
+[; ;GroupsCommon.h: 23: TX_RX_SET_BIT_MODE = 0x12,
+[; ;GroupsCommon.h: 24: TX_RX_SET_UNIT_FREQUENCY = 0x16,
+[; ;GroupsCommon.h: 25: TX_RX_UNIT_UNIT = 0x19,
+[; ;GroupsCommon.h: 26: TX_RX_READ_UNIT_STATUS = 0x21,
+[; ;GroupsCommon.h: 27: TX_RX_SET_OPERATION_MODE = 0x28,
+[; ;GroupsCommon.h: 30: RX_SET_COMRESSION_MODE = 0x63,
+[; ;GroupsCommon.h: 31: RX_SET_COMRESSION_RANGE = 0x65,
+[; ;GroupsCommon.h: 34: ADC_SAMPLE = 0x23,
+[; ;GroupsCommon.h: 37: SYSTEM_PRINT_HELP_LIST = 0x18,
+[; ;GroupsCommon.h: 38: SYSTEM_TEST_LED = 0x1C,
+[; ;GroupsCommon.h: 39: SET_SYSTEM_TYPE = 0x24,
+[; ;GroupsCommon.h: 40: PRINT_SYSTEM_STATUS = 0x21,
+[; ;GroupsCommon.h: 41: SET_UART_REFRASH_RATE = 0x25,
+[; ;GroupsCommon.h: 42: SET_UART_MODE = 0x11,
+[; ;GroupsCommon.h: 43: SAVE_SYSTEM_STATUS = 0x26,
+[; ;GroupsCommon.h: 44: }MSG_REQUEST;
+[; ;SystemStatus.h: 21: typedef struct
+[; ;SystemStatus.h: 22: {
+[; ;SystemStatus.h: 23: bool OperState;
+[; ;SystemStatus.h: 24: uint16_t ADC0;
+[; ;SystemStatus.h: 25: uint16_t ADC1;
+[; ;SystemStatus.h: 26: }ADC_VALUES;
+[; ;SystemStatus.h: 28: typedef struct
+[; ;SystemStatus.h: 29: {
+[; ;SystemStatus.h: 30: bool OperState;
+[; ;SystemStatus.h: 31: uint16_t DAC0;
+[; ;SystemStatus.h: 32: uint16_t DAC1;
+[; ;SystemStatus.h: 33: }DAC_VALUES;
+"35 SystemStatus.h
+[v _SYSTEM_INFO_ADDRES `Cuc ~T0 @X0 -> 3 `i e ]
+[i _SYSTEM_INFO_ADDRES
+:U ..
+"37
+-> -> 0 `i `uc
+"38
+-> -> 1 `i `uc
+"39
+-> -> 2 `i `uc
+..
+]
+[; ;SystemStatus.h: 35: const uint8_t SYSTEM_INFO_ADDRES[(3)] =
+[; ;SystemStatus.h: 36: {
+[; ;SystemStatus.h: 37: 0x0,
+[; ;SystemStatus.h: 38: 0x1,
+[; ;SystemStatus.h: 39: 0x2,
+[; ;SystemStatus.h: 40: };
+[; ;SystemStatus.h: 42: typedef struct
+[; ;SystemStatus.h: 43: {
+[; ;SystemStatus.h: 44: bool Synt;
+[; ;SystemStatus.h: 45: ADC_VALUES AdcValues;
+[; ;SystemStatus.h: 46: double DeviceTemperature;
+[; ;SystemStatus.h: 47: bool InputPowerStatus;
+[; ;SystemStatus.h: 48: double Freq;
+[; ;SystemStatus.h: 49: int8_t RSSI;
+[; ;SystemStatus.h: 50: double TEMP;
+[; ;SystemStatus.h: 51: bool Light;
+[; ;SystemStatus.h: 52: int16_t UnitDc;
+[; ;SystemStatus.h: 53: int8_t CompressionPoint;
+[; ;SystemStatus.h: 54: }RX_STATISTICS;
+[; ;SystemStatus.h: 56: typedef struct
+[; ;SystemStatus.h: 57: {
+[; ;SystemStatus.h: 58: bool Synt;
+[; ;SystemStatus.h: 59: ADC_VALUES AdcValues;
+[; ;SystemStatus.h: 60: double DeviceTemperature;
+[; ;SystemStatus.h: 61: bool InputPowerStatus;
+[; ;SystemStatus.h: 62: double Freq;
+[; ;SystemStatus.h: 63: int8_t RSSI;
+[; ;SystemStatus.h: 64: double TEMP;
+[; ;SystemStatus.h: 65: bool Light;
+[; ;SystemStatus.h: 66: int16_t UnitDc;
+[; ;SystemStatus.h: 67: int8_t CompressionPoint;
+[; ;SystemStatus.h: 68: bool IntMode;
+[; ;SystemStatus.h: 69: }TX_STATISTICS;
+[; ;SystemStatus.h: 71: typedef struct
+[; ;SystemStatus.h: 72: {
+[; ;SystemStatus.h: 73: int8_t UnitId;
+[; ;SystemStatus.h: 74: char* SwVersion;
+[; ;SystemStatus.h: 75: bool UnitType;
+[; ;SystemStatus.h: 76: int32_t PassCounter;
+[; ;SystemStatus.h: 77: bool UartMode;
+[; ;SystemStatus.h: 78: uint8_t UartRefreshRate;
+[; ;SystemStatus.h: 79: }SYSTEM_STATUS;
+"82
+[v _rxStatistics `VS850 ~T0 @X0 1 e ]
+[; ;SystemStatus.h: 82: volatile RX_STATISTICS rxStatistics;
+"83
+[v _txStatistics `VS851 ~T0 @X0 1 e ]
+[; ;SystemStatus.h: 83: volatile TX_STATISTICS txStatistics;
+"84
+[v _systemStatus `VS852 ~T0 @X0 1 e ]
+[; ;SystemStatus.h: 84: volatile SYSTEM_STATUS systemStatus;
+[; ;SystemStatus.h: 86: void SetMcuFwVersion(char* data);
+[; ;SystemStatus.h: 87: void SetCpldFwVersion(char* data);
+[; ;SystemStatus.h: 89: void GetMcuFwVersion();
+[; ;SystemStatus.h: 90: void GetCpldFwVersion();
+[; ;SystemStatus.h: 92: void SetMcuRunTime();
+[; ;SystemStatus.h: 93: void GetMcuRunTime();
+[; ;SystemStatus.h: 94: void ClearMcuRunTime();
+[; ;SystemStatus.h: 95: void keepAliveSignalUart(void);
+[; ;SystemStatus.h: 96: void SendUartSystemInitMessage(void);
+[; ;SystemStatus.h: 97: void PrintHelpScreen(void);
+[; ;SystemStatus.h: 98: void CollectRxStatusParams(void);
+[; ;SystemStatus.h: 99: void CollectTxStatusParams(void);
+[; ;SystemStatus.h: 100: void PrintRxStatus(void);
+[; ;SystemStatus.h: 101: void PrintTxStatus(void);
+[; ;SystemStatus.h: 102: void PrintSystemStatus(void);
+[; ;SystemStatus.h: 103: void SaveSystemStatus();
+[; ;SystemStatus.h: 104: void ReadSystemStatusFromEprom(void);
+[; ;LedsApp.h: 22: typedef enum
+[; ;LedsApp.h: 24: {
+[; ;LedsApp.h: 25: OK_START_SYSTEM = 0x3,
+[; ;LedsApp.h: 26: } LED_OK_INTICATION;
+[; ;LedsApp.h: 28: typedef enum
+[; ;LedsApp.h: 30: {
+[; ;LedsApp.h: 31: FAIL_UART_ACK_NOT_RECIEVE = 0x2,
+[; ;LedsApp.h: 32: FAIL_FLASH_MORE_THEN_HELF = 0x4,
+[; ;LedsApp.h: 33: FAIL_SYNTH_UP_LATCH = 0x8,
+[; ;LedsApp.h: 34: } LED_ERR_INTICATION;
+[; ;LedsApp.h: 36: void testLeds();
+[; ;LedsApp.h: 37: void BlinkErrorLeds(LED_OK_INTICATION state);
+[; ;LedsApp.h: 38: void BlinkOkLeds(LED_ERR_INTICATION state);
+[; ;LedsApp.h: 39: void keepAliveSignalLed(void);
+[; ;AdcApp.h: 20: typedef enum
+[; ;AdcApp.h: 21: {
+[; ;AdcApp.h: 22: CIRCULAR = 0x0,
+[; ;AdcApp.h: 23: SINGLE_CHANNEL = 0x1,
+[; ;AdcApp.h: 24: }ADC_SAMPLE_MODE;
+"26 AdcApp.h
+[v _channelArr `CE7162 ~T0 @X0 -> 4 `i e ]
+[i _channelArr
+:U ..
+"28
+-> -> 4 `i `CE7162
+"29
+-> -> 6 `i `CE7162
+"30
+-> -> 5 `i `CE7162
+"31
+-> -> 7 `i `CE7162
+..
+]
+[; ;AdcApp.h: 26: const adc_channel_t channelArr[(0x04)] =
+[; ;AdcApp.h: 27: {
+[; ;AdcApp.h: 28: 0x4,
+[; ;AdcApp.h: 29: 0x6,
+[; ;AdcApp.h: 30: 0x5,
+[; ;AdcApp.h: 31: 0x7,
+[; ;AdcApp.h: 32: };
+[; ;AdcApp.h: 34: typedef enum
+[; ;AdcApp.h: 35: {
+[; ;AdcApp.h: 36: ADC_OFF = 0x0,
+[; ;AdcApp.h: 37: CHANK1 = 0x0,
+[; ;AdcApp.h: 38: CHANK2 = 0x1,
+[; ;AdcApp.h: 39: CHANK3 = 0x2,
+[; ;AdcApp.h: 40: CHANK4 = 0x3,
+[; ;AdcApp.h: 41: }ADC_CHANNEL_INDEX;
+"43
+[v _needToSample `Vuc ~T0 @X0 1 e ]
+[i _needToSample
+-> -> 0 `i `uc
+]
+[; ;AdcApp.h: 43: volatile bool needToSample = 0;
+"44
+[v _lastAdcTemp `Vui ~T0 @X0 1 e ]
+[i _lastAdcTemp
+-> -> 0 `i `ui
+]
+[; ;AdcApp.h: 44: volatile uint16_t lastAdcTemp = 0;
+"45
+[v _lastAdcFfwrRSSI `Vui ~T0 @X0 1 e ]
+[i _lastAdcFfwrRSSI
+-> -> 0 `i `ui
+]
+[; ;AdcApp.h: 45: volatile uint16_t lastAdcFfwrRSSI = 0;
+"46
+[v _lastAdcRREV `Vui ~T0 @X0 1 e ]
+[i _lastAdcRREV
+-> -> 0 `i `ui
+]
+[; ;AdcApp.h: 46: volatile uint16_t lastAdcRREV = 0;
+"47
+[v _lastAdcVgMon `Vui ~T0 @X0 1 e ]
+[i _lastAdcVgMon
+-> -> 0 `i `ui
+]
+[; ;AdcApp.h: 47: volatile uint16_t lastAdcVgMon =0;
+[; ;AdcApp.h: 49: void AdcSingleSample(MODULE_TYPE cType, ADC_CHANNEL_INDEX chType, int32_t numSamples);
+[; ;AdcApp.h: 50: void SetChannelMode(char* data);
+[; ;AdcApp.h: 51: void InitAdcApplicationMgr();
+[; ;AdcApp.h: 52: bool SampleSingleChannel(void);
+[; ;AdcApp.h: 53: void SampleAllChannels(void);
+[; ;MessageFunctions.h: 19: void GroupRx(MSG_REQUEST request, char* data);
+[; ;MessageFunctions.h: 20: void GroupTx(MSG_REQUEST request, char* data);
+[; ;MessageFunctions.h: 21: void GroupCommon(MSG_REQUEST request, char* data);
+"24 MessageFunctions.h
+[v _groupsArray `*F7380 ~T0 @X0 -> 6 `i e ]
+[i _groupsArray
+:U ..
+"26
+-> &U _GroupRx `*F7380
+"27
+-> &U _GroupTx `*F7380
+"28
+-> &U _GroupCommon `*F7380
+..
+]
+[; ;MessageFunctions.h: 24: void (*groupsArray[(6)])() =
+[; ;MessageFunctions.h: 25: {
+[; ;MessageFunctions.h: 26: GroupRx,
+[; ;MessageFunctions.h: 27: GroupTx,
+[; ;MessageFunctions.h: 28: GroupCommon,
+[; ;MessageFunctions.h: 29: };
+[; ;FlashApp.h: 23: uint8_t EepromRead(uint8_t address);
+[; ;FlashApp.h: 24: void EepromWrite(uint8_t address, uint8_t data);
+"23 DacApp.h
+[v _DAC_ADDRES `Cuc ~T0 @X0 -> 4 `i e ]
+[i _DAC_ADDRES
+:U ..
+"25
+-> -> 2 `i `uc
+"26
+-> -> 4 `i `uc
+"27
+-> -> 6 `i `uc
+"28
+-> -> 8 `i `uc
+..
+]
+[; ;DacApp.h: 23: const uint8_t DAC_ADDRES[(4)] =
+[; ;DacApp.h: 24: {
+[; ;DacApp.h: 25: 0x2,
+[; ;DacApp.h: 26: 0x4,
+[; ;DacApp.h: 27: 0x6,
+[; ;DacApp.h: 28: 0x8,
+[; ;DacApp.h: 29: };
+"31
+[v _DAC_DEFAULT_INIT_VALUES `Cui ~T0 @X0 -> 4 `i e ]
+[i _DAC_DEFAULT_INIT_VALUES
+:U ..
+"33
+-> -> 9028 `i `ui
+"34
+-> -> 25412 `i `ui
+"35
+-> 41796 `ui
+"36
+-> 58180 `ui
+..
+]
+[; ;DacApp.h: 31: const uint16_t DAC_DEFAULT_INIT_VALUES[(4)] =
+[; ;DacApp.h: 32: {
+[; ;DacApp.h: 33: 0x2344,
+[; ;DacApp.h: 34: 0x6344,
+[; ;DacApp.h: 35: 0xA344,
+[; ;DacApp.h: 36: 0xE344,
+[; ;DacApp.h: 37: };
+[; ;DacApp.h: 39: void DacInit(void);
+[; ;DacApp.h: 40: void DacSetValue(char* data);
+[; ;DacApp.h: 41: uint16_t DacReadValue(char* data);
+[; ;DacApp.h: 44: uint16_t DacAnalogToDigitalSpi(uint16_t AnalogVal, uint8_t dacNum);
+[; ;string.h: 14: extern void * memcpy(void *, const void *, size_t);
+[; ;string.h: 15: extern void * memmove(void *, const void *, size_t);
+[; ;string.h: 16: extern void * memset(void *, int, size_t);
+[; ;string.h: 36: extern char * strcat(char *, const char *);
+[; ;string.h: 37: extern char * strcpy(char *, const char *);
+[; ;string.h: 38: extern char * strncat(char *, const char *, size_t);
+[; ;string.h: 39: extern char * strncpy(char *, const char *, size_t);
+[; ;string.h: 40: extern char * strdup(const char *);
+[; ;string.h: 41: extern char * strtok(char *, const char *);
+[; ;string.h: 44: extern int memcmp(const void *, const void *, size_t);
+[; ;string.h: 45: extern int strcmp(const char *, const char *);
+[; ;string.h: 46: extern int stricmp(const char *, const char *);
+[; ;string.h: 47: extern int strncmp(const char *, const char *, size_t);
+[; ;string.h: 48: extern int strnicmp(const char *, const char *, size_t);
+[; ;string.h: 49: extern void * memchr(const void *, int, size_t);
+[; ;string.h: 50: extern size_t strcspn(const char *, const char *);
+[; ;string.h: 51: extern char * strpbrk(const char *, const char *);
+[; ;string.h: 52: extern size_t strspn(const char *, const char *);
+[; ;string.h: 53: extern char * strstr(const char *, const char *);
+[; ;string.h: 54: extern char * stristr(const char *, const char *);
+[; ;string.h: 55: extern char * strerror(int);
+[; ;string.h: 56: extern size_t strlen(const char *);
+[; ;string.h: 57: extern char * strchr(const char *, int);
+[; ;string.h: 58: extern char * strichr(const char *, int);
+[; ;string.h: 59: extern char * strrchr(const char *, int);
+[; ;string.h: 60: extern char * strrichr(const char *, int);
+[; ;stdlib.h: 7: typedef unsigned short wchar_t;
+[; ;stdlib.h: 15: typedef struct {
+[; ;stdlib.h: 16: int rem;
+[; ;stdlib.h: 17: int quot;
+[; ;stdlib.h: 18: } div_t;
+[; ;stdlib.h: 19: typedef struct {
+[; ;stdlib.h: 20: unsigned rem;
+[; ;stdlib.h: 21: unsigned quot;
+[; ;stdlib.h: 22: } udiv_t;
+[; ;stdlib.h: 23: typedef struct {
+[; ;stdlib.h: 24: long quot;
+[; ;stdlib.h: 25: long rem;
+[; ;stdlib.h: 26: } ldiv_t;
+[; ;stdlib.h: 27: typedef struct {
+[; ;stdlib.h: 28: unsigned long quot;
+[; ;stdlib.h: 29: unsigned long rem;
+[; ;stdlib.h: 30: } uldiv_t;
+[; ;stdlib.h: 53: extern double atof(const char *);
+[; ;stdlib.h: 54: extern double strtod(const char *, const char **);
+[; ;stdlib.h: 55: extern int atoi(const char *);
+[; ;stdlib.h: 56: extern unsigned xtoi(const char *);
+[; ;stdlib.h: 57: extern long atol(const char *);
+[; ;stdlib.h: 58: extern long strtol(const char *, char **, int);
+[; ;stdlib.h: 60: extern int rand(void);
+[; ;stdlib.h: 61: extern void srand(unsigned int);
+[; ;stdlib.h: 62: extern void * calloc(size_t, size_t);
+[; ;stdlib.h: 63: extern div_t div(int numer, int denom);
+[; ;stdlib.h: 64: extern udiv_t udiv(unsigned numer, unsigned denom);
+[; ;stdlib.h: 65: extern ldiv_t ldiv(long numer, long denom);
+[; ;stdlib.h: 66: extern uldiv_t uldiv(unsigned long numer,unsigned long denom);
+[; ;stdlib.h: 67: extern unsigned long _lrotl(unsigned long value, unsigned int shift);
+[; ;stdlib.h: 68: extern unsigned long _lrotr(unsigned long value, unsigned int shift);
+[; ;stdlib.h: 69: extern unsigned int _rotl(unsigned int value, unsigned int shift);
+[; ;stdlib.h: 70: extern unsigned int _rotr(unsigned int value, unsigned int shift);
+[; ;stdlib.h: 75: extern void * malloc(size_t);
+[; ;stdlib.h: 76: extern void free(void *);
+[; ;stdlib.h: 77: extern void * realloc(void *, size_t);
+[; ;stdlib.h: 86: extern int atexit(void (*)(void));
+[; ;stdlib.h: 87: extern char * getenv(const char *);
+[; ;stdlib.h: 88: extern char ** environ;
+[; ;stdlib.h: 89: extern int system(char *);
+[; ;stdlib.h: 90: extern void qsort(void *, size_t, size_t, int (*)(const void *, const void *));
+[; ;stdlib.h: 91: extern void * bsearch(const void *, void *, size_t, size_t, int(*)(const void *, const void *));
+[; ;stdlib.h: 92: extern int abs(int);
+[; ;stdlib.h: 93: extern long labs(long);
+[; ;stdlib.h: 95: extern char * itoa(char * buf, int val, int base);
+[; ;stdlib.h: 96: extern char * utoa(char * buf, unsigned val, int base);
+[; ;stdlib.h: 101: extern char * ltoa(char * buf, long val, int base);
+[; ;stdlib.h: 102: extern char * ultoa(char * buf, unsigned long val, int base);
+[; ;stdlib.h: 104: extern char * ftoa(float f, int * status);
+[; ;EusartApp.h: 34: typedef enum
+[; ;EusartApp.h: 35: {
+[; ;EusartApp.h: 36: FLASH_RAW_DATA = 64,
+[; ;EusartApp.h: 37: }TX_MESSAGE_TYPE;
+[; ;EusartApp.h: 39: typedef enum
+[; ;EusartApp.h: 40: {
+[; ;EusartApp.h: 41: START_RX_MESSAGE_READ = 0,
+[; ;EusartApp.h: 42: FIND_MAGIC,
+[; ;EusartApp.h: 43: READ_STREAM,
+[; ;EusartApp.h: 44: READ_GROUP,
+[; ;EusartApp.h: 45: READ_REQUEST,
+[; ;EusartApp.h: 46: READ_DATA_SIZE,
+[; ;EusartApp.h: 47: READ_DATA,
+[; ;EusartApp.h: 48: CHECK_CRC,
+[; ;EusartApp.h: 49: JUMP_FUNCTION
+[; ;EusartApp.h: 50: }UART_READ_STATE;
+[; ;EusartApp.h: 54: void readUartByte(void);
+[; ;EusartApp.h: 55: void InitRxMessageParams(void);
+[; ;EusartApp.h: 58: void WriteUartMessage(char* dataBuf, int dataSize);
+[; ;EusartApp.h: 59: void SendAckMessage(MSG_GROUPS inGroup, MSG_REQUEST inRequest);
+[; ;EusartApp.h: 60: void UART_Write_Text(char* text);
+[; ;SevenSegmentApp.h: 19: void segmentCounter(void);
+[; ;SevenSegmentApp.h: 20: unsigned short mask(unsigned short num);
+[; ;SevenSegmentApp.h: 21: void InitSevenSegment(void);
+[; ;SwSpiApp.h: 14: void SWSPI_send_word (SPI_PERIPHERAL phrType, uint32_t data, uint8_t dataSize);
+[; ;SwSpiApp.h: 15: void SwSpi_Data_Pin (SPI_PERIPHERAL phrType, bool cPinMode);
+[; ;SwSpiApp.h: 16: void SwSpi_Clk_Pin (SPI_PERIPHERAL phrType, bool cPinMode);
+[; ;SwSpiApp.h: 17: void SwSpi_Set_CE_Pin (SPI_PERIPHERAL phrType, bool cPinMode);
+[; ;SwSpiApp.h: 20: void SWSPI_Synth_send_bits(SPI_PERIPHERAL phrType, uint32_t data);
+[; ;SwSpiApp.h: 21: void SwSpi_Synth_Toggle_Clock(SPI_PERIPHERAL phrType);
+[; ;SwSpiApp.h: 22: void SwSpi_Set_Synth_Le_Pin(SPI_PERIPHERAL phrType, bool cPinMode);
+[; ;SwSpiApp.h: 25: void SWSPI_DAC_send_bits(SPI_PERIPHERAL phrType, uint8_t data);
+[; ;SwSpiApp.h: 26: void SwSpi_Set_Dac_Sync_Pin(bool cPinMode);
+[; ;SystemCommon.h: 51: unsigned char crc8(char* dataArray, int dataSize);
+[; ;SystemCommon.h: 52: uint8_t make8(uint32_t data, uint8_t dataLocation);
+[; ;SystemCommon.h: 53: void ZeroArray(char* array, int size);
+[; ;SystemCommon.h: 54: uint32_t GetIntFromUartData(char* data);
+[; ;SystemCommon.h: 55: void Make32bitsArray(bool* array, uint32_t data);
+[; ;SystemCommon.h: 57: void StoreIntInEeprom(uint32_t data, uint8_t address, int numOfByes);
+[; ;SystemCommon.h: 58: uint32_t ReadIntFromEeprom(uint8_t address, int numOfByes);
+[; ;SystemCommon.h: 61: void ResetMcu(void);
+[; ;SystemCommon.h: 62: void SendSystemStartAck(void);
+[; ;SystemCommon.h: 63: void set_system_type(char* data);
+[; ;SystemCommon.h: 64: void SetUartRefrashRate (char* data);
+[; ;SystemCommon.h: 65: void SetUartMode (char* data);
+"20 SyntApp.h
+[v _PLL_INIT_REGISTERS `Cul ~T0 @X0 -> 13 `i e ]
+[i _PLL_INIT_REGISTERS
+:U ..
+"22
+-> -> 66588 `l `ul
+"23
+-> -> 6369291 `l `ul
+"24
+-> -> 12595770 `l `ul
+"25
+-> -> 572636361 `l `ul
+"26
+-> -> 271385640 `l `ul
+"27
+-> -> 301990119 `l `ul
+"28
+-> -> 889266294 `l `ul
+"29
+-> -> 8388645 `l `ul
+"30
+-> -> 872455044 `l `ul
+"31
+-> -> -> 3 `i `l `ul
+"32
+-> -> -> 18 `i `l `ul
+"33
+-> -> 100663297 `l `ul
+"35
+-> -> 2097984 `l `ul
+..
+]
+[; ;SyntApp.h: 20: const uint32_t PLL_INIT_REGISTERS[13] =
+[; ;SyntApp.h: 21: {
+[; ;SyntApp.h: 22: 0x0001041C,
+[; ;SyntApp.h: 23: 0x0061300B,
+[; ;SyntApp.h: 24: 0x00C0323A,
+[; ;SyntApp.h: 25: 0x2221BCC9,
+[; ;SyntApp.h: 26: 0x102D0428,
+[; ;SyntApp.h: 27: 0x120000E7,
+[; ;SyntApp.h: 28: 0x35012076,
+[; ;SyntApp.h: 29: 0x00800025,
+[; ;SyntApp.h: 30: 0x34009B84,
+[; ;SyntApp.h: 31: 0x00000003,
+[; ;SyntApp.h: 32: 0x00000012,
+[; ;SyntApp.h: 33: 0x06000001,
+[; ;SyntApp.h: 34: 0x00200340
+[; ;SyntApp.h: 35: };
+"37
+[v _TEST_PLL_REGISTERS `Cul ~T0 @X0 -> 13 `i e ]
+[i _TEST_PLL_REGISTERS
+:U ..
+"39
+-> -> 66588 `l `ul
+"40
+-> -> 6369291 `l `ul
+"41
+-> -> 12592826 `l `ul
+"42
+-> -> 437910729 `l `ul
+"43
+-> -> 271385640 `l `ul
+"44
+-> -> 301990119 `l `ul
+"45
+-> -> 889544822 `l `ul
+"46
+-> -> 8388645 `l `ul
+"47
+-> -> 838896516 `l `ul
+"48
+-> -> -> 3 `i `l `ul
+"49
+-> -> 524338 `l `ul
+"50
+-> -> 27962017 `l `ul
+"52
+-> -> 200410 `l `ul
+..
+]
+[; ;SyntApp.h: 37: const uint32_t TEST_PLL_REGISTERS[13] =
+[; ;SyntApp.h: 38: {
+[; ;SyntApp.h: 39: 0x1041C,
+[; ;SyntApp.h: 40: 0x61300B,
+[; ;SyntApp.h: 41: 0xC026BA,
+[; ;SyntApp.h: 42: 0x1A19FCC9,
+[; ;SyntApp.h: 43: 0x102D0428,
+[; ;SyntApp.h: 44: 0x120000E7,
+[; ;SyntApp.h: 45: 0x35056076,
+[; ;SyntApp.h: 46: 0x800025,
+[; ;SyntApp.h: 47: 0x32008B84,
+[; ;SyntApp.h: 48: 0x3,
+[; ;SyntApp.h: 49: 0x80032,
+[; ;SyntApp.h: 50: 0x1AAAAA1,
+[; ;SyntApp.h: 51: 200410
+[; ;SyntApp.h: 52: };
+"55
+[v _rxFreq `Vul ~T0 @X0 1 e ]
+[i _rxFreq
+-> -> -> 0 `i `l `ul
+]
+[; ;SyntApp.h: 55: volatile uint32_t rxFreq = 0;
+"56
+[v _txFreq `Vul ~T0 @X0 1 e ]
+[i _txFreq
+-> -> -> 0 `i `l `ul
+]
+[; ;SyntApp.h: 56: volatile uint32_t txFreq = 0;
+[; ;SyntApp.h: 58: void PLLUartInitialize(char* data);
+[; ;SyntApp.h: 59: void PLLInitialize(void);
+[; ;SyntApp.h: 61: void UpdateTxFreq(char* data);
+[; ;SyntApp.h: 62: void UpdateRxFreq(char* data);
+[; ;SyntApp.h: 64: void SYNTH_ISR(void);
+"19 SyntApp.c
+[v _PLLInitialize `(v ~T0 @X0 1 ef ]
+"20
 {
-[; ;mcc.c: 112: void SYSTEM_Initialize(void)
-[; ;mcc.c: 113: {
-[e :U _SYSTEM_Initialize ]
+[; ;SyntApp.c: 19: void PLLInitialize()
+[; ;SyntApp.c: 20: {
+[e :U _PLLInitialize ]
 [f ]
-[; ;mcc.c: 114: INTERRUPT_Initialize();
-"114
-[e ( _INTERRUPT_Initialize ..  ]
-[; ;mcc.c: 115: PIN_MANAGER_Initialize();
-"115
-[e ( _PIN_MANAGER_Initialize ..  ]
-[; ;mcc.c: 116: OSCILLATOR_Initialize();
-"116
-[e ( _OSCILLATOR_Initialize ..  ]
-[; ;mcc.c: 117: TMR0_Initialize();
-"117
-[e ( _TMR0_Initialize ..  ]
-[; ;mcc.c: 118: ADC_Initialize();
-"118
-[e ( _ADC_Initialize ..  ]
-[; ;mcc.c: 119: EUSART1_Initialize();
-"119
-[e ( _EUSART1_Initialize ..  ]
-[; ;mcc.c: 120: }
-"120
-[e :UE 847 ]
+[; ;SyntApp.c: 22: IOCB = 0b10000000;
+"22
+[e = _IOCB -> -> 128 `i `uc ]
+[; ;SyntApp.c: 25: SwSpi_Set_CE_Pin(SYNTH_TX, 1);
+"25
+[e ( _SwSpi_Set_CE_Pin (2 , . `E181 0 -> -> 1 `i `uc ]
+[; ;SyntApp.c: 29: for(int idx = 0; idx < 13; idx++)
+"29
+{
+[v _idx `i ~T0 @X0 1 a ]
+[e = _idx -> 0 `i ]
+[e $ < _idx -> 13 `i 858  ]
+[e $U 859  ]
+"30
+[e :U 858 ]
+[; ;SyntApp.c: 30: {
+{
+[; ;SyntApp.c: 31: SWSPI_send_word(SYNTH_TX, TEST_PLL_REGISTERS[idx], 3);
+"31
+[e ( _SWSPI_send_word (3 , , . `E181 0 *U + &U _TEST_PLL_REGISTERS * -> -> _idx `ui `ux -> -> # *U &U _TEST_PLL_REGISTERS `ui `ux -> -> 3 `i `uc ]
+"32
 }
-"122
-[v _OSCILLATOR_Initialize `(v ~T0 @X0 1 ef ]
-"123
+"29
+[e ++ _idx -> 1 `i ]
+[e $ < _idx -> 13 `i 858  ]
+[e :U 859 ]
+"32
+}
+[; ;SyntApp.c: 32: }
+[; ;SyntApp.c: 41: SwSpi_Set_CE_Pin(SYNTH_RX, 1);
+"41
+[e ( _SwSpi_Set_CE_Pin (2 , . `E181 1 -> -> 1 `i `uc ]
+[; ;SyntApp.c: 44: for(int idx = 0; idx < 13; idx++)
+"44
 {
-[; ;mcc.c: 122: void OSCILLATOR_Initialize(void)
-[; ;mcc.c: 123: {
-[e :U _OSCILLATOR_Initialize ]
+[v _idx `i ~T0 @X0 1 a ]
+[e = _idx -> 0 `i ]
+[e $ < _idx -> 13 `i 861  ]
+[e $U 862  ]
+"45
+[e :U 861 ]
+[; ;SyntApp.c: 45: {
+{
+[; ;SyntApp.c: 46: SWSPI_send_word(SYNTH_RX, PLL_INIT_REGISTERS[idx], 3);
+"46
+[e ( _SWSPI_send_word (3 , , . `E181 1 *U + &U _PLL_INIT_REGISTERS * -> -> _idx `ui `ux -> -> # *U &U _PLL_INIT_REGISTERS `ui `ux -> -> 3 `i `uc ]
+"47
+}
+"44
+[e ++ _idx -> 1 `i ]
+[e $ < _idx -> 13 `i 861  ]
+[e :U 862 ]
+"47
+}
+[; ;SyntApp.c: 47: }
+[; ;SyntApp.c: 50: SWSPI_send_word(SYNTH_RX, PLL_INIT_REGISTERS[4], 3);
+"50
+[e ( _SWSPI_send_word (3 , , . `E181 1 *U + &U _PLL_INIT_REGISTERS * -> -> -> 4 `i `ui `ux -> -> # *U &U _PLL_INIT_REGISTERS `ui `ux -> -> 3 `i `uc ]
+[; ;SyntApp.c: 51: SWSPI_send_word(SYNTH_RX, PLL_INIT_REGISTERS[2], 3);
+"51
+[e ( _SWSPI_send_word (3 , , . `E181 1 *U + &U _PLL_INIT_REGISTERS * -> -> -> 2 `i `ui `ux -> -> # *U &U _PLL_INIT_REGISTERS `ui `ux -> -> 3 `i `uc ]
+[; ;SyntApp.c: 52: SWSPI_send_word(SYNTH_RX, PLL_INIT_REGISTERS[1], 3);
+"52
+[e ( _SWSPI_send_word (3 , , . `E181 1 *U + &U _PLL_INIT_REGISTERS * -> -> -> 1 `i `ui `ux -> -> # *U &U _PLL_INIT_REGISTERS `ui `ux -> -> 3 `i `uc ]
+[; ;SyntApp.c: 53: SWSPI_send_word(SYNTH_RX, PLL_INIT_REGISTERS[0], 3);
+"53
+[e ( _SWSPI_send_word (3 , , . `E181 1 *U + &U _PLL_INIT_REGISTERS * -> -> -> 0 `i `ui `ux -> -> # *U &U _PLL_INIT_REGISTERS `ui `ux -> -> 3 `i `uc ]
+[; ;SyntApp.c: 54: }
+"54
+[e :UE 857 ]
+}
+"56
+[v _PLLUartInitialize `(v ~T0 @X0 1 ef1`*uc ]
+"57
+{
+[; ;SyntApp.c: 56: void PLLUartInitialize(char* data)
+[; ;SyntApp.c: 57: {
+[e :U _PLLUartInitialize ]
+"56
+[v _data `*uc ~T0 @X0 1 r1 ]
+"57
 [f ]
-[; ;mcc.c: 125: OSCCON = 0x60;
-"125
-[e = _OSCCON -> -> 96 `i `uc ]
-[; ;mcc.c: 127: OSCCON2 = 0x04;
-"127
-[e = _OSCCON2 -> -> 4 `i `uc ]
-[; ;mcc.c: 129: OSCTUNE = 0x00;
-"129
-[e = _OSCTUNE -> -> 0 `i `uc ]
-[; ;mcc.c: 130: }
-"130
-[e :UE 848 ]
+[; ;SyntApp.c: 59: }
+"59
+[e :UE 864 ]
+}
+"65
+[v _UpdateTxFreq `(v ~T0 @X0 1 ef1`*uc ]
+"66
+{
+[; ;SyntApp.c: 65: void UpdateTxFreq(char* data)
+[; ;SyntApp.c: 66: {
+[e :U _UpdateTxFreq ]
+"65
+[v _data `*uc ~T0 @X0 1 r1 ]
+"66
+[f ]
+[; ;SyntApp.c: 71: txFreq = GetIntFromUartData(data);
+"71
+[e = _txFreq ( _GetIntFromUartData (1 _data ]
+[; ;SyntApp.c: 73: SWSPI_send_word(SYNTH_TX, 0x00C026BA, 3);
+"73
+[e ( _SWSPI_send_word (3 , , . `E181 0 -> -> 12592826 `l `ul -> -> 3 `i `uc ]
+[; ;SyntApp.c: 74: SWSPI_send_word(SYNTH_TX, 0x3501E076, 3);
+"74
+[e ( _SWSPI_send_word (3 , , . `E181 0 -> -> 889315446 `l `ul -> -> 3 `i `uc ]
+[; ;SyntApp.c: 75: SWSPI_send_word(SYNTH_TX, 0x32008B84, 3);
+"75
+[e ( _SWSPI_send_word (3 , , . `E181 0 -> -> 838896516 `l `ul -> -> 3 `i `uc ]
+[; ;SyntApp.c: 76: SWSPI_send_word(SYNTH_TX, 0x00080032, 3);
+"76
+[e ( _SWSPI_send_word (3 , , . `E181 0 -> -> 524338 `l `ul -> -> 3 `i `uc ]
+[; ;SyntApp.c: 77: SWSPI_send_word(SYNTH_TX, 0x01AAAAA1, 3);
+"77
+[e ( _SWSPI_send_word (3 , , . `E181 0 -> -> 27962017 `l `ul -> -> 3 `i `uc ]
+[; ;SyntApp.c: 78: SWSPI_send_word(SYNTH_TX, 0x00200410, 3);
+"78
+[e ( _SWSPI_send_word (3 , , . `E181 0 -> -> 2098192 `l `ul -> -> 3 `i `uc ]
+[; ;SyntApp.c: 79: SWSPI_send_word(SYNTH_TX, 0x32008B84, 3);
+"79
+[e ( _SWSPI_send_word (3 , , . `E181 0 -> -> 838896516 `l `ul -> -> 3 `i `uc ]
+[; ;SyntApp.c: 80: SWSPI_send_word(SYNTH_TX, 0x00200410, 3);
+"80
+[e ( _SWSPI_send_word (3 , , . `E181 0 -> -> 2098192 `l `ul -> -> 3 `i `uc ]
+[; ;SyntApp.c: 83: }
+"83
+[e :UE 865 ]
+}
+"85
+[v _UpdateRxFreq `(v ~T0 @X0 1 ef1`*uc ]
+"86
+{
+[; ;SyntApp.c: 85: void UpdateRxFreq(char* data)
+[; ;SyntApp.c: 86: {
+[e :U _UpdateRxFreq ]
+"85
+[v _data `*uc ~T0 @X0 1 r1 ]
+"86
+[f ]
+[; ;SyntApp.c: 87: rxFreq = GetIntFromUartData(data);
+"87
+[e = _rxFreq ( _GetIntFromUartData (1 _data ]
+[; ;SyntApp.c: 89: SWSPI_send_word(SYNTH_RX, rxFreq, 3);
+"89
+[e ( _SWSPI_send_word (3 , , . `E181 1 _rxFreq -> -> 3 `i `uc ]
+[; ;SyntApp.c: 91: }
+"91
+[e :UE 866 ]
+}
+"100
+[v _SYNTH_ISR `(v ~T0 @X0 1 ef ]
+"101
+{
+[; ;SyntApp.c: 100: void SYNTH_ISR(void)
+[; ;SyntApp.c: 101: {
+[e :U _SYNTH_ISR ]
+[f ]
+[; ;SyntApp.c: 103: }
+"103
+[e :UE 867 ]
 }

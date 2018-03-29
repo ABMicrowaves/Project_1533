@@ -69,11 +69,13 @@
 #define TMR0_SAMPLING_TIME_FACTOR       50
 #define TMR0_KEEP_ALIVE_TIME_FACTOR     300
 #define MAX_COUNTER_SIZE TMR0_KEEP_ALIVE_TIME_FACTOR
+#define TMR0_TEN_SEC_FACTOR             200
         
 // Timers counters:
 volatile bool TimerOneSecFlag = false;
 volatile bool TimerSamplingFlag = false;
 volatile bool TimerKeepAliveFlag = false;
+volatile bool TimertenSecFlag = false;
 
 /**
   Section: TMR0 APIs

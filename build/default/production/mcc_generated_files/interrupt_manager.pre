@@ -8458,10 +8458,10 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 400 "mcc_generated_files/pin_manager.h"
+# 431 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
 
-# 412
+# 443
 void PIN_MANAGER_IOC(void);
 
 # 13 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdint.h"
@@ -8582,44 +8582,6 @@ uint8_t DATAEE_ReadByte(uint8_t bAdd);
 void MEMORY_ISR(void);
 bool FLASH_IsWriteDone();
 
-# 74 "mcc_generated_files/tmr0.h"
-volatile bool TimerOneSecFlag = 0;
-volatile bool TimerSamplingFlag = 0;
-volatile bool TimerKeepAliveFlag = 0;
-
-# 113
-void TMR0_Initialize(void);
-
-# 142
-void TMR0_StartTimer(void);
-
-# 174
-void TMR0_StopTimer(void);
-
-# 210
-uint16_t TMR0_ReadTimer(void);
-
-# 249
-void TMR0_WriteTimer(uint16_t timerVal);
-
-# 285
-void TMR0_Reload(void);
-
-# 303
-void TMR0_ISR(void);
-
-# 321
-void TMR0_CallBack(void);
-
-# 339
-void TMR0_SetInterruptHandler(void (* InterruptHandler)(void));
-
-# 357
-extern void (*TMR0_InterruptHandler)(void);
-
-# 375
-void TMR0_DefaultInterruptHandler(void);
-
 # 71 "mcc_generated_files/adc.h"
 typedef uint16_t adc_result_t;
 
@@ -8659,6 +8621,45 @@ adc_result_t ADC_GetConversionResult(void);
 
 # 297
 adc_result_t ADC_GetConversion(adc_channel_t channel);
+
+# 75 "mcc_generated_files/tmr0.h"
+volatile bool TimerOneSecFlag = 0;
+volatile bool TimerSamplingFlag = 0;
+volatile bool TimerKeepAliveFlag = 0;
+volatile bool TimertenSecFlag = 0;
+
+# 115
+void TMR0_Initialize(void);
+
+# 144
+void TMR0_StartTimer(void);
+
+# 176
+void TMR0_StopTimer(void);
+
+# 212
+uint16_t TMR0_ReadTimer(void);
+
+# 251
+void TMR0_WriteTimer(uint16_t timerVal);
+
+# 287
+void TMR0_Reload(void);
+
+# 305
+void TMR0_ISR(void);
+
+# 323
+void TMR0_CallBack(void);
+
+# 341
+void TMR0_SetInterruptHandler(void (* InterruptHandler)(void));
+
+# 359
+extern void (*TMR0_InterruptHandler)(void);
+
+# 377
+void TMR0_DefaultInterruptHandler(void);
 
 # 75 "mcc_generated_files/eusart1.h"
 extern volatile uint8_t eusart1TxBufferRemaining;

@@ -117,8 +117,7 @@ void readUartByte(void)
                 case RX_GROUP:
                     
                     if( chRec == 'I' || chRec == 'F' || chRec == 'Q' || 
-                        chRec == 'X' || chRec == 'C' || chRec == 'S' || 
-                        chRec == 'C')
+                        chRec == 'X' || chRec == 'S' || chRec == 'C')
                     {
                         
                         request = chRec - '0';
@@ -134,7 +133,8 @@ void readUartByte(void)
             
                 case TX_GROUP:
                     
-                    if(chRec == 'I' || chRec == 'F' || chRec == 'Q' || chRec == 'X' || chRec == 'B' || chRec == 'S')
+                    if(chRec == 'I' || chRec == 'F' || chRec == 'Q' || chRec == 'X' || chRec == 'B'
+                        || chRec == 'S')
                     {
                         request = (chRec - '0');
                         cState = READ_DATA_SIZE;
@@ -149,7 +149,8 @@ void readUartByte(void)
             
                 case COMMON_GROUP:
                     
-                    if(chRec == 'H' || chRec == 'L')
+                    if(chRec == 'H' || chRec == 'L' || chRec == 'T' || chRec == 'A' || chRec == 'U'
+                        || chRec == 'Q' || chRec == 'V')
                     {
                         request = (chRec - '0');
                         cState = READ_DATA_SIZE;
@@ -229,25 +230,4 @@ void UART_Write_Text(char* text)
     }
 }
 
-// </editor-fold>
-
-// <editor-fold defaultstate="collapsed" desc="EUSART send ACK / Simple message">
-
-// Send ACK message
-void SendAckMessage(MSG_GROUPS inGroup, MSG_REQUEST inRequest)
-{
-    // Create TX packet and clear the memory:
-    char TxMsg[ACK_MESSAGE_PACKET_SIZE + 1];
-    ZeroArray(TxMsg, ACK_MESSAGE_PACKET_SIZE + 1);
-    
-    // Now fill it:
-    TxMsg[MSG_MAGIC_LOCATION] =  MSG_MAGIC_A;
-    TxMsg[MSG_GROUP_LOCATION] =  inGroup;
-    TxMsg[MSG_REQUEST_LOCATION] =  inRequest;
-    TxMsg[MSG_DATA_SIZE_LOCATION] = 0;
-
-    TxMsg[ACK_MESSAGE_PACKET_SIZE] = crc8(TxMsg, ACK_MESSAGE_PACKET_SIZE);
-    
-    WriteUartMessage(TxMsg, ACK_MESSAGE_PACKET_SIZE + 1);
-}
 // </editor-fold>
