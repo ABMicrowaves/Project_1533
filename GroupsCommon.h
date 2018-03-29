@@ -20,11 +20,11 @@ typedef enum
 {
     // RX + TX system requests
     
-    SET_MODULE_BIT_MODE         = 0x12,
-    SET_MODULE_FREQUENCY        = 0x16,
-    UNIT_MODULE                 = 0x19,
-    READ_MODULE_STATUS          = 0x21,
-    SET_MODULE_OPERATION_MODE   = 0x28,
+    TX_RX_SET_BIT_MODE          = 0x12,
+    TX_RX_SET_UNIT_FREQUENCY    = 0x16,
+    TX_RX_UNIT_UNIT             = 0x19,
+    TX_RX_READ_UNIT_STATUS      = 0x21,
+    TX_RX_SET_OPERATION_MODE    = 0x28,
     
     // Only RX requests
     RX_SET_COMRESSION_MODE      = 0x63,

@@ -15,24 +15,24 @@ void GroupRx(MSG_REQUEST request, char* data)
 {
     switch (request)
     {
-        case UNIT_MODULE:
+        case TX_RX_UNIT_UNIT:
             //testLeds();
             break;
             
-        case SET_MODULE_FREQUENCY:
-            UpdateSynthFreq(RX_TYPE, data);
+        case TX_RX_SET_UNIT_FREQUENCY:
+            //ResetMcu();
             break;
             
-        case READ_MODULE_STATUS:
+        case TX_RX_READ_UNIT_STATUS:
             //ResetCpld();
             CollectRxStatusParams();
             PrintRxStatus();
             break;
             
-        case SET_MODULE_BIT_MODE:
+        case TX_RX_SET_BIT_MODE:
             break;
             
-        case SET_MODULE_OPERATION_MODE:
+        case TX_RX_SET_OPERATION_MODE:
             break;
         
         case ADC_SAMPLE:
@@ -55,24 +55,23 @@ void GroupTx(MSG_REQUEST request, char* data)
 {
     switch (request)
     {
-        case UNIT_MODULE:
+        case TX_RX_UNIT_UNIT:
             //testLeds();
             break;
             
-        case SET_MODULE_FREQUENCY:
-            
-            UpdateSynthFreq(TX_TYPE, data);
+        case TX_RX_SET_UNIT_FREQUENCY:
+            //ResetMcu();
             break;
             
-        case READ_MODULE_STATUS:
+        case TX_RX_READ_UNIT_STATUS:
             CollectTxStatusParams();
             PrintTxStatus();
             break;
             
-        case SET_MODULE_BIT_MODE:
+        case TX_RX_SET_BIT_MODE:
             break;
             
-        case SET_MODULE_OPERATION_MODE:
+        case TX_RX_SET_OPERATION_MODE:
             break;
             
         case RX_SET_COMRESSION_MODE:

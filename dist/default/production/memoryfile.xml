@@ -1,37 +1,17 @@
-<<<<<<< HEAD
-<?xml version="1.0" encoding="UTF-8"?>
-<project>
-  <executable name="dist/default/production\Project_1533.production.hex">
-    <memory name="program">
-      <units>bytes</units>
-      <length>32768</length>
-      <used>12946</used>
-      <free>19822</free>
-    </memory>
-    <memory name="data">
-      <units>bytes</units>
-      <length>1536</length>
-      <used>577</used>
-      <free>959</free>
-    </memory>
-  </executable>
-</project>
-=======
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
   <executable name="dist/default/production\1533.production.hex">
     <memory name="program">
       <units>bytes</units>
       <length>32768</length>
-      <used>20752</used>
-      <free>12016</free>
+      <used>20268</used>
+      <free>12500</free>
     </memory>
     <memory name="data">
       <units>bytes</units>
       <length>1536</length>
-      <used>599</used>
-      <free>937</free>
+      <used>631</used>
+      <free>905</free>
     </memory>
   </executable>
 </project>
->>>>>>> Update1533
